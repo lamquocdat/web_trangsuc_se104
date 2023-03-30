@@ -1,6 +1,10 @@
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 function Cart () {
     return (
-        <div>Cart</div>
+        <div>
+            <AccountBalanceIcon/>
+            Cart
+        </div>
     );
 }
 
