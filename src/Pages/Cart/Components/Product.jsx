@@ -4,7 +4,8 @@ import Col from 'react-bootstrap/Col';
 import images from '../../../assets/images'
 import Button from 'react-bootstrap/Button';
 import DoneIcon from '@mui/icons-material/Done';
-export default ({}) => {
+
+function Product () {
     return (
         <div>
             <Container fluid>
@@ -20,8 +21,8 @@ export default ({}) => {
                     <p className='text-success mb-0 mt-3'> <DoneIcon sx={{ fontSize: 20 }}></DoneIcon>Còn hàng</p>
                 </Col>
                 <Col xs={2} className='d-flex flex-column justify-content-between'>
-                    <input type='number' min="1" step={1} className='rounded w-100 h-auto p-0'></input>
-                    <Button variant="link" className="text-danger pb-0">Xóa</Button>
+                    <input type='number' min="1" step={1} className='rounded w-100 h-auto p-0 text-center'></input>
+                    <Button variant="link" className="text-danger pb-0" style={{textDecoration: 'none'}}>Xóa</Button>
                 </Col>
             </Row>
             </Container>
@@ -29,3 +30,5 @@ export default ({}) => {
         </div>
     );
 }
+
+export default Product;

@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-export default ({}) => {
+
+function Bill () {
     return (
         <div className="">
-            <div className="bg-secondary px-3 py-3 rounded mb-4">
+            <div className="px-3 py-3 rounded mb-4" style={{backgroundColor: '#ced4da'}}>
                 <div className="d-flex justify-content-between">
                     <label>Giá sản phẩm</label> 
                     <span>500.000.000 vnđ</span>
@@ -31,3 +32,5 @@ export default ({}) => {
         </div>
     );
 }
+
+export default Bill;

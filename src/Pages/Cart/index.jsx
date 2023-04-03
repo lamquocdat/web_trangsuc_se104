@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Product from './Components/Product';
 import Bill from './Components/Bill';
 function Cart () {
+    
     return (
         <div>
             <h1>Giỏ hàng</h1>
@@ -15,7 +16,7 @@ function Cart () {
                         <Product></Product>
                         <Product></Product>
                     </Col>
-                    <Col xs="12" md="5" className='px-5 px-md-3'>
+                    <Col xs="12" md="5" className='px-5 px-md-3 mt-3'>
                         <Bill></Bill>
                     </Col>
                 </Row>
