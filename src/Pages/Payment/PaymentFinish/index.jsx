@@ -14,7 +14,7 @@ function PaymentFinish () {
                 <Link to="#" className="text-primary">Nhấp vào đây để biết chi tiết đơn hàng</Link>
             </div>
             <div className="my-3">
-                <Link to="#" className="border border-2 rounded px-3 py-3 mx-auto bg-primary text-white">Tiếp tục mua hàng</Link>
+                <Link to="#" className="border border-2 rounded px-3 py-3 mx-auto bg-primary text-white" style={{textDecoration: 'none'}}>Tiếp tục mua hàng</Link>
             </div>
         </div>
     );
