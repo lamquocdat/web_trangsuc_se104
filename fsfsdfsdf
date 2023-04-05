@@ -1,0 +1,98 @@
+[33mcommit 5e1c797cbc647ce3a8aa46845825f21d60b02764[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 99610be dece05f
+Author: Nguyễn Thành Long <86999471+NguyenThanhLong19052002@users.noreply.github.com>
+Date:   Wed Apr 5 01:51:31 2023 +0700
+
+    Merge pull request #5 from gameitthoi/blog
+    
+    blog
+
+[33mcommit dece05f4a2ea2fb903d1419db5c4c7553e1270b2[m[33m ([m[1;31morigin/blog[m[33m)[m
+Author: NguyenThanhLong <nguyenthanhlong190502@gmail.com>
+Date:   Wed Apr 5 01:48:23 2023 +0700
+
+    blog
+
+[33mcommit 99610beb78abcfb127537aacc1c47553e54e73b3[m
+Merge: 3d55969 9847b7f
+Author: gameitthoi <105274577+gameitthoi@users.noreply.github.com>
+Date:   Mon Apr 3 23:24:36 2023 +0700
+
+    Merge pull request #4 from gameitthoi/cart
+    
+    toi uu cart va payment
+
+[33mcommit 9847b7fe8d3afc21669bf29bebcf32e588d1cb6a[m[33m ([m[1;31morigin/cart[m[33m)[m
+Author: gameitthoi <lamdat3302@gmail.com>
+Date:   Mon Apr 3 23:24:03 2023 +0700
+
+    toi uu cart va payment
+
+[33mcommit 3d559698fe22b05afb02f83620a776fae4a26c1c[m
+Merge: c0e3337 664a6ae
+Author: gameitthoi <105274577+gameitthoi@users.noreply.github.com>
+Date:   Mon Apr 3 15:07:05 2023 +0700
+
+    Merge pull request #3 from gameitthoi/cart
+    
+    cart 70%
+
+[33mcommit 664a6aef3ea001dc59a176b3a8fd7b1a7f42e662[m
+Author: gameitthoi <lamdat3302@gmail.com>
+Date:   Mon Apr 3 15:06:26 2023 +0700
+
+    cart 70%
+
+[33mcommit c0e3337dd0016e57f5e3464e3befdcee94fe3edc[m
+Merge: e096444 40c200f
+Author: gameitthoi <105274577+gameitthoi@users.noreply.github.com>
+Date:   Mon Apr 3 12:16:20 2023 +0700
+
+    Merge pull request #2 from gameitthoi/payment
+    
+    them react-bootrap, sua file js thanh jsx
+
+[33mcommit 40c200f7c5d48e1f7a4a0f96d701180f06efaa0b[m[33m ([m[1;31morigin/payment[m[33m)[m
+Author: gameitthoi <lamdat3302@gmail.com>
+Date:   Mon Apr 3 12:15:33 2023 +0700
+
+    them react-bootrap, sua file js thanh jsx
+
+[33mcommit e0964447d609e151d3714b477ef276ff128bf59e[m
+Merge: f488ea2 1fd9d24
+Author: gameitthoi <105274577+gameitthoi@users.noreply.github.com>
+Date:   Sun Apr 2 22:42:41 2023 +0700
+
+    Merge pull request #1 from gameitthoi/payment
+    
+    payment 90%
+
+[33mcommit 1fd9d24e0642c2e8741ddedd4b68c952bc5b3ac3[m
+Author: gameitthoi <lamdat3302@gmail.com>
+Date:   Sun Apr 2 22:42:01 2023 +0700
+
+    payment 90%
+
+[33mcommit f488ea27172f94434f59a618e41d5307c806f0f8[m
+Author: gameitthoi <lamdat3302@gmail.com>
+Date:   Fri Mar 31 00:27:44 2023 +0700
+
+    them icon masterial UI
+
+[33mcommit 00e1b370978a4943d4482a187970a9b132d22c29[m
+Author: gameitthoi <lamdat3302@gmail.com>
+Date:   Thu Mar 30 22:22:43 2023 +0700
+
+    test thu bootstrap
+
+[33mcommit b1f7369e2afddd22348bf8a7e2cf5bc856719073[m
+Author: gameitthoi <lamdat3302@gmail.com>
+Date:   Thu Mar 30 22:16:16 2023 +0700
+
+    first setup
+
+[33mcommit ab365e68d689ed1411bc650a8fb39573fc772b05[m
+Author: gameitthoi <lamdat3302@gmail.com>
+Date:   Thu Mar 30 21:21:10 2023 +0700
+
+    Initialize project using Create React App
