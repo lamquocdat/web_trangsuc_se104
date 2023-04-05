@@ -3,24 +3,24 @@ import styles from "./Footer.module.css";
 
 function Footer () {
     return (
-        <div className="main-footer">
+        <div className={"main-footer " + styles.mainFooter}>
            <a href="http://localhost:3000/">
            <img
               src={require('../../assets/images/logo.png')}
               alt=""
-              className="logo-footer"
+              className={styles.logoFooter}
             />
             </a>
             <div className="footer-container">
-            <div className="row">
-                <div className="col-md-3 col-sm-6">
+            <div className={"row " + styles.line}>
+                <div className={"col-md-3 col-sm-6 " + styles.column}>
                     <h4>© 2017 Công Ty Cổ Phần Vàng Bạc Đá Quý Phú Nhuận</h4>
                     <ul className="list-unstyled">
                         <p>170E Phan Đăng Lưu, P.3, Q.Phú Nhuận, TP.Hồ Chí Minh ĐT: 028 39951703 - Fax: 028 3995 1702</p>
                         <p><u>Giấy chứng nhận đăng ký doanh nghiệp: 0300521758.</u></p>
                     </ul>
                 </div>
-                <div className="col-md-3 col-sm-6">
+                <div className={"col-md-3 col-sm-6 " + styles.column}>
                     <h4>Về Dialuxury</h4>
                     <ul className="list-unstyled">
                         <li>Câu chuyện PNJ</li>
@@ -31,7 +31,7 @@ function Footer () {
                         <li>Kinh doanh vàng miếng</li>
                     </ul>
                 </div>
-                <div className="col-md-3 col-sm-6">
+                <div className={"col-md-3 col-sm-6 " + styles.column}>
                     <h4>Dịch vụ khách hàng</h4>
                     <ul className="list-unstyled">
                         <li>Hướng dẫn đo size trang sức</li>
@@ -44,67 +44,67 @@ function Footer () {
                     </ul>
                 </div>
                 </div>
-                <div className="footer-bottom">
-                <div className="col-md-3 col-sm-6">
+                <div className={styles.footerBottom}>
+                <div className={"col-md-3 col-sm-6 " + styles.column}>
                     <h4>Phương thức thanh toán</h4>
                     <ul className="list-unstyled">
-                        <div className="img">
+                        <div className={styles.img}>
                         <img
                             src={require('../../assets/images/visaimg.png')}
                             alt=""
-                            className="socialMedia"/>
+                            className={styles.socialMedia}/>
                         
                         
                         <img
                             src={require('../../assets/images/jcbimg.png')}
                             alt=""
-                            className="socialMedia"/>
+                            className={styles.socialMedia}/>
                         
                         
                         <img
                             src={require('../../assets/images/mastercardimg.png')}
                             alt=""
-                            className="socialMedia"/>
+                            className={styles.socialMedia}/>
 
                         <img
                             src={require('../../assets/images/cashimg.png')}
                             alt=""
-                            className="socialMedia"/>   
+                            className={styles.socialMedia}/>   
                         </div>
                     </ul>
                 </div>
-                <div className="col-md-3 col-sm-6">
+                <div className={"col-md-3 col-sm-6 " + styles.column}>
                     <h4>Kết nối với chúng tôi</h4>
                     <ul className="list-unstyled">
-                        <div className="img">
+                        <div className={styles.img}>
                         <img
                             src={require('../../assets/images/fbimg.png')}
                             alt=""
-                            className="socialMedia"/>
+                            className={styles.socialMedia}/>
                         
                         
                         <img
                             src={require('../../assets/images/instaimg.png')}
                             alt=""
-                            className="socialMedia"/>
+                            className={styles.socialMedia}/>
                         
                         
                         <img
                             src={require('../../assets/images/Twitterimg.png')}
                             alt=""
-                            className="socialMedia"/>
+                            className={styles.socialMedia}/>
 
                         <img
                             src={require('../../assets/images/mailimg.png')}
                             alt=""
-                            className="socialMedia"/>   
+                            className={styles.socialMedia}/>   
                         </div>
                     </ul>
                 </div>
                 </div>
             
-            <div className="footer-text">
-                <p className="text-xs-center">
+            <div className={styles.footerText}>
+                <p className={"text-xs-center "+ styles.textFooterText}>
                     &copy;{new Date().getFullYear()} All Rights Reserved
                 </p>
             </div>

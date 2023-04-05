@@ -5,9 +5,9 @@ function Home () {
         <div>
             <Container fluid>
         <Row>
-        <a className="homepage text-info" href="#">
-            <img src={require('../../assets/images/banner-main-homepage-img.jpg')} alt="" className="banner" style={{ display: "block", marginLeft: "auto", marginRight: "auto"}}/>
-        </a>
+        
+            <img src={require('../../assets/images/banner-main-homepage-img.jpg')} alt="" className={styles.banner}/>
+       
         </Row>
 
         {/* Xu hướng tìm kiếm */}

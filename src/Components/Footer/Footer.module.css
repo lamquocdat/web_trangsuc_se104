@@ -1,0 +1,46 @@
+.mainFooter{
+    border-top: 0.5px solid rgba(112,112,112,0.1);
+    font-size: 15px;
+}
+
+.line{
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.column h4{
+    font-size: 18px;
+}
+
+.logoFooter{
+    width: 333px;
+    height: 46px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  margin-left: 30px;
+}
+
+.footerBottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .img{
+    margin-left: 15px;
+    margin-top: 10px;
+  }
+  
+  .socialMedia{
+    width: 25px;
+    height: 20px;
+    margin-right: 20px;
+  }
+
+  .textFooterText{
+    margin-top: 30px;
+    text-align: center;
+  }

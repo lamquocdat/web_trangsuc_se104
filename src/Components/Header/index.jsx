@@ -1,120 +1,93 @@
-import React, { Component } from 'react'
-
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import PhoneIcon from '@mui/icons-material/Phone';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import HistoryIcon from '@mui/icons-material/History';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import SearchIcon from '@mui/icons-material/Search';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-export default class Header extends Component {
-    constructor(){
-        super();
-        this.state={
-            show: true,
-        }
-    }
-    render() {
-        return (
-          
-            <><nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container">
-                    <a className="navbar-brand text-info" href="http://localhost:3000/"><img src={require('../../assets/images/logo.png')} alt="" className="logo"/></a>
-                    <button className="navbar-toggler border border-info text-info"
-                        onClick={() => { this.setState({ show: !this.state.show }); } }>
-                        {this.state.show ? <MenuIcon /> : <CloseIcon />}
-                    </button>
-                    <div className={this.state.show ? 'collapse navbar-collapse' : 'collapse navbar-collapse active'}>
-                        <ul className="navbar-nav ms-auto">
-                            <li className="nav-item">
-                            <div className="item">
-                                    <PhoneIcon className="icon"/>
-                            
-                                <div className="nav-link text-dark" href="#">1800 54 54 57</div>
-                                </div>
-                            </li>
-                            <li className="nav-item">
-                            <div className="item">
-                                    <CalendarTodayIcon className="icon"/>
-                            
-                                <div className="nav-link text-dark" href="#">Đặt lịch hẹn</div>
-                                </div>
-                            </li>
-                            <li className="nav-item">
-                            <div className="item">
-                                    <HistoryIcon className="icon"/>
-                            
-                                <div className="nav-link text-dark" href="#">Lịch sử đơn hàng</div>
-                                </div>
-                            </li>
-                            <li className="nav-item">
-                            <div className="item">
-                                    <ShoppingCartIcon className="icon"/>
-                            
-                                <div className="nav-link text-dark" href="#">Giỏ hàng</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <br></br>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <div className="container">
-                    
-                    <button className="navbar-toggler border border-info text-info"
-                        onClick={() => { this.setState({ show: !this.state.show }); } }>
-                        {this.state.show ? <MenuIcon /> : <CloseIcon />}
-                    </button>
-                    <div className={this.state.show ? 'collapse navbar-collapse' : 'collapse navbar-collapse active'}>
-                        <ul className="navbar-nav ms-auto">
-                            <li className="nav-item">
-                            <div className="item-bottom">
-                                    
-                            
-                                <div className="nav-link text-dark" href="#">Trang chủ</div>
-                                </div>
-                            </li>
-                            <li className="nav-item">
-                            <div className="item-bottom">
-                                   
-                            
-                                <div className="nav-link text-dark" href="#">Sản phẩm</div>
-                                </div>
-                            </li>
-                            <li className="nav-item">
-                            <div className="item-bottom">
-                                    
-                            
-                                <div className="nav-link text-dark" href="#">Blog</div>
-                                </div>
-                            </li>
-                            <li className="nav-item">
-                            <div className="item-bottom">
-                                    
-                            
-                                <div className="nav-link text-dark" href="#">Về chúng tôi</div>
-                                </div>
-                            </li>
-                            <li className="nav-item">
-                            <div className="item-bottom">
-                                    
-                            
-                                <div className="nav-link text-dark" href="#">Tài khoản</div>
-                                </div>
-                            </li>
-                            <form className="d-flex" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Tìm kiếm nhanh" aria-label="Search" size="90"/>
-                    <button className="btn btn-outline-success" type="submit"><SearchIcon/></button>
-                </form>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <br></br></>
-          
-        )
-    }
+
+import styles from './Header.module.css'
+function Header() {
+  return (
+    <>
+    {/* nav 1 */}
+    <Navbar collapseOnSelect expand="lg" bg="light" variant="light" >
+          <Container className={styles.myContainer}>
+            <Navbar.Brand href="#home">
+                <a className="navbar-brand text-info" href="http://localhost:3000/">
+                <img src={require('../../assets/images/logo.png')} 
+                alt="" className="logo" 
+                style={{width:"250px", height:"35px", borderRadius:"none", marginRight:"100px", marginLeft:"10px"}}/>
+                </a>
+            </Navbar.Brand>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
+                  <Nav className="me-auto">
+                      
+                      
+                  </Nav>
+                  <Nav>
+                        <Nav.Link href="#phone" className={styles.items}>
+                            <div className={styles.item}>
+                            <PhoneIcon className={styles.icon}/>       
+                            <div className={styles.action} href="#">1800 54 54 57</div>
+                            </div>
+                        </Nav.Link>
+                        <Nav.Link href="#phone" className={styles.items}>
+                            <div className={styles.item}>
+                            <CalendarTodayIcon className={styles.icon}/>       
+                            <div className={styles.action} href="#">Đặt lịch hẹn</div>
+                            </div>
+                        </Nav.Link>
+                        <Nav.Link href="#phone" className={styles.items}>
+                            <div className={styles.item}>
+                            <HistoryIcon className={styles.icon}/>      
+                            <div className={styles.action} href="#">Lịch sử đơn hàng</div>
+                            </div>
+                        </Nav.Link>
+                        <Nav.Link href="#phone" className={styles.items}>
+                            <div className={styles.item}>
+                            <ShoppingCartIcon className={styles.icon}/>     
+                            <div className={styles.action} href="#">Giỏ hàng</div>
+                            </div>
+                        </Nav.Link>     
+                  </Nav>
+              </Navbar.Collapse>
+          </Container>
+      </Navbar>
+      
+      {/* nav 2 */}
+      <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+      <Container className={styles.myContainer}>
+        
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className={"me-auto " + styles.pages}>
+            <Nav.Link href="#features" className={styles.page}>Trang chủ</Nav.Link>
+            <Nav.Link href="#pricing" className={styles.page}>Sản phẩm</Nav.Link>
+            <Nav.Link href="#pricing" className={styles.page}>Blog</Nav.Link>
+            <Nav.Link href="#pricing" className={styles.page}>Về chúng tôi</Nav.Link>
+            <Nav.Link href="#pricing" className={styles.page}>Tài khoản</Nav.Link>
+            
+          </Nav>
+          <Form className={"d-flex " + styles.form}>
+                          <Form.Control
+                              type="search"
+                              placeholder="Search"
+                              className={"me-2 " + styles.formcontrol}
+                              aria-label="Search" 
+                              />
+                              
+                          <Button variant="outline-success">Search</Button>
+                      </Form>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+   
+      </>
+  );
 }
 
-
+export default Header;
