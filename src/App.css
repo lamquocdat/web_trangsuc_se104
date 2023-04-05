@@ -1,0 +1,154 @@
+/* overwire boostrap */
+/* start navbar */
+/* Nav1 */
+.navbar-header{
+    
+    height: 50px;
+    border-bottom: 0.5px solid rgba(112,112,112,0.1);
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #000000;
+}
+
+    .logo {
+        width: 250px;
+        height: 35px;
+        border-radius: none;
+        margin-right: 100px;
+        margin-left: 10px;
+      }
+    .me-auto {
+      width: 100%;
+      
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+.items {
+    display: flex;
+    align-items: center;
+    
+}
+    .item{
+      display: flex;
+      align-items: center;
+      
+      position: relative;
+    }
+    
+      .icon {
+        display: flex;
+        font-size: 20px;
+        margin-right: 5px;
+      }
+      .items:hover{
+        color: tomato;
+    }
+
+
+/* Nav2 */
+
+
+.navbar-main{
+  
+  height: 50px;
+  border-bottom: 0.5px solid rgba(112,112,112,0.1);
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #000000;
+}
+
+.ms-auto {
+  width: 100%;
+  
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.d-flex{
+    
+    border: none;
+    border-radius: 20px;
+}
+
+.list_item:hover{
+    color: tomato;
+}
+
+.list_item{
+    color: #000000;
+    margin-right: 70px;
+}
+
+
+
+   
+      /* end navbar */
+
+      /* start footer */
+
+    .main-footer{
+      border-top: 0.5px solid rgba(112,112,112,0.1);
+      font-size: 15px;
+    }
+    .row{
+      margin-left: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .col-md-3{
+      
+      
+     
+    }
+
+    .col-md-3 h4{
+      font-size: 20px;
+    }
+    .logo-footer{
+      margin-top: 30px;
+      margin-bottom: 50px;
+      
+      /* margin-left: 300px; */
+    }
+
+    .footer-bottom{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .img{
+      margin-left: 15px;
+      margin-top: 10px;
+    }
+    
+    .socialMedia{
+      width: 25px;
+      height: 20px;
+      margin-right: 30px;
+      margin-left: 5px;
+    }
+
+    .text-xs-center{
+      
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    
+
+
+
+    
+
+
+    
+
+    
