@@ -102,7 +102,7 @@ function Header() {
           </Nav>
           <Nav className='ma-auto'>
                 <form className="d-flex" role="search">
-                    <input className="form-control me-2" type="search" placeholder="Tìm kiếm nhanh" aria-label="Search" size="100"/>
+                    <input className="form-control me-2" type="search" placeholder="Tìm kiếm nhanh" aria-label="Search" size="90"/>
                     <button className="btn btn-outline-success" type="submit"><SearchIcon/></button>
                 </form>
           </Nav>
