@@ -6,12 +6,13 @@ import EmailIcon from '@mui/icons-material/Email';
 function Footer () {
     return (
         <div className="main-footer">
-           
+           <a href="http://localhost:3000/">
            <img
               src={require('../../assets/images/logo.png')}
               alt=""
               className="logo-footer"
             />
+            </a>
             <div className="footer-container">
             <div className="row">
                 <div className="col-md-3 col-sm-6">

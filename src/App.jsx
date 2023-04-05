@@ -2,7 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import DefaultLayout from "./Layout/DefaultLayout";
 import { publicRoutes } from "./routes";
 import { Fragment } from "react";
-import './App.css'
+import './App.css';
+import './css/bootstrap.min.css'
 
 function App() {
   return (
