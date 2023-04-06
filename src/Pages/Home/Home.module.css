@@ -1,0 +1,54 @@
+.line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative
+    
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#f5f5f5;
+    margin-top: 10px;
+    
+    margin-right: 20px;
+}
+
+.informations{
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    
+    position: absolute;
+     border: solid; bottom: 0; 
+   
+     justify-content: center;
+   
+}
+
+
+.count{
+    /* background-color: rgb(93, 93, 194); */
+    text-align: center;
+    margin-top: 40px;
+}
+.name{
+    /* background-color: rgb(213, 216, 45); */
+    text-align: center;
+    font-size: 18px;
+}
+.pic{
+    /* background-color: red; */
+    height: 180px;
+    width: 180px;
+}
+.price{
+    /* background-color: red; */
+    text-align: center;
+    font-size: 18px;
+}
+.goods{
+    
+  
+}
