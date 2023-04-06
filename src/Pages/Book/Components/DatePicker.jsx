@@ -9,13 +9,13 @@ const Datepicker = () => {
   const [selectedDate, setSelectedDate] = useState(null);
 
   return (
-    <Form className="align-items-center justify-content-center">
+    <Form style={{width : "1000px"}} className="align-items-center justify-content-center">
     <Form.Group controlId="formBasicDate" className="align-items-center justify-content-center">
       <Row> 
-          <Col>
+          <Col md={4}>
               <Form.Label>Ngày hẹn *</Form.Label>
           </Col>
-          <Col>
+          <Col md={8}>
               <DatePicker
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
@@ -24,10 +24,10 @@ const Datepicker = () => {
           </Col>
       </Row>
       <Row>
-          <Col>
+          <Col  md={4}>
               <Form.Label>Sản phẩm cần tư vấn *</Form.Label>
           </Col>
-          <Col>
+          <Col  md={8}>
               <Form.Select aria-label="Default select example">
                   <option>Chọn sản phẩm</option>
                   <option value="1">Nhẫn</option>
@@ -38,16 +38,17 @@ const Datepicker = () => {
           </Col>
       </Row>
       <Row>
-          <Col>
+          <Col md={4}>
               <Form.Label>Lời nhắn</Form.Label>
           </Col>
-          <Col>
+          <Col md={8}>
           <Form.Control 
               as="textarea"
               rows={3}
               placeholder="Nội dung lời nhắn"
               />
-            <div className="text-center">
+            <div style={{ marginTop: '2rem' }} className="text-center">
+                
                 <Button variant="primary">Gửi</Button>{' '}
             </div>
           </Col>

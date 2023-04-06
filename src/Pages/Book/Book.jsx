@@ -7,15 +7,13 @@ function Book() {
       <>
         {/* Header:  */}
         {/* Content: */}
-        <Container fluid>
+        <Container>
             <h1 className="text-center">ĐẶT LỊCH HẸN TƯ VẤN MUA TRANG SỨC</h1>
             <h5 className="text-center">Quý khách vui lòng điền thông tin theo mẫu dưới đây!</h5>
-            <h5 className="text-center">Cảm ơn quý khách!</h5>
-            <br />
-            <br />
+            <h5 style={{ marginBottom: '2rem' }} className="text-center">Cảm ơn quý khách!</h5>
+            
             <Datepicker></Datepicker>
-            <br />
-            <br />
+            <div style={{marginBottom: '2rem'}}></div>
         </Container>
         {/* Footer: */}
       </>
