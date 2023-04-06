@@ -11,7 +11,7 @@ function Footer () {
               className={styles.logoFooter}
             />
             </a>
-            <div className="footer-container">
+            <div className={styles.footerContainer}>
             <div className={"row " + styles.line}>
                 <div className={"col-md-3 col-sm-6 " + styles.column}>
                     <h4>© 2017 Công Ty Cổ Phần Vàng Bạc Đá Quý Phú Nhuận</h4>
@@ -103,11 +103,11 @@ function Footer () {
                 </div>
                 </div>
             
-            <div className={styles.footerText}>
+            {/* <div className={styles.footerText}>
                 <p className={"text-xs-center "+ styles.textFooterText}>
                     &copy;{new Date().getFullYear()} All Rights Reserved
                 </p>
-            </div>
+            </div> */}
            </div>
         </div>
     );
