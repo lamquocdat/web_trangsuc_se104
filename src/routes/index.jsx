@@ -7,6 +7,7 @@ import PaymentFinish from "../Pages/Payment/PaymentFinish";
 import Blog from "../Pages/Blog/Blog";
 import ProductsPage from "../Pages/Products/ProductsPage";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import Book from "../Pages/Book/Book";
 
 const publicRoutes = [
   { path: "/", component: <Home /> },
@@ -26,6 +27,10 @@ const publicRoutes = [
   { 
     path: "/aboutus", 
     component: <AboutUs />, 
+  },
+  { 
+    path: "/book", 
+    component: <Book />, 
   },
 ];
 export { publicRoutes };
