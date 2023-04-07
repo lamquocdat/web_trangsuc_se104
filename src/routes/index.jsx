@@ -5,7 +5,7 @@ import Cart from "../Pages/Cart";
 import PaymentInfo from "../Pages/Payment/PaymentInfo";
 import PaymentFinish from "../Pages/Payment/PaymentFinish";
 import Blog from "../Pages/Blog/Blog";
-import ProductsPage from "../Pages/Products/ProductsPage";
+import ProductsDetail from "../Pages/Products/Components/ProductDetail";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Book from "../Pages/Book/Book";
 
@@ -21,8 +21,8 @@ const publicRoutes = [
     component: <Blog />,
   },
   {
-    path: "/products",
-    component: <ProductsPage />,
+    path: "/productsdetail",
+    component: <ProductsDetail />,
   },
   { 
     path: "/aboutus", 
