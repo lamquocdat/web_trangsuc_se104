@@ -5,7 +5,7 @@ import Cart from "../Pages/Cart";
 import PaymentInfo from "../Pages/Payment/PaymentInfo";
 import PaymentFinish from "../Pages/Payment/PaymentFinish";
 import Blog from "../Pages/Blog/Blog";
-import ProductsPage from "../Pages/Products/ProductsPage";
+import ProductsPage from "../Pages/Products/Screens/ProductsPage";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 
 const publicRoutes = [
@@ -23,9 +23,9 @@ const publicRoutes = [
     path: "/products",
     component: <ProductsPage />,
   },
-  { 
-    path: "/aboutus", 
-    component: <AboutUs />, 
+  {
+    path: "/aboutus",
+    component: <AboutUs />,
   },
 ];
 export { publicRoutes };

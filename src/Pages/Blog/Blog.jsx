@@ -7,6 +7,7 @@ function Blog() {
   return (
     <>
       {/* Header:  */}
+
       {/* Content: */}
       <Container fluid>
         <Row>
@@ -63,7 +64,6 @@ function Blog() {
           </Col>
         </Row>
       </Container>
-      {/* Footer: */}
     </>
   );
 }
