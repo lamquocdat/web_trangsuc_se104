@@ -1,89 +1,84 @@
 /* nav 1 */
 
-.firstNav{
- 
+.firstNav {
   overflow: hidden;
   /* position: sticky; */
-  top:0;
+  top: 0;
 }
 
-.secondNav{
+.secondNav {
   /* position: sticky; */
-   overflow: hidden;
-   top:0;
+  overflow: hidden;
+  top: 0;
 }
-.navTop .items:hover{
+.navTop .items:hover {
   color: rgb(189, 120, 189);
 }
-.pages .page:hover{
+.pages .page:hover {
   color: rgb(189, 120, 189);
 }
-.myContainer{
-    
-    
-        box-shadow: 0px 13px 24px 0px rgba(238, 208, 241, 0.08);
-       
-        color: #000000;
-        font-size: 18px;
-}
-      .item{
-        display: flex;
-        align-items: center;
-    
-        position: relative;
-      }
+.myContainer {
+  box-shadow: 0px 13px 24px 0px rgba(238, 208, 241, 0.08);
 
-      
-      /* .item-bottom{
+  color: #000000;
+  font-size: 18px;
+}
+.item {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+}
+
+/* .item-bottom{
         display: flex;
         align-items: center;
         
         position: relative;
       } */
-      .icon {
-          display: flex;
-          font-size: 20px;
-          margin-right: 5px;
-        }
-      .action{
-        display: flex;
-        align-items: center;
-        
-        position: relative;
-      
-      }
+.icon {
+  display: flex;
+  font-size: 20px;
+  margin-right: 5px;
+}
+.action {
+  display: flex;
+  align-items: center;
 
-      .items{
-        /* margin-top: 20px;
+  position: relative;
+}
+
+.items {
+  /* margin-top: 20px;
         margin-bottom: 20px; */
-        margin-right: 30px;
-        
-      }
-
+  margin-right: 30px;
+}
 
 /* nav 2 */
-.pages{
-    /* background: red; */
-    display: flex;
-    height: auto;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-flow: wrap;
-    font-size: 18px;
+.pages {
+  /* background: red; */
+  display: flex;
+  height: auto;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-flow: wrap;
+  font-size: 18px;
 }
-.page{
-    
-    display: flex;
-    /* background: blue; */
-    align-items: center;
-    box-sizing: border-box;
-   
-    margin-right: 30px;
-    
+.page {
+  display: flex;
+  /* background: blue; */
+  align-items: center;
+  box-sizing: border-box;
+
+  margin-right: 30px;
 }
 
-.form .formcontrol{
-    width: 300px;
+.form .formcontrol {
+  width: 300px;
+}
+.dropdown-toggle::after {
+  content: none;
+  color: red;
 }
 
 /* https://www.youtube.com/watch?v=0SktamdLLAQ */
