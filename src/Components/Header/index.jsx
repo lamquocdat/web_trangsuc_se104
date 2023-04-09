@@ -111,6 +111,7 @@ function Header() {
                 title="Sản phẩm"
               >
                 <NavDropdown.Item href="/products/nhan">Nhẫn</NavDropdown.Item>
+                <NavDropdown.Divider />
                 <NavDropdown.Item href="/products/bong-tai">
                   Bông Tai
                 </NavDropdown.Item>
