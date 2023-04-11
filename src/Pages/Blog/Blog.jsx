@@ -1,4 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import blog1 from "../../assets/images/Blog/blog1.png";
 import blog2 from "../../assets/images/Blog/blog2.png";
 import blog3 from "../../assets/images/Blog/blog3.png";
@@ -20,8 +21,8 @@ function Blog() {
           <Col>
             <div>
               <p>
-                Top 5 món trang sức phù hợp nhất cho những bữa tiệc cưới cuối,
-                gồm: Dây chuyền, nhẫn, khuyên tai, vòng, lắc tay.
+                Top những món trang sức phù hợp nhất cho những bữa tiệc cưới
+                cuối, gồm: Dây chuyền, nhẫn, bông tai, vòng, lắc tay,...
               </p>
               <p>
                 Một mùa cưới nữa đã đến, hội chị em lại bắt đầu chuẩn bị trang
@@ -32,6 +33,7 @@ function Blog() {
                 nhất cho ngày cưới của các bạn.
               </p>
             </div>
+            <Link to="/products/nhan">Tham khảo các sản phẩm</Link>
           </Col>
         </Row>
 
@@ -60,6 +62,7 @@ function Blog() {
                 đẹp, nó sẽ tôn lên sự quyến rủ của họ.
               </p>
             </div>
+            <Link to="/products/nhan">Tham khảo các sản phẩm</Link>
           </Col>
         </Row>
       </Container>
