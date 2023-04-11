@@ -1,6 +1,44 @@
 import styles from "./Home.module.css";
-import { Container, Row, Col } from "react-bootstrap";
+
+import ProductHomepage from "./Components/Products";
+import { Container, Row, Col, Image } from "react-bootstrap";
 function Home() {
+  const products = [
+  {
+    id: "p1",
+    productimage:
+      "https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png",
+    name: "Nhẫn vàng CZ",
+    price: "10.000.000 đ",
+    sold: "100 đã bán",
+  },
+  {
+    id: "p2",
+    productimage:
+      "https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png",
+    name: "Nhẫn vàng CZ",
+    price: "10.000.000 đ",
+    sold: "100 đã bán",
+  },
+  {
+    id: "p3",
+    productimage:
+      "https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png",
+    name: "Nhẫn vàng CZ",
+    price: "10.000.000 đ",
+    sold: "100 đã bán",
+  },
+  {
+    id: "p4",
+    productimage:
+      "https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png",
+    name: "Nhẫn vàng CZ",
+    price: "10.000.000 đ",
+    sold: "100 đã bán",
+  },
+
+];
+
   return (
     <div>
       <Container fluid>
@@ -11,187 +49,28 @@ function Home() {
             className={styles.banner}
           />
         </Row>
-
-        {/* Xu hướng tìm kiếm */}
-
-        <Row className={"pb-5 pt-4 px-5 " + styles.line}>
-          <h4 className="pb-3" style={{ color: "blue" }}>
+        <Row>
+          <h4 className="pb-3" style={{ color: "rgb(189, 120, 189)", marginTop: "40px", textAlign: "center", fontSize:"27px"}}>
             Xu hướng tìm kiếm
           </h4>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-            </div>
-          </Col>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-            </div>
-          </Col>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-            </div>
-          </Col>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-            </div>
-          </Col>
+          <ProductHomepage products={products} />;
         </Row>
-
-        {/* Sản phẩm bán chạy */}
-
-        <Row className={"pb-5 pt-4 px-5 " + styles.line}>
-          <h4 className="pb-3" style={{ color: "blue" }}>
-            Sản phẩm bán chạy
+        <Row>
+          <h4 className="pb-3" style={{ color: "rgb(189, 120, 189)", marginTop: "40px", textAlign: "center", fontSize:"27px"}}>
+          Sản phẩm bán chạy
           </h4>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-              <div className={styles.price} style={{ color: "orange" }}>
-                <b>10.900.000đ</b>
-              </div>
-
-              <div className={styles.count}>
-                <b>1000</b>+ đã bán được
-              </div>
-            </div>
-          </Col>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-              <div className={styles.price} style={{ color: "orange" }}>
-                <b>10.900.000đ</b>
-              </div>
-              <div className={styles.count}>
-                <b>1000</b>+ đã bán được
-              </div>
-            </div>
-          </Col>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-              <div className={styles.price} style={{ color: "orange" }}>
-                <b>10.900.000đ</b>
-              </div>
-              <div className={styles.count}>
-                <b>1000</b>+ đã bán được
-              </div>
-            </div>
-          </Col>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-              <div className={styles.price} style={{ color: "orange" }}>
-                <b>10.900.000đ</b>
-              </div>
-              <div className={styles.count}>
-                <b>1000</b>+ đã bán được
-              </div>
-            </div>
-          </Col>
+          <ProductHomepage products={products} />;
         </Row>
-
-        {/* Sản phẩm mới */}
-
-        <Row className={"pb-5 pt-4 px-5 " + styles.line}>
-          <h4 className="pb-3" style={{ color: "blue" }}>
-            Sản phẩm mới
+        <Row>
+          <h4 className="pb-3" style={{ color: "rgb(189, 120, 189)", marginTop: "40px", textAlign: "center", fontSize:"27px"}}>
+          Sản phẩm mới
           </h4>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-              <div className={styles.price} style={{ color: "orange" }}>
-                <b>10.900.000đ</b>
-              </div>
-            </div>
-          </Col>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-              <div className={styles.price} style={{ color: "orange" }}>
-                <b>10.900.000đ</b>
-              </div>
-            </div>
-          </Col>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-              <div className={styles.price} style={{ color: "orange" }}>
-                <b>10.900.000đ</b>
-              </div>
-            </div>
-          </Col>
-          <Col className={styles.item}>
-            <div className={styles.goods}>
-              <img
-                src={require("../../assets/images/trang-suc-vang.png")}
-                alt=""
-                className={styles.pic}
-              />
-              <div className={styles.name}>trang sức vàng</div>
-              <div className={styles.price} style={{ color: "orange" }}>
-                <b>10.900.000đ</b>
-              </div>
-            </div>
-          </Col>
+          <ProductHomepage products={products} />;
         </Row>
+        
+
+        
+        
       </Container>
     </div>
   );
