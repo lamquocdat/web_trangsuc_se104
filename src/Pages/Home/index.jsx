@@ -1,7 +1,7 @@
 import styles from "./Home.module.css";
 
 import ProductHomepage from "./Components/Products";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row} from "react-bootstrap";
 function Home() {
   const products = [
   {

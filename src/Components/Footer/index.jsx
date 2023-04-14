@@ -1,16 +1,17 @@
 import styles from "./Footer.module.css";
-//material icons
+import { Link } from "react-router-dom";
+
 
 function Footer () {
     return (
         <div className={"main-footer " + styles.mainFooter}>
-           <a href="http://localhost:3000/">
+           <Link to="/">
            <img
               src={require('../../assets/images/logo.png')}
               alt=""
               className={styles.logoFooter}
             />
-            </a>
+            </Link>
             <div className={styles.footerContainer}>
             <div className={"row " + styles.line}>
                 <div className={"col-md-3 col-sm-6 " + styles.column}>

@@ -25,7 +25,7 @@ function Header() {
       >
         <Container className={styles.myContainer}>
           <Navbar.Brand href="#home">
-            <a className="navbar-brand text-info" href="http://localhost:3000/">
+          <Link to="/" >
               <img
                 src={require("../../assets/images/logo.png")}
                 alt=""
@@ -38,7 +38,7 @@ function Header() {
                   marginLeft: "10px",
                 }}
               />
-            </a>
+          </Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
@@ -79,7 +79,7 @@ function Header() {
               </Nav.Link>
 
               <Nav.Link className={styles.items}>
-              <Link to="/" className={styles.singleItem} >   
+              <Link to="/cart" className={styles.singleItem} >   
                 <div className={styles.item}>
                   <ShoppingCartIcon className={styles.icon} />
                   <div className={styles.action} href="#">
@@ -99,7 +99,7 @@ function Header() {
                 </div>
               </Link>
               </Nav.Link>
-              
+
             </Nav>
           </Navbar.Collapse>
         </Container>
