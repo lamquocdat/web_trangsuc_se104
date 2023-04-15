@@ -1,16 +1,16 @@
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import PhoneIcon from "@mui/icons-material/Phone";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import HistoryIcon from "@mui/icons-material/History";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import SearchIcon from "@mui/icons-material/Search";
-import PersonIcon from "@mui/icons-material/Person";
-import styles from "./Header.module.css";
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Navbar from 'react-bootstrap/Navbar';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import PhoneIcon from '@mui/icons-material/Phone';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import HistoryIcon from '@mui/icons-material/History';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SearchIcon from '@mui/icons-material/Search';
+import PersonIcon from '@mui/icons-material/Person';
+import styles from './Header.module.css';
 
 function Header() {
   return (
@@ -27,15 +27,15 @@ function Header() {
           <Navbar.Brand href="#home">
             <a className="navbar-brand text-info" href="http://localhost:3000/">
               <img
-                src={require("../../assets/images/logo.png")}
+                src={require('../../assets/images/logo.png')}
                 alt=""
                 className="logo"
                 style={{
-                  width: "250px",
-                  height: "35px",
-                  borderRadius: "none",
-                  marginRight: "100px",
-                  marginLeft: "10px",
+                  width: '250px',
+                  height: '35px',
+                  borderRadius: 'none',
+                  marginRight: '100px',
+                  marginLeft: '10px',
                 }}
               />
             </a>
@@ -100,14 +100,14 @@ function Header() {
         <Container className={styles.myContainer}>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav variant="tabs" className={"me-auto " + styles.pages}>
+            <Nav variant="tabs" className={'me-auto ' + styles.pages}>
               <Nav.Link eventKey="link-1" href="/" className={styles.page}>
-                <b style={{ fontWeight: "500 " }}>Trang chủ</b>
+                <b style={{ fontWeight: '500 ' }}>Trang chủ</b>
               </Nav.Link>
               {/* <Nav.Link eventKey="link-2" href="#products" className={styles.page}><b style={{fontWeight: "500 "}}>Sản phẩm</b></Nav.Link> */}
               <NavDropdown
                 className={styles.page}
-                style={{ fontWeight: "500 " }}
+                style={{ fontWeight: '500 ' }}
                 title="Sản phẩm"
               >
                 <NavDropdown.Item href="/products/nhan">Nhẫn</NavDropdown.Item>
@@ -121,24 +121,24 @@ function Header() {
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link eventKey="link-3" href="/blog" className={styles.page}>
-                <b style={{ fontWeight: "500 " }}>Blog</b>
+                <b style={{ fontWeight: '500 ' }}>Blog</b>
               </Nav.Link>
               <Nav.Link eventKey="link-4" href="#about" className={styles.page}>
-                <b style={{ fontWeight: "500 " }}>Về chúng tôi</b>
+                <b style={{ fontWeight: '500 ' }}>Về chúng tôi</b>
               </Nav.Link>
               <Nav.Link
                 eventKey="link-5"
-                href="#account"
+                href="/account"
                 className={styles.page}
               >
-                <b style={{ fontWeight: "500 " }}>Tài khoản</b>
+                <b style={{ fontWeight: '500 ' }}>Tài khoản</b>
               </Nav.Link>
             </Nav>
-            <Form className={"d-flex " + styles.form}>
+            <Form className={'d-flex ' + styles.form}>
               <Form.Control
                 type="search"
                 placeholder="Tìm kiếm"
-                className={"me-2 " + styles.formcontrol}
+                className={'me-2 ' + styles.formcontrol}
                 aria-label="Search"
               />
 
