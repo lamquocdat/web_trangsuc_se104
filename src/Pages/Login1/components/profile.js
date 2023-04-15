@@ -3,54 +3,73 @@ import { Link } from 'react-router-dom';
 import '../styles/style.css';
 function Profile() {
   return (
-    <div className="register template d-flex justify-content-center align-items-center 100-w vh-100 bg-primary ">
-      <div className="form_container p-5 rounded bg-white">
-        <div className="title justify-content-center align-items-center">
-          <h4 className="text-5xl font-bold">Profile</h4>
-          <p className="text-center">Your profile</p>
+    <section class="wrapper">
+      <div class="container">
+        <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
+          <div class="logo">
+            <img
+              decoding="async"
+              src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/102a8b118185567.61feca019a8b1.jpg"
+              class="img-fluid"
+              alt="logo"
+            />
+          </div>
+          <form class="rounded bg-white shadow p-5">
+            <h3 class="text-dark fw-bolder fs-4 mb-2">Profile</h3>
+
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingFirstName"
+                placeholder="name@example.com"
+              />
+              <label for="floatingFirstName">First Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="floatingLastName"
+                placeholder="name@example.com"
+              />
+              <label for="floatingLastName">Last Name</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                placeholder="name@example.com/"
+              />
+              <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="floatingPassword"
+                placeholder="Password"
+              />
+              <label for="floatingPassword">Password</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="floatingPassword"
+                placeholder="Password"
+              />
+              <label for="floatingPassword">Confirm Password</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary submit_btn w-100 my-4">
+              Update
+            </button>
+          </form>
         </div>
-        <form>
-          <div className="mb-2">
-            <label htmlFor="firstname">First name</label>
-            <input
-              type="text"
-              placeholder="Enter Firstname"
-              className="form-control"
-            ></input>
-          </div>
-          <div className="mb-2">
-            <label htmlFor="lastname">Last name</label>
-            <input
-              type="text"
-              placeholder="Enter Lastname"
-              className="form-control"
-            ></input>
-          </div>
-          <div className="mb-2">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              placeholder="Enter email"
-              className="form-control"
-            ></input>
-          </div>
-          <div className="mb-2">
-            <label htmlFor="address">Address</label>
-            <input
-              type="text"
-              placeholder="Enter address"
-              className="form-control"
-            ></input>
-          </div>
-
-          <div className="d-grid">
-            <button className="btn btn-primary">Update</button>
-          </div>
-
-          <Link to="/login">Change password</Link>
-        </form>
       </div>
-    </div>
+    </section>
   );
 }
 export default Profile;

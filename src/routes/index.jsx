@@ -14,6 +14,8 @@ import Book from '../Pages/Book/Book';
 import Login from '../Pages/Login1/components/login.js';
 import Account from '../Pages/Login1/components/profile.js';
 import Register from '../Pages/Login1/components/register.js';
+import Forgot from '../Pages/Login1/components/forgot';
+import Reset from '../Pages/Login1/components/reset';
 const publicRoutes = [
   { path: '/', component: <Home /> },
   { path: '/*', component: <NotFound />, layout: null },
@@ -57,6 +59,14 @@ const publicRoutes = [
   {
     path: '/account',
     component: <Account></Account>,
+  },
+  {
+    path: '/forgot',
+    component: <Forgot></Forgot>,
+  },
+  {
+    path: '/reset',
+    component: <Reset></Reset>,
   },
 ];
 export { publicRoutes };

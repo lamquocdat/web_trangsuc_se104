@@ -76,7 +76,7 @@ function Header() {
                   </div>
                 </div>
               </Nav.Link>
-              <Nav.Link href="#user" className={styles.items}>
+              <Nav.Link href="/login" className={styles.items}>
                 <div className={styles.item}>
                   <PersonIcon className={styles.icon} />
                   <div className={styles.action} href="#">
