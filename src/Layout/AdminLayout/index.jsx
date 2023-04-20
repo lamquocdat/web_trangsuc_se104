@@ -2,7 +2,7 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import AdminSidebar from "../../Components/Sidebar";
+import AdminSidebar from "../../admin/Components/Sidebar"
 import AdminNavbar from "../../admin/Components/Navbar";
 import { useEffect, useState } from "react";
 // import NorthIcon from "@mui/icons-material/North";

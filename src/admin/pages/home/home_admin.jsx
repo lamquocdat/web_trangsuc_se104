@@ -1,5 +1,4 @@
-import AdminNavbar from "../../Components/Navbar";
-import AdminSidebar from "../../../Components/Sidebar";
+
 import styles from "./home_admin.module.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
