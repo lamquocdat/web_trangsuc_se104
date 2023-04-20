@@ -1,14 +1,8 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import React from "react";
+import { Container, Row, Col, Card} from "react-bootstrap";
 
 function ProductHomepage({ products }) {
-  // //click để hiện nhiều sản phẩm hơn.
-  // const [showMore, setShowMore] = useState(false);
 
-  // const toggleShowMore = () => setShowMore(!showMore);
-
-  // //Hiện trước 12 sản phẩm
-  // const visibleProducts = showMore ? products : products.slice(0, 4);
   const visibleProducts = products;
   return (
     <>

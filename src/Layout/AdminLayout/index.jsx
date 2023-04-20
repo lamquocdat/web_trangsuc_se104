@@ -1,10 +1,14 @@
-import Header from "../../Components/Header";
-import Footer from "../../Components/Footer";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import AdminSidebar from "../../Components/Sidebar";
+import AdminNavbar from "../../admin/Components/Navbar";
 import { useEffect, useState } from "react";
 // import NorthIcon from "@mui/icons-material/North";
 
 
-function DefaultLayout({ children }) {
+function AdminLayout({ children }) {
     const [backToTopButton, setBackToTopButton] = useState(false);
     const scrollHeight = document.documentElement.scrollHeight;
     const clientHeight = document.documentElement.clientHeight;
@@ -26,17 +30,23 @@ function DefaultLayout({ children }) {
         });
     };
     return (
-        <div>
-            <Header />
-            <div>{children}</div>
-            <Footer />
-            {/* {backToTopButton && (
-                <button className={styles.btn} onClick={scrollUp}>
-                    <NorthIcon className={styles.btnIcon} />
-                </button>
-            )} */}
-        </div>
+        <Container fluid>
+      {/* Stack the columns on mobile by making one full-width and the other half-width */}
+      <AdminNavbar />
+      <Row>
+        <Col sm={2}>
+          <div >
+            <AdminSidebar />
+          </div>
+        </Col>
+        <Col sm={10}>
+        {children}
+        </Col>
+        
+      </Row>
+    </Container>
     );
 }
 
-export default DefaultLayout;
+export default AdminLayout;
+
