@@ -11,10 +11,11 @@ import ProductsPage2 from "../Pages/Products/Screens/ProductsPage2";
 import ProductsDetail from "../Pages/Products/Components/ProductDetail";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Book from "../Pages/Book/Book";
+import HomeAdmin from "../admin/pages/home/home_admin";
 
 const publicRoutes = [
   { path: "/", component: <Home /> },
-  { path: "/*", component: <NotFound />, layout: null },
+  { path: "*", component: <NotFound />, layout: null },
   { path: "/cart", component: <Cart /> },
   { path: "/paymentinfo", component: <PaymentInfo /> },
   { path: "/paymentfinish/:madonhang", component: <PaymentFinish /> },
@@ -44,5 +45,15 @@ const publicRoutes = [
     path: "/book",
     component: <Book />,
   },
+  
 ];
 export { publicRoutes };
+
+const adminRoutes = [
+  { path: "*", component: <NotFound />, layout: null },
+  {
+    path: "/homeAdmin",
+    component: <HomeAdmin />,
+  },
+];
+export {adminRoutes}
