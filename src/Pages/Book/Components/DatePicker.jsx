@@ -48,16 +48,27 @@ const Datepicker = () => {
                 label={`Dây chuyền`}
                 />
               </Col>
+              <Col>
+                <Form.Check 
+                type={type}
+                id={`default`}
+                label={`Cân`}
+                />
+                <Form.Check 
+                type={type}
+                id={`default`}
+                label={`Gia công`}
+                />
+                <Form.Check 
+                type={type}
+                id={`default`}
+                label={`Cho thuê`}
+                />
+              </Col>
             </Row>
             
           </div>
         ))}
-              {/* <Form.Select aria-label="Default select example">
-                  <option>Chọn sản phẩm</option>
-                  <option value="1">Nhẫn</option>
-                  <option value="2">Dây chuyền</option>
-                  <option value="3">Bông tai</option>
-              </Form.Select> */}
           </Col>
       </Row>
       <Row className="align-items-center justify-content-center">
