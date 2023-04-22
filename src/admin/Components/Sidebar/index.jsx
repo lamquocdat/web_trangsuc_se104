@@ -7,14 +7,14 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import BallotIcon from '@mui/icons-material/Ballot';
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import DiamondIcon from '@mui/icons-material/Diamond';
-import InsertChartIcon from "@mui/icons-material/InsertChart";
+import PaidIcon from '@mui/icons-material/Paid';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import WarehouseIcon from '@mui/icons-material/Warehouse';
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import FeedbackIcon from '@mui/icons-material/Feedback';
-
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import NoteAltIcon from '@mui/icons-material/NoteAlt';
 
 
 
@@ -68,6 +68,13 @@ function AdminSidebar() {
               <span>Phiếu Bán Hàng</span>
             </li>
           </Link>
+
+          <Link to="/phieudichvu" style={{ textDecoration: "none" }}>
+            <li>
+              <NoteAltIcon className={styles.icon} />
+              <span>Phiếu Mua Hàng</span>
+            </li>
+          </Link>
           <Link to="/phieudichvu" style={{ textDecoration: "none" }}>
             <li>
               <BallotIcon className={styles.icon} />
@@ -75,25 +82,26 @@ function AdminSidebar() {
             </li>
           </Link>
           
-          <p className={styles.title}>Analys</p>
-          <li>
-            <CalendarMonthIcon className={styles.icon} />
-            <span>Calendar</span>
-          </li>
-          <li>
-            <InsertChartIcon className={styles.icon} />
-            <span>Stats</span>
-          </li>
-          <li>
-            <FeedbackIcon className={styles.icon} />
-            <span>Feedback</span>
-          </li>
+          
+       
+          <Link to="/phieudichvu" style={{ textDecoration: "none" }}>
+            <li>
+              <PaidIcon className={styles.icon} />
+              <span>Xác Định Thanh Toán</span>
+            </li>
+          </Link>
+          <Link to="/phieudichvu" style={{ textDecoration: "none" }}>
+            <li>
+              <LocalShippingIcon className={styles.icon} />
+              <span>Xác Định Đặt Hàng</span>
+            </li>
+          </Link>
           
           <p className={styles.title}>Options</p>
-          <li>
+          {/* <li>
             <AccountCircleOutlinedIcon className={styles.icon} />
             <span>Profile</span>
-          </li>
+          </li> */}
           <li>
             <ExitToAppIcon className={styles.icon} />
             <span>Logout</span>
