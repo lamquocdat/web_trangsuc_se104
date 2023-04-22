@@ -53,7 +53,7 @@ function AdminNavbar() {
             </Link>
           </Nav.Link>
 
-            <NavDropdown
+            {/* <NavDropdown
             className={styles.page}
             style={{ fontWeight: "500" }}
             title=<ListOutlinedIcon/>
@@ -91,7 +91,7 @@ function AdminNavbar() {
             <NavDropdown.Item >
             <Link to="/products/day-chuyen" className={styles.singlePage} style={{fontSize:"17px"}}>Đăng Xuất</Link>
             </NavDropdown.Item>
-          </NavDropdown>
+          </NavDropdown> */}
           </Nav>
           <Form className={"d-flex " + styles.form}>
           <Form.Control

@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import DiamondIcon from '@mui/icons-material/Diamond';
 import styles from "./widget.module.css"
 import DataTable from "./dataTable";
 function Widget() {
@@ -47,20 +47,20 @@ function Widget() {
     },
     {
       id: "p3",
-      title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
+      title: "PRODUCTS",
+        isMoney: false,
+        link: "View all products",
         icon: (
-          <MonetizationOnOutlinedIcon
+          <DiamondIcon
             className="icon"
             style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green",fontSize:"28px", padding:"5px",borderRadius:"5px", alignSelf:"flex-end" }}
           />
         ),
-      
+  
     },
     {
       id: "p4",
-      title: "BALANCE",
+      title: "REVENUE",
         isMoney: true,
         link: "See details",
         icon: (

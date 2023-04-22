@@ -27,7 +27,7 @@ function HomeAdmin() {
             </Col>
             <Col sm={3}>
               <div className={styles.featured}>
-                <Featured />
+                {/* <Featured /> */}
               </div>
             </Col>
           </Row>
