@@ -48,12 +48,7 @@ function AdminSidebar() {
               <span>Sản Phẩm</span>
             </li>
           </Link>
-          <Link to="/orders" style={{ textDecoration: "none" }}>
-            <li>
-              <CreditCardIcon className={styles.icon} />
-              <span>Giao Dịch</span>
-            </li>
-          </Link>
+   
           
           <Link to="/storage" style={{ textDecoration: "none" }}>
             <li>
@@ -87,13 +82,13 @@ function AdminSidebar() {
           <Link to="/phieudichvu" style={{ textDecoration: "none" }}>
             <li>
               <PaidIcon className={styles.icon} />
-              <span>Xác Định Thanh Toán</span>
+              <span>Xác Nhận Thanh Toán</span>
             </li>
           </Link>
           <Link to="/phieudichvu" style={{ textDecoration: "none" }}>
             <li>
               <LocalShippingIcon className={styles.icon} />
-              <span>Xác Định Đặt Hàng</span>
+              <span>Xác Nhận Đặt Hàng</span>
             </li>
           </Link>
           
