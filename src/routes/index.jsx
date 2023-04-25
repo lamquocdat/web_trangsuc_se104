@@ -16,6 +16,7 @@ import Account from '../Pages/Login1/components/profile.js';
 import Register from '../Pages/Login1/components/register.js';
 import Forgot from '../Pages/Login1/components/forgot';
 import Reset from '../Pages/Login1/components/reset';
+import Orders from '../Pages/Orders/Orders.js';
 const publicRoutes = [
   { path: '/', component: <Home /> },
   { path: '/*', component: <NotFound />, layout: null },
@@ -67,6 +68,10 @@ const publicRoutes = [
   {
     path: '/reset',
     component: <Reset></Reset>,
+  },
+  {
+    path: '/orders',
+    component: <Orders></Orders>,
   },
 ];
 export { publicRoutes };
