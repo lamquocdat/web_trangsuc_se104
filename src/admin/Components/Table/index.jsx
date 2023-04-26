@@ -6,8 +6,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import styles from "./table.module.css";
+import { Button } from "react-bootstrap";
 
 function TableTemplate ({rows}) {
+  const handleDelete = (id) => {
+  };
+
   return (
     <TableContainer component={Paper} className={styles.table}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -23,6 +27,7 @@ function TableTemplate ({rows}) {
             <TableCell className={styles.tableCell+ " text-center"}>Đơn vị tính</TableCell>
             <TableCell className={styles.tableCell+ " text-center"}>Đơn giá</TableCell>
             <TableCell className={styles.tableCell+ " text-center"}>Thành tiền</TableCell>
+            <TableCell className={styles.tableCell+ " text-center"}>Hoạt động</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -44,6 +49,12 @@ function TableTemplate ({rows}) {
                 <TableCell className={styles.tableCell+ " text-center"}>{row.DV}</TableCell>
                 <TableCell className={styles.tableCell+ " text-center"}>{row.cost}</TableCell>
                 <TableCell className={styles.tableCell+ " text-center"}>{row.total}</TableCell>
+                <TableCell className={styles.tableCell+ " text-center"}>
+                  <div className="d-flex">
+                    <Button variant="warning" className="me-1">Sửa</Button>{' '}
+                    <Button variant="danger" onClick={() => handleDelete(row.id)}>Xóa</Button>{' '}
+                  </div>
+                </TableCell>
               </TableRow>
             )
           })}
