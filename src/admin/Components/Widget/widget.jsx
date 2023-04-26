@@ -1,21 +1,19 @@
-
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import DiamondIcon from '@mui/icons-material/Diamond';
 import styles from "./widget.module.css"
 import DataTable from "./dataTable";
+
 function Widget() {
     const products = [
-    {
-      id: "p1",
-      title: "USERS",
-      isMoney: false,
-      link: "See all users",
+      {
+        id: "p1",
+        title: "Người dùng",
+        isMoney: false,
+        link: "See all users",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -26,11 +24,10 @@ function Widget() {
             }}
           />
         ),
-   
-    },
-    {
-      id: "p2",
-      title: "ORDERS",
+      },
+      {
+        id: "p2",
+        title: "Đơn hàng",
         isMoney: false,
         link: "View all orders",
         icon: (
@@ -43,11 +40,11 @@ function Widget() {
             }}
           />
         ),
-  
-    },
-    {
-      id: "p3",
-      title: "PRODUCTS",
+    
+      },
+      {
+        id: "p3",
+        title: "Sản phẩm",
         isMoney: false,
         link: "View all products",
         icon: (
@@ -56,11 +53,10 @@ function Widget() {
             style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green",fontSize:"28px", padding:"5px",borderRadius:"5px", alignSelf:"flex-end" }}
           />
         ),
-  
-    },
-    {
-      id: "p4",
-      title: "REVENUE",
+      },
+      {
+        id: "p4",
+        title: "Doanh thu",
         isMoney: true,
         link: "See details",
         icon: (
@@ -73,29 +69,20 @@ function Widget() {
             }}
           />
         ),
-   
-    },
-   
-  
+      },
   ];
   
     return (
       <div>
-        <Container fluid className={styles.myContainer}>
-          
+        <Container fluid className={styles.myContainer}>         
           <Row>
             <h4 className="pb-3" style={{ color: "rgb(189, 120, 189)", marginTop: "15px", textAlign: "center", fontSize:"27px"}}>
             Bảng Thống Kê Dữ Liệu
             </h4>
           </Row>
           <Row style={{marginTop:"-50px"}}>
-          <DataTable products={products} />
-          </Row>
-         
-          
-  
-          
-          
+            <DataTable products={products}/>
+          </Row> 
         </Container>
       </div>
     );

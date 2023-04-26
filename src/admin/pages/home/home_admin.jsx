@@ -1,4 +1,3 @@
-
 import styles from "./home_admin.module.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -17,19 +16,19 @@ function HomeAdmin() {
 
         <div className={styles.center}>
           <Row>
-            <Col sm={9}>
+            <Col sm={12}>
               <div
                 className={styles.chart}
                 style={{ fontSize: "16px", fontWeight: "500", color: "gray" }}
               >
-                <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
+                <Chart title="Last 6 Months" aspect={2 / 1} />
               </div>
             </Col>
-            <Col sm={3}>
+            {/* <Col sm={3}>
               <div className={styles.featured}>
-                {/* <Featured /> */}
+                
               </div>
-            </Col>
+            </Col> */}
           </Row>
         </div>
       </div>

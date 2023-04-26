@@ -24,11 +24,10 @@ export default function Chart({aspect, title} ) {
       <div className="title">{title}</div>
       <ResponsiveContainer width="100%" aspect={aspect}>
         <AreaChart
-          width={730}
+          width={100}
           height={250}
           data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-        >
+          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
@@ -43,8 +42,7 @@ export default function Chart({aspect, title} ) {
             dataKey="Total"
             stroke="#8884d8"
             fillOpacity={1}
-            fill="url(#total)"
-          />
+            fill="url(#total)"/>
         </AreaChart>
       </ResponsiveContainer>
     </div>
