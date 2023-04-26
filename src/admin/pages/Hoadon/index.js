@@ -1,5 +1,9 @@
 import Container from "react-bootstrap/Container";
 import Table from "../../Components/Table";
+import SearchIcon from "@mui/icons-material/Search";
+import styles from "./Hoadon.module.css"
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 function Hoadon () {
     const list = [
         {
@@ -65,7 +69,19 @@ function Hoadon () {
     ];
     return (
         <Container fluid>
-            <div className={"border-l-3 py-5"}><Table rows={list}/></div>
+          <Form className={"d-flex mt-3 " + styles.form}>
+            <Form.Control
+              type="search"
+              placeholder="Tìm kiếm"
+              className={"me-2 " + styles.formcontrol}
+              aria-label="Search"/>
+
+            <Button variant="secondary" className={styles.button}>
+              <SearchIcon />
+            </Button>
+          </Form>
+
+          <div className={"border-l-3 py-4"}><Table rows={list}/></div>
         </Container>
     );
 }

@@ -1,0 +1,7 @@
+.form{
+    display: flex;
+    /* margin-right: 100px; */
+  }
+  .form .formcontrol {
+    width: 300px;
+  }
