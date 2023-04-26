@@ -12,6 +12,7 @@ import ProductsDetail from "../Pages/Products/Components/ProductDetail";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Book from "../Pages/Book/Book";
 import HomeAdmin from "../admin/pages/home/home_admin";
+import Hoadon from "../admin/pages/Hoadon";
 
 const publicRoutes = [
   { path: "/", component: <Home /> },
@@ -54,6 +55,9 @@ const adminRoutes = [
   {
     path: "/homeAdmin",
     component: <HomeAdmin />,
+  },
+  {
+    path:"/HoadonAdmin", component: <Hoadon/>,
   },
 ];
 export {adminRoutes}
