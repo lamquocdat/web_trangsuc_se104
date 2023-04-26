@@ -69,18 +69,17 @@ function Hoadon () {
     ];
     return (
         <Container fluid>
-          <Form className={"d-flex mt-3 " + styles.form}>
-            <Form.Control
-              type="search"
-              placeholder="Tìm kiếm"
-              className={"me-2 " + styles.formcontrol}
-              aria-label="Search"/>
-
-            <Button variant="secondary" className={styles.button}>
-              <SearchIcon />
-            </Button>
+          <Form className={"d-flex justify-content-between mt-3 " + styles.form}>
+            <div className={"d-flex"}>
+              <Form.Control
+                type="search"
+                placeholder="Tìm kiếm"
+                className={"me-2 " + styles.formcontrol}
+                aria-label="Search"/>
+              <Button variant="secondary" className={styles.button}><SearchIcon /></Button>
+            </div>
+            <Button variant="success">Thêm mới</Button>{' '}
           </Form>
-
           <div className={"border-l-3 py-4"}><Table rows={list}/></div>
         </Container>
     );
