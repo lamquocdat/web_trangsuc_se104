@@ -12,6 +12,8 @@ import ProductsDetail from "../Pages/Products/Components/ProductDetail";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Book from "../Pages/Book/Book";
 import HomeAdmin from "../admin/pages/home/home_admin";
+
+
 import Service from "../admin/pages/service/service_admin";
 import AddService from "../admin/pages/service/addService/addService";
 import ViewService from "../admin/pages/service/viewService/viewService";
@@ -24,6 +26,10 @@ import PaymentAdmin from "../admin/pages/paymentVerification/paymentVerification
 import ViewPayment from "../admin/pages/paymentVerification/viewPayment/viewPayment";
 import VerifyOrder from "../admin/pages/orderVerification/orderVerification";
 import ViewOrderVerification from "../admin/pages/orderVerification/viewOrderVerification/viewOrderVerification";
+
+import Hoadon from "../admin/pages/Hoadon";
+
+
 const publicRoutes = [
   { path: "/", component: <Home /> },
   { path: "*", component: <NotFound />, layout: null },
@@ -91,7 +97,8 @@ const adminRoutes = [
     path: "/homeAdmin",
     component: <HomeAdmin />,
   },
-  //Tpye of service
+
+  
   {
     path: "/addType",
     component: <AddType />,
@@ -101,7 +108,7 @@ const adminRoutes = [
     path: "/adjustType",
     component: <AdjustType />,
   },
-  //payment verification
+ 
   {
     path: "/paymentVerfication",
     component: <PaymentAdmin />,
@@ -119,6 +126,10 @@ const adminRoutes = [
     component: <ViewOrderVerification />,
   },
 
- 
+
+  {
+    path:"/HoadonAdmin", component: <Hoadon/>,
+  },
+
 ];
 export {adminRoutes}

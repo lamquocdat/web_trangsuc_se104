@@ -57,7 +57,7 @@ function AdminSidebar() {
             </li>
           </Link>
 
-          <Link to="/phieubanhang" style={{ textDecoration: "none" }}>
+          <Link to="/HoadonAdmin" style={{ textDecoration: "none" }}>
             <li>
               <ReceiptIcon className={styles.icon} />
               <span>Phiếu Bán Hàng</span>
