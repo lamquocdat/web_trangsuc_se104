@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Widget from "../../Components/Widget/widget";
-import Featured from "../../Components/Featured/featured";
 import Chart from "../../Components/Chart/chart";
 // import TableHome from "../../Components/TableHome/tableHome";
 function HomeAdmin() {
