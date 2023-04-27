@@ -12,7 +12,23 @@ import ProductsDetail from "../Pages/Products/Components/ProductDetail";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Book from "../Pages/Book/Book";
 import HomeAdmin from "../admin/pages/home/home_admin";
+
+
+import Service from "../admin/pages/service/service_admin";
+import AddService from "../admin/pages/service/addService/addService";
+import ViewService from "../admin/pages/service/viewService/viewService";
+import AdjustService from "../admin/pages/service/adjustService/adjustService";
+import AddTypeInService from "../admin/pages/service/viewService/add/add";
+import AdjustTypeInService from "../admin/pages/service/adjustTypeInService/adjustTypeInService";
+import AddType from "../admin/pages/service/typeOfService/addTypeOfService/addType";
+import AdjustType from "../admin/pages/service/typeOfService/adjustTypeOfService/adjustType";
+import PaymentAdmin from "../admin/pages/paymentVerification/paymentVerification";
+import ViewPayment from "../admin/pages/paymentVerification/viewPayment/viewPayment";
+import VerifyOrder from "../admin/pages/orderVerification/orderVerification";
+import ViewOrderVerification from "../admin/pages/orderVerification/viewOrderVerification/viewOrderVerification";
+
 import Hoadon from "../admin/pages/Hoadon";
+
 
 const publicRoutes = [
   { path: "/", component: <Home /> },
@@ -52,12 +68,68 @@ export { publicRoutes };
 
 const adminRoutes = [
   { path: "*", component: <NotFound />, layout: null },
+  //Service
+  {
+    path: "/service",
+    component: <Service/>,
+  },
+  {
+    path: "/service/addTypeInService",
+    component: <AddTypeInService/>,
+  },
+  {
+    path: "/service/addService",
+    component: <AddService/>,
+  },
+  {
+    path: "/service/view",
+    component: <ViewService/>,
+  },
+  {
+    path: "/service/adjustService",
+    component: <AdjustService/>,
+  },
+  {
+    path: "/service/adjustTypeInService",
+    component: <AdjustTypeInService/>,
+  },
   {
     path: "/homeAdmin",
     component: <HomeAdmin />,
   },
+
+  
+  {
+    path: "/addType",
+    component: <AddType />,
+  },
+
+  {
+    path: "/adjustType",
+    component: <AdjustType />,
+  },
+ 
+  {
+    path: "/paymentVerfication",
+    component: <PaymentAdmin />,
+  },
+  {
+    path: "/paymentView",
+    component: <ViewPayment />,
+  },
+  {
+    path: "/orderVerification",
+    component: <VerifyOrder />,
+  },
+  {
+    path: "/viewOrderVerification",
+    component: <ViewOrderVerification />,
+  },
+
+
   {
     path:"/HoadonAdmin", component: <Hoadon/>,
   },
+
 ];
 export {adminRoutes}

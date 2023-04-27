@@ -1,0 +1,185 @@
+
+
+
+
+
+.datatable_1 {
+    height: 200px;
+    padding: 20px;
+    margin-left: 20px;
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+}
+.datatable_1 .datatableTitle {
+    width: 100%;
+    font-size: 24px;
+    color: rgb(97, 97, 97);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.datatable_1 .datatableTitle .link {
+    text-decoration: none;
+    color: green;
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid green;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.datatable_1 .cellWithStatus {
+    padding: 5px;
+    border-radius: 5px;
+}
+.cellWithStatus.active {
+    background-color: rgba(0, 128, 0, 0.05);
+    color: green;
+}
+.cellWithStatus.pending {
+    background-color: rgba(255, 217, 0, 0.05);
+    color: goldenrod;
+}
+.cellWithStatus.passive {
+    background-color: rgba(255, 0, 0, 0.05);
+    color: crimson;
+}
+.datatable_1 .cellAction {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.datatable_1 .cellAction .viewButton {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: darkblue;
+    border: 1px dotted rgba(0, 0, 139, 0.596);
+    cursor: pointer;
+}
+.datatable_1 .cellAction .deleteButton {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: crimson;
+    border: 1px dotted rgba(220, 20, 60, 0.6);
+    cursor: pointer;
+}
+
+.datatableBottom{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.datatableText{
+    
+    font-size: 18px;
+    color: rgb(97, 97, 97);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.totalCost{
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
+.datatable_2 {
+    height: 600px;
+    padding: 20px;
+    margin-left: 20px;
+   
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+}
+.datatable_2 .datatableTitle {
+    width: 100%;
+    font-size: 24px;
+    color: rgb(97, 97, 97);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.datatable_2 .datatableTitle .link {
+    text-decoration: none;
+    color: green;
+    font-size: 16px;
+    font-weight: 400;
+    border: 1px solid green;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.datatable_2 .cellWithStatus {
+    padding: 5px;
+    border-radius: 5px;
+}
+.cellWithStatus.active {
+    background-color: rgba(0, 128, 0, 0.05);
+    color: green;
+}
+.cellWithStatus.pending {
+    background-color: rgba(255, 217, 0, 0.05);
+    color: goldenrod;
+}
+.cellWithStatus.passive {
+    background-color: rgba(255, 0, 0, 0.05);
+    color: crimson;
+}
+.datatable_2 .cellAction {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.datatable_2 .cellAction .viewButton {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: darkblue;
+    border: 1px dotted rgba(0, 0, 139, 0.596);
+    cursor: pointer;
+}
+.datatable_2 .cellAction .deleteButton {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: crimson;
+    border: 1px dotted rgba(220, 20, 60, 0.6);
+    cursor: pointer;
+}
+
+.datatableBottom{
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.datatableText{
+    
+    font-size: 18px;
+    color: rgb(97, 97, 97);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.totalCost{
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
