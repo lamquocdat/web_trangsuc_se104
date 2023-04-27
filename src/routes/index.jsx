@@ -30,7 +30,7 @@ const publicRoutes = [
   { path: "/cart", component: <Cart /> },
   { path: "/paymentinfo", component: <PaymentInfo /> },
   { path: "/paymentfinish/:madonhang", component: <PaymentFinish /> },
-  //Blog:
+
   {
     path: "/blog",
     component: <Blog />,
@@ -62,7 +62,7 @@ export { publicRoutes };
 
 const adminRoutes = [
   { path: "*", component: <NotFound />, layout: null },
-  //Service
+
   {
     path: "/service",
     component: <Service/>,
@@ -91,7 +91,7 @@ const adminRoutes = [
     path: "/homeAdmin",
     component: <HomeAdmin />,
   },
-  //Tpye of service
+
   {
     path: "/addType",
     component: <AddType />,
@@ -101,7 +101,7 @@ const adminRoutes = [
     path: "/adjustType",
     component: <AdjustType />,
   },
-  //payment verification
+
   {
     path: "/paymentVerfication",
     component: <PaymentAdmin />,
