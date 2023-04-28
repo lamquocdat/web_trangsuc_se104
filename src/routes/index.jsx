@@ -20,8 +20,7 @@ import ViewService from "../admin/pages/service/viewService/viewService";
 import AdjustService from "../admin/pages/service/adjustService/adjustService";
 import AddTypeInService from "../admin/pages/service/viewService/add/add";
 import AdjustTypeInService from "../admin/pages/service/adjustTypeInService/adjustTypeInService";
-import AddType from "../admin/pages/service/typeOfService/addTypeOfService/addType";
-import AdjustType from "../admin/pages/service/typeOfService/adjustTypeOfService/adjustType";
+
 import PaymentAdmin from "../admin/pages/paymentVerification/paymentVerification";
 import ViewPayment from "../admin/pages/paymentVerification/viewPayment/viewPayment";
 import VerifyOrder from "../admin/pages/orderVerification/orderVerification";
@@ -98,24 +97,8 @@ const adminRoutes = [
     component: <HomeAdmin />,
   },
 
-<<<<<<< HEAD
-=======
   
->>>>>>> 15073043ecb3edaa7706679e6521cee5a709feb5
-  {
-    path: "/addType",
-    component: <AddType />,
-  },
 
-  {
-    path: "/adjustType",
-    component: <AdjustType />,
-  },
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> 15073043ecb3edaa7706679e6521cee5a709feb5
   {
     path: "/paymentVerfication",
     component: <PaymentAdmin />,
@@ -132,7 +115,6 @@ const adminRoutes = [
     path: "/viewOrderVerification",
     component: <ViewOrderVerification />,
   },
-
 
   {
     path:"/HoadonAdmin", component: <Hoadon/>,
