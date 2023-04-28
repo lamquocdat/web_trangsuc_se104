@@ -11,7 +11,25 @@
   /* overflow: hidden; */
   top: 0;
 }
-.navTop .items:hover {
+.navTop .items .singleItem:hover {
+  color: rgb(189, 120, 189);
+}
+
+.singleItem{
+  text-decoration-line: none;
+  font-size: 18px;
+  
+  color:rgba(0, 0, 0, 0.7) 
+}
+
+.singlePage {
+  text-decoration-line: none;
+ font-size: 18px;
+ 
+ color:rgba(0, 0, 0, 0.7) 
+}
+
+.pages .page .singlePage:hover {
   color: rgb(189, 120, 189);
 }
 .pages .page:hover {

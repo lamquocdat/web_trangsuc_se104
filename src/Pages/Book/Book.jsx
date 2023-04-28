@@ -8,12 +8,15 @@ function Book() {
         {/* Header:  */}
         {/* Content: */}
         <Container>
-            <h1 className="text-center">ĐẶT LỊCH HẸN TƯ VẤN MUA TRANG SỨC</h1>
-            <h5 className="text-center">Quý khách vui lòng điền thông tin theo mẫu dưới đây!</h5>
-            <h5 style={{ marginBottom: '2rem' }} className="text-center">Cảm ơn quý khách!</h5>
+          <Form>
+          <h2 style={{ color:'rgba(0, 0, 0, 0.7)'  }} className="text-center mt-3">ĐẶT LỊCH HẸN TƯ VẤN MUA TRANG SỨC</h2>
+              <h5 style={{color: 'rgba(0, 0, 0, 0.7)' }} className="text-center">Quý khách vui lòng điền thông tin theo mẫu dưới đây!</h5>
+              <h5 style={{ color:'rgba(0, 0, 0, 0.7)'  }} className="text-center mb-4">Cảm ơn quý khách!</h5>
+              
+              <Datepicker></Datepicker>
+          </Form>
             
-            <Datepicker></Datepicker>
-            <div style={{marginBottom: '2rem'}}></div>
+            
         </Container>
         {/* Footer: */}
       </>

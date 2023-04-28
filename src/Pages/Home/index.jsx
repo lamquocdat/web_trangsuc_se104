@@ -1,7 +1,7 @@
 import styles from "./Home.module.css";
 
 import ProductHomepage from "./Components/Products";
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row} from "react-bootstrap";
 function Home() {
   const products = [
   {
@@ -47,13 +47,8 @@ function Home() {
             src={require("../../assets/images/banner-main-homepage-img.jpg")}
             alt=""
             className={styles.banner}
+            style={{maxWidth:"100%",  padding:"0"}}
           />
-        </Row>
-        <Row>
-          <h4 className="pb-3" style={{ color: "rgb(189, 120, 189)", marginTop: "40px", textAlign: "center", fontSize:"27px"}}>
-            Xu hướng tìm kiếm
-          </h4>
-          <ProductHomepage products={products} />;
         </Row>
         <Row>
           <h4 className="pb-3" style={{ color: "rgb(189, 120, 189)", marginTop: "40px", textAlign: "center", fontSize:"27px"}}>
@@ -68,7 +63,7 @@ function Home() {
           <ProductHomepage products={products} />;
         </Row>
         
-
+      
         
         
       </Container>
