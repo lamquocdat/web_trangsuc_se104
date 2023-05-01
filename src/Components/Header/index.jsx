@@ -57,7 +57,7 @@ function Header() {
               </Nav.Link>
 
               <Nav.Link className={styles.items}>
-              <Link to="/" className={styles.singleItem} >   
+              <Link to="/book" className={styles.singleItem} >   
                 <div className={styles.item}>
                   <CalendarTodayIcon className={styles.icon} />
                   <div className={styles.action} href="#">
