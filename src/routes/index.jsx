@@ -20,7 +20,7 @@ import ViewService from "../admin/pages/service/viewService/viewService";
 import AdjustService from "../admin/pages/service/adjustService/adjustService";
 import AddTypeInService from "../admin/pages/service/viewService/add/add";
 import AdjustTypeInService from "../admin/pages/service/adjustTypeInService/adjustTypeInService";
-
+import WareHouse from "../admin/pages/Warehouse/warehouse_admin";
 import PaymentAdmin from "../admin/pages/paymentVerification/paymentVerification";
 import ViewPayment from "../admin/pages/paymentVerification/viewPayment/viewPayment";
 import VerifyOrder from "../admin/pages/orderVerification/orderVerification";
@@ -96,7 +96,10 @@ const adminRoutes = [
     path: "/homeAdmin",
     component: <HomeAdmin />,
   },
-
+  {
+    path: "/warehouse",
+    component: < WareHouse />,
+  },
   
 
   {
