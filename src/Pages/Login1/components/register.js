@@ -15,6 +15,7 @@ function Register() {
       phone: '',
       confirmPassword: '',
       name: '',
+      address: '',
     },
     validate: registerValidate,
     validateOnBlur: false,
@@ -47,7 +48,7 @@ function Register() {
     <section class="wrapper">
       <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div class="container">
-        <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center">
+        <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 py-5 text-center">
           <form
             class="rounded bg-white shadow p-5"
             onSubmit={formik.handleSubmit}
@@ -92,7 +93,7 @@ function Register() {
               <input
                 {...formik.getFieldProps('phone')}
                 type="tel"
-                pattern="0\d{9,10}"
+                pattern="^0\d{9,10}$"
                 class="form-control"
                 id="floatingPhone"
                 placeholder="Phone"

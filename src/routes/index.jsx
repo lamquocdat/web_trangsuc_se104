@@ -17,8 +17,13 @@ import Login from '../Pages/Login1/components/login.js';
 import Account from '../Pages/Login1/components/profile.js';
 import Register from '../Pages/Login1/components/register.js';
 import Forgot from '../Pages/Login1/components/forgot';
-import Reset from '../Pages/Login1/components/reset';
+import Reset from '../Pages/Login1/components/otpForgot';
 import Orders from '../Pages/Orders/Orders.js';
+import Recovery from '../Pages/Login1/components/recovery';
+import { AuthorizedUser, LoggedUser } from '../Pages/Login1/authenticate';
+import OrderDetailProducts from '../Pages/Orders/OrderDetailProduct';
+
+import ChangePassword from '../Pages/Login1/components/changePassword';
 const publicRoutes = [
   { path: '/', component: <Home /> },
   { path: '*', component: <NotFound />, layout: null },
@@ -53,27 +58,56 @@ const publicRoutes = [
   },
   {
     path: '/login',
-    component: <Login></Login>,
+    component: (
+      <LoggedUser>
+        <Login></Login>
+      </LoggedUser>
+    ),
   },
   {
     path: '/register',
     component: <Register></Register>,
   },
   {
-    path: '/account',
-    component: <Account></Account>,
+    path: '/account/:_id',
+    component: (
+      <AuthorizedUser>
+        <Account></Account>
+      </AuthorizedUser>
+    ),
   },
   {
     path: '/forgot',
     component: <Forgot></Forgot>,
   },
   {
-    path: '/reset',
-    component: <Reset></Reset>,
+    path: '/recovery/:_id',
+    component: <Recovery></Recovery>,
   },
   {
-    path: '/orders',
-    component: <Orders></Orders>,
+    path: '/reset/:_id',
+    component: <Reset></Reset>,
+  },
+
+  {
+    path: '/orders/:_id',
+    component: (
+      <AuthorizedUser>
+        <Orders></Orders>
+      </AuthorizedUser>
+    ),
+  },
+  {
+    path: '/orders/detail/:_orderid',
+    component: <OrderDetailProducts></OrderDetailProducts>,
+  },
+  {
+    path: '/account/changePassword/:_id',
+    component: (
+      <AuthorizedUser>
+        <ChangePassword></ChangePassword>
+      </AuthorizedUser>
+    ),
   },
 ];
 export { publicRoutes };
