@@ -5,41 +5,41 @@ export const warehouseColumns = [
     {
       field: "maSP",
       headerName: "Mã sản phẩm",
-      width: 250,
+      width: 150,
       
     },
     {
       field: "tenSP",
       headerName: "Tên sản phẩm",
-      width: 120,
-    },
-    {
-      field: "DVT",
-      headerName: "Đơn vị tính",
-      width: 70,
+      width: 200,
     },
     {
       field: "tondauky",
-      headerName: "Tồn đầu kỳ",
+      headerName: "Tồn đầu",
       width: 150,
     },
     {
       field: "nhaptrongky",
-      headerName: "Nhập trong kỳ",
-      width: 150,
+      headerName: "Số lượng mua vào",
+      width: 170,
     },
     {
       field: "xuattrongky",
-      headerName: "Xuất trong kỳ",
-      width: 120,
+      headerName: "Số lượng bán ra",
+      width: 170,
       
     },
     {
         field: "toncuoiky",
-        headerName: "Tồn cuối kỳ",
+        headerName: "Tồn cuối",
         width: 120,
         
-      },
+    },
+    {
+      field: "DVT",
+      headerName: "Đơn vị tính",
+      width: 100,
+    },
   ];
   
   //temporary data
