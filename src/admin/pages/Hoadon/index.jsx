@@ -11,7 +11,7 @@ function Hoadon () {
   
   useEffect(() => {
     axios
-      .get("http://localhost:3001/order/tinhtrang/done")
+      .get("https://dialuxury.onrender.com/order/tinhtrang/done")
       .then((response) => {
         setList(response.data)
       })

@@ -17,7 +17,7 @@ export default () => {
 
     useEffect(() => {
         axios
-          .get(`http://localhost:3001/order/hd/${mahd}`)
+          .get(`https://dialuxury.onrender.com/order/hd/${mahd}`)
           .then((response) => {
             setOrders(response.data)
           })
