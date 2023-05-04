@@ -27,6 +27,7 @@ import VerifyOrder from "../admin/pages/orderVerification/orderVerification";
 import ViewOrderVerification from "../admin/pages/orderVerification/viewOrderVerification/viewOrderVerification";
 
 import Hoadon from "../admin/pages/Hoadon";
+import ChitietHoadon from "../admin/Components/ChitietHoadon";
 
 
 const publicRoutes = [
@@ -121,6 +122,10 @@ const adminRoutes = [
 
   {
     path:"/HoadonAdmin", component: <Hoadon/>,
+  },
+
+  {
+    path:"/ChitietHoadonAdmin/:mahd", component: <ChitietHoadon/>,
   },
 
 ];

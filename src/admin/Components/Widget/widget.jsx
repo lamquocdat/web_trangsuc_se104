@@ -13,7 +13,6 @@ function Widget() {
         id: "p1",
         title: "Người dùng",
         isMoney: false,
-        link: "See all users",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -29,7 +28,6 @@ function Widget() {
         id: "p2",
         title: "Đơn hàng",
         isMoney: false,
-        link: "View all orders",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -46,7 +44,6 @@ function Widget() {
         id: "p3",
         title: "Sản phẩm",
         isMoney: false,
-        link: "View all products",
         icon: (
           <DiamondIcon
             className="icon"
@@ -58,7 +55,6 @@ function Widget() {
         id: "p4",
         title: "Doanh thu",
         isMoney: true,
-        link: "See details",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
