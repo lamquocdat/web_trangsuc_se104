@@ -20,7 +20,7 @@ function HomeAdmin() {
                 className={styles.chart}
                 style={{ fontSize: "16px", fontWeight: "500", color: "gray" }}
               >
-                <Chart title="Last 6 Months" aspect={2 / 1} />
+                <Chart title="6 tháng gần đây nhất" aspect={2 / 1} />
               </div>
             </Col>
             {/* <Col sm={3}>
