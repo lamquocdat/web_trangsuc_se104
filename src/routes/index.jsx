@@ -25,7 +25,7 @@ import PaymentAdmin from "../admin/pages/paymentVerification/paymentVerification
 import ViewPayment from "../admin/pages/paymentVerification/viewPayment/viewPayment";
 import VerifyOrder from "../admin/pages/orderVerification/orderVerification";
 import ViewOrderVerification from "../admin/pages/orderVerification/viewOrderVerification/viewOrderVerification";
-
+import ConfirmationNotification from "../admin/pages/verfiedPage";
 import Hoadon from "../admin/pages/Hoadon";
 import ChitietHoadon from "../admin/Components/ChitietHoadon";
 
@@ -123,6 +123,11 @@ const adminRoutes = [
   {
     path:"/HoadonAdmin", component: <Hoadon/>,
   },
+
+  {
+    path:"/ConfirmationNotification", component: <ConfirmationNotification/>,
+  },
+  
 
   {
     path:"/ChitietHoadonAdmin/:mahd", component: <ChitietHoadon/>,

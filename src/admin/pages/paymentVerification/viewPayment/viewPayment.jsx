@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import styles from './viewPayment.module.css'
-import images from "../../../../assets/images";
+import {useNavigate} from 'react-router-dom';
 const ViewPayment = ({ inputs}) => {
   const [file, setFile] = useState("");
-
+  const navigate = useNavigate();
+  const navigateToConfirmationForm = () => {
+    // 👇️ navigate to /contacts
+    navigate('/ConfirmationNotification');
+  };
   return (
    
       <div className={styles.new}>
@@ -113,7 +117,7 @@ const ViewPayment = ({ inputs}) => {
 
             </form>
             <div className={styles.buttonUpdate}>
-            <button className={styles.myButton}>Xác Nhận</button>
+            <button onClick={navigateToConfirmationForm} className={styles.myButton}>Xác Nhận</button>
             </div>
           </div>
           

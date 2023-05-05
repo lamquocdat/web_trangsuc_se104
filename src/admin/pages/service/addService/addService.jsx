@@ -41,9 +41,7 @@ const AddService = ({ inputs}) => {
 
            
 
-              <div class={styles.formInput}><label>Trạng Thái</label>
-              <input type="text" placeholder="active or unactive"/>
-              </div>
+           
 
               
              

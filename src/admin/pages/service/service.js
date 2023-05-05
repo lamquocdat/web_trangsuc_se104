@@ -38,20 +38,7 @@ export const serviceColumns = [
     width: 120,
     
   },
-  {
-    field: "status",
-    headerName: "Trạng Thái",
-    width: 160,
-    renderCell: (params) => {
-      return (
-      
-      <div className={`cellWithStatus ${params.row.status}`} style={{ backgroundColor: "rgba(0, 128, 0, 0.05)",
-      color: "green"}}>
-          {params.row.status}
-        </div>
-      );
-    },
-  },
+
 ];
 
 //temporary data

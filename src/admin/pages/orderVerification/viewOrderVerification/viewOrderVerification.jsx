@@ -54,20 +54,7 @@ const ViewOrderVerification = () => {
           width: 150,
         },
        
-        {
-          field: "status",
-          headerName: "Trạng Thái",
-          width: 100,
-          renderCell: (params) => {
-            return (
-            
-            <div className={`cellWithStatus ${params.row.status}`} style={{ backgroundColor: "rgba(0, 128, 0, 0.05)",
-            color: "green"}}>
-                {params.row.status}
-              </div>
-            );
-          },
-        },
+     
       ];
       
       //temporary data
@@ -191,11 +178,11 @@ const ViewOrderVerification = () => {
       <div className={styles.datatableTitle}>
         <b>Mã Đặt Hàng o01</b>
         <div className={styles.buttonFuction}>
-        <Link to="/*" className={styles.link_approve} style={{marginRight:"20px"}}>
-        Chấp Thuận
+        <Link to="/ConfirmationNotification" className={styles.link_approve} style={{marginRight:"20px"}}>
+        Xác Nhận
         </Link>
         <Link to="/*" className={styles.link_decline}>
-          Từ Chối
+          Huỷ Đơn Hàng
         </Link>
         </div>
       </div>
