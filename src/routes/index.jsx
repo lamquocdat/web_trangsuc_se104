@@ -20,13 +20,14 @@ import ViewService from "../admin/pages/service/viewService/viewService";
 import AdjustService from "../admin/pages/service/adjustService/adjustService";
 import AddTypeInService from "../admin/pages/service/viewService/add/add";
 import AdjustTypeInService from "../admin/pages/service/adjustTypeInService/adjustTypeInService";
-
+import WareHouse from "../admin/pages/Warehouse/warehouse_admin";
 import PaymentAdmin from "../admin/pages/paymentVerification/paymentVerification";
 import ViewPayment from "../admin/pages/paymentVerification/viewPayment/viewPayment";
 import VerifyOrder from "../admin/pages/orderVerification/orderVerification";
 import ViewOrderVerification from "../admin/pages/orderVerification/viewOrderVerification/viewOrderVerification";
 import ConfirmationNotification from "../admin/pages/verfiedPage";
 import Hoadon from "../admin/pages/Hoadon";
+import ChitietHoadon from "../admin/Components/ChitietHoadon";
 
 
 const publicRoutes = [
@@ -96,7 +97,10 @@ const adminRoutes = [
     path: "/homeAdmin",
     component: <HomeAdmin />,
   },
-
+  {
+    path: "/warehouse",
+    component: < WareHouse />,
+  },
   
 
   {
@@ -119,9 +123,15 @@ const adminRoutes = [
   {
     path:"/HoadonAdmin", component: <Hoadon/>,
   },
+
   {
     path:"/ConfirmationNotification", component: <ConfirmationNotification/>,
   },
   
+
+  {
+    path:"/ChitietHoadonAdmin/:mahd", component: <ChitietHoadon/>,
+  },
+
 ];
 export {adminRoutes}
