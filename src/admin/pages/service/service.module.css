@@ -43,7 +43,7 @@
 .datatable .cellAction {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 5px;
 }
 .datatable .cellAction .viewButton {
     padding: 2px 5px;

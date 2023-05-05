@@ -33,9 +33,7 @@ const AdjustService = ({ inputs}) => {
               <div class={styles.formInput}><label>Trả Trước</label>
               <input type="text" placeholder="VNĐ"/>
               </div>
-              <div class={styles.formInput}><label>Tình Trạng</label>
-              <input type="text" placeholder="active or unactive"/>
-              </div>
+          
             </form>
             <div className={styles.buttonUpdate}>
             <button className={styles.myButton}>Cập Nhật</button>

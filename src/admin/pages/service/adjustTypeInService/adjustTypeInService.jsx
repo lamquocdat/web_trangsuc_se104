@@ -42,14 +42,6 @@ const AdjustTypeInService = ({ inputs}) => {
               <div class={styles.formInput}><label>Ngày Giao</label>
               <input type="text" placeholder="dd/mm/yyyy"/>
               </div>
-
-           
-
-              <div class={styles.formInput}><label>Trạng Thái</label>
-              <input type="text" placeholder="active or unactive"/>
-              </div>
-
-              
              
               
             </form>

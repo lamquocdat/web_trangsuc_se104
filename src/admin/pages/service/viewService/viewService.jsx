@@ -1,5 +1,4 @@
 import styles from "./viewService.module.css"
-import { serviceSingleColumns, serviceSingleRows } from "../service";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -63,20 +62,7 @@ const ViewService = () => {
           headerName: "Ngày Giao",
           width: 120,
         },
-        {
-          field: "status",
-          headerName: "Trạng Thái",
-          width: 100,
-          renderCell: (params) => {
-            return (
-            
-            <div className={`cellWithStatus ${params.row.status}`} style={{ backgroundColor: "rgba(0, 128, 0, 0.05)",
-            color: "green"}}>
-                {params.row.status}
-              </div>
-            );
-          },
-        },
+  
       ];
       
       //temporary data
@@ -207,7 +193,6 @@ const ViewService = () => {
             <TableCell align="right">Tổng tiền</TableCell>
             <TableCell align="right">Trả trước</TableCell>
             <TableCell align="right">Còn Lại</TableCell>
-            <TableCell align="right">Tình Trạng</TableCell>
             
           </TableRow>
         </TableHead>
@@ -224,7 +209,6 @@ const ViewService = () => {
               <TableCell align="right">{row.phieuMoney}</TableCell>
               <TableCell align="right">{row.phieuTraTruoc}</TableCell>
               <TableCell align="right">{row.phieuConLai}</TableCell>
-              <TableCell align="right" style={{color: "green"}}>{row.phieuTinhTrang}</TableCell>
             </TableRow>
           ))}
         </TableBody>
