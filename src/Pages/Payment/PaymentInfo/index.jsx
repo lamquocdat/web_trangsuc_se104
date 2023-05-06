@@ -2,13 +2,20 @@ import { Link } from "react-router-dom";
 import QRImg from "../Component/QRImg";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import Alert from 'react-bootstrap/Alert';
 
 function PaymentInfo () {
+    const { mahd } = useParams;
+
+    //chọn phương thức thanh toán
     const [bank, setbank] = useState("MomoQR");
 
     const handleSelectChange = (event) => {
         setbank(event.target.value);
     }
+
+    //chọn địa chỉ
     const [province, setProvince] = useState("");
     const [district, setDistrict] = useState("");
     const [ward, setWard] = useState("");
@@ -17,8 +24,23 @@ function PaymentInfo () {
     const [districts, setDistricts] = useState([]);
     const [wards, setWards] = useState([]);
 
-    const madonhang = "1234";
-    
+    //chọn hình ảnh xác thực
+    const [ok, setOk] = useState(false);
+    const [showErrorAlert, setShowErrorAlert] = useState(false);
+    const handleFileInput = (event)=>{
+        const file = event.target.files[0];
+        const fileType = file.type;
+        if (fileType === "image/png" || fileType === "image/jpeg") {
+            // File là file ảnh
+            setOk(true);
+        } else {
+            // File không phải là file ảnh
+            setOk(false);
+            setShowErrorAlert(true);
+        }
+    }
+   
+    //hiển thị tỉnh, thành phố, quận, huyện
     useEffect(() => {
         axios
           .get("https://vapi.vnappmob.com/api/province")
@@ -121,13 +143,22 @@ function PaymentInfo () {
                             </select>
                         </div>
                         <textarea className="w-100 rounded" placeholder="Địa chỉ chi tiểt"/>
+                        <div className="d-flex justify-content-center mt-4">
+                            <input type="file" accept=".png,.jpg" onChange={handleFileInput} />
+                            {showErrorAlert && (
+                                <Alert variant="danger" onClose={() => setShowErrorAlert(false)} dismissible>
+                                    Đây không phải tệp hình ảnh!
+                                </Alert>
+                            )}
+                        </div>
                     </div>
                     <div className="px-4 my-4 my-1 text-center">
                         <p><b>Nếu có thông tin sai sót</b> xin vui lòng gọi số <b className="text-danger">0123456789</b> để được hỗ trợ miễn phí</p>
                     </div>
                 </div>
                 <div className="text-center my-4">
-                    <Link to={{ pathname: `/paymentfinish/${madonhang}` }} className="rounded w-50 px-3 py-3 bg-primary text-white" style={{textDecoration: 'none'}}>Xác nhận</Link>
+                    {ok && province && district && ward &&
+                    <Link to={{ pathname: `/paymentfinish/${mahd}` }} className="rounded w-50 px-3 py-3 bg-primary text-white" style={{textDecoration: 'none'}}>Xác nhận</Link>}
                 </div>
             </div>
         </div>

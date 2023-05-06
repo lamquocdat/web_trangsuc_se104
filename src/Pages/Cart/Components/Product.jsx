@@ -71,6 +71,7 @@ function Product ({productid,image, name, price, category, soluong, state}) {
                     <Button variant="link" className="text-danger pb-0" style={{textDecoration: 'none'}} onClick={handleDelete}>Xóa</Button>
                     <ConfirmationModal
                         show={showModal}
+                        title={"Xác nhận"}
                         message="Bạn có chắc chắn muốn xóa?"
                         onConfirm={handleConfirmDelete}
                         onCancel={handleCancelDelete}

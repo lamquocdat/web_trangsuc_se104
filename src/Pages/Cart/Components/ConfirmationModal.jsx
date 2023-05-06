@@ -1,11 +1,11 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
 
-const ConfirmationModal = ({ show, message, onConfirm, onCancel }) => {
+const ConfirmationModal = ({title, show, message, onConfirm, onCancel }) => {
   return (
     <Modal show={show} onHide={onCancel}>
       <Modal.Header closeButton>
-        <Modal.Title>Xác nhận</Modal.Title>
+        <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>{message}</Modal.Body>
       <Modal.Footer>

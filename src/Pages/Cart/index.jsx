@@ -32,9 +32,14 @@ function Cart () {
                                 <Product productid={sp.productid} image={sp.image} name={sp.name} price={sp.price} category={sp.category} soluong={sp.soluong} state={sp.state}/>
                             )
                         })}
+                        {cart !== undefined && (!Array.isArray(cart.sanphams) || cart.sanphams.length === 0) && (()=>{
+                            <div className='d-flex justify-content-center'>
+                                Giỏ hàng rỗng
+                            </div>
+                        })}
                     </Col>
                     <Col xs="12" md="5" className='px-5 px-md-3 mt-3'>
-                        {(cart !== undefined) && <Bill total={cart.tongtrigia}/>
+                        {(cart !== undefined) && <Bill cart={cart}/>
                         }
                     </Col>
                 </Row>
