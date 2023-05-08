@@ -108,7 +108,7 @@ function PaymentInfo () {
         updateData.append('hinhanh', fileInputRef.current.files[0]);
 
         //cập nhật lại diachigiaohang và hinhanh của order có mahd này
-        axios.put(`http://localhost:3001/order/${hd._id}`, updateData)
+        axios.put(`https://dialuxury.onrender.com/order/${hd._id}`, updateData)
             .then((response) => {
                 window.location.href = `/paymentfinish/${mahd}`;
             })
