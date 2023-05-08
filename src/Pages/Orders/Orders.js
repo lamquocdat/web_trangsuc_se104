@@ -25,7 +25,7 @@ const Orders = () => {
             <th scope="col"> Tổng tiền </th>{' '}
             <th scope="col"> Tình trạng giao hàng </th>
             <th scope="col" className="text-end">
-              Action{' '}
+              Chi tiết{' '}
             </th>{' '}
           </tr>{' '}
         </thead>{' '}

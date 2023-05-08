@@ -125,6 +125,7 @@ export async function getAllOrders(_id) {
 }
 export async function getOrderbyId(_orderid) {
   try {
+    
     const { data } = await axios.get(`/api/orderdetail/${_orderid}`);
     return Promise.resolve({ data });
   } catch (error) {

@@ -50,14 +50,14 @@ function AdminSidebar() {
           </Link>
    
           
-          <Link to="/storage" style={{ textDecoration: "none" }}>
+          <Link to="/warehouse" style={{ textDecoration: "none" }}>
             <li>
               <WarehouseIcon className={styles.icon} />
               <span>Tồn Kho</span>
             </li>
           </Link>
 
-          <Link to="/phieubanhang" style={{ textDecoration: "none" }}>
+          <Link to="/HoadonAdmin" style={{ textDecoration: "none" }}>
             <li>
               <ReceiptIcon className={styles.icon} />
               <span>Phiếu Bán Hàng</span>
@@ -70,7 +70,7 @@ function AdminSidebar() {
               <span>Phiếu Mua Hàng</span>
             </li>
           </Link>
-          <Link to="/phieudichvu" style={{ textDecoration: "none" }}>
+          <Link to="/service" style={{ textDecoration: "none" }}>
             <li>
               <BallotIcon className={styles.icon} />
               <span>Phiếu Dịch Vụ</span>
@@ -79,13 +79,13 @@ function AdminSidebar() {
           
           
        
-          <Link to="/phieudichvu" style={{ textDecoration: "none" }}>
+          <Link to="/paymentVerfication" style={{ textDecoration: "none" }}>
             <li>
               <PaidIcon className={styles.icon} />
               <span>Xác Nhận Thanh Toán</span>
             </li>
           </Link>
-          <Link to="/phieudichvu" style={{ textDecoration: "none" }}>
+          <Link to="/orderVerification" style={{ textDecoration: "none" }}>
             <li>
               <LocalShippingIcon className={styles.icon} />
               <span>Xác Nhận Đặt Hàng</span>
@@ -93,10 +93,7 @@ function AdminSidebar() {
           </Link>
           
           <p className={styles.title}>Options</p>
-          {/* <li>
-            <AccountCircleOutlinedIcon className={styles.icon} />
-            <span>Profile</span>
-          </li> */}
+          
           <li>
             <ExitToAppIcon className={styles.icon} />
             <span>Logout</span>

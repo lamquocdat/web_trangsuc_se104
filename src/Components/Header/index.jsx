@@ -64,14 +64,14 @@ function Header() {
                 </Link>
               </Nav.Link>
               <Nav.Link className={styles.items}>
-                <Link to="/" className={styles.singleItem}>
-                  <div className={styles.item}>
-                    <CalendarTodayIcon className={styles.icon} />
-                    <div className={styles.action} href="#">
-                      Đặt lịch hẹn
-                    </div>
+              <Link to="/book" className={styles.singleItem} >   
+                <div className={styles.item}>
+                  <CalendarTodayIcon className={styles.icon} />
+                  <div className={styles.action} href="#">
+                    Đặt lịch hẹn
                   </div>
-                </Link>
+                </div>
+              </Link>
               </Nav.Link>
               <Nav.Link className={styles.items}>
                 <Link to={`/orders/${_id}`} className={styles.singleItem}>
