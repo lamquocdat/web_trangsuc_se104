@@ -145,7 +145,7 @@ const adminRoutes = [
     component: <AddService/>,
   },
   {
-    path: "/service/view",
+    path: "/service/view/:s_id",
     component: <ViewService/>,
   },
   {

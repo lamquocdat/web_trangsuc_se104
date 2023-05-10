@@ -1,7 +1,7 @@
 import styles from "./viewService.module.css"
-import { DataGrid } from "@mui/x-data-grid";
+import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,172 +9,47 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
+import axios from "axios";
+import { useParams } from "react-router-dom";
+
 const ViewService = () => {
-  function createData(maPhieu, phieuNumber, phieuDate, phieuKH, phieuMoney, phieuTraTruoc, phieuConLai, phieuTinhTrang) {
-    return { maPhieu, phieuNumber, phieuDate, phieuKH, phieuMoney, phieuTraTruoc, phieuConLai, phieuTinhTrang};
-  }
-  
-  const rows = [
-    createData("s01",5, "10/4/2002", "u01", "240.000 VNĐ", "240.000 VNĐ", "240.000 VNĐ", "Hoàn Thành"),
-    
-  ];
 
-    const userColumns = [
-        { field: "id", headerName: "STT", width: 60 },
-     
-        {
-          field: "si_name",
-          headerName: "Tên Loại Dịch Vụ",
-          width: 220,
-          
-        },
-      
-        {
-          field: "si_id",
-          headerName: "Mã Loại Dịch Vụ",
-          width: 150,
-          
-        },
-        {
-          field: "number",
-          headerName: "Số Lượng",
-          width: 100,
-        },
-      
-        {
-          field: "price",
-          headerName: "Chi Phí",
-          width: 150,
-        },
-        {
-          field: "totalPrice",
-          headerName: "Thành Tiền",
-          width: 150,
-        },
-        {
-          field: "payFirstPlace",
-          headerName: "Trả Trước",
-          width: 150,
-        },
-        {
-          field: "date",
-          headerName: "Ngày Giao",
-          width: 120,
-        },
-  
-      ];
-      
-      //temporary data
-    const userRows = [
-        {
-          id: 1,
-          si_name: "Cân Thử Vàng",
-          status: "active",
-          si_id: "si01",
-         
-          totalPrice: "1.750.000 VNĐ",
-          date: "1/4/2023",
-          number: 5,
-          payFirstPlace: "100.000 VNĐ",
-          price: "350.000 VNĐ",
-        },
-        {
-            id: 2,
-            si_name: "Nữ Công Gia Chánh",
-            status: "active",
-            si_id: "si02",
-            
-            totalPrice: "1.750.000 VNĐ",
-            date: "1/4/2023",
-            payFirstPlace: "100.000 VNĐ",
-            number: 5,
-            price: "350.000 VNĐ",
-          },
-          {
-            id: 3,
-            si_name: "Cân Thử Vàng",
-            status: "active",
-         
-            si_id: "si03",
-            totalPrice: "1.750.000 VNĐ",
-            payFirstPlace: "100.000 VNĐ",
-            date: "1/4/2023",
-            number: 5,
-            price: "350.000 VNĐ",
-          },
-          {
-            id: 4,
-            si_name: "Nữ Công Gia Chánh",
-            status: "active",
-          
-            si_id: "si04",
-            totalPrice: "1.750.000 VNĐ",
-            payFirstPlace: "100.000 VNĐ",
-            date: "1/4/2023",
-            number: 5,
-            price: "350.000 VNĐ",
-          },
-          {
-            id: 5,
-            si_name: "Cân Thử Vàng",
-            status: "active",
-           
-            si_id: "si05",
-            totalPrice: "1.750.000 VNĐ",
-            date: "1/4/2023",
-            payFirstPlace: "100.000 VNĐ",
-            number: 5,
-            price: "350.000 VNĐ",
-          },
-          {
-            id: 6,
-            si_name: "Nữ Công Gia Chánh",
-            status: "active",
-           
-            si_id: "si06",
-            totalPrice: "1.750.000 VNĐ",
-            date: "1/4/2023",
-            number: 5,
-            payFirstPlace: "100.000 VNĐ",
-            price: "350.000 VNĐ",
-          },
-  
-        
-        
-      ];
-      const [data, setData] = useState(userRows);
+  const { s_id } = useParams();
+    const [service, setService] = useState([]);
 
-      const handleDelete = (id) => {
-        setData(data.filter((item) => item.id !== id));
-      };
-    
-      const actionColumn = [
-        {
-          field: "action",
-          headerName: "Lựa Chọn",
-          width: 75,
-          renderCell: (params) => {
-            return (
-              <div className={styles.cellAction}>
-                
-                <div
-                  className={styles.deleteButton}
-                  onClick={() => handleDelete(params.row.id)}
-                >
-                  Delete
-                </div>
-              </div>
-            );
-          },
-        },
-      ];
+    useEffect(() => {
+        axios
+          .get(`https://dialuxury.onrender.com/service/sid/${s_id}`)
+          .then((response) => {
+            setService(response.data)
+            console.log(response.data);
+          })
+          .catch((error) => {
+              console.log(error);
+            });
+    }, []);
+    // Tính toán total money của Phiếu Dịch Vụ
+    // const totalMoney = service.reduce((accumulator, currentValue, index) => {
+
+    //   let temp = 0;
+    //   service[0].serviceTypes.map((svt, index) => {
+    //     temp = accumulator + currentValue.svt[index].total;
+        
+    //     return (
+    //     index++
+          
+    //     )
+    //   })
+    //   return temp;
+    // }, 0);
+
+
   return (
-    <div className={styles.servicePage}>
+    <div className={styles.servicePage} >
       {/* PHIẾU DỊCH VỤ */}
       <div className={styles.datatable_1} style={{marginTop:"40px"}}>
       <div className={styles.datatableTitle}>
-        <b>Phiếu Dịch Vụ 30/4</b>
+        <b>Bảng Chi Tiết Phiếu Dịch Vụ</b>
         <div className={styles.buttonFuction}>
         
         <Link to="/service/adjustService" className={styles.link}>
@@ -182,33 +57,33 @@ const ViewService = () => {
         </Link>
         </div>
       </div>
-      <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+      <TableContainer component={Paper} className={styles.table}>
+      <Table sx={{ minWidth: 650 }}  aria-label="a dense table">
         <TableHead>
           <TableRow>
-          <TableCell align="right">Mã Phiếu</TableCell>
-            <TableCell align="right">Số Phiếu</TableCell>
-            <TableCell align="right">Ngày lập</TableCell>
-            <TableCell align="right">Khách hàng</TableCell>
-            <TableCell align="right">Tổng tiền</TableCell>
-            <TableCell align="right">Trả trước</TableCell>
-            <TableCell align="right">Còn Lại</TableCell>
+          <TableCell className={styles.tableCell+ " text-center"}>Mã Phiếu</TableCell>
+          <TableCell className={styles.tableCell+ " text-center"}>Tên Phiếu</TableCell>
+            <TableCell className={styles.tableCell+ " text-center"}>Số Phiếu</TableCell>
+            <TableCell className={styles.tableCell+ " text-center"}>Khách hàng</TableCell>
+            <TableCell className={styles.tableCell+ " text-center"}>Ngày lập</TableCell>
+          
+          
             
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {service.map((service) => (
             <TableRow
-              key={row.name}
+              key={service.s_id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="right">{row.maPhieu}</TableCell>
-              <TableCell align="right">{row.phieuNumber}</TableCell>
-              <TableCell align="right">{row.phieuDate}</TableCell>
-              <TableCell align="right">{row.phieuKH}</TableCell>
-              <TableCell align="right">{row.phieuMoney}</TableCell>
-              <TableCell align="right">{row.phieuTraTruoc}</TableCell>
-              <TableCell align="right">{row.phieuConLai}</TableCell>
+              <TableCell className={styles.tableCell+ " text-center"}>{service.s_id}</TableCell>
+              <TableCell className={styles.tableCell+ " text-center"}>{service.s_name}</TableCell>
+              <TableCell className={styles.tableCell+ " text-center"}>{service.s_number}</TableCell>
+              <TableCell className={styles.tableCell+ " text-center"}>{service.makh}</TableCell>
+              <TableCell className={styles.tableCell+ " text-center"}>{service.s_date}</TableCell>
+           
+     
             </TableRow>
           ))}
         </TableBody>
@@ -230,33 +105,55 @@ const ViewService = () => {
         </div>
       </div>
     
-      <Box sx={{ height: 400, width: '100%' }}>
-      <DataGrid
-        className={styles.datagrid}
-        rows={data}
-        columns={userColumns.concat(actionColumn)}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 5,
-            },
-          },
-        }}
-        
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
-    </Box>
-    <div className={styles.datatableBottom}>
+    <Container fluid>
+            <div className={"border-l-3 py-4"}>
+                <TableContainer component={Paper} className={styles.table}>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                        <TableRow>
+                        <TableCell className={styles.tableCell+ " text-center"}>STT</TableCell>
+                            <TableCell className={styles.tableCell+ " text-center"}>Tên Dịch Vụ</TableCell>
+                            
+                            <TableCell className={styles.tableCell+ " text-center"}>Số lượng</TableCell>
+                            <TableCell className={styles.tableCell+ " text-center"}>Giá</TableCell>
+                            <TableCell className={styles.tableCell+ " text-center"}>Tổng Tiền</TableCell>
+                            <TableCell className={styles.tableCell+ " text-center"}>Trả Trước</TableCell>
+                            <TableCell className={styles.tableCell+ " text-center"}>Còn Lại</TableCell>
+                            <TableCell className={styles.tableCell+ " text-center"}>Ngày Lập</TableCell>
+                            
+                        </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {service.length > 0 && service[0].serviceTypes.map((serviceTypes, index) => {
+                                return (
+                                    <TableRow key={index+1}>
+                                        <TableCell className={styles.tableCell+ " text-center"} >{index +1}</TableCell>
+                                       
+                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.name}</TableCell>
+                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.number}</TableCell>
+                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.price} VNĐ</TableCell>
+                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.total} VNĐ</TableCell>
+                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.payFirst} VNĐ</TableCell>
+                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.payLeft} VNĐ</TableCell>
+                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.ngaygiao}</TableCell>
+                                    </TableRow>
+                                );
+                            })}  
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                </div>
+        </Container>  
+    {/* <div className={styles.datatableBottom}>
     <div className={styles.datatableText}>
         <b>Tổng Tiền: </b>
     </div>
     <div className={styles.totalCost}>
-          10.500.000 VNĐ
+          {totalMoney} VNĐ
     </div>
     
        
-      </div>
+    </div>
       <div className={styles.datatableBottom}>
     <div className={styles.datatableText}>
         <b>Đã Trả: </b>
@@ -276,7 +173,7 @@ const ViewService = () => {
     </div>
     
        
-      </div>
+      </div> */}
       
     </div>
     </div>
