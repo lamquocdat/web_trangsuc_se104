@@ -41,7 +41,7 @@ function AdminSidebar() {
             </li>
           </Link>
 
-          <Link to="/storage" style={{ textDecoration: "none" }}>
+          <Link to="/warehouse" style={{ textDecoration: "none" }}>
             <li>
               <WarehouseIcon className={styles.icon} />
               <span>Tồn Kho</span>

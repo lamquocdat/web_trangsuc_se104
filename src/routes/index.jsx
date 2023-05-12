@@ -13,19 +13,30 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import Book from "../Pages/Book/Book";
 import HomeAdmin from "../admin/pages/home/home_admin";
 
+import Login from "../Pages/Login1/components/login.js";
+import Account from "../Pages/Login1/components/profile.js";
+import Register from "../Pages/Login1/components/register.js";
+import Forgot from "../Pages/Login1/components/forgot";
+import Reset from "../Pages/Login1/components/otpForgot";
+import Orders from "../Pages/Orders/Orders.js";
+import Recovery from "../Pages/Login1/components/recovery";
+import { AuthorizedUser, LoggedUser } from "../Pages/Login1/authenticate";
+import OrderDetailProducts from "../Pages/Orders/OrderDetailProduct";
+
 import Service from "../admin/pages/service/service_admin";
 import AddService from "../admin/pages/service/addService/addService";
 import ViewService from "../admin/pages/service/viewService/viewService";
 import AdjustService from "../admin/pages/service/adjustService/adjustService";
 import AddTypeInService from "../admin/pages/service/viewService/add/add";
 import AdjustTypeInService from "../admin/pages/service/adjustTypeInService/adjustTypeInService";
-
+import WareHouse from "../admin/pages/Warehouse/warehouse_admin";
 import PaymentAdmin from "../admin/pages/paymentVerification/paymentVerification";
 import ViewPayment from "../admin/pages/paymentVerification/viewPayment/viewPayment";
 import VerifyOrder from "../admin/pages/orderVerification/orderVerification";
 import ViewOrderVerification from "../admin/pages/orderVerification/viewOrderVerification/viewOrderVerification";
-
+import ConfirmationNotification from "../admin/pages/verfiedPage";
 import Hoadon from "../admin/pages/Hoadon";
+import ChitietHoadon from "../admin/Components/ChitietHoadon";
 
 import VouchersPageAdmin from "../admin/pages/VouchersPage/Screens/vouchersPage";
 import VouchersDetailsAdmin from "../admin/pages/VouchersDetails/Screens/vouchersDetails";
@@ -35,12 +46,13 @@ import EditProduct from "../admin/pages/ProductsPage/Screens/editProduct";
 import AddVoucher from "../admin/pages/VouchersPage/Screens/addVoucher";
 import EditVoucher from "../admin/pages/VouchersPage/Screens/editVoucher";
 
+import ChangePassword from "../Pages/Login1/components/changePassword";
 const publicRoutes = [
   { path: "/", component: <Home /> },
   { path: "*", component: <NotFound />, layout: null },
   { path: "/cart", component: <Cart /> },
-  { path: "/paymentinfo", component: <PaymentInfo /> },
-  { path: "/paymentfinish/:madonhang", component: <PaymentFinish /> },
+  { path: "/paymentinfo/:mahd", component: <PaymentInfo /> },
+  { path: "/paymentfinish/:mahd", component: <PaymentFinish /> },
 
   {
     path: "/blog",
@@ -67,6 +79,59 @@ const publicRoutes = [
     path: "/book",
     component: <Book />,
   },
+  {
+    path: "/login",
+    component: (
+      <LoggedUser>
+        <Login></Login>
+      </LoggedUser>
+    ),
+  },
+  {
+    path: "/register",
+    component: <Register></Register>,
+  },
+  {
+    path: "/account/:_id",
+    component: (
+      <AuthorizedUser>
+        <Account></Account>
+      </AuthorizedUser>
+    ),
+  },
+  {
+    path: "/forgot",
+    component: <Forgot></Forgot>,
+  },
+  {
+    path: "/recovery/:_id",
+    component: <Recovery></Recovery>,
+  },
+  {
+    path: "/reset/:_id",
+    component: <Reset></Reset>,
+  },
+
+  {
+    path: "/orders/:_id",
+    component: (
+      <AuthorizedUser>
+        <Orders></Orders>
+      </AuthorizedUser>
+    ),
+  },
+  {
+    path: "/orders/detail/:_orderid",
+    component: <OrderDetailProducts></OrderDetailProducts>,
+  },
+  {
+    path: "/account/changePassword/:_id",
+    component: (
+      <AuthorizedUser>
+        <ChangePassword></ChangePassword>
+      </AuthorizedUser>
+    ),
+  },
 ];
 export { publicRoutes };
 
@@ -86,7 +151,7 @@ const adminRoutes = [
     component: <AddService />,
   },
   {
-    path: "/service/view",
+    path: "/service/view/:s_id",
     component: <ViewService />,
   },
   {
@@ -100,6 +165,10 @@ const adminRoutes = [
   {
     path: "/homeAdmin",
     component: <HomeAdmin />,
+  },
+  {
+    path: "/warehouse",
+    component: <WareHouse />,
   },
 
   {
@@ -150,6 +219,16 @@ const adminRoutes = [
   {
     path: "/admin/vouchersPage/edit/:id",
     component: <EditVoucher />,
+  },
+
+  {
+    path: "/ConfirmationNotification",
+    component: <ConfirmationNotification />,
+  },
+
+  {
+    path: "/ChitietHoadonAdmin/:mahd",
+    component: <ChitietHoadon />,
   },
 ];
 export { adminRoutes };

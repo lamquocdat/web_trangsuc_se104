@@ -5,7 +5,6 @@ import styles from './dataTable.module.css'
 
 function DataTable({ products }) {
   const amount = 100;
-  const diff = 20;
   const visibleProducts = products;
 
   return (
@@ -28,8 +27,6 @@ function DataTable({ products }) {
                 </div>
                 <div className={styles.right}>
                   <div className={styles.percentage}>
-                    <KeyboardArrowUpIcon />
-                    {diff} %
                   </div>
                   <div className={styles.icon} style={{fontSize:"18px", padding:"5px",borderRadius:"5px", alignSelf:"flex-end"}}>{product.icon}</div>
                 </div>

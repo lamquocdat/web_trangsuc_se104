@@ -1,9 +1,9 @@
 
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
+// import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
+// import { useState } from "react";
 import styles from './add.module.css'
 const AddTypeInService = ({ inputs}) => {
-  const [file, setFile] = useState("");
+  // const [file, setFile] = useState("");
 
   return (
    
@@ -38,15 +38,7 @@ const AddTypeInService = ({ inputs}) => {
               <div class={styles.formInput}><label>Ngày Giao</label>
               <input type="text" placeholder="dd/mm/yyyy"/>
               </div>
-
-           
-
-              <div class={styles.formInput}><label>Trạng Thái</label>
-              <input type="text" placeholder="active or unactive"/>
-              </div>
-
-              
-             
+          
               
             </form>
             <div className={styles.buttonUpdate}>
