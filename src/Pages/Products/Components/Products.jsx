@@ -20,15 +20,15 @@ function ProductList({ products }) {
             <Col key={product.id} sm={6} md={4} lg={3}>
               <Card style={{ background: "#f7f7f7", marginBottom: "30px" }}>
                 <Card.Body style={{ textAlign: "center" }}>
-                  <Card.Img src={product.productimage}></Card.Img>
+                  <Card.Img src={product.image}></Card.Img>
                   <Card.Title style={{ fontWeight: "200" }}>
                     {product.name}
                   </Card.Title>
                   <Card.Text style={{ color: "#e7b475", fontWeight: "500" }}>
-                    {product.price}
+                    {product.price} đ
                   </Card.Text>
                   <Card.Text style={{ textAlign: "end", fontSize: "14px" }}>
-                    {product.sold}
+                    {product.quantity_sold} đã bán
                   </Card.Text>
                 </Card.Body>
               </Card>
