@@ -13,7 +13,6 @@ import AboutUs from "../Pages/AboutUs/AboutUs";
 import Book from "../Pages/Book/Book";
 import HomeAdmin from "../admin/pages/home/home_admin";
 
-
 import Service from "../admin/pages/service/service_admin";
 import AddService from "../admin/pages/service/addService/addService";
 import ViewService from "../admin/pages/service/viewService/viewService";
@@ -28,6 +27,13 @@ import ViewOrderVerification from "../admin/pages/orderVerification/viewOrderVer
 
 import Hoadon from "../admin/pages/Hoadon";
 
+import VouchersPageAdmin from "../admin/pages/VouchersPage/Screens/vouchersPage";
+import VouchersDetailsAdmin from "../admin/pages/VouchersDetails/Screens/vouchersDetails";
+import ProductsPageAdmin from "../admin/pages/ProductsPage/Screens/productsPage";
+import AddProduct from "../admin/pages/ProductsPage/Screens/addProduct";
+import EditProduct from "../admin/pages/ProductsPage/Screens/editProduct";
+import AddVoucher from "../admin/pages/VouchersPage/Screens/addVoucher";
+import EditVoucher from "../admin/pages/VouchersPage/Screens/editVoucher";
 
 const publicRoutes = [
   { path: "/", component: <Home /> },
@@ -61,7 +67,6 @@ const publicRoutes = [
     path: "/book",
     component: <Book />,
   },
-  
 ];
 export { publicRoutes };
 
@@ -70,34 +75,32 @@ const adminRoutes = [
 
   {
     path: "/service",
-    component: <Service/>,
+    component: <Service />,
   },
   {
     path: "/service/addTypeInService",
-    component: <AddTypeInService/>,
+    component: <AddTypeInService />,
   },
   {
     path: "/service/addService",
-    component: <AddService/>,
+    component: <AddService />,
   },
   {
     path: "/service/view",
-    component: <ViewService/>,
+    component: <ViewService />,
   },
   {
     path: "/service/adjustService",
-    component: <AdjustService/>,
+    component: <AdjustService />,
   },
   {
     path: "/service/adjustTypeInService",
-    component: <AdjustTypeInService/>,
+    component: <AdjustTypeInService />,
   },
   {
     path: "/homeAdmin",
     component: <HomeAdmin />,
   },
-
-  
 
   {
     path: "/paymentVerfication",
@@ -117,8 +120,36 @@ const adminRoutes = [
   },
 
   {
-    path:"/HoadonAdmin", component: <Hoadon/>,
+    path: "/HoadonAdmin",
+    component: <Hoadon />,
   },
-
+  {
+    path: "/admin/vouchersPage",
+    component: <VouchersPageAdmin />,
+  },
+  {
+    path: "/admin/vouchersPage/:id",
+    component: <VouchersDetailsAdmin />,
+  },
+  {
+    path: "/admin/productsPage",
+    component: <ProductsPageAdmin />,
+  },
+  {
+    path: "/admin/productsPage/add",
+    component: <AddProduct />,
+  },
+  {
+    path: "/admin/productsPage/edit/:id",
+    component: <EditProduct />,
+  },
+  {
+    path: "/admin/vouchersPage/add",
+    component: <AddVoucher />,
+  },
+  {
+    path: "/admin/vouchersPage/edit/:id",
+    component: <EditVoucher />,
+  },
 ];
-export {adminRoutes}
+export { adminRoutes };
