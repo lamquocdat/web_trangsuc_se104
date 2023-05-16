@@ -12,7 +12,7 @@ function TableTemplate ({rows}) {
 
   return (
     <TableContainer component={Paper} className={styles.table}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 1200 }} aria-label="simple table">
         <TableHead>
           <TableRow>
           <TableCell className={styles.tableCell+ " text-center"}>STT</TableCell>
