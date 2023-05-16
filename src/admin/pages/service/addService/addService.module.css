@@ -1,6 +1,6 @@
 .new {
     width: 100%;
-    display: flex;
+    /* display: flex; */
 }
 .new .newContainer {
     flex: 6;
@@ -54,18 +54,32 @@
 }
 .buttonUpdate
 {
-    float:right;
+    float:left;
     margin-top: 20px;
 }
-.myButton {
+.myButtonAdd {
     width: 100px;
     padding: 10px;
-    
+    margin-left: 10px;
     border: none;
     background-color: teal;
     color: white;
     font-weight: bold;
     cursor: pointer;
     margin-top: 10px;
+    border-radius: 15%;
+}
+
+.myButtonDelete {
+    width: 100px;
+    padding: 10px;
+    margin-left: 10px;
+    border: none;
+    background-color: rgb(224, 21, 21);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 15%;
 }
 

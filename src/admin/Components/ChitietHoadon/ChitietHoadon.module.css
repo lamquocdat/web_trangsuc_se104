@@ -1,7 +1,7 @@
-.table .cellWrapper {
+/* .table .cellWrapper {
     display: flex;
     align-items: center;
-}
+} */
 
 .table .cellWrapper .image {
     width: 32px;

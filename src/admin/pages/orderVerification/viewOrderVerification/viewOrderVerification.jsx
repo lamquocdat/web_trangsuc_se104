@@ -187,13 +187,13 @@ const ViewOrderVerification = () => {
         </div>
       </div>
       <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+      <Table sx={{ minWidth: 1150 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-          <TableCell align="right">Mã Đặt Hàng</TableCell>
-            <TableCell align="right">Mã KH</TableCell>
-            <TableCell align="right">Tổng Giá</TableCell>
-            <TableCell align="right">Ngày</TableCell>
+          <TableCell className={styles.tableCell+ " text-center"}>Mã Đặt Hàng</TableCell>
+            <TableCell className={styles.tableCell+ " text-center"}>Mã KH</TableCell>
+            <TableCell className={styles.tableCell+ " text-center"}>Tổng Giá</TableCell>
+            <TableCell className={styles.tableCell+ " text-center"}>Ngày</TableCell>
            
             
           </TableRow>
@@ -204,10 +204,10 @@ const ViewOrderVerification = () => {
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="right">{row.maDatHang}</TableCell>
-              <TableCell align="right">{row.maKH}</TableCell>
-              <TableCell align="right">{row.money}</TableCell>
-              <TableCell align="right">{row.orderDate}</TableCell>
+              <TableCell className={styles.tableCell+ " text-center"}>{row.maDatHang}</TableCell>
+              <TableCell className={styles.tableCell+ " text-center"}>{row.maKH}</TableCell>
+              <TableCell className={styles.tableCell+ " text-center"}>{row.money}</TableCell>
+              <TableCell className={styles.tableCell+ " text-center"}>{row.orderDate}</TableCell>
      
             </TableRow>
           ))}

@@ -7,7 +7,7 @@ const AddTypeInService = ({ inputs}) => {
 
   return (
    
-      <div className={styles.new}>
+      <div className={styles.new} style={{width:"1300px"}}>
 
       <div className={styles.newContainer}>
        

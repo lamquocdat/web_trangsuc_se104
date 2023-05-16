@@ -17,9 +17,9 @@ const ConfirmationNotification = () => {
     <>
     {/* Header:  */}
     {/* Content: */}
-    <Container>
+    <Container >
    
-    <Card className="text-center">
+    <Card className="text-center" style={{width:"1300px"}}>
       <Card.Header style={{fontSize:"20px"}}><b>Bảng Thông Báo</b></Card.Header>
       <Card.Body>
         <Card.Title style={{color: 'green'}}>Xác Nhận Thành Công</Card.Title>

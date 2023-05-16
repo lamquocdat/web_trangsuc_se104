@@ -48,7 +48,7 @@ const VerifyOrder = () => {
         
       </div>
     
-      <Box sx={{ height: 400, width: '70%' }}>
+      <Box sx={{ height: 400, width: '100%' }}>
       <DataGrid
         className={styles.datagrid}
         rows={data}

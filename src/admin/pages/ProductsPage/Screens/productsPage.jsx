@@ -84,7 +84,7 @@ function ProductsPage() {
 
       <div className={"border-l-3 py-4"}>
         <TableContainer component={Paper} className={styles.table}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table sx={{ minWidth: 1200 }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell
