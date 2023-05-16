@@ -37,7 +37,7 @@ import ViewOrderVerification from "../admin/pages/orderVerification/viewOrderVer
 import ConfirmationNotification from "../admin/pages/verfiedPage";
 import Hoadon from "../admin/pages/Hoadon";
 import ChitietHoadon from "../admin/Components/ChitietHoadon";
-
+import AdjustServiceType from "../admin/pages/service/adjustServiceType/adjustServiceType";
 import VouchersPageAdmin from "../admin/pages/VouchersPage/Screens/vouchersPage";
 import VouchersDetailsAdmin from "../admin/pages/VouchersDetails/Screens/vouchersDetails";
 import ProductsPageAdmin from "../admin/pages/ProductsPage/Screens/productsPage";
@@ -45,7 +45,7 @@ import AddProduct from "../admin/pages/ProductsPage/Screens/addProduct";
 import EditProduct from "../admin/pages/ProductsPage/Screens/editProduct";
 import AddVoucher from "../admin/pages/VouchersPage/Screens/addVoucher";
 import EditVoucher from "../admin/pages/VouchersPage/Screens/editVoucher";
-
+import AddServiceType from "../admin/pages/service/addServiceType/addServiceType";
 import ChangePassword from "../Pages/Login1/components/changePassword";
 const publicRoutes = [
   { path: "/", component: <Home /> },
@@ -154,10 +154,10 @@ const adminRoutes = [
     path: "/service/view/:s_id",
     component: <ViewService />,
   },
-  {
-    path: "/serviceType/view/:svt_id",
-    component: <ViewService />,
-  },
+  // {
+  //   path: "/serviceType/view/:svt_id",
+  //   component: <ViewService />,
+  // },
   {
     path: "/service/adjustService",
     component: <AdjustService />,
@@ -165,6 +165,14 @@ const adminRoutes = [
   {
     path: "/service/adjustTypeInService",
     component: <AdjustTypeInService />,
+  },
+  {
+    path: "/serviceType/addServiceType",
+    component: <AddServiceType />,
+  },
+  {
+    path: "/serviceType/adjustServiceType/:svt_id",
+    component: <AdjustServiceType />,
   },
   {
     path: "/homeAdmin",

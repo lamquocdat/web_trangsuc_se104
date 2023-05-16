@@ -53,7 +53,9 @@ const AddService = ({ inputs}) => {
               </div>
 
             </form>
-            
+            <div className={styles.buttonAdd}>
+            <button className={styles.myButton}>Thêm Phiếu</button>
+            </div>
           </div>
           
         </div>

@@ -49,10 +49,9 @@ import Button from 'react-bootstrap/Button';
 
 const Service = () => {
   const [tableDataSVT, setTableDataSVT] = useState([])
-  http://localhost:3001/serviceType
+  
   useEffect(() => {
-    // fetch("https://dialuxury.onrender.com/serviceType")
-    fetch("http://localhost:3001/serviceType")
+    fetch("https://dialuxury.onrender.com/serviceType")
       .then((data) => data.json())
       .then((data) => setTableDataSVT(data))
 
@@ -94,7 +93,7 @@ const Service = () => {
      <div className={styles.datatable}>
       <div className={styles.datatableTitle}>
         <b>Danh Sách Loại Dịch Vụ</b>
-        <Link to="/service/addService" className={styles.link}>
+        <Link to="/serviceType/addServiceType" className={styles.link}>
           Thêm Mới
         </Link>
       </div>
@@ -143,7 +142,7 @@ const Service = () => {
 
               <TableCell className={styles.tableCell+ " text-center"}>     
               <div className={styles.cellAction}>
-        <Link to={`/serviceType/view/${tableDataSVT.svt_id}`} style={{ textDecoration: "none" }}>
+        <Link to={`/serviceType/adjustServiceType/${tableDataSVT.svt_id}`} style={{ textDecoration: "none" }}>
           <div className={styles.viewButton}>Edit</div>
         </Link>
       <Button className={styles.deleteButton}>Delete</Button>

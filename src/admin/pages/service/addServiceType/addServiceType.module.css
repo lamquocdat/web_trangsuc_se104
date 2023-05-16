@@ -54,45 +54,13 @@
 }
 .buttonUpdate
 {
-    float:left;
-    margin-top: 20px;
-}
-.buttonAdd
-{
     float:right;
     margin-top: 20px;
-   
 }
-.myButtonAdd {
-    width: 100px;
-    padding: 10px;
-    margin-left: 10px;
-    border: none;
-    background-color: teal;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-    border-radius: 15%;
-}
-
-.myButtonDelete {
-    width: 100px;
-    padding: 10px;
-    margin-left: 10px;
-    border: none;
-    background-color: rgb(224, 21, 21);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-    border-radius: 15%;
-}
-
 .myButton {
-    width: 140px;
+    width: 100px;
     padding: 10px;
-    border-radius: 10%;
+    
     border: none;
     background-color: teal;
     color: white;
@@ -100,3 +68,4 @@
     cursor: pointer;
     margin-top: 10px;
 }
+
