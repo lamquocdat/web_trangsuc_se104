@@ -18,7 +18,7 @@ import {
   CancelModal,
   CancelSuccessModal,
   DeliveredModal,
-} from './Modals/OrderModal.js';
+} from './Modals/OrderModal';
 const override: CSSProperties = {
   display: 'block',
   margin: '0 auto',
