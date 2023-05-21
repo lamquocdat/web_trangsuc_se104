@@ -36,9 +36,9 @@ function Login() {
     },
   });
   return (
-    <section class="wrapper">
+    <section class="wrapper ">
       <Toaster position="top-center" reverseOrder={false}></Toaster>
-      <div class="container ">
+      <div class="container mr-100 ">
         <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center py-5 ">
           <form
             class="rounded bg-white shadow py-5 px-4 "

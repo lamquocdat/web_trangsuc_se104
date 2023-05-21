@@ -1,8 +1,9 @@
 import React, { useEffect, useState, CSSProperties } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { getOrderbyId, getUserbyId } from '../Login1/helpers/helper';
+import { getOrderbyId, getUserbyId } from './helper';
 import ClipLoader from 'react-spinners/ClipLoader';
-const OrderDetailProducts = () => {
+import { Form, Button, Row, Container, Col } from 'react-bootstrap';
+const OrderView = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const { _orderid } = useParams();
@@ -49,7 +50,7 @@ const OrderDetailProducts = () => {
     navigate(-1);
   }
   return (
-    <main>
+    <Container style={{ width: '1000px' }}>
       <ClipLoader
         color="#36d7b7"
         loading={isLoading}
@@ -212,8 +213,8 @@ const OrderDetailProducts = () => {
           </table>
         </div>
       )}
-    </main>
+    </Container>
   );
 };
 
-export default OrderDetailProducts;
+export default OrderView;

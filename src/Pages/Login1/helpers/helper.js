@@ -117,9 +117,20 @@ export async function updateUser(user, _id) {
 
 export async function getAllOrders(_id) {
   try {
-    const { data } = await axios.get(`/Orders/${_id}`);
-    return Promise.resolve({ data });
+    const { data } = await axios.get(`/orders/${_id}`);
+    return Promise.resolve(data);
   } catch (error) {
+    console.log('vai loz');
+    return Promise.reject({ error: 'can not get Orders' });
+  }
+}
+export async function getAllOrdersAllUser() {
+  try {
+    const { data } = await axios.get('/orderall');
+    console.log(await axios.get('/orderall'));
+    return Promise.resolve(data);
+  } catch (error) {
+    console.log('vai loz');
     return Promise.reject({ error: 'can not get Orders' });
   }
 }
@@ -156,5 +167,30 @@ export async function deliveredOrderbyId(_orderid) {
   } catch (error) {
     console.log(error);
     return Promise.reject({ error: 'Password doesnt match' });
+  }
+}
+export async function confirmOrderbyId(_orderid) {
+  try {
+    console.log(_orderid);
+    const { data } = await axios.put('/confirmorder', {
+      tinhtrang: 'Đang giao hàng',
+      _orderid,
+    });
+    return Promise.resolve({ data });
+  } catch (error) {
+    console.log(error);
+    return Promise.reject({ error: 'Password doesnt match' });
+  }
+}
+export async function scheduleMail(date, email) {
+  try {
+    const { data } = await axios.post('/schedule', {
+      date,
+      email,
+    });
+    return Promise.resolve({ data });
+  } catch (error) {
+    console.log(error);
+    return Promise.reject({ error: 'can not schedule' });
   }
 }
