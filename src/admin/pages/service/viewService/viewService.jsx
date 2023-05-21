@@ -19,7 +19,7 @@ const ViewService = () => {
 
     useEffect(() => {
         axios
-          .get(`https://dialuxury.onrender.com/service/sid/${s_id}`)
+          .get(`http://localhost:3001/service/sid/${s_id}`)
           .then((response) => {
             setService(response.data)
             console.log(response.data);
@@ -52,9 +52,9 @@ const ViewService = () => {
         <b>Bảng Chi Tiết Phiếu Dịch Vụ</b>
         <div className={styles.buttonFuction}>
         
-        <Link to="/service/adjustService" className={styles.link}>
+        {/* <Link to="/service/adjustService" className={styles.link}>
           Chỉnh Sửa
-        </Link>
+        </Link> */}
         </div>
       </div>
       <TableContainer component={Paper} className={styles.table}>
@@ -62,8 +62,8 @@ const ViewService = () => {
         <TableHead>
           <TableRow>
           <TableCell className={styles.tableCell+ " text-center"}>Mã Phiếu</TableCell>
-          <TableCell className={styles.tableCell+ " text-center"}>Tên Phiếu</TableCell>
-            <TableCell className={styles.tableCell+ " text-center"}>Số Phiếu</TableCell>
+
+   
             <TableCell className={styles.tableCell+ " text-center"}>Khách hàng</TableCell>
             <TableCell className={styles.tableCell+ " text-center"}>Ngày lập</TableCell>
           
@@ -78,8 +78,7 @@ const ViewService = () => {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell className={styles.tableCell+ " text-center"}>{service.s_id}</TableCell>
-              <TableCell className={styles.tableCell+ " text-center"}>{service.s_name}</TableCell>
-              <TableCell className={styles.tableCell+ " text-center"}>{service.s_number}</TableCell>
+             
               <TableCell className={styles.tableCell+ " text-center"}>{service.makh}</TableCell>
               <TableCell className={styles.tableCell+ " text-center"}>{service.s_date}</TableCell>
            
@@ -96,12 +95,12 @@ const ViewService = () => {
       <div className={styles.datatableTitle}>
         <b>Loại Dịch Vụ Bao Gồm Trong Phiếu:</b>
         <div className={styles.buttonFuction}>
-        <Link to="/service/addTypeInService" className={styles.link} style={{marginRight:"20px"}}>
+        {/* <Link to="/service/addTypeInService" className={styles.link} style={{marginRight:"20px"}}>
         Thêm Loại
-        </Link>
-        <Link to="/service/adjustTypeInService" className={styles.link}>
+        </Link> */}
+        {/* <Link to="/service/adjustTypeInService" className={styles.link}>
           Chỉnh Sửa
-        </Link>
+        </Link> */}
         </div>
       </div>
     
@@ -112,14 +111,15 @@ const ViewService = () => {
                         <TableHead>
                         <TableRow>
                         <TableCell className={styles.tableCell+ " text-center"}>STT</TableCell>
+                        <TableCell className={styles.tableCell+ " text-center"}>Mã Loại Dịch Vụ</TableCell>
                             <TableCell className={styles.tableCell+ " text-center"}>Tên Dịch Vụ</TableCell>
                             
-                            <TableCell className={styles.tableCell+ " text-center"}>Số lượng</TableCell>
+                            
                             <TableCell className={styles.tableCell+ " text-center"}>Giá</TableCell>
-                            <TableCell className={styles.tableCell+ " text-center"}>Tổng Tiền</TableCell>
+                            {/* <TableCell className={styles.tableCell+ " text-center"}>Tổng Tiền</TableCell>
                             <TableCell className={styles.tableCell+ " text-center"}>Trả Trước</TableCell>
                             <TableCell className={styles.tableCell+ " text-center"}>Còn Lại</TableCell>
-                            <TableCell className={styles.tableCell+ " text-center"}>Ngày Lập</TableCell>
+                            <TableCell className={styles.tableCell+ " text-center"}>Ngày Lập</TableCell> */}
                             
                         </TableRow>
                         </TableHead>
@@ -129,13 +129,13 @@ const ViewService = () => {
                                     <TableRow key={index+1}>
                                         <TableCell className={styles.tableCell+ " text-center"} >{index +1}</TableCell>
                                        
-                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.name}</TableCell>
-                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.number}</TableCell>
-                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.price} VNĐ</TableCell>
-                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.total} VNĐ</TableCell>
+                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.svt_id}</TableCell>
+                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.svt_name}</TableCell>
+                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.svt_price} VNĐ</TableCell>
+                                        {/* <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.total} VNĐ</TableCell>
                                         <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.payFirst} VNĐ</TableCell>
                                         <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.payLeft} VNĐ</TableCell>
-                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.ngaygiao}</TableCell>
+                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.ngaygiao}</TableCell> */}
                                     </TableRow>
                                 );
                             })}  
