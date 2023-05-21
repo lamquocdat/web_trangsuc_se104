@@ -59,6 +59,7 @@
 }
 .buttonAdd
 {
+    display: flex;
     float:right;
     margin-top: 20px;
    

@@ -117,9 +117,7 @@ const Service = () => {
     <div className={styles.datatable}>
       <div className={styles.datatableTitle}>
         <b>Danh Sách Phiếu Dịch Vụ</b>
-        <Link to="/service/addService" className={styles.link}>
-          Thêm Mới
-        </Link>
+        
       </div>
     
       {/* <Box sx={{ height: 400, width: '100%' }}>
@@ -146,8 +144,8 @@ const Service = () => {
           <TableRow>
           <TableCell className={styles.tableCell+ " text-center"}>STT</TableCell>
           <TableCell className={styles.tableCell+ " text-center"}>Mã Phiếu</TableCell>
-            <TableCell className={styles.tableCell+ " text-center"}>Tên Phiếu</TableCell>
-            <TableCell className={styles.tableCell+ " text-center"}>Số Phiếu</TableCell>
+            
+       
             <TableCell className={styles.tableCell+ " text-center"}>Khách hàng</TableCell>
             <TableCell className={styles.tableCell+ " text-center"}>Ngày lập</TableCell>
             <TableCell className={styles.tableCell+ " text-center"}>Lựa Chọn</TableCell>
@@ -163,8 +161,8 @@ const Service = () => {
             >
               <TableCell className={styles.tableCell+ " text-center"} >{index +1}</TableCell>
               <TableCell className={styles.tableCell+ " text-center"}>{tableData.s_id}</TableCell>
-              <TableCell className={styles.tableCell+ " text-center"}>{tableData.s_name}</TableCell>
-              <TableCell className={styles.tableCell+ " text-center"}>{tableData.s_number}</TableCell>
+       
+ 
               <TableCell className={styles.tableCell+ " text-center"}>{tableData.makh}</TableCell>
               <TableCell className={styles.tableCell+ " text-center"}>{tableData.s_date}</TableCell>
               <TableCell className={styles.tableCell+ " text-center"}>     
