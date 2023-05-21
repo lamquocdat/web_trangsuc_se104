@@ -24,11 +24,10 @@ import { AuthorizedUser, LoggedUser } from '../Pages/Login1/authenticate';
 import OrderDetailProducts from '../Pages/Orders/OrderDetailProduct';
 
 import Service from '../admin/pages/service/service_admin';
-import AddService from '../admin/pages/service/addService/addService';
+
 import ViewService from '../admin/pages/service/viewService/viewService';
 import AdjustService from '../admin/pages/service/adjustService/adjustService';
 import AddTypeInService from '../admin/pages/service/viewService/add/add';
-import AdjustTypeInService from '../admin/pages/service/adjustTypeInService/adjustTypeInService';
 import WareHouse from '../admin/pages/Warehouse/warehouse_admin';
 import PaymentAdmin from '../admin/pages/paymentVerification/paymentVerification';
 import ViewPayment from '../admin/pages/paymentVerification/viewPayment/viewPayment';
@@ -169,10 +168,7 @@ const adminRoutes = [
     path: '/service/addTypeInService',
     component: <AddTypeInService />,
   },
-  {
-    path: '/service/addService',
-    component: <AddService />,
-  },
+
   {
     path: '/service/view/:s_id',
     component: <ViewService />,
@@ -185,10 +181,7 @@ const adminRoutes = [
     path: '/service/adjustService',
     component: <AdjustService />,
   },
-  {
-    path: '/service/adjustTypeInService',
-    component: <AdjustTypeInService />,
-  },
+
   {
     path: '/serviceType/addServiceType',
     component: <AddServiceType />,
