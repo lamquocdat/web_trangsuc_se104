@@ -1,6 +1,6 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState, CSSProperties } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 import Button from 'react-bootstrap/Button';
@@ -26,8 +26,10 @@ const override: CSSProperties = {
 };
 
 const Orders = () => {
+  const { _id } = useParams();
   const navigate = useNavigate();
   const [orders, setOrders] = useState();
+
   const [isLoading, setIsLoading] = useState(true);
   const [showCancel, setShowCancel] = useState(false);
   const [showCancelSuccess, setShowCancelSuccess] = useState(false);
@@ -74,9 +76,9 @@ const Orders = () => {
   };
   useEffect(() => {
     // This function will run once when the component mounts.
-    let forgotPromise = getAllOrders('644bb3a570cf5b27446bb748');
+    let forgotPromise = getAllOrders(_id);
     forgotPromise.then(function (res) {
-      setOrders(res.data);
+      setOrders(res);
       setIsLoading(false);
     });
   }, []); // The empty array as the second argument means this effect will only run once.
@@ -111,7 +113,7 @@ const Orders = () => {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col"> Mã đơn hàng </th> <th scope="col"> Email </th>{' '}
+              <th scope="col"> Mã đơn hàng </th>
               <th scope="col"> Ngày đặt hàng </th>{' '}
               <th scope="col"> Tổng tiền </th>{' '}
               <th scope="col"> Tình trạng giao hàng </th>
@@ -126,7 +128,7 @@ const Orders = () => {
                 <td>
                   <b>{order.mahd}</b>{' '}
                 </td>{' '}
-                <td>{order.makh}</td> <td>{order.ngaylap}</td>{' '}
+                <td>{order.ngaylap}</td>{' '}
                 <td>{order.tongtien.toLocaleString()} VND </td>{' '}
                 <td>
                   {' '}

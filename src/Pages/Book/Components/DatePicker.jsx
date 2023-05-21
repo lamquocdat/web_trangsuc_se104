@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Form } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import toast, { Toaster } from 'react-hot-toast';
+import { getUserbyId, scheduleMail } from '../../Login1/helpers/helper';
+import { useParams } from 'react-router-dom';
 const Datepicker = () => {
+  const { _id } = useParams();
   const [selectedDate, setSelectedDate] = useState(null);
+  const [email, setEmail] = useState('');
   const [formValues, setFormValues] = useState({
     message: '',
     product: [],
     date: null,
   });
-  const handleFormSubmit = (event) => {
+  useEffect(() => {
+    // This function will run once when the component mounts.
+    let forgotPromise = getUserbyId(_id);
+    forgotPromise.then(function (res) {
+      let { email } = res.data;
+      setEmail(email);
+    });
+  }, []); // The empty array as the second argument means this effect will only run once.
+
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     if (
       !formValues.date ||
@@ -28,7 +41,12 @@ const Datepicker = () => {
       toast.error('Hãy chọn ngày hợp lệ ');
       return;
     }
-    console.log(formValues);
+
+    await toast.promise(scheduleMail(formValues.date, email), {
+      loading: 'Checking...',
+      success: <b>Thư xác nhận đặt lịch đã được gửi qua email của bạn </b>,
+      error: <b>Có lỗi xảy ra, vui lòng thử lại</b>,
+    });
   };
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;

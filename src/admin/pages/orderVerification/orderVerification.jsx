@@ -1,73 +1,84 @@
-
-import { DataGrid } from "@mui/x-data-grid";
-import { orderColumns, orderRows} from "./orderVerificationData";
+import { DataGrid } from '@mui/x-data-grid';
+import { orderColumns, orderRows } from './orderVerificationData';
 import Box from '@mui/material/Box';
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import styles from "./orderVerification.module.css";
+import React, { useEffect, useState } from 'react';
+import { Form, Button, Row, Container, Col } from 'react-bootstrap';
+import axios from 'axios';
+import { useNavigate, Link, useParams } from 'react-router-dom';
+
+import './style.css';
+import 'bootstrap';
+import { getAllOrdersAllUser } from '../../../Pages/Login1/helpers/helper';
 const VerifyOrder = () => {
+  // const [details, setDetails] = useState("");
+  const [orders, setOrders] = useState();
+  useEffect(function () {
+    async function getData() {
+      let forgotPromise = getAllOrdersAllUser();
+      forgotPromise.then(function (res) {
+        console.log(res);
+        setOrders(res);
+      });
+    }
 
+    getData();
 
-  const [data, setData] = useState(orderRows);
+    // Reset form sau khi gửi thành công
+  }, []);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
-
-  const actionColumn = [
-    {
-      field: "action",
-      headerName: "Lựa Chọn",
-      width: 150,
-      renderCell: (params) => {
-        return (
-          <div className={styles.cellAction}>
-            <Link to="/viewOrderVerification" style={{ textDecoration: "none" }}>
-              <div className={styles.viewButton}>View</div>
-            </Link>
-            <div
-              className={styles.deleteButton}
-              onClick={() => handleDelete(params.row.id)}
-            >
-              Delete
-            </div>
-          </div>
-        );
-      },
-    },
-  ];
-
- 
   return (
-    
-    <div className={styles.servicePage}>
-      {/* PHIẾU DỊCH VỤ */}
-    <div className={styles.datatable}>
-      <div className={styles.datatableTitle}>
-        <b>Danh Sách Xác Nhận Đơn Hàng</b>
-        
-      </div>
-    
-      <Box sx={{ height: 400, width: '100%' }}>
-      <DataGrid
-        className={styles.datagrid}
-        rows={data}
-        columns={orderColumns.concat(actionColumn)}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 6,
-            },
-          },
-        }}
-       
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
-    </Box>
-    </div>
-
-    </div>
+    <Container style={{ width: '1300px' }}>
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col"> Mã đơn hàng </th>
+            <th scope="col"> Ngày đặt hàng </th>{' '}
+            <th scope="col"> Tổng tiền </th>{' '}
+            <th scope="col"> Tình trạng giao hàng </th>
+            <th scope="col" className="text-center">
+              Thao tác{' '}
+            </th>{' '}
+          </tr>{' '}
+        </thead>{' '}
+        <tbody>
+          {orders?.map((order) => (
+            <tr key={order._id}>
+              <td>
+                <b>{order.mahd}</b>{' '}
+              </td>{' '}
+              <td>{order.ngaylap}</td>{' '}
+              <td>{order.tongtien.toLocaleString()} VND </td>{' '}
+              <td>
+                {' '}
+                <span
+                  className={
+                    order.tinhtrang === 'Đã giao hàng'
+                      ? 'text-success'
+                      : order.tinhtrang === 'Đang xử lý'
+                      ? 'text-info'
+                      : order.tinhtrang === 'Đang giao hàng'
+                      ? 'text-warning'
+                      : 'text-danger'
+                  }
+                >
+                  {order.tinhtrang}{' '}
+                </span>{' '}
+              </td>{' '}
+              <td className="d-flex justify-content-center align-item-center">
+                <Link
+                  to={`/order/detail/${order._id}`}
+                  className="text-success"
+                >
+                  <i className="fas fa-eye" style={{ fontSize: '20px' }}>
+                    {' '}
+                  </i>{' '}
+                </Link>{' '}
+              </td>{' '}
+            </tr>
+          ))}
+        </tbody>{' '}
+      </table>
+    </Container>
   );
 };
 
