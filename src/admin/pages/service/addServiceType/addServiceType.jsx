@@ -24,10 +24,15 @@ const AddServiceType = ({ inputs }) => {
           svt_name,
           svt_price,
         });
-        if (response.data === 'existed') {
+        if (response.data === 'existedID') {
           toast.error(<b>Mã dịch vụ đã tồn tại</b>);
           setSvt_id('');
-        } else {
+        }
+        if (response.data === 'existedNAME') {
+          toast.error(<b>Tên dịch vụ đã tồn tại</b>);
+          setSvt_name('');
+        }
+        if (response.data === 'OK') {
           console.log(response.data);
           setSvt_id('');
           setSvt_name('');

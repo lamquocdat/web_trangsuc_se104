@@ -27,7 +27,10 @@ const AdjustServiceType = () => {
           svt_price,
         }
       );
-      navigateToServicePage();
+      if (response.data === 'existedNAME') {
+        toast.error(<b>Tên dịch vụ đã tồn tại</b>);
+        setSvt_name('');
+      } else navigateToServicePage();
     }
   };
 
