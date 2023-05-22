@@ -1,6 +1,6 @@
 .new {
     width: 100%;
-    display: flex;
+    /* display: flex; */
 }
 .new .newContainer {
     flex: 6;

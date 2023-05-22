@@ -1,8 +1,15 @@
 import React, { useEffect, useState, CSSProperties } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import { getOrderbyId, getUserbyId } from '../Login1/helpers/helper';
+
 import ClipLoader from 'react-spinners/ClipLoader';
-const OrderDetailProducts = () => {
+import { Form, Button, Row, Container, Col } from 'react-bootstrap';
+import {
+  confirmOrderbyId,
+  deliveredOrderbyId,
+  getUserbyId,
+} from '../../../Pages/Login1/helpers/helper';
+import { cancelOrderbyId, getOrderbyId } from '../users/helper';
+const ViewOrder = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const { _orderid } = useParams();
@@ -48,8 +55,17 @@ const OrderDetailProducts = () => {
   function goBackClick() {
     navigate(-1);
   }
+  async function ConfirmOrder() {
+    let confirmPromise = await confirmOrderbyId(_orderid);
+    window.location.reload();
+  }
+  async function CancelOrder() {
+    let cancelPromise = await cancelOrderbyId(_orderid);
+
+    window.location.reload();
+  }
   return (
-    <main>
+    <Container style={{ width: '1300px' }}>
       <ClipLoader
         color="#36d7b7"
         loading={isLoading}
@@ -204,6 +220,28 @@ const OrderDetailProducts = () => {
                       >
                         Quay lại
                       </button>
+                      {status === 'Đang xử lý' ? (
+                        <>
+                          <button
+                            type="button"
+                            class="btn btn-primary "
+                            onClick={ConfirmOrder}
+                            style={{ marginLeft: '20px' }}
+                          >
+                            Xác nhận
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-danger"
+                            onClick={CancelOrder}
+                            style={{ marginLeft: '20px' }}
+                          >
+                            Hủy đơn hàng
+                          </button>
+                        </>
+                      ) : (
+                        <></>
+                      )}
                     </dl>
                   </article>
                 </td>
@@ -212,8 +250,8 @@ const OrderDetailProducts = () => {
           </table>
         </div>
       )}
-    </main>
+    </Container>
   );
 };
 
-export default OrderDetailProducts;
+export default ViewOrder;

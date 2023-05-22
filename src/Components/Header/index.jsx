@@ -64,14 +64,14 @@ function Header() {
                 </Link>
               </Nav.Link>
               <Nav.Link className={styles.items}>
-              <Link to="/book" className={styles.singleItem} >   
-                <div className={styles.item}>
-                  <CalendarTodayIcon className={styles.icon} />
-                  <div className={styles.action} href="#">
-                    Đặt lịch hẹn
+                <Link to={`/book/${_id}`} className={styles.singleItem}>
+                  <div className={styles.item}>
+                    <CalendarTodayIcon className={styles.icon} />
+                    <div className={styles.action} href="#">
+                      Đặt lịch hẹn
+                    </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
               </Nav.Link>
               <Nav.Link className={styles.items}>
                 <Link to={`/orders/${_id}`} className={styles.singleItem}>
@@ -182,21 +182,6 @@ function Header() {
                 className={styles.page}
               >
                 <b style={{ fontWeight: '500 ' }}>Tài khoản</b>
-              </Nav.Link>
-              <Nav.Link eventKey="link-3" className={styles.page}>
-                <Link to="/blog" className={styles.singlePage}>
-                  Blog
-                </Link>
-              </Nav.Link>
-              <Nav.Link eventKey="link-4" className={styles.page}>
-                <Link to="/aboutus" className={styles.singlePage}>
-                  Về chúng tôi
-                </Link>
-              </Nav.Link>
-              <Nav.Link eventKey="link-5" className={styles.page}>
-                <Link to="/*" className={styles.singlePage}>
-                  Tài khoản
-                </Link>
               </Nav.Link>
             </Nav>
             <Form className={'d-flex ' + styles.form}>
