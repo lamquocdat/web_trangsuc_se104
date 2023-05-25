@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+
 import styles from './service.module.css';
 import Button from 'react-bootstrap/Button';
 import ReactPaginate from "react-paginate";
