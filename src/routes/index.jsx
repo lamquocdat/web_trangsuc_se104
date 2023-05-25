@@ -50,6 +50,7 @@ import Users from '../admin/pages/users/user';
 import ViewUser from '../admin/pages/users/viewUser';
 import OrderView from '../admin/pages/users/OderView';
 import ViewOrder from '../admin/pages/orderVerification/ViewOrder';
+import ConfirmationServiceNotification from '../admin/pages/service/viewService/verifiedService';
 const publicRoutes = [
   { path: '/', component: <Home /> },
   { path: '*', component: <NotFound />, layout: null },
@@ -253,6 +254,10 @@ const adminRoutes = [
   {
     path: '/ConfirmationNotification',
     component: <ConfirmationNotification />,
+  },
+  {
+    path: '/veriedService',
+    component: <ConfirmationServiceNotification />,
   },
 
   {

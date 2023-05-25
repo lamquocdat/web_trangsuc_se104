@@ -20,7 +20,7 @@ const Service = () => {
 
   const [tableDataSVT, setTableDataSVT] = useState([]);
 
-  //Pagination
+  //Pagination SVT
   const [svtPerPage, setSvtPerPage] = useState(4)
   const [CsvtPerPage, setCSvtPerPage] = useState(1)
   const numOfToTalPages = Math.ceil(tableDataSVT.length / svtPerPage);
@@ -29,12 +29,12 @@ const Service = () => {
   const indexOfFirstSVT = indexOfLastSVT - svtPerPage;
   const visibleSVT = tableDataSVT.slice(indexOfFirstSVT, indexOfLastSVT)
 
-  //
+ 
 
   const changePage = ({ selected }) => {
     setCSvtPerPage(selected + 1);
   };
-
+ //
 
   useEffect(() => {
     loadSVT();

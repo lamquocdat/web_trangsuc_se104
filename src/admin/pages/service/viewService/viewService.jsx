@@ -11,7 +11,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import {useNavigate} from 'react-router-dom';
 const ViewService = () => {
   const { _id } = useParams();
   const [service, setService] = useState([]);
@@ -27,21 +27,14 @@ const ViewService = () => {
         console.log(error);
       });
   }, []);
-  // Tính toán total money của Phiếu Dịch Vụ
-  // const totalMoney = service.reduce((accumulator, currentValue, index) => {
 
-  //   let temp = 0;
-  //   service[0].serviceTypes.map((svt, index) => {
-  //     temp = accumulator + currentValue.svt[index].total;
+  const navigate = useNavigate();
+  const navigateToServiceConfirmationForm = () => {
+    // 👇️ navigate to /contacts
+    navigate('/veriedService');
+  };
 
-  //     return (
-  //     index++
-
-  //     )
-  //   })
-  //   return temp;
-  // }, 0);
-
+  
   return (
     <div className={styles.servicePage}>
       {/* PHIẾU DỊCH VỤ */}
@@ -93,20 +86,18 @@ const ViewService = () => {
                 </TableRow>
               ))}
             </TableBody>
+            
           </Table>
+          
         </TableContainer>
+        
       </div>
 
       <div className={styles.datatable_2} style={{ marginTop: '40px' }}>
         <div className={styles.datatableTitle}>
           <b>Loại Dịch Vụ Bao Gồm Trong Phiếu:</b>
           <div className={styles.buttonFuction}>
-            {/* <Link to="/service/addTypeInService" className={styles.link} style={{marginRight:"20px"}}>
-        Thêm Loại
-        </Link> */}
-            {/* <Link to="/service/adjustTypeInService" className={styles.link}>
-          Chỉnh Sửa
-        </Link> */}
+        
           </div>
         </div>
 
@@ -129,10 +120,7 @@ const ViewService = () => {
                     <TableCell className={styles.tableCell + ' text-center'}>
                       Giá
                     </TableCell>
-                    {/* <TableCell className={styles.tableCell+ " text-center"}>Tổng Tiền</TableCell>
-                            <TableCell className={styles.tableCell+ " text-center"}>Trả Trước</TableCell>
-                            <TableCell className={styles.tableCell+ " text-center"}>Còn Lại</TableCell>
-                            <TableCell className={styles.tableCell+ " text-center"}>Ngày Lập</TableCell> */}
+            
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -161,10 +149,7 @@ const ViewService = () => {
                           >
                             {serviceTypes.svt_price} VNĐ
                           </TableCell>
-                          {/* <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.total} VNĐ</TableCell>
-                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.payFirst} VNĐ</TableCell>
-                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.payLeft} VNĐ</TableCell>
-                                        <TableCell className={styles.tableCell+ " text-center"}>{serviceTypes.ngaygiao}</TableCell> */}
+    
                         </TableRow>
                       );
                     })}
@@ -172,37 +157,12 @@ const ViewService = () => {
               </Table>
             </TableContainer>
           </div>
+          
         </Container>
-        {/* <div className={styles.datatableBottom}>
-    <div className={styles.datatableText}>
-        <b>Tổng Tiền: </b>
-    </div>
-    <div className={styles.totalCost}>
-          {totalMoney} VNĐ
-    </div>
-    
-       
-    </div>
-      <div className={styles.datatableBottom}>
-    <div className={styles.datatableText}>
-        <b>Đã Trả: </b>
-    </div>
-    <div className={styles.totalCost}>
-          5.000.000 VNĐ
-    </div>
-    
-       
+        
       </div>
-      <div className={styles.datatableBottom}>
-    <div className={styles.datatableText}>
-        <b>Còn Lại: </b>
-    </div>
-    <div className={styles.totalCost}>
-          5.500.000 VNĐ
-    </div>
-    
-       
-      </div> */}
+      <div className={styles.buttonUpdate}>
+            <button onClick={navigateToServiceConfirmationForm}  className={styles.myButton}>Xác Nhận</button>
       </div>
     </div>
   );
