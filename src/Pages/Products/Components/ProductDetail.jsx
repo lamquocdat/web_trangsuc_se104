@@ -1,16 +1,40 @@
 import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import { ListGroup, ListGroupItem, Badge } from 'react-bootstrap';
 import { Form, FormControl} from 'react-bootstrap';
-function Product() {
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import axios from 'axios';
+const Product = props => {
+  const [product, setProduct] = useState({
+      productid: null,
+      name: "",
+      image: "",
+      image: "",
+      price: "",
+  });
+  const getProduct = id => {
+      axios.get('/product/:id')
+      .then(response => {
+          setProduct(response.data);
+          console.log(response.data);
+      })
+      .catch(e => {
+          console.log(e);
+      });
+  }
+  const { id } = useParams();
+  useEffect(() => {
+      getProduct(id)
+      }, [id]);
   return (
     <Container>
       <Row className="align-items-center justify-content-center">
         <Col md={4}>
-          <Image src="https://cdn.pnj.io/images/detailed/153/sbpmxmw000001-bong-tai-bac-dinh-ngoc-trai-pnjsilver-1.png" fluid />
+          <Image src={ product.image } fluid />
         </Col>
         <Col md={6} >
-          <h1>Bông tai Bạc đính Ngọc Trai PNJSilver PMXMW000001</h1>
-          <p>Mã: SBPMXMW000001</p>
+          <h1>{ product.name }</h1>
+          <p>Mã: {product.productid}</p>
           <Row>
             <Col>
             <p>Đã bán: 4</p>
@@ -21,7 +45,7 @@ function Product() {
           </Row>
           
           
-          <h2>795.000 đ</h2>
+          <h2>{ product.price }</h2>
           <div className="d-flex align-items-center mb-3">
             <span className="me-3">Số lượng:</span>
             <Button variant="outline-secondary" size="sm">
