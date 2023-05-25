@@ -5,6 +5,9 @@ import ConfirmationModal from "./ConfirmationModal";
 import { Button } from "react-bootstrap";
 
 function Bill ({ cart }) {
+    //lấy _id của người dùng trong localStorage
+    const Id = localStorage.getItem("_id");
+
     const [showModal, setShowModal] = useState(false);
     const [thanhtoan, setThanhtoan] = useState(false);
 
@@ -34,7 +37,7 @@ function Bill ({ cart }) {
         ngaylap: date+"/"+month+"/"+year,
         tinhtrang: "processing",
         diachigiaohang: "",
-        userId: "u01", //sao này đổi lại
+        userId: Id, //sao này đổi lại
         sanphams: spList
     };
     
@@ -44,14 +47,15 @@ function Bill ({ cart }) {
             setShowModal(true);
         }
         else{
-            //refresh lại giỏ hàng
-            axios.post("https://dialuxury.onrender.com/cart/refresh", {userId: 'u01'})
+            //refresh lại giỏ hàng (xóa tất cả các sản phẩm có trong giỏ hàng này)
+            axios.post("https://dialuxury.onrender.com/cart/refresh", {userId: Id})
                 .then((response) => {
 
                 })
                 .catch((error) => {
                     console.log(error);
             });
+            // tạo đơn hàng mới trong order
             axios.post("https://dialuxury.onrender.com/order", data)
                 .then((response) => {
                     //chuyển hướng tới trang paymentinfo
