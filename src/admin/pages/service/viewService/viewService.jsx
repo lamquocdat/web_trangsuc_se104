@@ -13,12 +13,12 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 const ViewService = () => {
-  const { s_id } = useParams();
+  const { _id } = useParams();
   const [service, setService] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/service/sid/${s_id}`)
+      .get(`http://localhost:3001/service/${_id}`)
       .then((response) => {
         setService(response.data);
         console.log(response.data);
@@ -61,9 +61,11 @@ const ViewService = () => {
                 <TableCell className={styles.tableCell + ' text-center'}>
                   Mã Phiếu
                 </TableCell>
-
                 <TableCell className={styles.tableCell + ' text-center'}>
-                  Khách hàng
+                  Tên
+                </TableCell>
+                <TableCell className={styles.tableCell + ' text-center'}>
+                  Email
                 </TableCell>
                 <TableCell className={styles.tableCell + ' text-center'}>
                   Ngày lập
@@ -79,7 +81,9 @@ const ViewService = () => {
                   <TableCell className={styles.tableCell + ' text-center'}>
                     {service._id}
                   </TableCell>
-
+                  <TableCell className={styles.tableCell + ' text-center'}>
+                    tên
+                  </TableCell>
                   <TableCell className={styles.tableCell + ' text-center'}>
                     {service.makh}
                   </TableCell>

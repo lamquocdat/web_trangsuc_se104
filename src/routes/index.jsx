@@ -170,7 +170,7 @@ const adminRoutes = [
   },
 
   {
-    path: '/service/view/:s_id',
+    path: '/service/view/:_id',
     component: <ViewService />,
   },
   // {

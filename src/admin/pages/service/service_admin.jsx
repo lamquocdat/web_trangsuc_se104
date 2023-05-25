@@ -173,23 +173,6 @@ const Service = () => {
           <b>Danh Sách Phiếu Dịch Vụ</b>
         </div>
 
-        {/* <Box sx={{ height: 400, width: '100%' }}>
-      <DataGrid getRowId={(row) =>  row.s_id + row.s_name + row.makh + row.s_number + row.s_date}
-        className={styles.datagrid}
-        rows={tableData}
-        columns={columns.concat(actionColumn)}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 7,
-            },
-          },
-        }}
-        pageSizeOptions={[5]}
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
-    </Box> */}
 
         <TableContainer component={Paper} className={styles.table}>
           <Table sx={{ minWidth: 1200 }} aria-label="a dense table">
@@ -201,9 +184,11 @@ const Service = () => {
                 <TableCell className={styles.tableCell + ' text-center'}>
                   Mã Phiếu
                 </TableCell>
-
                 <TableCell className={styles.tableCell + ' text-center'}>
-                  Khách hàng
+                  Tên Khách Hàng
+                </TableCell>
+                <TableCell className={styles.tableCell + ' text-center'}>
+                  Email
                 </TableCell>
                 <TableCell className={styles.tableCell + ' text-center'}>
                   Ngày lập
@@ -228,7 +213,9 @@ const Service = () => {
                   <TableCell className={styles.tableCell + ' text-center'}>
                     {tableData._id}
                   </TableCell>
-
+                  <TableCell className={styles.tableCell + ' text-center'}>
+                    tên
+                  </TableCell>
                   <TableCell className={styles.tableCell + ' text-center'}>
                     {tableData.makh}
                   </TableCell>
@@ -241,7 +228,7 @@ const Service = () => {
                   <TableCell className={styles.tableCell + ' text-center'}>
                     <div className={styles.cellAction}>
                       <Link
-                        to={`/service/view/${tableData.s_id}`}
+                        to={`/service/view/${tableData._id}`}
                         style={{ textDecoration: 'none' }}
                       >
                         <div className={styles.viewButton}>View</div>
