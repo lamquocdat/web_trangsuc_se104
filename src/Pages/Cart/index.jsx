@@ -7,11 +7,14 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 
 function Cart () {
+    //lấy _id của người dùng trong localStorage
+    const userId = localStorage.getItem("_id");
     const [cart, setCart] = useState();
 
+    //lấy các sản phẩm từ trong giỏ hàng hiện ra
     useEffect(() => {
         axios
-          .get("https://dialuxury.onrender.com/cart/u01")
+          .get(`https://dialuxury.onrender.com/cart/${userId}`)
           .then((response) => {
             setCart(response.data)
           })
@@ -29,7 +32,7 @@ function Cart () {
                         <hr/>
                         {cart !== undefined && cart.sanphams.map((sp)=>{
                             return(
-                                <Product productid={sp.productid} image={sp.image} name={sp.name} price={sp.price} category={sp.category} soluong={sp.soluong} state={sp.state}/>
+                                <Product productid={sp.productid} image={sp.image} name={sp.name} price={sp.price} category={sp.category} soluong={sp.soluong} state={sp.state} key={sp.productid}/>
                             )
                         })}
                         {cart !== undefined && (!Array.isArray(cart.sanphams) || cart.sanphams.length === 0) && (()=>{
