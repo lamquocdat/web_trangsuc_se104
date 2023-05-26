@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ConfirmationModal from "./ConfirmationModal";
+
 import { Button } from "react-bootstrap";
 
 function Bill ({ cart }) {
@@ -35,12 +37,13 @@ function Bill ({ cart }) {
     let data = {
         hinhanh: '',
         ngaylap: date+"/"+month+"/"+year,
-        tinhtrang: "processing",
+        tinhtrang: "Đang xử lý",
         diachigiaohang: "",
-        userId: Id, //sao này đổi lại
+        userId: Id,
         sanphams: spList
     };
-    
+
+    const navigate = useNavigate();
     const addOrder = () => {
         if(!Array.isArray(cart.sanphams) || cart.sanphams.length === 0){
             setThanhtoan(false)
@@ -59,7 +62,10 @@ function Bill ({ cart }) {
             axios.post("https://dialuxury.onrender.com/order", data)
                 .then((response) => {
                     //chuyển hướng tới trang paymentinfo
-                    window.location.href= `/paymentinfo/${response.data.mahd}`;
+                    const mahd = response.data.mahd;
+                    navigate("/paymentinfo", {
+                        state: { mahd },
+                    });
                 })
                 .catch((error) => {
                     console.log(error);
@@ -97,4 +103,4 @@ function Bill ({ cart }) {
     );
 }
 
-export default Bill;
+export default (Bill);

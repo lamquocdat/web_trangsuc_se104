@@ -55,8 +55,8 @@ const publicRoutes = [
   { path: '/', component: <Home /> },
   { path: '*', component: <NotFound />, layout: null },
   { path: '/cart', component: <Cart /> },
-  { path: '/paymentinfo/:mahd', component: <PaymentInfo /> },
-  { path: '/paymentfinish/:mahd', component: <PaymentFinish /> },
+  { path: '/paymentinfo', component: <PaymentInfo /> },
+  { path: '/paymentfinish', component: <PaymentFinish /> },
 
   {
     path: '/blog',
