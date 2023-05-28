@@ -21,16 +21,8 @@ const ViewOrder = () => {
   const [status, setStatus] = useState();
   const [total, setTotal] = useState(0);
   const [tableData, setTableData] = useState(null);
-  const _id = localStorage.getItem('_id');
+  const [userid, setUserID] = useState('');
   useEffect(() => {
-    // This function will run once when the component mounts.
-    let forgotPromise = getUserbyId(_id);
-    forgotPromise.then(function (res) {
-      let { email, name, phone } = res.data;
-      setEmail(email);
-      setPhone(phone);
-      setName(name);
-    });
     let orderPromise = getOrderbyId(_orderid);
     orderPromise.then(function (res) {
       let address = res.data[0].diachigiaohang;
@@ -38,12 +30,24 @@ const ViewOrder = () => {
       let status = res.data[0].tinhtrang;
       let total = res.data[0].tongtien;
       let tabledata = res.data[0].sanphams;
+
+      let _userid = res.data[0].userId;
+      console.log(_userid);
       setAddress(address);
       setDate(date);
       setStatus(status);
       setTotal(total);
       setTableData(tabledata);
       setIsLoading(false);
+      setUserID(_userid);
+      let forgotPromise = getUserbyId(_userid);
+      forgotPromise.then(function (res) {
+        let { email, name, phone } = res.data;
+        setEmail(email);
+        setPhone(phone);
+        setName(name);
+      });
+      // This function will run once when the component mounts.
     });
   }, []); // The empty array as the second argument means this effect will only run once.
   const override: CSSProperties = {

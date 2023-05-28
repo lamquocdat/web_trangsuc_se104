@@ -11,14 +11,14 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const ViewService = () => {
   const { _id } = useParams();
   const [service, setService] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/service/${_id}`)
+      .get(`https://dialuxury.onrender.com/service/${_id}`)
       .then((response) => {
         setService(response.data);
         console.log(response.data);
@@ -34,7 +34,6 @@ const ViewService = () => {
     navigate('/veriedService');
   };
 
-  
   return (
     <div className={styles.servicePage}>
       {/* PHIẾU DỊCH VỤ */}
@@ -86,19 +85,14 @@ const ViewService = () => {
                 </TableRow>
               ))}
             </TableBody>
-            
           </Table>
-          
         </TableContainer>
-        
       </div>
 
       <div className={styles.datatable_2} style={{ marginTop: '40px' }}>
         <div className={styles.datatableTitle}>
           <b>Loại Dịch Vụ Bao Gồm Trong Phiếu:</b>
-          <div className={styles.buttonFuction}>
-        
-          </div>
+          <div className={styles.buttonFuction}></div>
         </div>
 
         <Container fluid>
@@ -120,7 +114,6 @@ const ViewService = () => {
                     <TableCell className={styles.tableCell + ' text-center'}>
                       Giá
                     </TableCell>
-            
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -149,7 +142,6 @@ const ViewService = () => {
                           >
                             {serviceTypes.svt_price} VNĐ
                           </TableCell>
-    
                         </TableRow>
                       );
                     })}
@@ -157,12 +149,15 @@ const ViewService = () => {
               </Table>
             </TableContainer>
           </div>
-          
         </Container>
-        
       </div>
       <div className={styles.buttonUpdate}>
-            <button onClick={navigateToServiceConfirmationForm}  className={styles.myButton}>Xác Nhận</button>
+        <button
+          onClick={navigateToServiceConfirmationForm}
+          className={styles.myButton}
+        >
+          Xác Nhận
+        </button>
       </div>
     </div>
   );

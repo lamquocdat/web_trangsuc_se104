@@ -19,7 +19,9 @@ const ViewUser = () => {
   useEffect(function () {
     try {
       async function getData() {
-        const response = await axios.get(`http://localhost:3001/userid/${_id}`);
+        const response = await axios.get(
+          `https://dialuxury.onrender.com/userid/${_id}`
+        );
         console.log(response.data); // Thêm sản phẩm vào danh sách
         setName(response.data.name);
         setEmail(response.data.email);
@@ -47,70 +49,6 @@ const ViewUser = () => {
 
   return (
     <Container style={{ width: '1000px' }}>
-      <Row className="d-flex justify-content-center">
-        <Col
-          md={6}
-          style={{
-            border: '1px solid rgb(193 197 199)',
-            borderRadius: '8px',
-            padding: '20px',
-            color: 'rgb(90 93 95)',
-          }}
-        >
-          <Form>
-            <Form.Group controlId="name">
-              <Form.Label>Họ và tên</Form.Label>
-              <Form.Control
-                type="text"
-                value={name}
-                disabled
-                style={{ background: '#e9ecef' }}
-              />
-            </Form.Group>
-            <Form.Group controlId="phone">
-              <Form.Label>Số điện thoại</Form.Label>
-              <Form.Control
-                type="text"
-                value={phone}
-                disabled
-                style={{ background: '#e9ecef' }}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="text"
-                value={email}
-                disabled
-                style={{ background: '#e9ecef' }}
-              />
-            </Form.Group>
-            <Form.Group controlId="address">
-              <Form.Label>Địa chỉ</Form.Label>
-              <Form.Control
-                type="text"
-                value={address}
-                disabled
-                style={{ background: '#e9ecef' }}
-              />
-            </Form.Group>
-
-            <br></br>
-            <div className="text-center">
-              <Button
-                style={{ background: '#C4DFDF' }}
-                type="button"
-                onClick={function () {
-                  navigate(-1);
-                }}
-              >
-                Quay lại
-              </Button>
-            </div>
-          </Form>
-        </Col>
-      </Row>
       <table className="table">
         <thead>
           <tr>

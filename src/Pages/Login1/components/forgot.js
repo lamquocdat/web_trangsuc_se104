@@ -52,7 +52,7 @@ function Forgot() {
               Nhập email bạn đã đăng ký để đặt lại mật khẩu
             </div>
 
-            <div class="form-floating mb-3">
+            <div class="form-f loating mb-3">
               <input
                 {...formik.getFieldProps('email')}
                 type="email"
