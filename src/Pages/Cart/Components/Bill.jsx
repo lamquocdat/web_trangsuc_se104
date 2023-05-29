@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ConfirmationModal from "./ConfirmationModal";
+
 import { Button } from "react-bootstrap";
 
 function Bill ({ cart }) {
+    //lấy _id của người dùng trong localStorage
+    const Id = localStorage.getItem("_id");
+
     const [showModal, setShowModal] = useState(false);
     const [thanhtoan, setThanhtoan] = useState(false);
 
@@ -32,30 +37,35 @@ function Bill ({ cart }) {
     let data = {
         hinhanh: '',
         ngaylap: date+"/"+month+"/"+year,
-        tinhtrang: "processing",
+        tinhtrang: "Đang xử lý",
         diachigiaohang: "",
-        userId: "u01", //sao này đổi lại
+        userId: Id,
         sanphams: spList
     };
-    
+
+    const navigate = useNavigate();
     const addOrder = () => {
         if(!Array.isArray(cart.sanphams) || cart.sanphams.length === 0){
             setThanhtoan(false)
             setShowModal(true);
         }
         else{
-            //refresh lại giỏ hàng
-            axios.post("https://dialuxury.onrender.com/cart/refresh", {userId: 'u01'})
+            //refresh lại giỏ hàng (xóa tất cả các sản phẩm có trong giỏ hàng này)
+            axios.post("https://dialuxury.onrender.com/cart/refresh", {userId: Id})
                 .then((response) => {
 
                 })
                 .catch((error) => {
                     console.log(error);
             });
+            // tạo đơn hàng mới trong order
             axios.post("https://dialuxury.onrender.com/order", data)
                 .then((response) => {
                     //chuyển hướng tới trang paymentinfo
-                    window.location.href= `/paymentinfo/${response.data.mahd}`;
+                    const mahd = response.data.mahd;
+                    navigate("/paymentinfo", {
+                        state: { mahd },
+                    });
                 })
                 .catch((error) => {
                     console.log(error);

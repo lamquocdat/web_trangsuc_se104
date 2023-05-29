@@ -1,6 +1,6 @@
 import images from "../../../assets/images/index";
 
-export default ({bank, hoadon}) => {
+export default ({bank, hoadon, kh}) => {
     return (
         <div>
             <div className="my-10 d-flex justify-content-center mb-4">
@@ -8,41 +8,10 @@ export default ({bank, hoadon}) => {
             </div>
             <div className="row my-2">
                 <div className="col text-end">
-                    <label>Tên tài khoản:</label> 
-                </div>
-                <div className="col">
-                    <span>Nguyễn Văn A</span>
-                </div>
-            </div>
-            <div className="row my-2">
-                <div className="col text-end">
-                    <label>Số tài khoản:</label> 
-                </div>
-                <div className="col">
-                    <span>0123456789</span>
-                </div>
-            </div>
-            <div className="row my-2">
-                <div className="col text-end">
-                    <label>Ví điện tử:</label>
-                </div>
-                <div className="col">
-                    {(()=>{
-                        if(bank === "MomoQR")
-                            return(<span>MomoQR</span>);
-                        else if(bank === "ZalopayQR")
-                            return (<span>Zalopay</span>);
-                        else
-                            return (<span>BIDV</span>);
-                    })()}
-                </div>
-            </div>
-            <div className="row my-2">
-                <div className="col text-end">
                     <label>Nội dung chuyển khoảng:</label>
                 </div>
                 <div className="col">
-                    <span>Thanh toán hóa đơn {hoadon.mahd}</span>
+                    <span>Thanh toán hóa đơn - {kh.name}</span>
                 </div>
             </div>
             <div className="row mt-2 mb-4">

@@ -8,25 +8,39 @@ import { useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import ConfirmationModal from "./ConfirmationModal";
 
-function Product ({productid,image, name, price, category, soluong, state}) {
+
+function Product ({productid, image, name, price, category, soluong, state, index}) {
+    //lấy _id của người dùng trong localStorage
+    const userId = localStorage.getItem("_id");
+
     const [sl, setSL ] = useState(soluong);
 
     const handleSetSL = (event) => {
         setSL(event.target.value);
-    }
+        //gọi api cập nhật lại số lượng sản phẩm
+        axios.put(`https://dialuxury.onrender.com/cart`, {
+            userId: userId,
+            productid: productid,
+            soluong: event.target.value
+        })
+    };
 
+    //tạo biến lưu trạng thái hiển thị hộp thoại thông báo
     const [showModal, setShowModal] = useState(false);
 
+    //Hiện hộp thoại cảnh báo khi nhấn nút Xóa
     const handleDelete = () => {
         setShowModal(true);
     };
 
+    //tạo 2 biến lưu trạng thái thông báo thành công hoặc thất bại
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
     const [showErrorAlert, setShowErrorAlert] = useState(false);
 
+    //gọi api xóa sản phẩm
     const handleConfirmDelete = async () => {
         try{
-            await axios.delete(`https://dialuxury.onrender.com/cart/u01/${productid}`)
+            await axios.delete(`https://dialuxury.onrender.com/cart/${userId}/${productid}`)
             setShowSuccessAlert(true);
         }
         catch(error){
@@ -35,10 +49,10 @@ function Product ({productid,image, name, price, category, soluong, state}) {
         setShowModal(false);
     };
 
+    //tắt hộp thoại khi nhấn nút Hủy
     const handleCancelDelete = () => {
         setShowModal(false);
     };
-
     return (
         <div>
             <Container fluid>

@@ -62,6 +62,9 @@ const Users = () => {
                   Số điện thoại
                 </TableCell>{' '}
                 <TableCell className={styles.tableCell + ' text-center'}>
+                  Địa chỉ
+                </TableCell>{' '}
+                <TableCell className={styles.tableCell + ' text-center'}>
                   Thao tác
                 </TableCell>{' '}
               </TableRow>
@@ -83,6 +86,9 @@ const Users = () => {
                   </TableCell>{' '}
                   <TableCell className={styles.tableCell + ' text-center'}>
                     {data.phone}
+                  </TableCell>{' '}
+                  <TableCell className={styles.tableCell + ' text-center'}>
+                    {data.address}
                   </TableCell>{' '}
                   <TableCell className={styles.tableCell + ' text-center'}>
                     <div className={styles.cellAction}>
