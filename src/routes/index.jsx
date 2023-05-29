@@ -72,7 +72,7 @@ const publicRoutes = [
     component: <ProductsPage2 />,
   },
   {
-    path: '/productsdetail',
+    path: '/productsdetail/:id',
     component: <ProductsDetail />,
   },
   {

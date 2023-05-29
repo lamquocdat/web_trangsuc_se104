@@ -103,4 +103,4 @@ function Bill ({ cart }) {
     );
 }
 
-export default (Bill);
+export default Bill;

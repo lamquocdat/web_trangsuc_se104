@@ -98,4 +98,4 @@ function Product ({productid, image, name, price, category, soluong, state, inde
     );
 }
 
-export default (Product);
+export default Product;
