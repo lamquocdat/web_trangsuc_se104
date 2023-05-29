@@ -7,7 +7,7 @@ function ProductList({ products }) {
   const [showMore, setShowMore] = useState(false);
 
   const toggleShowMore = () => setShowMore(!showMore);
-
+  
   //Hiện trước 12 sản phẩm
   const visibleProducts = showMore ? products : products.slice(0, 12);
 

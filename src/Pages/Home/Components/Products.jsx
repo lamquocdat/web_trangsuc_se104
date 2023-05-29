@@ -24,7 +24,7 @@ function ProductHomepage({ products }) {
                       {product.price}
                     </Card.Text>
                     <Card.Text style={{ textAlign: "center", fontSize: "15px" }}>
-                      {product.sold}
+                      {product.quantity_sold}
                     </Card.Text>
                   </Card.Body>
                 </Card>
