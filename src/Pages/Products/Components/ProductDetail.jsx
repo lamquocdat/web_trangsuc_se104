@@ -79,8 +79,6 @@ function Product() {
             <p>Còn hàng</p>
             </Col>
           </Row>
-         
-          
           <h4>Giá: {formatCurrency(product?.price || 1000000)}</h4>
           <div className="d-flex align-items-center mb-3">
             <span className="me-3">Số lượng:</span>
@@ -95,13 +93,16 @@ function Product() {
           <Button variant="primary" size="md" className="mb-3" onClick={AddToCart}>
             Mua hàng <br /> 
           </Button>
+
         </Col>
-      </Row>
-      <div>
+      ))}
+    </Row>
+    <div>
       <h3>Thông số</h3>
       <Row>
         <Col md={4}>
           <ListGroup className="w-100">
+
           <ListGroupItem>
             <strong>Chất liệu: </strong> {product?.quality || "Chưa có thông số"}
           </ListGroupItem>
@@ -118,9 +119,9 @@ function Product() {
             <strong>Giá:</strong> 1,200,000đ <Badge variant="danger">-10%</Badge>
           </ListGroupItem> */}
         </ListGroup>
+
         </Col>
       </Row>
-      
     </div>
     {/* <h3 className="mt-3">Bình luận</h3> */}
     <Form>
@@ -138,8 +139,8 @@ function Product() {
         Gửi bình luận
       </Button>
     </Form>
-    </Container>
-  );
+  </Container>
+);
 }
 
 export default Product;
