@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+
 import styles from './service.module.css';
 import Button from 'react-bootstrap/Button';
 import ReactPaginate from 'react-paginate';
@@ -40,7 +40,6 @@ const Service = () => {
   const loadSVT = async () => {
     axios
       .get('https://dialuxury.onrender.com/serviceType')
-      .get('https://dialuxury.onrender.com/serviceType')
       .then((response) => {
         setTableDataSVT(response.data);
         //console.log(response.data);
@@ -51,14 +50,7 @@ const Service = () => {
   };
 
   function deleteSVT(id) {
-  function deleteSVT(id) {
     fetch(`http://localhost:3001/serviceType/svtid/${id}`, {
-      method: 'DELETE',
-    }).then((result) => {
-      result.json().then((resp) => {
-        console.warn(resp);
-      });
-    });
       method: 'DELETE',
     }).then((result) => {
       result.json().then((resp) => {
@@ -73,7 +65,6 @@ const Service = () => {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    fetch('https://dialuxury.onrender.com/service')
     fetch('https://dialuxury.onrender.com/service')
       .then((data) => data.json())
       .then((data) => setTableData(data));

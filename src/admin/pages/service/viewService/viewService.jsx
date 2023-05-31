@@ -164,10 +164,7 @@ const ViewService = () => {
         </Container>
       </div>
       <div className={styles.buttonUpdate}>
-        <button
-          onClick={navigateToServiceConfirmationForm}
-          className={styles.myButton}
-        >
+        <button onClick={Confirm} className={styles.myButton}>
           Xác Nhận
         </button>
       </div>
