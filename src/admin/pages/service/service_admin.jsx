@@ -40,8 +40,10 @@ const Service = () => {
   const loadSVT = async () => {
     axios
       .get('https://dialuxury.onrender.com/serviceType')
+      .get('https://dialuxury.onrender.com/serviceType')
       .then((response) => {
         setTableDataSVT(response.data);
+        //console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -49,7 +51,14 @@ const Service = () => {
   };
 
   function deleteSVT(id) {
+  function deleteSVT(id) {
     fetch(`http://localhost:3001/serviceType/svtid/${id}`, {
+      method: 'DELETE',
+    }).then((result) => {
+      result.json().then((resp) => {
+        console.warn(resp);
+      });
+    });
       method: 'DELETE',
     }).then((result) => {
       result.json().then((resp) => {
@@ -64,6 +73,7 @@ const Service = () => {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
+    fetch('https://dialuxury.onrender.com/service')
     fetch('https://dialuxury.onrender.com/service')
       .then((data) => data.json())
       .then((data) => setTableData(data));

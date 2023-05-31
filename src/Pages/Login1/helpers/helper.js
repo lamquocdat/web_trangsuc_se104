@@ -1,6 +1,6 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://dialuxury.onrender.com';
 export async function registerUser(credentials) {
   try {
     const {
@@ -49,6 +49,14 @@ export async function sentOTP(email) {
 export async function getUserbyId(_id) {
   try {
     const { data } = await axios.get(`/userid/${_id}`);
+    return Promise.resolve({ data });
+  } catch (error) {
+    return Promise.reject({ error: 'Can not get user' });
+  }
+}
+export async function getServiceType() {
+  try {
+    const { data } = await axios.get('/serviceType');
     return Promise.resolve({ data });
   } catch (error) {
     return Promise.reject({ error: 'Can not get user' });
@@ -182,11 +190,14 @@ export async function confirmOrderbyId(_orderid) {
     return Promise.reject({ error: 'Password doesnt match' });
   }
 }
-export async function scheduleMail(date, email) {
+export async function scheduleMail(date, email, body) {
   try {
     const { data } = await axios.post('/schedule', {
       date,
       email,
+    });
+    await axios.post('/service', {
+      body,
     });
     return Promise.resolve({ data });
   } catch (error) {

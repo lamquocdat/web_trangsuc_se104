@@ -93,11 +93,8 @@
 
 
 
-
-
-
 .datatable_2 {
-    height: 600px;
+    height: 450px;
     padding: 20px;
     margin-left: 20px;
    
@@ -182,4 +179,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.buttonUpdate
+{
+    float:right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+.myButton {
+    width: 100px;
+    padding: 10px;
+    
+    border: none;
+    background-color: teal;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
 }
