@@ -28,9 +28,10 @@ function Login() {
         error: <b>Sai email hoặc mật khẩu</b>,
       });
       loginPromise.then(function (res) {
-        let { token, _id } = res.data;
+        let { token, _id, ten } = res.data;
         localStorage.setItem('token', token);
         localStorage.setItem('_id', _id);
+        localStorage.setItem('ten', ten);
         navigate('/');
       });
     },

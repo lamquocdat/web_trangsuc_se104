@@ -9,40 +9,43 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import axios from "axios";
-import { useParams } from "react-router-dom";
-
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { getServiceById, scheduleMail } from '../../users/helper';
 const ViewService = () => {
 
   const { s_id } = useParams();
     const [service, setService] = useState([]);
 
-    useEffect(() => {
-        axios
-          .get(`https://dialuxury.onrender.com/service/sid/${s_id}`)
-          .then((response) => {
-            setService(response.data)
-            console.log(response.data);
-          })
-          .catch((error) => {
-              console.log(error);
-            });
-    }, []);
-    // Tính toán total money của Phiếu Dịch Vụ
-    // const totalMoney = service.reduce((accumulator, currentValue, index) => {
+  useEffect(() => {
+    axios
+      .get(`https://dialuxury.onrender.com/service/${_id}`)
+      .then((response) => {
+        setService(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-    //   let temp = 0;
-    //   service[0].serviceTypes.map((svt, index) => {
-    //     temp = accumulator + currentValue.svt[index].total;
-        
-    //     return (
-    //     index++
-          
-    //     )
-    //   })
-    //   return temp;
-    // }, 0);
+  const navigate = useNavigate();
+  const Confirm = () => {
+    const getService = getServiceById(_id);
+    getService
+      .then(function (res) {
+        const { makh, s_date, total } = res;
 
+        const schedule = scheduleMail(s_date, makh, total, _id);
+        schedule.then(function () {
+          navigate('/veriedService');
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   return (
     <div className={styles.servicePage} >
@@ -164,18 +167,11 @@ const ViewService = () => {
     
        
       </div>
-      <div className={styles.datatableBottom}>
-    <div className={styles.datatableText}>
-        <b>Còn Lại: </b>
-    </div>
-    <div className={styles.totalCost}>
-          5.500.000 VNĐ
-    </div>
-    
-       
-      </div> */}
-      
-    </div>
+      <div className={styles.buttonUpdate}>
+        <button onClick={Confirm} className={styles.myButton}>
+          Xác Nhận
+        </button>
+      </div>
     </div>
   );
 };

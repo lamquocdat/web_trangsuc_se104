@@ -9,6 +9,7 @@ import { getUserbyId, scheduleMail } from '../../Login1/helpers/helper';
 import { useParams } from 'react-router-dom';
 const Datepicker = () => {
   const { _id } = useParams();
+  const ten = localStorage.getItem('ten');
   const [selectedDate, setSelectedDate] = useState(null);
   const [email, setEmail] = useState('');
   const [formValues, setFormValues] = useState({
@@ -41,8 +42,19 @@ const Datepicker = () => {
       toast.error('Hãy chọn ngày hợp lệ ');
       return;
     }
-
-    await toast.promise(scheduleMail(formValues.date, email), {
+    var date = new Date(selectedDate);
+    const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    date = date.toLocaleDateString(undefined, options);
+    console.log(date);
+    const body = {
+      makh: email,
+      tenkh: ten,
+      serviceTypes: allids,
+      s_date: date,
+      total: total,
+    };
+    console.log(body);
+    await toast.promise(scheduleMail(formValues.date, email, body), {
       loading: 'Checking...',
       success: <b>Thư xác nhận đặt lịch đã được gửi qua email của bạn </b>,
       error: <b>Có lỗi xảy ra, vui lòng thử lại</b>,
