@@ -13,28 +13,25 @@ import { useState, useEffect } from 'react';
 
 import styles from './service.module.css';
 import Button from 'react-bootstrap/Button';
-import ReactPaginate from "react-paginate";
+import ReactPaginate from 'react-paginate';
 const Service = () => {
   //Service Types
-
 
   const [tableDataSVT, setTableDataSVT] = useState([]);
 
   //Pagination SVT
-  const [svtPerPage, setSvtPerPage] = useState(4)
-  const [CsvtPerPage, setCSvtPerPage] = useState(1)
+  const [svtPerPage, setSvtPerPage] = useState(4);
+  const [CsvtPerPage, setCSvtPerPage] = useState(1);
   const numOfToTalPages = Math.ceil(tableDataSVT.length / svtPerPage);
   // const pages = [...Array(numOfToTalPages + 1).keys()].slice(1);
-  const indexOfLastSVT = CsvtPerPage*svtPerPage;
+  const indexOfLastSVT = CsvtPerPage * svtPerPage;
   const indexOfFirstSVT = indexOfLastSVT - svtPerPage;
-  const visibleSVT = tableDataSVT.slice(indexOfFirstSVT, indexOfLastSVT)
-
- 
+  const visibleSVT = tableDataSVT.slice(indexOfFirstSVT, indexOfLastSVT);
 
   const changePage = ({ selected }) => {
     setCSvtPerPage(selected + 1);
   };
- //
+  //
 
   useEffect(() => {
     loadSVT();
@@ -72,8 +69,6 @@ const Service = () => {
       .then((data) => data.json())
       .then((data) => setTableData(data));
   }, []);
-
-
 
   return (
     <div className={styles.servicePage}>
@@ -151,28 +146,27 @@ const Service = () => {
         <span onclick={nextPage}>Next</span>
         </div> */}
         <ReactPaginate
-        previousLabel={"Prev"}
-        nextLabel={"Next"}
-        pageCount={numOfToTalPages}
-        onPageChange={changePage}
-        containerClassName={"pagination justify-content-center"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-        previousClassName={"page-item"}
-        previousLinkClassName={"page-link"}
-        nextClassName={"page-item"}
-        nextLinkClassName={"page-link"}
-        breakClassName={"page-item"}
-        breakLinkClassName={"page-link"}
-        activeClassName={"active"}
-      />
+          previousLabel={'Prev'}
+          nextLabel={'Next'}
+          pageCount={numOfToTalPages}
+          onPageChange={changePage}
+          containerClassName={'pagination justify-content-center'}
+          pageClassName={'page-item'}
+          pageLinkClassName={'page-link'}
+          previousClassName={'page-item'}
+          previousLinkClassName={'page-link'}
+          nextClassName={'page-item'}
+          nextLinkClassName={'page-link'}
+          breakClassName={'page-item'}
+          breakLinkClassName={'page-link'}
+          activeClassName={'active'}
+        />
       </div>
 
       <div className={styles.datatable}>
         <div className={styles.datatableTitle}>
           <b>Danh Sách Phiếu Dịch Vụ</b>
         </div>
-
 
         <TableContainer component={Paper} className={styles.table}>
           <Table sx={{ minWidth: 1200 }} aria-label="a dense table">
@@ -181,9 +175,7 @@ const Service = () => {
                 <TableCell className={styles.tableCell + ' text-center'}>
                   STT
                 </TableCell>
-                <TableCell className={styles.tableCell + ' text-center'}>
-                  Mã Phiếu
-                </TableCell>
+
                 <TableCell className={styles.tableCell + ' text-center'}>
                   Tên Khách Hàng
                 </TableCell>
@@ -195,6 +187,9 @@ const Service = () => {
                 </TableCell>
                 <TableCell className={styles.tableCell + ' text-center'}>
                   Tổng phí
+                </TableCell>
+                <TableCell className={styles.tableCell + ' text-center'}>
+                  Tình trạng
                 </TableCell>
                 <TableCell className={styles.tableCell + ' text-center'}>
                   Lựa Chọn
@@ -210,11 +205,9 @@ const Service = () => {
                   <TableCell className={styles.tableCell + ' text-center'}>
                     {index + 1}
                   </TableCell>
+
                   <TableCell className={styles.tableCell + ' text-center'}>
-                    {tableData._id}
-                  </TableCell>
-                  <TableCell className={styles.tableCell + ' text-center'}>
-                    tên
+                    {tableData.tenkh}
                   </TableCell>
                   <TableCell className={styles.tableCell + ' text-center'}>
                     {tableData.makh}
@@ -224,6 +217,9 @@ const Service = () => {
                   </TableCell>
                   <TableCell className={styles.tableCell + ' text-center'}>
                     {tableData.total.toLocaleString()} VND
+                  </TableCell>
+                  <TableCell className={styles.tableCell + ' text-center'}>
+                    {tableData.tinhtrang}
                   </TableCell>
                   <TableCell className={styles.tableCell + ' text-center'}>
                     <div className={styles.cellAction}>

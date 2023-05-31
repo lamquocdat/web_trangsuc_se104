@@ -196,9 +196,7 @@ export async function scheduleMail(date, email, body) {
       date,
       email,
     });
-    await axios.post('/service', {
-      body,
-    });
+    await axios.post('/service', { body });
     return Promise.resolve({ data });
   } catch (error) {
     console.log(error);

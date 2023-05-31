@@ -25,11 +25,13 @@ export async function getAllUsers() {
     return Promise.reject({ error: 'can not get' });
   }
 }
-export async function scheduleMail(date, email) {
+export async function scheduleMail(date, email, total, _id) {
   try {
     const { data } = await axios.post('/schedule', {
       date,
       email,
+      total,
+      _id,
     });
     return Promise.resolve({ data });
   } catch (error) {
@@ -51,5 +53,16 @@ export async function getUserbyId(_id) {
     return Promise.resolve({ data });
   } catch (error) {
     return Promise.reject({ error: 'Can not get user' });
+  }
+}
+export async function getServiceById(_id) {
+  try {
+    const { data } = await axios.get(`/service/${_id}`);
+    console.log(data);
+    const { makh, s_date, total } = data[0];
+    return Promise.resolve({ makh, s_date, total });
+  } catch (error) {
+    console.log(error);
+    return Promise.reject({ error: 'can not get service' });
   }
 }

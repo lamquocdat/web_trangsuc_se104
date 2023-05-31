@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { getServiceById, scheduleMail } from '../../users/helper';
 const ViewService = () => {
   const { _id } = useParams();
   const [service, setService] = useState([]);
@@ -29,9 +30,20 @@ const ViewService = () => {
   }, []);
 
   const navigate = useNavigate();
-  const navigateToServiceConfirmationForm = () => {
-    // 👇️ navigate to /contacts
-    navigate('/veriedService');
+  const Confirm = () => {
+    const getService = getServiceById(_id);
+    getService
+      .then(function (res) {
+        const { makh, s_date, total } = res;
+
+        const schedule = scheduleMail(s_date, makh, total, _id);
+        schedule.then(function () {
+          navigate('/veriedService');
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -152,10 +164,7 @@ const ViewService = () => {
         </Container>
       </div>
       <div className={styles.buttonUpdate}>
-        <button
-          onClick={navigateToServiceConfirmationForm}
-          className={styles.myButton}
-        >
+        <button onClick={Confirm} className={styles.myButton}>
           Xác Nhận
         </button>
       </div>

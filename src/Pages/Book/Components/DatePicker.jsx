@@ -14,6 +14,7 @@ import { useParams } from 'react-router-dom';
 import Multiselect from 'multiselect-react-dropdown';
 const Datepicker = () => {
   const { _id } = useParams();
+  const ten = localStorage.getItem('ten');
   const [selectedDate, setSelectedDate] = useState(null);
   const [email, setEmail] = useState('');
   const [nameAndid, setNameandId] = useState();
@@ -80,6 +81,7 @@ const Datepicker = () => {
     console.log(date);
     const body = {
       makh: email,
+      tenkh: ten,
       serviceTypes: allids,
       s_date: date,
       total: total,
