@@ -53,7 +53,7 @@ function Bill ({ cart }) {
         }
         else{
             //refresh lại giỏ hàng (xóa tất cả các sản phẩm có trong giỏ hàng này)
-            axios.post("http://localhost:3001/cart/refresh", {userId: Id})
+            axios.post("https://dialuxury.onrender.com/cart/refresh", {userId: Id})
                 .then((response) => {
 
                 })
@@ -61,7 +61,7 @@ function Bill ({ cart }) {
                     console.log(error);
             });
             // tạo đơn hàng mới trong order
-            axios.post("http://localhost:3001/order", data)
+            axios.post("https://dialuxury.onrender.com/order", data)
                 .then((response) => {
                     //chuyển hướng tới trang paymentinfo
                     const mahd = response.data.mahd;
