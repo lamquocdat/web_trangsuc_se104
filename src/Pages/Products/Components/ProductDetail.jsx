@@ -73,10 +73,10 @@ function Product() {
           <p>Mã: {product?.productid || "Product"}</p>
           <Row>
             <Col md={2}>
-            <p>Đã bán: 4</p>
+            <p>Đã bán: {product?.quantity_sold}</p>
             </Col>
             <Col>
-            <p>Còn hàng</p>
+            <p>Còn hàng: {product?.quality} </p>
             </Col>
           </Row>
           <h4>Giá: {formatCurrency(product?.price || 1000000)}</h4>
@@ -95,7 +95,6 @@ function Product() {
           </Button>
 
         </Col>
-      ))}
     </Row>
     <div>
       <h3>Thông số</h3>
