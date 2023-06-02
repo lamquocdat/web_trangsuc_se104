@@ -76,7 +76,7 @@ function Product() {
             <p>Đã bán: {product?.quantity_sold}</p>
             </Col>
             <Col>
-            <p>Còn hàng: {product?.quality} </p>
+            <p>Còn hàng: {product?.quantity} </p>
             </Col>
           </Row>
           <h4>Giá: {formatCurrency(product?.price || 1000000)}</h4>
