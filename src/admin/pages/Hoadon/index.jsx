@@ -8,7 +8,7 @@ function Hoadon () {
   
   useEffect(() => {
     axios
-      .get("https://dialuxury.onrender.com/order/tinhtrang/done")
+      .get("https://dialuxury.onrender.com/order/tinhtrang/Đã%20giao%20hàng")
       .then((response) => {
         setList(response.data)
       })
