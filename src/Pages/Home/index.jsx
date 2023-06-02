@@ -1,21 +1,35 @@
 import styles from "./Home.module.css";
 import { useState, useEffect } from 'react';
 
-import ProductHomepage from "./Components/Products";
+import ProductHomepage from "./Components/MostSoldProducts";
 import NewProductHomepage from "./Components/NewProduct";
 import { Container, Row} from "react-bootstrap";
 import axios from 'axios';
 function Home() {
-  const [newProduct, setnewProduct] = useState([]);
+  const [newProduct, setNewProduct] = useState([]);
+  const [soldProduct, setSoldProduct] = useState([]);
   useEffect(() => {
     loadNewProduct();
+    loadSoldProduct();
   }, []);
 
   const loadNewProduct = async () => {
     axios
       .get('http://localhost:3001/sortedProduct')
       .then((response) => {
-        setnewProduct(response.data);
+        setNewProduct(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const loadSoldProduct = async () => {
+    axios
+      .get('http://localhost:3001/soldNumbersOfProducts')
+      .then((response) => {
+        setSoldProduct(response.data);
         console.log(response.data);
       })
       .catch((error) => {
@@ -73,7 +87,7 @@ function Home() {
           <h4 className="pb-3" style={{ color: "rgb(189, 120, 189)", marginTop: "40px", textAlign: "center", fontSize:"27px"}}>
           Sản phẩm bán chạy
           </h4>
-          <ProductHomepage products={products} />;
+          <ProductHomepage products={soldProduct} />;
         </Row>
         <Row>
           <h4 className="pb-3" style={{ color: "rgb(189, 120, 189)", marginTop: "40px", textAlign: "center", fontSize:"27px"}}>

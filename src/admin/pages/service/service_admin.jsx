@@ -31,7 +31,8 @@ const Service = () => {
   const changePage = ({ selected }) => {
     setCSvtPerPage(selected + 1);
   };
-  //
+  //Pagination SV
+
 
   useEffect(() => {
     loadSVT();
@@ -50,14 +51,15 @@ const Service = () => {
   };
 
   function deleteSVT(id) {
-    fetch(`http://localhost:3001/serviceType/svtid/${id}`, {
+    fetch(`https://dialuxury.onrender.com/serviceType/svtid/${id}`, {
       method: 'DELETE',
     }).then((result) => {
       result.json().then((resp) => {
         console.warn(resp);
       });
+      loadSVT();
     });
-    loadSVT();
+    
   }
 
   //Services
@@ -69,6 +71,18 @@ const Service = () => {
       .then((data) => data.json())
       .then((data) => setTableData(data));
   }, []);
+
+  const [sPerPage, setSPerPage] = useState(6);
+  const [CsPerPage, setCSPerPage] = useState(1);
+  const numOfServiceToTalPages = Math.ceil(tableData.length / sPerPage);
+  // const pages = [...Array(numOfToTalPages + 1).keys()].slice(1);
+  const indexOfLastS = CsPerPage * sPerPage;
+  const indexOfFirstS = indexOfLastS - sPerPage;
+  const visibleS = tableData.slice(indexOfFirstS, indexOfLastS);
+
+  const changePageService = ({ selected }) => {
+    setCSPerPage(selected + 1);
+  };
 
   return (
     <div className={styles.servicePage}>
@@ -197,7 +211,7 @@ const Service = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {tableData.map((tableData, index) => (
+              {visibleS.map((tableData, index) => (
                 <TableRow
                   key={tableData.s_id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -237,6 +251,22 @@ const Service = () => {
             </TableBody>
           </Table>
         </TableContainer>
+        <ReactPaginate
+          previousLabel={'Prev'}
+          nextLabel={'Next'}
+          pageCount={numOfServiceToTalPages}
+          onPageChange={changePageService}
+          containerClassName={'pagination justify-content-center'}
+          pageClassName={'page-item'}
+          pageLinkClassName={'page-link'}
+          previousClassName={'page-item'}
+          previousLinkClassName={'page-link'}
+          nextClassName={'page-item'}
+          nextLinkClassName={'page-link'}
+          breakClassName={'page-item'}
+          breakLinkClassName={'page-link'}
+          activeClassName={'active'}
+        />
       </div>
     </div>
   );
