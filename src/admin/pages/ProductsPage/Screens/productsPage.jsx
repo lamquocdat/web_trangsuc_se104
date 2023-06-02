@@ -36,7 +36,6 @@ function ProductsPage() {
   let navigate = useNavigate();
 
   //Xoá sản phẩm:
-  const { id } = useParams();
 
   // const handleEditClick = ({ id }) => {
   //   // Gọi API để lấy thông tin sản phẩm
@@ -52,7 +51,20 @@ function ProductsPage() {
   //     });
   // };
 
-  const deleteProduct = ({ id }) => {
+  // const deleteProduct = (id) => {
+  //   axios
+  //     .delete(`http://localhost:3001/product/${id}`)
+  //     .then((response) => {
+  //       //Load lại các sản phẩm:
+  //       loadProducts();
+  //       console.log("Sản phẩm đã được xóa thành công");
+  //     })
+  //     .catch((error) => {
+  //       // Xử lý lỗi từ API
+  //       console.error("Lỗi khi xóa sản phẩm:", error);
+  //     });
+  // };
+  const deleteProduct = (id) => {
     axios
       .delete(`http://localhost:3001/product/${id}`)
       .then((response) => {
@@ -103,7 +115,7 @@ function ProductsPage() {
                   className={styles.tableCell + " text-center"}
                   style={{ fontSize: "16px", fontWeight: "500" }}
                 >
-                  Sản phẩm
+                  Tên Sản phẩm
                 </TableCell>
                 <TableCell
                   className={styles.tableCell + " text-center"}
@@ -117,12 +129,12 @@ function ProductsPage() {
                 >
                   Loại sản phẩm
                 </TableCell>
-                <TableCell
+                {/* <TableCell
                   className={styles.tableCell + " text-center"}
                   style={{ fontSize: "16px", fontWeight: "500" }}
                 >
                   Số lượng
-                </TableCell>
+                </TableCell> */}
                 <TableCell
                   className={styles.tableCell + " text-center"}
                   style={{ fontSize: "16px", fontWeight: "500" }}
@@ -181,8 +193,7 @@ function ProductsPage() {
                       <Image
                         src={product.image}
                         roundedCircle="true"
-                        width="50px"
-                        height="50px"
+                        style={{ width: "50px", height: "50px" }}
                       ></Image>
                     </TableCell>
                     <TableCell
@@ -193,12 +204,15 @@ function ProductsPage() {
                     >
                       {product.category}
                     </TableCell>
-                    <TableCell
+                    {/* <TableCell
                       className={styles.tableCell + " text-center"}
                       onClick={() => {
                         navigate(`/admin/productsPage/${product._id}`);
                       }}
-                    ></TableCell>
+                    >
+                      {product.quantity_sold}
+                    </TableCell> */}
+
                     <TableCell
                       className={styles.tableCell + " text-center"}
                       onClick={() => {
@@ -232,7 +246,7 @@ function ProductsPage() {
                         </Button>{" "}
                         <Button
                           variant="danger"
-                          onClick={() => deleteProduct({ id })}
+                          onClick={() => deleteProduct(product._id)}
                         >
                           Xóa
                         </Button>{" "}

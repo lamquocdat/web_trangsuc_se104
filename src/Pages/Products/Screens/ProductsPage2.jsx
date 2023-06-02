@@ -9,7 +9,7 @@ function ProductsPage2() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/product")
+      .get("http://localhost:3001/product/category/D%C3%A2y%20chuy%E1%BB%81n")
       .then((response) => {
         productsSet(response.data);
       })
