@@ -16,7 +16,8 @@ import { Image } from "react-bootstrap";
 
 function ProductsPage() {
   //Hiển thị dữ liệu các sản phẩm:
-  const [products, setProducts] = useState([]);
+
+  const [payments, setPayments] = useState([]);
 
   useEffect(() => {
     loadProducts();
@@ -24,9 +25,9 @@ function ProductsPage() {
 
   const loadProducts = async () => {
     axios
-      .get("http://localhost:3001/product")
+      .get("http://localhost:3001/order")
       .then((response) => {
-        setProducts(response.data);
+        setPayments(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -48,12 +49,12 @@ function ProductsPage() {
                 >
                   STT
                 </TableCell>
-                <TableCell
+                {/* <TableCell
                   className={styles.tableCell + " text-center"}
                   style={{ fontSize: "16px", fontWeight: "500" }}
                 >
                   Mã TT
-                </TableCell>
+                </TableCell> */}
                 <TableCell
                   className={styles.tableCell + " text-center"}
                   style={{ fontSize: "16px", fontWeight: "500" }}
@@ -64,7 +65,7 @@ function ProductsPage() {
                   className={styles.tableCell + " text-center"}
                   style={{ fontSize: "16px", fontWeight: "500" }}
                 >
-                  Tên KH
+                  Mã KH
                 </TableCell>
                 <TableCell
                   className={styles.tableCell + " text-center"}
@@ -87,71 +88,64 @@ function ProductsPage() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {products.map((product, index) => {
+              {payments.map((payment, index) => {
                 return (
-                  <TableRow key={product.id}>
+                  <TableRow key={payment.id}>
                     <TableCell
                       className={styles.tableCell + " text-center"}
                       onClick={() => {
-                        navigate(`/paymentView`);
+                        navigate(`/admin/paymentPage/${payment._id}`);
                       }}
                     >
                       {index + 1}
                     </TableCell>
 
+                    {/* <TableCell
+                      className={styles.tableCell + " text-center"}
+                      onClick={() => {
+                        navigate(`/admin/paymentPage/${payment._id}}`);
+                      }}
+                    ></TableCell> */}
                     <TableCell
                       className={styles.tableCell + " text-center"}
                       onClick={() => {
-                        navigate(`/paymentView`);
+                        navigate(`/admin/paymentPage/${payment._id}`);
                       }}
                     >
-                      {product.productid}
+                      {payment.mahd}
                     </TableCell>
                     <TableCell
                       className={styles.tableCell + " text-center"}
                       onClick={() => {
-                        navigate(`/paymentView`);
+                        navigate(`/admin/paymentPage/${payment._id}`);
                       }}
                     >
-                      {product.name}
+                      {payment.userId}
                     </TableCell>
                     <TableCell
                       className={styles.tableCell + " text-center"}
                       onClick={() => {
-                        navigate(`/paymentView`);
+                        navigate(`/admin/paymentPage/${payment._id}`);
                       }}
                     >
-                      <Image
-                        src={product.image}
-                        roundedCircle="true"
-                        width="50px"
-                        height="50px"
-                      ></Image>
-                    </TableCell>
-                    <TableCell
-                      className={styles.tableCell + " text-center"}
-                      onClick={() => {
-                        navigate(`/paymentView`);
-                      }}
-                    >
-                      {product.category}
+                      {payment.ngaylap}
                     </TableCell>
 
                     <TableCell
                       className={styles.tableCell + " text-center"}
                       onClick={() => {
-                        navigate(`/paymentView`);
+                        navigate(`/admin/paymentPage/${payment._id}`);
                       }}
                     >
-                      {product.dvt}
+                      {payment.hinhthucthanhtoan}
                     </TableCell>
                     <TableCell
                       className={styles.tableCell + " text-center"}
                       onClick={() => {
-                        navigate(`/paymentView`);
+                        navigate(`/admin/paymentPage/${payment._id}`);
                       }}
                     >
-                      {product.price} đ
+                      {payment.tongtien}
                     </TableCell>
                   </TableRow>
                 );

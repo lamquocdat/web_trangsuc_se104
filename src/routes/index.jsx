@@ -30,7 +30,7 @@ import AdjustService from "../admin/pages/service/adjustService/adjustService";
 import AddTypeInService from "../admin/pages/service/viewService/add/add";
 import WareHouse from "../admin/pages/Warehouse/warehouse_admin";
 
-import ViewPayment from "../admin/pages/paymentVerification/viewPayment/viewPayment";
+import ViewPayment from "../admin/pages/Payment/Screens/paymentDetails";
 import VerifyOrder from "../admin/pages/orderVerification/orderVerification";
 import ViewOrderVerification from "../admin/pages/orderVerification/viewOrderVerification/viewOrderVerification";
 import ConfirmationNotification from "../admin/pages/verfiedPage";
@@ -38,8 +38,9 @@ import Hoadon from "../admin/pages/Hoadon";
 import ChitietHoadon from "../admin/Components/ChitietHoadon";
 import AdjustServiceType from "../admin/pages/service/adjustServiceType/adjustServiceType";
 import VouchersPageAdmin from "../admin/pages/VouchersPage/Screens/vouchersPage";
-import VouchersDetailsAdmin from "../admin/pages/VouchersDetails/Screens/vouchersDetails";
+import VouchersDetailsAdmin from "../admin/pages/VouchersPage/Screens/vouchersDetails";
 import ProductsPageAdmin from "../admin/pages/ProductsPage/Screens/productsPage";
+import ProductDetailsAdmin from "../admin/pages/ProductsPage/Screens/productDetails";
 import AddProduct from "../admin/pages/ProductsPage/Screens/addProduct";
 import EditProduct from "../admin/pages/ProductsPage/Screens/editProduct";
 import AddVoucher from "../admin/pages/VouchersPage/Screens/addVoucher";
@@ -203,11 +204,11 @@ const adminRoutes = [
   },
 
   {
-    path: "/paymentVerfication",
+    path: "admin/paymentPage",
     component: <PaymentAdmin />,
   },
   {
-    path: "/paymentView",
+    path: "admin/paymentPage/:id",
     component: <ViewPayment />,
   },
   {
@@ -234,6 +235,10 @@ const adminRoutes = [
   {
     path: "/admin/productsPage",
     component: <ProductsPageAdmin />,
+  },
+  {
+    path: "/admin/productsPage/:id",
+    component: <ProductDetailsAdmin />,
   },
   {
     path: "/admin/productsPage/add",

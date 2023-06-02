@@ -68,7 +68,7 @@ function AdminSidebar() {
             </li>
           </Link>
 
-          <Link to="/paymentVerfication" style={{ textDecoration: "none" }}>
+          <Link to="/admin/paymentPage" style={{ textDecoration: "none" }}>
             <li>
               <PaidIcon className={styles.icon} />
               <span>Xác Nhận Thanh Toán</span>

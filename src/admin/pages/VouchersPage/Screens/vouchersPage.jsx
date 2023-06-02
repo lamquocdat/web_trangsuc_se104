@@ -36,7 +36,7 @@ function VouchersPage() {
 
   //Xoá sản phẩm:
   let { id } = useParams();
-  const deleteVoucher = ({ id }) => {
+  const deleteVoucher = (id) => {
     axios
       .delete(`http://localhost:3001/vouchers/${id}`)
       .then((response) => {
@@ -183,7 +183,7 @@ function VouchersPage() {
                         </Button>{" "}
                         <Button
                           variant="danger"
-                          onClick={() => deleteVoucher({ id })}
+                          onClick={() => deleteVoucher(voucher._id)}
                         >
                           Xóa
                         </Button>{" "}
