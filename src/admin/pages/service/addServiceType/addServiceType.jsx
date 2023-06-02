@@ -19,7 +19,7 @@ const AddServiceType = ({ inputs }) => {
       toast.error('Xin hãy điền đầy đủ thông tin dịch vụ');
     else {
       try {
-        const response = await axios.post('http://localhost:3001/serviceType', {
+        const response = await axios.post('https://dialuxury.onrender.com/serviceType', {
           svt_id,
           svt_name,
           svt_price,
