@@ -62,14 +62,36 @@ const Service = () => {
     
   }
 
+  
+
   //Services
 
   const [tableData, setTableData] = useState([]);
+  const loadService = async () => {
+    axios
+      .get('https://dialuxury.onrender.com/service')
+      .then((response) => {
+        setTableData(response.data);
+        //console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
+  function deleteService(_id) {
+    fetch(`https://dialuxury.onrender.com/service/${_id}`, {
+      method: 'DELETE',
+    }).then((result) => {
+      result.json().then((resp) => {
+        console.warn(resp);
+      });
+      loadService();
+    });
+    
+  }
   useEffect(() => {
-    fetch('https://dialuxury.onrender.com/service')
-      .then((data) => data.json())
-      .then((data) => setTableData(data));
+    loadService();
   }, []);
 
   const [sPerPage, setSPerPage] = useState(6);
@@ -154,11 +176,6 @@ const Service = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        {/* <div style={{display: "flex", float:"right", marginRight:"15px", marginTop:"15px", cursor:"pointer"}}>
-        <span onclick={prevPage}>Prev</span>
-        <p>{pages.map(page => <span kry={page} onClick={() => setCSvtPerPage(page)}>{`  ${page}  `}</span>)}</p>
-        <span onclick={nextPage}>Next</span>
-        </div> */}
         <ReactPaginate
           previousLabel={'Prev'}
           nextLabel={'Next'}
@@ -243,7 +260,9 @@ const Service = () => {
                       >
                         <div className={styles.viewButton}>View</div>
                       </Link>
-                      <Button className={styles.deleteButton}>Delete</Button>{' '}
+                      <Button 
+                      onClick={() => deleteService(tableData._id)}
+                      className={styles.deleteButton}>Delete</Button>{' '}
                     </div>
                   </TableCell>
                 </TableRow>
