@@ -4,6 +4,10 @@ import { Form, FormControl } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { KeyboardArrowLeft, KeyboardArrowRight, KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from "@mui/icons-material";
+import StarIcon from '@mui/icons-material/Star';
+import { yellow } from "@mui/material/colors";
+import Modal from 'react-bootstrap/Modal';
 function Product() {
   const { id } = useParams(); //lấy id từ url
   const [product, setProduct] = useState(); //lấy sản phẩm từ api
@@ -51,10 +55,156 @@ function Product() {
       });
   };
 
+  //lấy thông tin người dùng
+  const [user, setUser] = useState();
+  useEffect(()=>{
+    axios.get(`https://dialuxury.onrender.com/user/${idUserString}`)
+    .then((res)=>{
+      setUser(res.data);
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
+  })
+  //lấy thông tin bình luận về sản phẩm này
+  const pagesize = 1; // mỗi trang có bao nhiêu phần tử
+  const [currentPage, setCurrentPage] = useState(1); //trang hiện tại
+  let [totalPage, setTotalPage] =  useState(1);; //tổng số trang
+  const [pageRange, setPageRange] = useState([1]); //dải phân trang
+  const [isLeftMost, setIsLeftMost] = useState(false); //nút mũi tên trái
+  const [isRightMost, setIsRightMost] = useState(false); //nút mũi tên phải
+  const [commentList, setCommentList] = useState();
+  useEffect(()=>{
+    if(product!=undefined)
+      axios.get(`https://dialuxury.onrender.com/danhgia/${product.productid}?perPage=${pagesize}&page=${currentPage-1}&sortOrder=desc`)
+      .then((res)=>{
+        setCommentList(res.data.listDanhGia);
+        setTotalPage(res.data.pages);
+      })
+      .catch((e)=>{
+        console.log(e);
+      })
+  },[pagesize, currentPage, product])
+
+  //hàm chuyển trang
+  const changePage = (index) => {
+    if (index !== currentPage) 
+        setCurrentPage(index)
+}
+
+//hàm chuyển sang trang trước đó
+const decreasePage = () => {
+    setCurrentPage(prev => prev - 1)
+}
+
+//hàm chuyển sang trang phía sau
+const increasePage = () => {
+    setCurrentPage(prev => prev + 1)
+}
+
+//hàm đi đến trang đầu tiên
+const goToFirstPage = () => {
+    setCurrentPage(1)
+}
+
+//hàm đi đên trang cuối cùng
+const goToLastPage = () => {
+    setCurrentPage(totalPage)
+}
+
+//xử lý thay đổi trang
+useEffect(() => {
+    if (totalPage === 1) {
+        setIsLeftMost(true)
+        setIsRightMost(true)
+    } else if (currentPage === 1) {
+        setIsLeftMost(true)
+        setIsRightMost(false)
+    } else if (currentPage === totalPage) {
+        setIsRightMost(true)
+        setIsLeftMost(false)
+    } else {
+        setIsLeftMost(false)
+        setIsRightMost(false)
+    }
+    const arr = [];
+    for (let i = currentPage - 2; i <= currentPage + 2; i++)  
+        if (i >= 1 && i <= totalPage) 
+            arr.push(i);
+    setPageRange(arr);
+}, [currentPage, totalPage]);
+
+  const [comment, setComment] = useState("")
+  const [rating, setRating] = useState(5);
+  const HandleChangeComment = (e)=>{
+    setComment(e.target.value);
+  }
+  const HandleChangeRating = (e)=>{
+    setRating(e.target.value);
+  }
+
   //Gửi bình luận
   const SendComment = async () => {
-    console.log("Chưa làm");
+    axios.post("https://dialuxury.onrender.com/danhgia", {
+      productid: product.productid,
+      userid: user._id,
+      name: user.name,
+      content: comment,
+      rating: rating
+    })
+    .then((res)=>{
+
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
   };
+
+  //xóa bình luận
+  const deleteReview = (reviewId) => {
+    axios.delete(`https://dialuxury.onrender.com/danhgia/${reviewId}`)
+    .then(response => {
+      window.location.reload();
+    })
+    .catch((e) => {
+        console.log(e);
+    });
+  }
+
+  //sửa bình luận
+  const [editContent, setEditContent] = useState("");
+  const [editRating, setEditRating]  = useState(5);
+  const handleChangeEditContent = (e) => {
+    setEditContent(e.target.value);
+  }
+  const handleChangeEditRating = (e)=> {
+    setEditRating(e.target.value);
+  }
+  const [show, setShow] = useState(false);
+  const [reviewId, setReviewId] = useState("")
+  const handleClose = () => {
+    setShow(false);
+    setEditContent("");
+    setEditRating(5);
+  };
+   const handleShow = (id) => {
+     setReviewId(id);
+     setShow(true);
+   };
+  const handleSave = () => {
+    axios.put(`https://dialuxury.onrender.com/danhgia/${reviewId}`, {
+      content: editContent,
+      rating: editRating
+    })
+    .then((res)=>{
+      setShow(false);
+      window.location.reload();
+
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
+  }
 
   //hàm fomat định dạng tiền việt nam
   const formatCurrency = (value) => {
@@ -66,7 +216,7 @@ function Product() {
 
   return (
     <Container>
-      <Row className="align-items-center justify-content-center">
+      <Row className="align-align-items-center justify-content-center">
         <Col md={4}>
           <Image src={product?.image || ""} alt="Hình ảnh sản phẩm" fluid />
         </Col>
@@ -82,7 +232,7 @@ function Product() {
             </Col>
           </Row>
           <h4>Giá: {formatCurrency(product?.price || 1000000)}</h4>
-          <div className="d-flex align-items-center mb-3">
+          <div className="d-flex align-align-items-center mb-3">
             <span className="me-3">Số lượng:</span>
             <Button
               variant="outline-secondary"
@@ -146,8 +296,12 @@ function Product() {
       </Form.Group> */}
 
         <Form.Group controlId="formBasicPassword">
-          <Form.Label className="mt-4">Nhập bình luận của bạn:</Form.Label>
-          <FormControl as="textarea" placeholder="Nhập bình luận của bạn" />
+
+          <Form.Label className="mt-4">Nhập bình luận của bạn:</Form.Label><br/>
+          <FormControl as="textarea" placeholder="Nhập bình luận của bạn" value={comment} onChange={HandleChangeComment}/>
+          <Form.Label className="mt-1">Số điểm đánh giá:</Form.Label>
+          <FormControl style={{width: 50, height:30}} as="input" type="number" min={1} max={5} step={1} value={rating} onChange={HandleChangeRating}/>
+          
         </Form.Group>
 
         <Button
@@ -159,6 +313,102 @@ function Product() {
           Gửi bình luận
         </Button>
       </Form>
+      <h2>Bình luận</h2>
+      <div className="border border-primary p-3 rounded">
+      {commentList!==undefined &&
+        commentList.map((item)=>{
+          return(
+            <div key={item._id}>
+              <b>{item.name}</b><br/>
+              {[...Array(item.rating)].map((_, index) => (
+                <StarIcon key={index}sx={{ color: yellow[500], fontSize:20 }}/>
+              ))}
+              <p className="my-1">{item.content}</p>
+              {user !== undefined && item.userid===user._id && 
+                <div>
+                  <Button variant="warning" className="mx-2" 
+                   onClick={()=>handleShow(item._id)}
+                  >Edit</Button>
+                  <Button variant="danger" 
+                  // onClick={() => deleteReview(item._id)}
+                  >Delete</Button>
+                </div>
+              }
+            </div>
+          )
+        })
+      }
+      {/* Phân trang */}
+      {totalPage!==0 && 
+        <div className="d-flex align-items-center ms-1 justify-content-center gap-3 mt-5">
+          <div className="d-flex align-items-center ms-1 justify-content-center gap-3 w-25">
+            {!isLeftMost && (
+                <>
+                    <div onClick={goToFirstPage} className="d-flex align-items-center justify-content-center bg-light rounded hover:bg-primary fs-6 text-secondary hover:text-white w-25 h-25 pe-auto user-select-none">
+                        <KeyboardDoubleArrowLeft />
+                    </div>
+                    <div onClick={decreasePage} className="d-flex align-items-center justify-content-center bg-light rounded hover:bg-primary fs-6 text-secondary hover:text-white w-25 h-25 pe-auto user-select-none">
+                        <KeyboardArrowLeft />
+                    </div>
+                </>
+            )}
+            {pageRange.map((item, index) => {
+                return (
+                    <div key={index}
+                        className={`d-flex align-items-center justify-content-center rounded fs-6 text-secondary w-25 h-25 pe-auto user-select-none ${item === currentPage ? 'text-white bg-primary' : 'bg-light hover:text-white hover:bg-primary'}`}
+                        onClick={() => changePage(item)}
+                    >
+                        {item}
+                    </div>)
+            })}
+            {!isRightMost && (
+                <>
+                    <div onClick={increasePage} className="d-flex align-items-center justify-content-center bg-light rounded hover:bg-primary fs-6 text-secondary hover:text-white w-25 h-25 pe-auto user-select-none">
+                        <KeyboardArrowRight />
+                    </div>
+                    <div onClick={goToLastPage} className="d-flex align-items-center justify-content-center bg-light rounded hover:bg-primary fs-6 text-secondary hover:text-white w-25 h-25 pe-auto user-select-none">
+                        <KeyboardDoubleArrowRight />
+                    </div>
+                </>
+            )}
+          </div>
+        </div>
+      }
+      </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Chỉnh sửa bình luận</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Số điểm đánh giá</Form.Label>
+              <Form.Control
+                as="input" type="number" min={1} max={5} step={1} value={editRating} onChange={handleChangeEditRating}
+              />
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Label>Nội dung</Form.Label>
+              <Form.Control as="textarea" rows={3} value={editContent} onChange={handleChangeEditContent} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" 
+          onClick={handleClose}
+          >
+            Hủy
+          </Button>
+          <Button variant="primary" 
+          onClick={handleSave}
+          >
+            Lưu
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Container>
   );
 }
