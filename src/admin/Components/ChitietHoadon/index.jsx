@@ -20,6 +20,7 @@ export default () => {
           .get(`https://dialuxury.onrender.com/order/hd/${mahd}`)
           .then((response) => {
             setOrders(response.data)
+            console.log(response.data)
           })
           .catch((error) => {
               console.log(error);
