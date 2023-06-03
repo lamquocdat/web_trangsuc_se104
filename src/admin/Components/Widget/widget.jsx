@@ -6,13 +6,77 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import DiamondIcon from '@mui/icons-material/Diamond';
 import styles from "./widget.module.css"
 import DataTable from "./dataTable";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 function Widget() {
+  //lấy tổng số user
+  const [users, setUsers ] = useState(0);
+  useEffect(()=>{
+    axios.get("https://dialuxury.onrender.com/users")
+    .then((res)=>{
+      setUsers(res.data.length);
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
+  },[])
+
+  //lấy tổng số đơn hàng với tình trạng đã giao hàng
+  const [orders, setOrder ] = useState(0);
+  useEffect(()=>{
+    axios.get("https://dialuxury.onrender.com/order/tinhtrang/%C4%90%C3%A3%20giao%20h%C3%A0ng")
+    .then((res)=>{
+      setOrder(res.data.length);
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
+  },[])
+
+  //lây tổng số sản phẩm
+  const [Products, setProducts ] = useState(0);
+  useEffect(()=>{
+    axios.get("https://dialuxury.onrender.com/product")
+    .then((res)=>{
+      setProducts(res.data.length);
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
+  },[])
+
+  //lấy doanh thu từ các hóa đơn đã giao hàng
+  const [revenue, setRevenue ] = useState(0);
+  useEffect(()=>{
+    axios.get("https://dialuxury.onrender.com/order/tinhtrang/Đã%20giao%20hàng")
+    .then((res)=>{
+      let total = 0;
+      console.log(res.data)
+      for (const order of res.data){
+        for(const sp of order.sanphams)
+          total+=sp.thanhtien;
+      }
+      setRevenue(total);
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
+  },[])
+
+  //hàm fomat định dạng tiền việt nam
+  const formatCurrency = (value) => {
+    const formattedValue = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return `${formattedValue} đ`;
+  };
+
     const products = [
       {
         id: "p1",
         title: "Người dùng",
         isMoney: false,
+        amount:users,
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -28,6 +92,7 @@ function Widget() {
         id: "p2",
         title: "Đơn hàng",
         isMoney: false,
+        amount: orders,
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -44,6 +109,7 @@ function Widget() {
         id: "p3",
         title: "Sản phẩm",
         isMoney: false,
+        amount:Products,
         icon: (
           <DiamondIcon
             className="icon"
@@ -55,6 +121,7 @@ function Widget() {
         id: "p4",
         title: "Doanh thu",
         isMoney: true,
+        amount: formatCurrency(revenue),
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"

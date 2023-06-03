@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   AreaChart,
   Area,
@@ -8,17 +9,89 @@ import {
   Tooltip
 } from "recharts";
 
-const data = [
-    { name: "January", Total: 1200 },
-    { name: "February", Total: 2100 },
-    { name: "March", Total: 800 },
-    { name: "April", Total: 1600 },
-    { name: "May", Total: 900 },
-    { name: "June", Total: 1700 },
-  ];
+export default function Chart({aspect, title} ) {
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth() + 1; //lấy tháng hiện tại
+
+  const [thangHienTai, setThangHienTai] = useState({thang:0, tien:0})
+  const [thangTruoc, setThangTruoc] = useState({thang:0, tien:0})
+  const [haiThangTruoc, setHaiThangTruoc] = useState({thang:0, tien:0})
+  const [baThangTruoc,setBaThangTruoc] = useState({thang:0, tien:0})
+  const [bonThangTruoc, setBonThanTruoc] = useState({thang:0, tien:0}) 
+  const [namThangTruoc, setNamThangTruoc] = useState({thang:0, tien:0})
+  //lấy dữ liệu các order đã giao hàng
+useEffect(()=>{
+  axios.get("https://dialuxury.onrender.com/order/tinhtrang/Đã%20giao%20hàng")
+  .then((res)=>{
+    for(const order of res.data){
+      const month = parseInt(order.ngaylap.split("/")[1], 10); // lấy tháng từ ngày lập
+        switch (month) {
+          case currentMonth:
+            for(const sp of order.sanphams)
+              setThangHienTai((prevThangHienTai) => ({
+                thang: month,
+                tien: prevThangHienTai.tien + sp.thanhtien
+              }));
+            break;
+          case currentMonth-1:
+            for(const sp of order.sanphams)
+              setThangTruoc((prevThangTruoc) => ({
+                thang: month,
+                tien: prevThangTruoc.tien + sp.thanhtien
+              }));
+            break;
+          case currentMonth-2:
+            for(const sp of order.sanphams)
+              setHaiThangTruoc((prevHaiThangTruoc) => ({
+                thang: month,
+                tien: prevHaiThangTruoc.tien + sp.thanhtien
+              }));
+            break;
+          case currentMonth-3:
+            for(const sp of order.sanphams)
+              setBaThangTruoc((prevBaThangTruoc) => ({
+                thang: month,
+                tien: prevBaThangTruoc.tien + sp.thanhtien
+              }));
+            break;
+          case currentMonth-4:
+            for(const sp of order.sanphams)
+              setBonThanTruoc((prevBonThanTruoc) => ({
+                thang: month,
+                tien: prevBonThanTruoc.tien + sp.thanhtien
+              }));
+            break;
+          case currentMonth-5:
+            for(const sp of order.sanphams)
+              setNamThangTruoc((prevNamThangTruoc) => ({
+                thang: month,
+                tien: prevNamThangTruoc.tien + sp.thanhtien
+              }));
+            break;
+          default:
+            break;
+        }
+      }
+  })
+  .catch((e)=>{
+    console.log(e);
+  })
+},[])
+
+const [data, setData ] = useState([]);
+useEffect(()=>{
+  setData([
+    { name: namThangTruoc.thang, Total: namThangTruoc.tien/2 },
+    { name: bonThangTruoc.thang, Total: bonThangTruoc.tien/2},
+    { name: baThangTruoc.thang, Total: baThangTruoc.tien/2 },
+    { name: haiThangTruoc.thang, Total: haiThangTruoc.tien/2 },
+    { name: thangTruoc.thang, Total: thangTruoc.tien/2 },
+      { name: thangHienTai.thang, Total: thangHienTai.tien/2 },
+    ]);
+    //phải chia hai vì component render 2 lần làm thuộc tính tien = tien *2
+},[thangHienTai,thangTruoc,haiThangTruoc,baThangTruoc,bonThangTruoc,namThangTruoc])
   
 
-export default function Chart({aspect, title} ) {
   return (
     <div className="chart">
       <div className="title">{title}</div>
