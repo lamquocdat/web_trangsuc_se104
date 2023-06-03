@@ -7,8 +7,33 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import styles from "./table.module.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
 
 function TableTemplate ({rows}) {
+
+  const [updatedRows, setUpdatedRows] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const updatedData = await Promise.all(
+        rows.map(async (row) => {
+          try {
+            const response = await axios.get(`https://dialuxury.onrender.com/user/${row.userId}`);
+            const name = response.data.name;
+            return { ...row, name };
+          } catch (error) {
+            console.log(error);
+            return row;
+          }
+        })
+      );
+      setUpdatedRows(updatedData);
+    };
+
+    fetchData();
+  }, [rows]);
 
   return (
     <TableContainer component={Paper} className={styles.table}>
@@ -23,7 +48,7 @@ function TableTemplate ({rows}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, index) => {
+          {updatedRows.map((row, index) => {
             return (
               <TableRow key={row.mahd}>
                 <TableCell className={styles.tableCell+ " text-center"} >{index +1}</TableCell>
