@@ -26,7 +26,7 @@ function Bill ({ cart }) {
         return {
             hinhanh: sp.image,
             sanpham: sp.name,
-            loaisp: sp.loaisp,
+            loaisp: sp.category,
             sl : sp.soluong,
             dvt: sp.dvt,
             dongia: sp.price,
