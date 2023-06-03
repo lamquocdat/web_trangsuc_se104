@@ -1,17 +1,28 @@
 import React from "react";
 import { Container, Row, Col, Card} from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { useState, useEffect } from 'react';
+import ReactPaginate from 'react-paginate';
 function NewProductHomepage({ products }) {
 
-  const visibleProducts = products;
+  const [proPerPage, setProPerPage] = useState(4);
+  const [CurProPerPage, setCurProPerPage] = useState(1);
+  const numOfToTalPages = Math.ceil(products.length / proPerPage);
+  // const pages = [...Array(numOfToTalPages + 1).keys()].slice(1);
+  const indexOfLastPro = CurProPerPage * proPerPage;
+  const indexOfFirstPro = indexOfLastPro - proPerPage;
+  const visiblePro = products.slice(indexOfFirstPro, indexOfLastPro);
+
+  const changePage = ({ selected }) => {
+    setCurProPerPage(selected + 1);
+  };
   return (
     <>
       <Container fluid>
         {/* Render các sản phẩm */}
         <Row className="mx-4 mt-5">
           {/* visibleProducts = 12 */}
-          {visibleProducts.map((product) => (
+          {visiblePro.map((product) => (
             <Col key={product.productid} sm={6} md={4} lg={3}>
               <Link to={`/productsdetail/${product._id}`}>
                 <Card style={{ background: "#f7f7f7", marginBottom: "30px" }}>
@@ -36,6 +47,22 @@ function NewProductHomepage({ products }) {
           ))}
         </Row>
       </Container>
+      <ReactPaginate
+          previousLabel={'Prev'}
+          nextLabel={'Next'}
+          pageCount={numOfToTalPages}
+          onPageChange={changePage}
+          containerClassName={'pagination justify-content-center'}
+          pageClassName={'page-item'}
+          pageLinkClassName={'page-link'}
+          previousClassName={'page-item'}
+          previousLinkClassName={'page-link'}
+          nextClassName={'page-item'}
+          nextLinkClassName={'page-link'}
+          breakClassName={'page-item'}
+          breakLinkClassName={'page-link'}
+          activeClassName={'active'}
+        />
     </>
   );
 }
