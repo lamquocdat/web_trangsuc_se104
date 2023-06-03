@@ -23,6 +23,9 @@ function NewProductHomepage({ products }) {
                     <Card.Text style={{ color: "#e7b475", fontWeight: "500" }}>
                       {product.price} VNĐ
                     </Card.Text>
+                    <Card.Text style={{ color: "black", fontWeight: "350", float: "right" }}>
+                      {product.quantity_sold} đã bán !
+                    </Card.Text>
                     {/* <Card.Text style={{ textAlign: "center", fontSize: "15px" }}>
                       {product.sold}
                     </Card.Text> */}

@@ -86,7 +86,7 @@ const ViewService = () => {
                     {service._id}
                   </TableCell>
                   <TableCell className={styles.tableCell + ' text-center'}>
-                    tên
+                  {service.tenkh}
                   </TableCell>
                   <TableCell className={styles.tableCell + ' text-center'}>
                     {service.makh}
