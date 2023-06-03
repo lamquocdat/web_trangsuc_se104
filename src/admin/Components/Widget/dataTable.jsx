@@ -1,10 +1,8 @@
 import React from "react";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Container, Row, Col, Card} from "react-bootstrap";
 import styles from './dataTable.module.css'
 
 function DataTable({ products }) {
-  const amount = 100;
   const visibleProducts = products;
 
   return (
@@ -19,7 +17,7 @@ function DataTable({ products }) {
                     <Card.Title >{product.title}</Card.Title>
                   </span>
                   <span className={styles.counter}>
-                    <Card.Text style={{color:"green", fontWeight:"bold", fontSize:"23px"}}>{product.isMoney && "$"} {amount}</Card.Text>
+                    <Card.Text style={{color:"green", fontWeight:"bold", fontSize:"23px"}}>{product.amount }</Card.Text>
                   </span>
                   <span className={styles.link}>
                     <Card.Link href="#" style={{color:"grey", textDecorationLine:"none"}}>{product.link}</Card.Link>
