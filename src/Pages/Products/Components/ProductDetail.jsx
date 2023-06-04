@@ -30,8 +30,6 @@ function Product() {
       .get(`https://dialuxury.onrender.com/product/${id}`)
       .then((response) => {
         setProduct(response.data);
-        console.log("Sản phẩm");
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -67,9 +65,10 @@ function Product() {
     })
   })
   //lấy thông tin bình luận về sản phẩm này
-  const pagesize = 1; // mỗi trang có bao nhiêu phần tử
+  const pagesize = 10; // mỗi trang có bao nhiêu phần tử
   const [currentPage, setCurrentPage] = useState(1); //trang hiện tại
-  let [totalPage, setTotalPage] =  useState(1);; //tổng số trang
+  const [totalPage, setTotalPage] =  useState(1);; //tổng số trang
+  const [totalComment, setTotalComment] = useState(1);
   const [pageRange, setPageRange] = useState([1]); //dải phân trang
   const [isLeftMost, setIsLeftMost] = useState(false); //nút mũi tên trái
   const [isRightMost, setIsRightMost] = useState(false); //nút mũi tên phải
@@ -80,11 +79,23 @@ function Product() {
       .then((res)=>{
         setCommentList(res.data.listDanhGia);
         setTotalPage(res.data.pages);
+        setTotalComment(res.data.totalDG);
       })
       .catch((e)=>{
         console.log(e);
       })
   },[pagesize, currentPage, product])
+
+  //lấy số điểm đánh giá từ các bình luận
+  const [diem, setDiem] = useState(5);
+  useEffect(()=>{
+    if(commentList!=undefined){
+      let rating =0;
+      for(const comment of commentList)
+        rating+=comment.rating;
+      setDiem(Math.ceil(rating/totalComment));
+    }
+  },[commentList])
 
   //hàm chuyển trang
   const changePage = (index) => {
@@ -213,6 +224,16 @@ useEffect(() => {
       .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return `${formattedValue} đ`;
   };
+  //hàm lấy giờ , phút, ngay tháng năm của updateAt
+  const fomatTime = (value)=>{
+    const date = new Date(value);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    return `${hours}:${minutes}   ${day}/${month}/${year}`;
+  }
 
   return (
     <Container>
@@ -223,6 +244,13 @@ useEffect(() => {
         <Col md={6}>
           <h2>{product?.name || "Product"}</h2>
           <p>Mã: {product?.productid || "Product"}</p>
+          <p>Điểm đánh giá: <span>
+            {diem!=undefined && [...Array(diem)].map((_, index) => (
+                  <StarIcon key={index}sx={{ color: yellow[500], fontSize:20 }}/>
+                ))}
+            {totalComment!=undefined && <span>({totalComment})</span>}
+          </span>
+          </p>
           <Row>
             <Col md={2}>
               <p>Đã bán: {product?.quantity_sold}</p>
@@ -314,24 +342,20 @@ useEffect(() => {
         </Button>
       </Form>
       <h2>Bình luận</h2>
-      <div className="border border-primary p-3 rounded">
+      <div>
       {commentList!==undefined &&
         commentList.map((item)=>{
           return(
-            <div key={item._id}>
-              <b>{item.name}</b><br/>
+            <div key={item._id} className="border border-secondary p-2 rounded my-1">
+              <p className="fw-bold m-0">{item.name}   <span>({fomatTime(item.updatedAt)})</span></p>
               {[...Array(item.rating)].map((_, index) => (
                 <StarIcon key={index}sx={{ color: yellow[500], fontSize:20 }}/>
               ))}
               <p className="my-1">{item.content}</p>
               {user !== undefined && item.userid===user._id && 
                 <div>
-                  <Button variant="warning" className="mx-2" 
-                   onClick={()=>handleShow(item._id)}
-                  >Edit</Button>
-                  <Button variant="danger" 
-                  // onClick={() => deleteReview(item._id)}
-                  >Delete</Button>
+                  <Button variant="warning" className="me-2" onClick={()=>handleShow(item._id)}> Edit </Button>
+                  <Button variant="danger" onClick={() => deleteReview(item._id)}>Delete</Button>
                 </div>
               }
             </div>
