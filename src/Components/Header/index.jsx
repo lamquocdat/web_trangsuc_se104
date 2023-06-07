@@ -12,6 +12,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 function Header() {
   const token = localStorage.getItem("token");
@@ -21,6 +23,22 @@ function Header() {
     localStorage.removeItem("token");
     window.location.reload();
   };
+
+  const [userQuery,setUserQuery ] = useState("")
+  const handleChangeUserQuery = (e)=>{
+    setUserQuery(e.target.value);
+  }
+
+  const handleSearch = (query) => {
+    axios.get(`http://localhost:3001/product/search?query=${query}`)
+    .then((res)=>{
+      console.log("kết quả tìm kiếm")
+      console.log(res.data);
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
+  }
 
   return (
     <>
@@ -189,10 +207,10 @@ function Header() {
                 type="search"
                 placeholder="Tìm kiếm"
                 className={"me-2 " + styles.formcontrol}
-                aria-label="Search"
+                aria-label="Search" value={userQuery} onChange={handleChangeUserQuery}
               />
 
-              <Button variant="secondary" className={styles.button}>
+              <Button variant="secondary" className={styles.button} onClick={()=>handleSearch(userQuery)}>
                 <SearchIcon />
               </Button>
             </Form>
