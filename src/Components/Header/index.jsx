@@ -12,8 +12,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext,useEffect } from "react";
 import axios from "axios";
+import MyContext from "../../Layout/DefaultLayout/MyContext";
 
 function Header() {
   const token = localStorage.getItem("token");
@@ -23,6 +24,8 @@ function Header() {
     localStorage.removeItem("token");
     window.location.reload();
   };
+
+  const {resultSearch, handelChangeResultSearch} = useContext(MyContext);
 
   const [userQuery,setUserQuery ] = useState("")
   const handleChangeUserQuery = (e)=>{
@@ -34,6 +37,7 @@ function Header() {
     .then((res)=>{
       console.log("kết quả tìm kiếm")
       console.log(res.data);
+      handelChangeResultSearch(res.data);
     })
     .catch((e)=>{
       console.log(e);

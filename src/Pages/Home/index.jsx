@@ -1,11 +1,19 @@
 import styles from "./Home.module.css";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext  } from 'react';
 
 import ProductHomepage from "./Components/MostSoldProducts";
 import NewProductHomepage from "./Components/NewProduct";
 import { Container, Row} from "react-bootstrap";
 import axios from 'axios';
+import MyContext from "../../Layout/DefaultLayout/MyContext";
 function Home() {
+  const {resultSearch, handelChangeResultSearch} = useContext(MyContext);
+
+  useEffect(()=>{
+    console.log("kết quả của tìm kiếm được lấy ở trang home")
+    console.log(resultSearch);
+  },[resultSearch])
+
   const [newProduct, setNewProduct] = useState([]);
   const [soldProduct, setSoldProduct] = useState([]);
   useEffect(() => {
