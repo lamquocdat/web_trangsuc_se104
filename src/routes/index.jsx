@@ -9,6 +9,7 @@ import ProductsPage from "../Pages/Products/Screens/ProductsPage";
 import ProductsPage1 from "../Pages/Products/Screens/ProductsPage1";
 import ProductsPage2 from "../Pages/Products/Screens/ProductsPage2";
 import ProductsDetail from "../Pages/Products/Components/ProductDetail";
+import SearchProducts from "../Pages/SearchProduct/searchProduct";
 import AboutUs from "../Pages/AboutUs/AboutUs";
 import Book from "../Pages/Book/Book";
 import HomeAdmin from "../admin/pages/home/home_admin";
@@ -76,6 +77,10 @@ const publicRoutes = [
   {
     path: "/productsdetail/:id",
     component: <ProductsDetail />,
+  },
+  {
+    path: "/search",
+    component: <SearchProducts />,
   },
   {
     path: "/aboutus",
