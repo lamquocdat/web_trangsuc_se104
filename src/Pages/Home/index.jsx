@@ -46,18 +46,6 @@ function Home() {
     axios
       .get('http://localhost:3001/soldNumbersOfProducts')
       .then((response) => {
-        setNewProduct(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const loadSoldProduct = async () => {
-    axios
-      .get('http://localhost:3001/soldNumbersOfProducts')
-      .then((response) => {
         setSoldProduct(response.data);
         console.log(response.data);
       })

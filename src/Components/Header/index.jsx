@@ -33,14 +33,6 @@ function Header() {
     setUserQuery(e.target.value);
   };
 
-  const { resultSearch, handelChangeResultSearch } = useContext(MyContext);
-
-  const [userQuery, setUserQuery] = useState('');
-  const handleChangeUserQuery = (e) => {
-    setUserQuery(e.target.value);
-  };
-
-  let navigate = useNavigate();
   return (
     <>
       {/* nav 1 */}
