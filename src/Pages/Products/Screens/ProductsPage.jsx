@@ -9,7 +9,7 @@ function ProductsPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/product/category/Nh%E1%BA%ABn")
+      .get("https://dialuxury.onrender.com/product/category/Nh%E1%BA%ABn")
       .then((response) => {
         productsSet(response.data);
       })
