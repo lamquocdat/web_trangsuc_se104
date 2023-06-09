@@ -32,7 +32,7 @@ function Home() {
 
   const loadNewProduct = async () => {
     axios
-      .get('http://localhost:3001/sortedProduct')
+      .get('https://dialuxury.onrender.com/sortedProduct')
       .then((response) => {
         setNewProduct(response.data);
         console.log(response.data);
@@ -44,7 +44,7 @@ function Home() {
 
   const loadSoldProduct = async () => {
     axios
-      .get('http://localhost:3001/soldNumbersOfProducts')
+      .get('https://dialuxury.onrender.com/soldNumbersOfProducts')
       .then((response) => {
         setSoldProduct(response.data);
         console.log(response.data);
