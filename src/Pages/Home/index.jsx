@@ -1,5 +1,5 @@
 import styles from './Home.module.css';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 
 import ProductHomepage from './Components/MostSoldProducts';
 import NewProductHomepage from './Components/NewProduct';

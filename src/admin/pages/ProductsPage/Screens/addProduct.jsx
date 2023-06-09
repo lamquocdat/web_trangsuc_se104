@@ -19,7 +19,7 @@ const AddProductForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3001/product", {
+      const response = await axios.post("https://dialuxury.onrender.com/product", {
         productid,
         name,
         price,

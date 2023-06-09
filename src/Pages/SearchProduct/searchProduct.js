@@ -2,7 +2,6 @@ import { Container, Row, Image } from "react-bootstrap";
 import ProductList from "../Products/Components/Products";
 import ImageBanner from "../../../src/assets/images/Products/banner_search.jpg";
 import { useState, useEffect, useContext } from "react";
-import MyContext from "../../Layout/DefaultLayout/MyContext";
 import axios from "axios";
 
 function ProductsPage() {

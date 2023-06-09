@@ -22,7 +22,7 @@ const EditProduct = () => {
   //   const handleEditClick = () => {
   //     // Gọi API để lấy thông tin sản phẩm
   //     axios
-  //       .get(`http://localhost:3001/product/${id}`)
+  //       .get(`https://dialuxury.onrender.com/product/${id}`)
   //       .then((response) => {
   //         // Cập nhật state với thông tin sản phẩm
   //         setProduct(response.data);
@@ -37,7 +37,7 @@ const EditProduct = () => {
 
   //     // Gọi API để cập nhật thông tin sản phẩm
   //     axios
-  //       .put(`http://localhost:3001/product/${id}`, product)
+  //       .put(`https://dialuxury.onrender.com/product/${id}`, product)
   //       .then((response) => {
   //         console.log("Sản phẩm đã được cập nhật.");
   //         // Xử lý khi cập nhật thành công
@@ -97,7 +97,7 @@ const EditProduct = () => {
 
     // Gửi yêu cầu PUT đến API để sửa sản phẩm
     axios
-      .put(`http://localhost:3001/product/${id}`, {
+      .put(`https://dialuxury.onrender.com/product/${id}`, {
         name,
         image,
         price,
