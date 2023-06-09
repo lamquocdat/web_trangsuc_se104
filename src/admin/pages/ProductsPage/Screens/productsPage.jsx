@@ -24,7 +24,7 @@ function ProductsPage() {
 
   const loadProducts = async () => {
     axios
-      .get("http://localhost:3001/product")
+      .get("https://dialuxury.onrender.com/product")
       .then((response) => {
         setProducts(response.data);
       })
@@ -40,7 +40,7 @@ function ProductsPage() {
   // const handleEditClick = ({ id }) => {
   //   // Gọi API để lấy thông tin sản phẩm
   //   axios
-  //     .get(`http://localhost:3001/product/${id}`)
+  //     .get(`https://dialuxury.onrender.com/product/${id}`)
   //     .then((response) => {
   //       // Cập nhật state với thông tin sản phẩm
   //       console.log(response.data);
@@ -53,7 +53,7 @@ function ProductsPage() {
 
   // const deleteProduct = (id) => {
   //   axios
-  //     .delete(`http://localhost:3001/product/${id}`)
+  //     .delete(`https://dialuxury.onrender.com/product/${id}`)
   //     .then((response) => {
   //       //Load lại các sản phẩm:
   //       loadProducts();
@@ -66,7 +66,7 @@ function ProductsPage() {
   // };
   const deleteProduct = (id) => {
     axios
-      .delete(`http://localhost:3001/product/${id}`)
+      .delete(`https://dialuxury.onrender.com/product/${id}`)
       .then((response) => {
         //Load lại các sản phẩm:
         loadProducts();

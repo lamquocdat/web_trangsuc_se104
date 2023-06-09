@@ -16,7 +16,7 @@ function TableTemplate({ rows }) {
   let id = useParams();
   const deleteProduct = ({ id }) => {
     axios
-      .delete(`http://localhost:3001/product/${id}`)
+      .delete(`https://dialuxury.onrender.com/product/${id}`)
       .then((response) => {
         // Xử lý phản hồi thành công từ API
 

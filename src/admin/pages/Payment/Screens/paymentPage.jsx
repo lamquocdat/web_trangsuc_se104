@@ -25,7 +25,7 @@ function ProductsPage() {
 
   const loadProducts = async () => {
     axios
-      .get("http://localhost:3001/order")
+      .get("https://dialuxury.onrender.com/order")
       .then((response) => {
         setPayments(response.data);
       })

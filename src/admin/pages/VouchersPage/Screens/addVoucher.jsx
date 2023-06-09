@@ -14,7 +14,7 @@ const AddProductForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3001/vouchers", {
+      const response = await axios.post("https://dialuxury.onrender.com/vouchers", {
         vouchersId,
         createdAt,
         production,

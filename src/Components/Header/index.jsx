@@ -12,9 +12,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import styles from './Header.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import MyContext from '../../Layout/DefaultLayout/MyContext';
 
 function Header() {
   const navigate = useNavigate();
@@ -26,12 +25,24 @@ function Header() {
     navigate('/login');
   };
 
-  const { resultSearch, handelChangeResultSearch } = useContext(MyContext);
-
   const [userQuery, setUserQuery] = useState('');
   const handleChangeUserQuery = (e) => {
     setUserQuery(e.target.value);
   };
+
+  //lấy số sản phẩm trong giỏ hàng
+  const [productAmount, setProductAmount] = useState(0);
+  const [cart, setCart] = useState({})
+  useEffect(()=>{
+    axios.get(`https://dialuxury.onrender.com/cart/${_id}`)
+    .then((res)=>{
+      setCart(res.data)
+      setProductAmount(res.data.sanphams.length)
+    })
+    .catch((e)=>{
+      console.log(e);
+    })
+  },[cart])
 
   return (
     <>
@@ -97,7 +108,12 @@ function Header() {
               <Nav.Link className={styles.items}>
                 <Link to="/cart" className={styles.singleItem}>
                   <div className={styles.item}>
-                    <ShoppingCartIcon className={styles.icon} />
+                    <div className='position-relative'>
+                      <ShoppingCartIcon className={styles.icon}/>
+                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger m-0" style={{fontSize:10}}>
+                        {productAmount}
+                      </span>
+                    </div>
                     <div className={styles.action} href="#">
                       Giỏ hàng
                     </div>

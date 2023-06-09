@@ -20,7 +20,7 @@ function VouchersDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/vouchers/${id}`)
+      .get(`https://dialuxury.onrender.com/vouchers/${id}`)
       .then((res) => {
         setVoucher(res.data);
       })
