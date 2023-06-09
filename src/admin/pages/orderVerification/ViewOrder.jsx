@@ -60,7 +60,7 @@ const ViewOrder = () => {
     navigate(-1);
   }
   async function ConfirmOrder() {
-    let confirmPromise = await confirmOrderbyId(_orderid);
+    let confirmPromise = await confirmOrderbyId(_orderid, email, total);
     window.location.reload();
   }
   async function CancelOrder() {

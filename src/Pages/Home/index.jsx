@@ -1,12 +1,28 @@
-import styles from "./Home.module.css";
-import { useState, useEffect, useContext } from "react";
+import styles from './Home.module.css';
+import { useState, useEffect, useContext } from 'react';
 
-import ProductHomepage from "./Components/MostSoldProducts";
-import NewProductHomepage from "./Components/NewProduct";
-import { Container, Row } from "react-bootstrap";
-import axios from "axios";
-
+import ProductHomepage from './Components/MostSoldProducts';
+import NewProductHomepage from './Components/NewProduct';
+import { Container, Row } from 'react-bootstrap';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function Home() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams) {
+      const responseDataString = urlParams.get('responseData');
+      const responseDataObject = JSON.parse(responseDataString);
+      if (responseDataObject) {
+        localStorage.setItem('token', responseDataObject.token);
+        localStorage.setItem('_id', responseDataObject._id);
+        localStorage.setItem('username', responseDataObject.name);
+
+        navigate('/');
+      }
+      // Use the responseData as needed
+    }
+  }, []);
   const [newProduct, setNewProduct] = useState([]);
   const [soldProduct, setSoldProduct] = useState([]);
   useEffect(() => {
@@ -16,7 +32,7 @@ function Home() {
 
   const loadNewProduct = async () => {
     axios
-      .get("http://localhost:3001/sortedProduct")
+      .get('http://localhost:3001/sortedProduct')
       .then((response) => {
         setNewProduct(response.data);
         console.log(response.data);
@@ -28,7 +44,19 @@ function Home() {
 
   const loadSoldProduct = async () => {
     axios
-      .get("http://localhost:3001/soldNumbersOfProducts")
+      .get('http://localhost:3001/soldNumbersOfProducts')
+      .then((response) => {
+        setNewProduct(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const loadSoldProduct = async () => {
+    axios
+      .get('http://localhost:3001/soldNumbersOfProducts')
       .then((response) => {
         setSoldProduct(response.data);
         console.log(response.data);
@@ -39,36 +67,36 @@ function Home() {
   };
   const products = [
     {
-      id: "p1",
+      id: 'p1',
       productimage:
-        "https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png",
-      name: "Nhẫn vàng CZ",
-      price: "10.000.000 đ",
-      sold: "100 đã bán",
+        'https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png',
+      name: 'Nhẫn vàng CZ',
+      price: '10.000.000 đ',
+      sold: '100 đã bán',
     },
     {
-      id: "p2",
+      id: 'p2',
       productimage:
-        "https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png",
-      name: "Nhẫn vàng CZ",
-      price: "10.000.000 đ",
-      sold: "100 đã bán",
+        'https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png',
+      name: 'Nhẫn vàng CZ',
+      price: '10.000.000 đ',
+      sold: '100 đã bán',
     },
     {
-      id: "p3",
+      id: 'p3',
       productimage:
-        "https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png",
-      name: "Nhẫn vàng CZ",
-      price: "10.000.000 đ",
-      sold: "100 đã bán",
+        'https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png',
+      name: 'Nhẫn vàng CZ',
+      price: '10.000.000 đ',
+      sold: '100 đã bán',
     },
     {
-      id: "p4",
+      id: 'p4',
       productimage:
-        "https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png",
-      name: "Nhẫn vàng CZ",
-      price: "10.000.000 đ",
-      sold: "100 đã bán",
+        'https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png',
+      name: 'Nhẫn vàng CZ',
+      price: '10.000.000 đ',
+      sold: '100 đã bán',
     },
   ];
 
@@ -77,20 +105,20 @@ function Home() {
       <Container fluid>
         <Row>
           <img
-            src={require("../../assets/images/banner-main-homepage-img.jpg")}
+            src={require('../../assets/images/banner-main-homepage-img.jpg')}
             alt=""
             className={styles.banner}
-            style={{ maxWidth: "100%", padding: "0" }}
+            style={{ maxWidth: '100%', padding: '0' }}
           />
         </Row>
         <Row>
           <h4
             className="pb-3"
             style={{
-              color: "rgb(189, 120, 189)",
-              marginTop: "40px",
-              textAlign: "center",
-              fontSize: "27px",
+              color: 'rgb(189, 120, 189)',
+              marginTop: '40px',
+              textAlign: 'center',
+              fontSize: '27px',
             }}
           >
             Sản phẩm bán chạy
@@ -101,10 +129,10 @@ function Home() {
           <h4
             className="pb-3"
             style={{
-              color: "rgb(189, 120, 189)",
-              marginTop: "40px",
-              textAlign: "center",
-              fontSize: "27px",
+              color: 'rgb(189, 120, 189)',
+              marginTop: '40px',
+              textAlign: 'center',
+              fontSize: '27px',
             }}
           >
             Sản phẩm mới

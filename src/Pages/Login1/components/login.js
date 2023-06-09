@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/style.css';
 import { useFormik } from 'formik';
@@ -6,7 +6,14 @@ import toast, { Toaster } from 'react-hot-toast';
 import { loginValidate } from './validate/validate';
 import { verifyLogin } from '../helpers/helper';
 import { useNavigate } from 'react-router-dom';
+import google from '../images/google.jpg';
+import GoogleButton from 'react-google-button';
 function Login() {
+  const googleOnclick = async function () {
+    const url = 'http://localhost:3001/google';
+    window.location.href = url;
+  };
+
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -40,7 +47,7 @@ function Login() {
     <section class="wrapper ">
       <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div class="container mr-100 ">
-        <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center py-5 ">
+        <div class=" justify-content-center align-items-center col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 text-center py-5 ">
           <form
             class="rounded bg-white shadow py-5 px-4 "
             onSubmit={formik.handleSubmit}
@@ -88,6 +95,14 @@ function Login() {
             <button type="submit" class="btn btn-primary submit_btn w-100 my-4">
               Đăng nhập
             </button>
+            <div className="d-flex align-items-center justify-content-center">
+              <GoogleButton
+                className="w-100 h-100"
+                type="light"
+                label="Đăng nhập bằng Google"
+                onClick={googleOnclick}
+              />
+            </div>
           </form>
         </div>
       </div>
