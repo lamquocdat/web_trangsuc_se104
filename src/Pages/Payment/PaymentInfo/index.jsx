@@ -103,13 +103,16 @@ function PaymentInfo () {
                         </select>
                     </div>
 
+
                     {(()=>{
-                        if(bank === "MomoQR")
-                            return(<QRImg bank={"MomoQR"} hoadon={hd} kh={user}></QRImg> );
-                        else if(bank === "ZalopayQR")
-                            return (<QRImg bank={"ZalopayQR"} hoadon={hd} kh={user}></QRImg>);
-                        else
-                            return (<QRImg bank={"BIDVQR"} hoadon={hd} kh={user}></QRImg>);
+                        if(hd){
+                            if(bank === "MomoQR")
+                                return(<QRImg bank={"MomoQR"} hoadon={hd} kh={user}></QRImg> );
+                            else if(bank === "ZalopayQR" )
+                                return (<QRImg bank={"ZalopayQR"} hoadon={hd} kh={user}></QRImg>);
+                            else
+                                return (<QRImg bank={"BIDVQR"} hoadon={hd} kh={user}></QRImg>);
+                        }
                     })()}
 
                         <div className="d-flex justify-content-center mt-4">

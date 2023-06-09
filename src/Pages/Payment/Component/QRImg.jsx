@@ -1,6 +1,15 @@
+import { useState } from "react";
 import images from "../../../assets/images/index";
 
 export default ({bank, hoadon, kh}) => {
+    const getTotal = (hoadon)=>{
+        let total = 0;
+        for(const sanpham of hoadon.sanphams){
+            total+=sanpham.thanhtien;
+        }
+        return total;
+    }
+
     return (
         <div>
             <div className="my-10 d-flex justify-content-center mb-4">
@@ -19,9 +28,7 @@ export default ({bank, hoadon, kh}) => {
                     <label>Số tiền:</label>
                 </div>
                 <div className="col">
-                    <span>{hoadon.sanphams && hoadon.sanphams.map((sp, total)=>{
-                        return total + sp.thanhtien
-                    }, 0)} ₫</span>
+                    <span>{getTotal(hoadon)} ₫</span>
                 </div>
             </div>     
         </div>
