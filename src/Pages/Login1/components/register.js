@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/style.css';
 import toast, { Toaster } from 'react-hot-toast';
@@ -7,17 +7,34 @@ import { registerValidate } from './validate/validate';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../helpers/helper';
 function Register() {
+  useEffect(function () {
+    console.log(1);
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams) {
+      const responseDataString = urlParams.get('responseData');
+      const responseDataObject = JSON.parse(responseDataString);
+      // Use the responseData as needed
+      if (responseDataObject) {
+        sessionStorage.setItem('email', responseDataObject.email);
+
+        sessionStorage.setItem('name', responseDataObject.name);
+
+        navigate('/register');
+      }
+    }
+  }, []);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      email: '',
+      email: sessionStorage.getItem('email'),
       password: '',
       phone: '',
       confirmPassword: '',
-      name: '',
+      name: sessionStorage.getItem('name'),
       address: '',
     },
     validate: registerValidate,
+    enableReinitialize: true,
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async function (values) {

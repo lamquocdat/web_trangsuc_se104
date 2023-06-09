@@ -89,7 +89,12 @@ const Datepicker = () => {
     console.log(body);
     await toast.promise(scheduleMail(formValues.date, email, body), {
       loading: 'Checking...',
-      success: <b>Thư xác nhận đặt lịch đã được gửi qua email của bạn </b>,
+      success: (
+        <b>
+          Chúng tôi đã nhận được phiếu đặt lịch của bạn, chúng tôi sẽ tiến hành
+          phản hồi qua email trong thời gian sớm nhất{' '}
+        </b>
+      ),
       error: <b>Có lỗi xảy ra, vui lòng thử lại</b>,
     });
   };

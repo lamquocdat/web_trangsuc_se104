@@ -177,12 +177,13 @@ export async function deliveredOrderbyId(_orderid) {
     return Promise.reject({ error: 'Password doesnt match' });
   }
 }
-export async function confirmOrderbyId(_orderid) {
+export async function confirmOrderbyId(_orderid, email, total) {
   try {
-    console.log(_orderid);
     const { data } = await axios.put('/confirmorder', {
       tinhtrang: 'Đang giao hàng',
       _orderid,
+      email,
+      total,
     });
     return Promise.resolve({ data });
   } catch (error) {
@@ -192,11 +193,7 @@ export async function confirmOrderbyId(_orderid) {
 }
 export async function scheduleMail(date, email, body) {
   try {
-    const { data } = await axios.post('/schedule', {
-      date,
-      email,
-    });
-    await axios.post('/service', { body });
+    const { data } = await axios.post('/service', { body });
     return Promise.resolve({ data });
   } catch (error) {
     console.log(error);
