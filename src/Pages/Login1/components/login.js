@@ -10,7 +10,7 @@ import google from '../images/google.jpg';
 import GoogleButton from 'react-google-button';
 function Login() {
   const googleOnclick = async function () {
-    const url = 'http://localhost:3001/google';
+    const url = 'https://dialuxury.onrender.com/google';
     window.location.href = url;
   };
 
@@ -35,10 +35,11 @@ function Login() {
         error: <b>Sai email hoặc mật khẩu</b>,
       });
       loginPromise.then(function (res) {
-        let { token, _id, ten } = res.data;
+        let { token, _id, ten, role } = res.data;
         localStorage.setItem('token', token);
         localStorage.setItem('_id', _id);
         localStorage.setItem('ten', ten);
+        localStorage.setItem('role', role);
         navigate('/');
       });
     },

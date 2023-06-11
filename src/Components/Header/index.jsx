@@ -18,10 +18,13 @@ import axios from 'axios';
 function Header() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
   const _id = localStorage.getItem('_id');
   const handleLogout = () => {
     localStorage.removeItem('_id');
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('username');
     navigate('/login');
   };
 
@@ -32,17 +35,18 @@ function Header() {
 
   //lấy số sản phẩm trong giỏ hàng
   const [productAmount, setProductAmount] = useState(0);
-  const [cart, setCart] = useState({})
-  useEffect(()=>{
-    axios.get(`https://dialuxury.onrender.com/cart/${_id}`)
-    .then((res)=>{
-      setCart(res.data)
-      setProductAmount(res.data.sanphams.length)
-    })
-    .catch((e)=>{
-      console.log(e);
-    })
-  },[cart])
+  const [cart, setCart] = useState({});
+  useEffect(() => {
+    axios
+      .get(`https://dialuxury.onrender.com/cart/${_id}`)
+      .then((res) => {
+        setCart(res.data);
+        setProductAmount(res.data.sanphams.length);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [cart]);
 
   return (
     <>
@@ -108,9 +112,12 @@ function Header() {
               <Nav.Link className={styles.items}>
                 <Link to="/cart" className={styles.singleItem}>
                   <div className={styles.item}>
-                    <div className='position-relative'>
-                      <ShoppingCartIcon className={styles.icon}/>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger m-0" style={{fontSize:10}}>
+                    <div className="position-relative">
+                      <ShoppingCartIcon className={styles.icon} />
+                      <span
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger m-0"
+                        style={{ fontSize: 10 }}
+                      >
                         {productAmount}
                       </span>
                     </div>
@@ -120,7 +127,7 @@ function Header() {
                   </div>
                 </Link>
               </Nav.Link>
-              {token ? (
+              {token && role === 'user' ? (
                 <>
                   <Nav.Link className={styles.items} onClick={handleLogout}>
                     <div className={styles.item}>
@@ -209,6 +216,14 @@ function Header() {
                 className={styles.page}
               >
                 <b style={{ fontWeight: '500 ' }}>Tài khoản</b>
+              </Nav.Link>
+              <Nav.Link
+                eventKey="link-5"
+                href={`/homeAdmin`}
+                target={'_blank'}
+                className={styles.page}
+              >
+                <b style={{ fontWeight: '500 ' }}>Dashboard</b>
               </Nav.Link>
             </Nav>
             <Form className={'d-flex ' + styles.form}>

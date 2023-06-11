@@ -53,45 +53,7 @@ function AdminNavbar() {
             </Link>
           </Nav.Link>
 
-            {/* <NavDropdown
-            className={styles.page}
-            style={{ fontWeight: "500" }}
-            title=<ListOutlinedIcon/>
-          >
-            <NavDropdown.Item >
-              <Link to="/products/nhan" className={styles.singlePage} style={{fontSize:"17px"}}>Nhẫn</Link>
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item >
-            <Link to="/products/bong-tai" className={styles.singlePage} style={{fontSize:"17px"}}>Bông tai</Link>
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item >
-            <Link to="/products/day-chuyen" className={styles.singlePage} style={{fontSize:"17px"}}>Dây chuyền</Link>
-            </NavDropdown.Item>
-        </NavDropdown>
-
-        <NavDropdown
-            className={styles.page}
-            style={{ fontWeight: "500" }}
-            title=<img
-            src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-            className={styles.avatar}
-          />
-          >
-            <NavDropdown.Item >
-              <Link to="/products/nhan" className={styles.singlePage} style={{fontSize:"17px"}}>Thông Tin</Link>
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item >
-            <Link to="/products/bong-tai" className={styles.singlePage} style={{fontSize:"17px"}}>Cài Đặt</Link>
-            </NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item >
-            <Link to="/products/day-chuyen" className={styles.singlePage} style={{fontSize:"17px"}}>Đăng Xuất</Link>
-            </NavDropdown.Item>
-          </NavDropdown> */}
+       
           </Nav>
           <Form className={"d-flex " + styles.form}>
           <Form.Control

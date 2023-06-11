@@ -1,6 +1,7 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 axios.defaults.baseURL = 'https://dialuxury.onrender.com';
+// axios.defaults.baseURL = 'http://localhost:3001';
 export async function registerUser(credentials) {
   try {
     const {
@@ -35,6 +36,21 @@ export async function verifyLogin({ email, password }) {
     return Promise.resolve(data);
   } catch (error) {
     return Promise.reject({ error: 'Password doesnt match' });
+  }
+}
+export async function verifyAdminLogin({ email, password, role }) {
+  try {
+    const { data, status } = await axios.post('/loginAdmin', {
+      email,
+      password,
+      role,
+    });
+    if (status === 200) return Promise.resolve({ data, status });
+  } catch (error) {
+    const { status } = error.response;
+    console.log(status);
+    if (status === 402 || status === 401) return Promise.reject({ status });
+    if (status === 409) return Promise.reject({ status });
   }
 }
 
