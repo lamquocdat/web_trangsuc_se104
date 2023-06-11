@@ -17,7 +17,7 @@ function Home() {
         localStorage.setItem('token', responseDataObject.token);
         localStorage.setItem('_id', responseDataObject._id);
         localStorage.setItem('username', responseDataObject.name);
-
+        localStorage.setItem('role', responseDataObject.role);
         navigate('/');
       }
       // Use the responseData as needed

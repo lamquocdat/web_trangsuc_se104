@@ -18,6 +18,7 @@ import axios from 'axios';
 function Header() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
   const _id = localStorage.getItem('_id');
   const handleLogout = () => {
     localStorage.removeItem('_id');
@@ -126,7 +127,7 @@ function Header() {
                   </div>
                 </Link>
               </Nav.Link>
-              {token ? (
+              {token && role === 'user' ? (
                 <>
                   <Nav.Link className={styles.items} onClick={handleLogout}>
                     <div className={styles.item}>
