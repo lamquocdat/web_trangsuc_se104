@@ -9,7 +9,7 @@ function AboutUs() {
     {/* Header:  */}
     {/* Content: */}
     <Container>
-    <h1 className="d-flex align-items-center justify-content-center">Thông tin về PNJ | Trang Sức Cao Cấp PNJ</h1>
+    <h1 className="d-flex align-items-center justify-content-center">Thông tin về Dialuxury | Trang Sức Cao Cấp Dialuxury</h1>
     <br />
     <Card className="bg-secondary" >
       <Card.Body>
@@ -18,11 +18,10 @@ function AboutUs() {
         
         <Col>
           <br />
-            <p>Tên doanh nghiệp: CÔNG TY CỔ PHẦN VÀNG BẠC ĐÁ QUÝ PHÚ NHUẬN
-                <br />Tên tiếng Anh: Phu Nhuan Jewelry Joint Stock Company
-                <br />Tên viết tắt: PNJ.,JSC
+            <p>Tên doanh nghiệp: CÔNG TY CỔ PHẦN VÀNG BẠC ĐÁ QUÝ Dialuxury 
+                <br />Tên tiếng Anh: Dialuxury Joint Stock Company
                 <br />Địa chỉ: 170E Phan Đăng Lưu – Phường 3 – Quận Phú Nhuận – Thành phố Hồ Chí Minh
-                <br />Điện thoại: (84-28) 39951703 – Fax: (84-28) 39951702 – Email: pnj@pnj.com.vn
+                <br />Điện thoại: (84-28) 39951703 – Fax: (84-28) 39951702 – Email: dialuxury@dialuxury .com.vn
                 <br />Ngành nghề kinh doanh chính:
                 <br />Sản xuất kinh doanh trang sức bằng vàng, bạc, đá quý, phụ kiện thời trang, quà lưu niệm. Kinh doanh đồng hồ và mua bán vàng miếng
                 <br />Dịch vụ kiểm định kim cương, đá quý, kim loại quý
@@ -33,7 +32,7 @@ function AboutUs() {
         </Col>
         <Col className="d-flex align-items-center justify-content-center">
             <img src={aboutus1} style={{ width: "100px"}}></img> 
-            <p>Ông Nguyễn Văn A<br/> Chủ tịch HĐQT PNJ </p>
+            <p>Ông Nguyễn Thành Long<br/>Chủ tịch HĐQT DIALUXURY</p>
         </Col>
       </Row>
         </Card.Text>

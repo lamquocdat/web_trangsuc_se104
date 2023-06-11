@@ -1,6 +1,8 @@
-import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
+import React from "react";
+import { Container, Row, Col, Card} from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import React from 'react'
 import { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 function ProductHomepage({ products }) {
@@ -11,9 +13,13 @@ function ProductHomepage({ products }) {
   const indexOfLastPro = CurProPerPage * proPerPage;
   const indexOfFirstPro = indexOfLastPro - proPerPage;
   const visiblePro = products.slice(indexOfFirstPro, indexOfLastPro);
+  const navigate = useNavigate();
 
   const changePage = ({ selected }) => {
     setCurProPerPage(selected + 1);
+  };
+  const handleProductClick = (productId) => {
+    navigate(`/productsdetail/${productId}`);
   };
   return (
     <>
@@ -23,12 +29,9 @@ function ProductHomepage({ products }) {
           {/* visibleProducts = 12 */}
           {visiblePro.map((product) => (
             <Col key={product.productid} sm={6} md={4} lg={3}>
-              <Link
-                to={`/productsdetail/${product._id}`}
-                className="text-decoration-none"
-              >
-                <Card style={{ background: '#f7f7f7', marginBottom: '30px' }}>
-                  <Card.Body style={{ textAlign: 'center' }}>
+              {/* <Link to={`/productsdetail/${product._id}`}> */}
+                <Card style={{ background: "#f7f7f7", marginBottom: "30px", cursor: "pointer" }} onClick={() => handleProductClick(product._id)}>
+                  <Card.Body style={{ textAlign: "center" }}>
                     <Card.Img src={product.image}></Card.Img>
                     <Card.Title style={{ fontWeight: '200' }}>
                       {product.name}
@@ -50,7 +53,7 @@ function ProductHomepage({ products }) {
                     </Card.Text> */}
                   </Card.Body>
                 </Card>
-              </Link>
+              {/* </Link> */}
             </Col>
           ))}
         </Row>
