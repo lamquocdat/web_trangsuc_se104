@@ -1,0 +1,17 @@
+.SliderCSS{
+    width: 80%;
+}
+
+
+.myDropdown{
+    display: flex;
+    border-style: groove;
+    border-color: rgb(244, 233, 255);
+    margin-top: 10px;
+}
+
+.page{
+    margin: 13px;
+    border-style: groove;
+    border-color: rgb(244, 233, 255);
+}
