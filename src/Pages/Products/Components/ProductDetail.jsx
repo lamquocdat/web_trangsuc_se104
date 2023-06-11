@@ -3,12 +3,13 @@ import { ListGroup, ListGroupItem, Badge } from "react-bootstrap";
 import { Form, FormControl } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { KeyboardArrowLeft, KeyboardArrowRight, KeyboardDoubleArrowLeft, KeyboardDoubleArrowRight } from "@mui/icons-material";
 import StarIcon from '@mui/icons-material/Star';
 import { yellow } from "@mui/material/colors";
 import Modal from 'react-bootstrap/Modal';
 function Product() {
+  const scrollRef = useRef(null);
   const { id } = useParams(); //lấy id từ url
   const [product, setProduct] = useState(); //lấy sản phẩm từ api
   const [sl, setSL] = useState(1); //lấy số lượng sản phẩm người dùng muốn thêm vào giỏ hàng
@@ -74,7 +75,7 @@ function Product() {
   const [isRightMost, setIsRightMost] = useState(false); //nút mũi tên phải
   const [commentList, setCommentList] = useState();
   useEffect(()=>{
-    if(product!=undefined)
+    if(product!==undefined)
       axios.get(`https://dialuxury.onrender.com/danhgia/${product.productid}?perPage=${pagesize}&page=${currentPage-1}&sortOrder=desc`)
       .then((res)=>{
         setCommentList(res.data.listDanhGia);
@@ -84,12 +85,12 @@ function Product() {
       .catch((e)=>{
         console.log(e);
       })
-  },[pagesize, currentPage, product])
+  },[pagesize, currentPage, product]);
 
   //lấy số điểm đánh giá từ các bình luận
   const [diem, setDiem] = useState(5);
   useEffect(()=>{
-    if(commentList!=undefined){
+    if(commentList!==undefined){
       let rating =0;
       for(const comment of commentList)
         rating+=comment.rating;
@@ -99,6 +100,7 @@ function Product() {
 
   //hàm chuyển trang
   const changePage = (index) => {
+    window.scrollTo(0, 0); 
     if (index !== currentPage) 
         setCurrentPage(index)
 }
@@ -128,15 +130,19 @@ useEffect(() => {
     if (totalPage === 1) {
         setIsLeftMost(true)
         setIsRightMost(true)
+        scrollRef.current.scrollIntoView({ behavior: "smooth" });
     } else if (currentPage === 1) {
         setIsLeftMost(true)
         setIsRightMost(false)
+        scrollRef.current.scrollIntoView({ behavior: "smooth" });
     } else if (currentPage === totalPage) {
         setIsRightMost(true)
         setIsLeftMost(false)
+        scrollRef.current.scrollIntoView({ behavior: "smooth" });
     } else {
         setIsLeftMost(false)
         setIsRightMost(false)
+        scrollRef.current.scrollIntoView({ behavior: "smooth" });
     }
     const arr = [];
     for (let i = currentPage - 2; i <= currentPage + 2; i++)  
@@ -236,7 +242,10 @@ useEffect(() => {
   }
 
   return (
+    
     <Container>
+      <div ref={scrollRef} 
+      />
       <Row className="align-align-items-center justify-content-center">
         <Col md={4}>
           <Image src={product?.image || ""} alt="Hình ảnh sản phẩm" fluid />
@@ -245,10 +254,10 @@ useEffect(() => {
           <h2>{product?.name || "Product"}</h2>
           <p>Mã: {product?.productid || "Product"}</p>
           <p>Điểm đánh giá: <span>
-            {diem!=undefined && [...Array(diem)].map((_, index) => (
+            {diem!==undefined && [...Array(diem)].map((_, index) => (
                   <StarIcon key={index}sx={{ color: yellow[500], fontSize:20 }}/>
                 ))}
-            {totalComment!=undefined && <span>({totalComment})</span>}
+            {totalComment!==undefined && <span>({totalComment})</span>}
           </span>
           </p>
           <Row>

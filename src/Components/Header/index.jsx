@@ -200,7 +200,7 @@ function Header() {
               <Nav.Link eventKey="link-3" href="/blog" className={styles.page}>
                 <b style={{ fontWeight: '500 ' }}>Blog</b>
               </Nav.Link>
-              <Nav.Link eventKey="link-4" href="#about" className={styles.page}>
+              <Nav.Link eventKey="link-4" href="/aboutus" className={styles.page}>
                 <b style={{ fontWeight: '500 ' }}>Về chúng tôi</b>
               </Nav.Link>
               <Nav.Link
