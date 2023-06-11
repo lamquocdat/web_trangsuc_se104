@@ -22,6 +22,8 @@ function Header() {
   const handleLogout = () => {
     localStorage.removeItem('_id');
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('username');
     navigate('/login');
   };
 
@@ -32,17 +34,18 @@ function Header() {
 
   //lấy số sản phẩm trong giỏ hàng
   const [productAmount, setProductAmount] = useState(0);
-  const [cart, setCart] = useState({})
-  useEffect(()=>{
-    axios.get(`https://dialuxury.onrender.com/cart/${_id}`)
-    .then((res)=>{
-      setCart(res.data)
-      setProductAmount(res.data.sanphams.length)
-    })
-    .catch((e)=>{
-      console.log(e);
-    })
-  },[cart])
+  const [cart, setCart] = useState({});
+  useEffect(() => {
+    axios
+      .get(`https://dialuxury.onrender.com/cart/${_id}`)
+      .then((res) => {
+        setCart(res.data);
+        setProductAmount(res.data.sanphams.length);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [cart]);
 
   return (
     <>
@@ -108,9 +111,12 @@ function Header() {
               <Nav.Link className={styles.items}>
                 <Link to="/cart" className={styles.singleItem}>
                   <div className={styles.item}>
-                    <div className='position-relative'>
-                      <ShoppingCartIcon className={styles.icon}/>
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger m-0" style={{fontSize:10}}>
+                    <div className="position-relative">
+                      <ShoppingCartIcon className={styles.icon} />
+                      <span
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger m-0"
+                        style={{ fontSize: 10 }}
+                      >
                         {productAmount}
                       </span>
                     </div>

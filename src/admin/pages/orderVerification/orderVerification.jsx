@@ -5,13 +5,13 @@ import React, { useEffect, useState } from 'react';
 import { Form, Button, Row, Container, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate, Link, useParams } from 'react-router-dom';
-
+import { Pagination } from '@mui/material';
 import './style.css';
 import 'bootstrap';
 import { getAllOrdersAllUser } from '../../../Pages/Login1/helpers/helper';
 const VerifyOrder = () => {
   // const [details, setDetails] = useState("");
-  const [orders, setOrders] = useState();
+  const [orders, setOrders] = useState([]);
   useEffect(function () {
     async function getData() {
       let forgotPromise = getAllOrdersAllUser();
@@ -25,7 +25,15 @@ const VerifyOrder = () => {
 
     // Reset form sau khi gửi thành công
   }, []);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [ordersPerPage, setOrdersPerPage] = useState(10);
+  const indexOfLastOrder = ordersPerPage * currentPage;
+  const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
+  const currentOrders = orders.slice(indexOfFirstOrder, indexOfLastOrder);
 
+  const paginate = (event, value) => {
+    setCurrentPage(value);
+  };
   return (
     <Container style={{ width: '1300px' }}>
       <table className="table">
@@ -41,7 +49,7 @@ const VerifyOrder = () => {
           </tr>{' '}
         </thead>{' '}
         <tbody>
-          {orders?.map((order) => (
+          {currentOrders?.map((order) => (
             <tr key={order._id}>
               <td>
                 <b>{order.mahd}</b>{' '}
@@ -78,6 +86,20 @@ const VerifyOrder = () => {
           ))}
         </tbody>{' '}
       </table>
+      {orders.length > 9 && (
+        <Pagination
+          color="secondary"
+          shape="rounded"
+          defaultPage={1}
+          count={Math.ceil(orders.length / ordersPerPage)}
+          //này là để tính số trang cần
+          page={currentPage}
+          // state của trang hiện tại
+          onChange={paginate}
+          //handle khi thay đổi trang ở phía trên
+          size="large"
+        />
+      )}
     </Container>
   );
 };
