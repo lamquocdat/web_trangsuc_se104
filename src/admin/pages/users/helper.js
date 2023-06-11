@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://dialuxury.onrender.com';
 
 export async function cancelOrderbyId(_orderid) {
   try {
