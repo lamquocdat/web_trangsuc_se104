@@ -220,6 +220,7 @@ function Header() {
               <Nav.Link
                 eventKey="link-5"
                 href={`/homeAdmin`}
+                target={'_blank'}
                 className={styles.page}
               >
                 <b style={{ fontWeight: '500 ' }}>Dashboard</b>
