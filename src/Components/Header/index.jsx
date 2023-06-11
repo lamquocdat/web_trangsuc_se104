@@ -216,6 +216,13 @@ function Header() {
               >
                 <b style={{ fontWeight: '500 ' }}>Tài khoản</b>
               </Nav.Link>
+              <Nav.Link
+                eventKey="link-5"
+                href={`/homeAdmin`}
+                className={styles.page}
+              >
+                <b style={{ fontWeight: '500 ' }}>Dashboard</b>
+              </Nav.Link>
             </Nav>
             <Form className={'d-flex ' + styles.form}>
               <Form.Control
