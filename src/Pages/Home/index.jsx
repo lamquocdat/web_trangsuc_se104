@@ -7,7 +7,7 @@ import { Container, Row, Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function Home() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   // useEffect(() => {
   //   const urlParams = new URLSearchParams(window.location.search);
   //   if (urlParams) {
