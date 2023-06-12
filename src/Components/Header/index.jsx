@@ -180,7 +180,7 @@ function Header() {
                     className={styles.singlePage}
                     style={{ fontSize: '17px' }}
                   >
-                    Nhẫn
+                    <div>Nhẫn</div>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
@@ -190,7 +190,7 @@ function Header() {
                     className={styles.singlePage}
                     style={{ fontSize: '17px' }}
                   >
-                    Bông tai
+                    <div>Bông tai</div>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
@@ -200,7 +200,7 @@ function Header() {
                     className={styles.singlePage}
                     style={{ fontSize: '17px' }}
                   >
-                    Dây chuyền
+                    <div>Dây chuyền</div>
                   </Link>
                 </NavDropdown.Item>
               </NavDropdown>

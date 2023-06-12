@@ -15,18 +15,18 @@
   color: rgb(189, 120, 189);
 }
 
-.singleItem{
+.singleItem {
   text-decoration-line: none;
   font-size: 18px;
-  
-  color:rgba(0, 0, 0, 0.7) 
+
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .singlePage {
   text-decoration-line: none;
- font-size: 18px;
- 
- color:rgba(0, 0, 0, 0.7) 
+  font-size: 18px;
+
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .pages .page .singlePage:hover {
