@@ -5,18 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 function NewProductHomepage({ products }) {
-  const [proPerPage, setProPerPage] = useState(4);
-  const [CurProPerPage, setCurProPerPage] = useState(1);
-  const numOfToTalPages = Math.ceil(products.length / proPerPage);
-  // const pages = [...Array(numOfToTalPages + 1).keys()].slice(1);
-  const indexOfLastPro = CurProPerPage * proPerPage;
-  const indexOfFirstPro = indexOfLastPro - proPerPage;
-  const visiblePro = products.slice(indexOfFirstPro, indexOfLastPro);
+  const visiblePro = products;
   const navigate = useNavigate();
 
-  const changePage = ({ selected }) => {
-    setCurProPerPage(selected + 1);
-  };
   const handleProductClick = (productId) => {
     navigate(`/productsdetail/${productId}`);
   };
