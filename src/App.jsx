@@ -1,8 +1,8 @@
-import { Routes, Route } from "react-router-dom";
-import DefaultLayout from "./Layout/DefaultLayout";
-import { publicRoutes, adminRoutes } from "./routes";
-import { Fragment } from "react";
-import AdminLayout from "./Layout/AdminLayout";
+import { Routes, Route } from 'react-router-dom';
+import DefaultLayout from './Layout/DefaultLayout';
+import { publicRoutes, adminRoutes } from './routes';
+import { Fragment } from 'react';
+import AdminLayout from './Layout/AdminLayout';
 
 function App() {
   return (
@@ -35,7 +35,16 @@ function App() {
           } else if (route.layout === null) {
             Layout = Fragment;
           }
-          return <Route exact key={index} path={route.path} element={<Layout>{Page}</Layout>} />;
+          if (route.path === '/loginAdmin')
+            return <Route exact key={index} path={route.path} element={Page} />;
+          return (
+            <Route
+              exact
+              key={index}
+              path={route.path}
+              element={<Layout>{Page}</Layout>}
+            />
+          );
         })}
       </Routes>
     </div>
