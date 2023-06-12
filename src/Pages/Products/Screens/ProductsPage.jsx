@@ -8,6 +8,8 @@ import styles from './StyleProduct.module.css'
 import { useDebounce } from "../../../hooks/useDebounce";
 import Button from 'react-bootstrap/Button';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 function ProductsPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [products, productsSet] = useState([]);
@@ -66,15 +68,48 @@ function ProductsPage() {
         <Row>
           <Image src={ImageBanner} className="px-0"></Image>
         </Row>
-        <Row>
-          <div className={styles.mySpace} >
+        <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="light"
+        variant="light"
+        className={styles.firstNav}
+      >
+        <Container className={styles.myContainer}>
+          <Navbar.Brand href="#home" style={{color:"rgba(238, 208, 241, 0.08)"}}>
+        
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+        
+            <Nav className={styles.navTop}>
+            <NavDropdown
+                className={styles.page}
+                style={{ fontWeight: '500' }}
+                title="Chất lượng sản phẩm"
+              >
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeQuality("")}>Tất cả</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeQuality("Vàng")}>Vàng</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeQuality("Bạc")}>Bạc</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeQuality("Kim cương")}>Kim Cương</Button>
+                </NavDropdown.Item>
+              </NavDropdown>
 
-            <div className={styles.myDropdown}>
-              <h3 style={{ margin: "20px", fontSize: "18px" }}>Bộ lọc:</h3>
+
               <NavDropdown
                 className={styles.page}
-                style={{ fontSize: "25px", fontWeight: "bold" }}
-                title="Giá trị sản phẩm"
+                style={{ fontWeight: '500' }}
+                title="Sản phẩm"
               >
                 <NavDropdown.Item>
                   <h3 style={{ margin: "20px", fontSize: "18px" }}>Min: {value[0].toLocaleString('vi', {style : 'currency', currency : 'VND'})}</h3>
@@ -98,33 +133,12 @@ function ProductsPage() {
                   />
                 </NavDropdown.Item>
               </NavDropdown>
-              <NavDropdown
-                className={styles.page}
-                style={{ fontSize: "25px", fontWeight: "bold" }}
-                title="Chất lượng sản phẩm"
-              >
-                <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("")}>Tất cả</Button>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("Vàng")}>Vàng</Button>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("Bạc")}>Bạc</Button>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("Kim cương")}>Kim Cương</Button>
-                </NavDropdown.Item>
-
-              </NavDropdown>
-            </div>
-
-          </div>
-        </Row>
-
+              
+             
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+        </Navbar>
         <Row>
           <ProductList products={products} />
         </Row>

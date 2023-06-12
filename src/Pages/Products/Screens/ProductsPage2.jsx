@@ -3,11 +3,15 @@ import ProductList from "../Components/Products";
 import banner_daychuyen from "../../../assets/images/Products/banner_daychuyen.png";
 import { useState, useEffect, useReducer } from "react";
 import axios from "axios";
+import Navbar from 'react-bootstrap/Navbar';
 import Slider from '@mui/material/Slider';
 import styles from './StyleProduct.module.css'
 import { useDebounce } from "../../../hooks/useDebounce";
 import Button from 'react-bootstrap/Button';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from 'react-bootstrap/Nav';
+
+
 function ProductsPage2() {
 
   const [isLoading, setIsLoading] = useState(false);
@@ -69,15 +73,48 @@ function ProductsPage2() {
         <Row>
           <Image src={banner_daychuyen} className="px-0"></Image>
         </Row>
-        <Row>
-          <div className={styles.mySpace} >
+        <Navbar
+        collapseOnSelect
+        expand="lg"
+        bg="light"
+        variant="light"
+        className={styles.firstNav}
+      >
+        <Container className={styles.myContainer}>
+          <Navbar.Brand href="#home">
+       
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+        
+            <Nav className={styles.navTop}>
+            <NavDropdown
+                className={styles.page}
+                style={{ fontWeight: '500' }}
+                title="Chất lượng sản phẩm"
+              >
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeQuality("")}>Tất cả</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeQuality("Vàng")}>Vàng</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeQuality("Bạc")}>Bạc</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeQuality("Kim cương")}>Kim Cương</Button>
+                </NavDropdown.Item>
+              </NavDropdown>
 
-            <div className={styles.myDropdown}>
-              <h3 style={{ margin: "20px", fontSize: "18px" }}>Bộ lọc:</h3>
+
               <NavDropdown
                 className={styles.page}
-                style={{ fontSize: "25px", fontWeight: "bold" }}
-                title="Giá trị sản phẩm"
+                style={{ fontWeight: '500' }}
+                title="Sản phẩm"
               >
                 <NavDropdown.Item>
                   <h3 style={{ margin: "20px", fontSize: "18px" }}>Min: {value[0].toLocaleString('vi', {style : 'currency', currency : 'VND'})}</h3>
@@ -101,33 +138,13 @@ function ProductsPage2() {
                   />
                 </NavDropdown.Item>
               </NavDropdown>
-              <NavDropdown
-                className={styles.page}
-                style={{ fontSize: "25px", fontWeight: "bold" }}
-                title="Chất lượng sản phẩm"
-              >
-                <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("")}>Tất cả</Button>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("Vàng")}>Vàng</Button>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("Bạc")}>Bạc</Button>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("Kim cương")}>Kim Cương</Button>
-                </NavDropdown.Item>
+              
+             
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
 
-              </NavDropdown>
-            </div>
-
-          </div>
-        </Row>
-
+      </Navbar>    
         <Row>
           <ProductList products={products} />
         </Row>
