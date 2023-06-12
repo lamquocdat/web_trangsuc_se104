@@ -63,7 +63,14 @@ import LoginAdmin from '../admin/loginAdmin/LoginAdmin';
 const publicRoutes = [
   { path: '/', component: <Home /> },
   { path: '*', component: <NotFound />, layout: null },
-  { path: '/cart', component: <Cart /> },
+  {
+    path: '/cart',
+    component: (
+      <AuthorizedUser>
+        <Cart />
+      </AuthorizedUser>
+    ),
+  },
   { path: '/paymentinfo', component: <PaymentInfo /> },
   { path: '/paymentfinish', component: <PaymentFinish /> },
 
