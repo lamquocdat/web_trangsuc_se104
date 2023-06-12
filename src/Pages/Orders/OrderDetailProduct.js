@@ -72,9 +72,10 @@ const OrderDetailProducts = () => {
                   <h6 className="mb-1"> Khách hàng </h6>{' '}
                   <p className="mb-1">
                     {name} <br />
-                    <a href={`mailto:user@example.com`}> {email} </a> <br />
-                    <p>{phone}</p>
-                  </p>{' '}
+                    {email} <br />
+                    {phone}
+                    <br />
+                  </p>
                 </div>{' '}
               </article>{' '}
             </div>{' '}
@@ -141,23 +142,21 @@ const OrderDetailProducts = () => {
               {tableData?.map((data, index) => (
                 <tr key={index}>
                   <td>
-                    <Link className="itemside" to="#">
-                      <div className="left">
-                        <img
-                          src={data.hinhanh}
-                          alt="product"
-                          style={{
-                            width: '80px',
-                            height: '80px',
-                            margin: '0 10px 10px 0',
-                          }}
-                          className="img-xs"
-                        />
-                      </div>
-                      <div className="info" style={{ marginLeft: '10px' }}>
-                        {data.sanpham}
-                      </div>
-                    </Link>
+                    <div className="left">
+                      <img
+                        src={data.hinhanh}
+                        alt="product"
+                        style={{
+                          width: '80px',
+                          height: '80px',
+                          margin: '0 10px 10px 0',
+                        }}
+                        className="img-xs"
+                      />
+                    </div>
+                    <div className="info" style={{ marginLeft: '10px' }}>
+                      {data.sanpham}
+                    </div>
                   </td>
                   <td>{data.dongia.toLocaleString()} VND</td>
                   <td>
