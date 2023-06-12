@@ -2,7 +2,6 @@ import { Container, Row, Image } from "react-bootstrap";
 import ProductList from "../Products/Components/Products";
 import ImageBanner from "../../../src/assets/images/Products/banner_search.jpg";
 import { useState, useEffect, useContext } from "react";
-import MyContext from "../../Layout/DefaultLayout/MyContext";
 import axios from "axios";
 
 function ProductsPage() {
@@ -15,9 +14,9 @@ function ProductsPage() {
   //lấy thông tin sản phẩm
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/product/search?query=${query}`)
+      .get(`https://dialuxury.onrender.com/product/search?query=${query}`)
       .then((response) => {
-        console.log(`http://localhost:3001/product/search?query=${query}`);
+        console.log(`https://dialuxury.onrender.com/product/search?query=${query}`);
         productsSet(response.data);
 
         console.log(response.data);

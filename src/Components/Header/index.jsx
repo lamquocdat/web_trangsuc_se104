@@ -12,26 +12,41 @@ import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import styles from './Header.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import MyContext from '../../Layout/DefaultLayout/MyContext';
 
 function Header() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
   const _id = localStorage.getItem('_id');
   const handleLogout = () => {
     localStorage.removeItem('_id');
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('username');
     navigate('/login');
   };
-
-  const { resultSearch, handelChangeResultSearch } = useContext(MyContext);
 
   const [userQuery, setUserQuery] = useState('');
   const handleChangeUserQuery = (e) => {
     setUserQuery(e.target.value);
   };
+
+  //lấy số sản phẩm trong giỏ hàng
+  const [productAmount, setProductAmount] = useState(0);
+  const [cart, setCart] = useState({});
+  useEffect(() => {
+    axios
+      .get(`https://dialuxury.onrender.com/cart/${_id}`)
+      .then((res) => {
+        setCart(res.data);
+        setProductAmount(res.data.sanphams.length);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [cart]);
 
   return (
     <>
@@ -97,14 +112,22 @@ function Header() {
               <Nav.Link className={styles.items}>
                 <Link to="/cart" className={styles.singleItem}>
                   <div className={styles.item}>
-                    <ShoppingCartIcon className={styles.icon} />
+                    <div className="position-relative">
+                      <ShoppingCartIcon className={styles.icon} />
+                      <span
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger m-0"
+                        style={{ fontSize: 10 }}
+                      >
+                        {productAmount}
+                      </span>
+                    </div>
                     <div className={styles.action} href="#">
                       Giỏ hàng
                     </div>
                   </div>
                 </Link>
               </Nav.Link>
-              {token ? (
+              {token && role === 'user' ? (
                 <>
                   <Nav.Link className={styles.items} onClick={handleLogout}>
                     <div className={styles.item}>
@@ -157,7 +180,7 @@ function Header() {
                     className={styles.singlePage}
                     style={{ fontSize: '17px' }}
                   >
-                    Nhẫn
+                    <div>Nhẫn</div>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
@@ -167,7 +190,7 @@ function Header() {
                     className={styles.singlePage}
                     style={{ fontSize: '17px' }}
                   >
-                    Bông tai
+                    <div>Bông tai</div>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
@@ -177,14 +200,14 @@ function Header() {
                     className={styles.singlePage}
                     style={{ fontSize: '17px' }}
                   >
-                    Dây chuyền
+                    <div>Dây chuyền</div>
                   </Link>
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link eventKey="link-3" href="/blog" className={styles.page}>
                 <b style={{ fontWeight: '500 ' }}>Blog</b>
               </Nav.Link>
-              <Nav.Link eventKey="link-4" href="#about" className={styles.page}>
+              <Nav.Link eventKey="link-4" href="/aboutus" className={styles.page}>
                 <b style={{ fontWeight: '500 ' }}>Về chúng tôi</b>
               </Nav.Link>
               <Nav.Link
@@ -193,6 +216,14 @@ function Header() {
                 className={styles.page}
               >
                 <b style={{ fontWeight: '500 ' }}>Tài khoản</b>
+              </Nav.Link>
+              <Nav.Link
+                eventKey="link-5"
+                href={`/homeAdmin`}
+                target={'_blank'}
+                className={styles.page}
+              >
+                <b style={{ fontWeight: '500 ' }}>Dashboard</b>
               </Nav.Link>
             </Nav>
             <Form className={'d-flex ' + styles.form}>

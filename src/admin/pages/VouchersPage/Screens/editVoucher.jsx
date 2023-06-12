@@ -22,7 +22,7 @@ const EditVoucher = () => {
   //   const handleEditClick = () => {
   //     // Gọi API để lấy thông tin phiếu mua hàng
   //     axios
-  //       .get(`http://localhost:3001/product/${id}`)
+  //       .get(`https://dialuxury.onrender.com/product/${id}`)
   //       .then((response) => {
   //         // Cập nhật state với thông tin phiếu mua hàng
   //         setProduct(response.data);
@@ -37,7 +37,7 @@ const EditVoucher = () => {
 
   //     // Gọi API để cập nhật thông tin phiếu mua hàng
   //     axios
-  //       .put(`http://localhost:3001/product/${id}`, product)
+  //       .put(`https://dialuxury.onrender.com/product/${id}`, product)
   //       .then((response) => {
   //         console.log("Sản phẩm đã được cập nhật.");
   //         // Xử lý khi cập nhật thành công
@@ -82,7 +82,7 @@ const EditVoucher = () => {
 
     // Gửi yêu cầu PUT đến API để sửa phiếu mua hàng
     axios
-      .put(`http://localhost:3001/vouchers/${id}`, {
+      .put(`https://dialuxury.onrender.com/vouchers/${id}`, {
         createdAt,
         production,
         PhoneNumber,

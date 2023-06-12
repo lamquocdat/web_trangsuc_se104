@@ -23,7 +23,7 @@ function VouchersPage() {
 
   const loadVouchers = async () => {
     axios
-      .get("http://localhost:3001/vouchers")
+      .get("https://dialuxury.onrender.com/vouchers")
       .then((response) => {
         setVouchers(response.data);
       })
@@ -38,7 +38,7 @@ function VouchersPage() {
   let { id } = useParams();
   const deleteVoucher = (id) => {
     axios
-      .delete(`http://localhost:3001/vouchers/${id}`)
+      .delete(`https://dialuxury.onrender.com/vouchers/${id}`)
       .then((response) => {
         //Load lại các sản phẩm:
         loadVouchers();

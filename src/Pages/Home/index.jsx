@@ -1,5 +1,5 @@
 import styles from './Home.module.css';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 
 import ProductHomepage from './Components/MostSoldProducts';
 import NewProductHomepage from './Components/NewProduct';
@@ -17,7 +17,7 @@ function Home() {
         localStorage.setItem('token', responseDataObject.token);
         localStorage.setItem('_id', responseDataObject._id);
         localStorage.setItem('username', responseDataObject.name);
-
+        localStorage.setItem('role', responseDataObject.role);
         navigate('/');
       }
       // Use the responseData as needed
@@ -32,7 +32,7 @@ function Home() {
 
   const loadNewProduct = async () => {
     axios
-      .get('http://localhost:3001/sortedProduct')
+      .get('https://dialuxury.onrender.com/sortedProduct')
       .then((response) => {
         setNewProduct(response.data);
         console.log(response.data);
@@ -44,7 +44,7 @@ function Home() {
 
   const loadSoldProduct = async () => {
     axios
-      .get('http://localhost:3001/soldNumbersOfProducts')
+      .get('https://dialuxury.onrender.com/soldNumbersOfProducts')
       .then((response) => {
         setSoldProduct(response.data);
         console.log(response.data);
@@ -53,40 +53,7 @@ function Home() {
         console.log(error);
       });
   };
-  const products = [
-    {
-      id: 'p1',
-      productimage:
-        'https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png',
-      name: 'Nhẫn vàng CZ',
-      price: '10.000.000 đ',
-      sold: '100 đã bán',
-    },
-    {
-      id: 'p2',
-      productimage:
-        'https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png',
-      name: 'Nhẫn vàng CZ',
-      price: '10.000.000 đ',
-      sold: '100 đã bán',
-    },
-    {
-      id: 'p3',
-      productimage:
-        'https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png',
-      name: 'Nhẫn vàng CZ',
-      price: '10.000.000 đ',
-      sold: '100 đã bán',
-    },
-    {
-      id: 'p4',
-      productimage:
-        'https://cdn.pnj.io/images/thumbnails/300/300/detailed/124/gnxmxmy006396-nhan-vang-18k-dinh-da-cz-pnj.png',
-      name: 'Nhẫn vàng CZ',
-      price: '10.000.000 đ',
-      sold: '100 đã bán',
-    },
-  ];
+
 
   return (
     <div>

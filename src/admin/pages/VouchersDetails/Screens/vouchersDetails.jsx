@@ -17,7 +17,7 @@ function VouchersDetails() {
   console.log("StudentID: ", { id });
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/vouchers/${id}`)
+      .get(`https://dialuxury.onrender.com/vouchers/${id}`)
       .then((res) => {
         setOrder(res.data);
       })

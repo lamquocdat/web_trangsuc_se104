@@ -47,7 +47,7 @@ const EditProduct = () => {
 
     // Gửi yêu cầu PUT đến API để sửa sản phẩm
     axios
-      .put(`http://localhost:3001/product/${id}`, {
+      .put(`https://dialuxury.onrender.com/product/${id}`, {
         name,
         image,
         price,
