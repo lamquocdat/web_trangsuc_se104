@@ -114,7 +114,7 @@ function ProductsPage2() {
               <NavDropdown
                 className={styles.page}
                 style={{ fontWeight: '500' }}
-                title="Sản phẩm"
+                title="Giá"
               >
                 <NavDropdown.Item>
                   <h3 style={{ margin: "20px", fontSize: "18px" }}>Min: {value[0].toLocaleString('vi', {style : 'currency', currency : 'VND'})}</h3>
