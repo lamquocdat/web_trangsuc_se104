@@ -12,20 +12,25 @@ import { getAllOrdersAllUser } from '../../../Pages/Login1/helpers/helper';
 const VerifyOrder = () => {
   // const [details, setDetails] = useState("");
   const [orders, setOrders] = useState([]);
+
   useEffect(function () {
+    var forgotPromise;
     async function getData() {
-      let forgotPromise = getAllOrdersAllUser();
-      forgotPromise.then(function (res) {
-        console.log(res);
-        setOrders(res);
-      });
+      forgotPromise = await getAllOrdersAllUser();
+
+      setOrders(forgotPromise);
+      console.log(forgotPromise);
     }
 
-    getData();
+    getData().then(function (response) {
+      const lastPage = Math.ceil(forgotPromise.length / ordersPerPage);
+
+      setCurrentPage(lastPage);
+    });
 
     // Reset form sau khi gửi thành công
   }, []);
-  const [currentPage, setCurrentPage] = useState(orders.length / 10);
+  const [currentPage, setCurrentPage] = useState(1);
   const [ordersPerPage, setOrdersPerPage] = useState(10);
   const indexOfLastOrder = ordersPerPage * currentPage;
   const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
