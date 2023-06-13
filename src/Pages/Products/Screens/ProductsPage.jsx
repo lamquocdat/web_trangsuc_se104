@@ -193,19 +193,19 @@ function ProductsPage() {
                 title="Chất lượng sản phẩm"
               >
                 <NavDropdown.Item>
-                  <Button className={styles.myButton} onClick={() => handleChangeQuality("")}>Tất cả</Button>
+                  <Button style={{color:"black", backgroundColor:"white", borderColor:"white", fontSize:"18px", fontWeight:"15px"}} onClick={() => handleChangeQuality("")}>Tất cả</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button className={styles.myButton} onClick={() => handleChangeQuality("Vàng")}>Vàng</Button>
+                  <Button style={{color:"black", backgroundColor:"white", borderColor:"white", fontSize:"18px", fontWeight:"15px"}} onClick={() => handleChangeQuality("Vàng")}>Vàng</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button className={styles.myButton} onClick={() => handleChangeQuality("Bạc")}>Bạc</Button>
+                  <Button style={{color:"black", backgroundColor:"white", borderColor:"white", fontSize:"18px", fontWeight:"15px"}} onClick={() => handleChangeQuality("Bạc")}>Bạc</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button className={styles.myButton} onClick={() => handleChangeQuality("Kim cương")}>Kim Cương</Button>
+                  <Button style={{color:"black", backgroundColor:"white", borderColor:"white", fontSize:"18px", fontWeight:"15px"}} onClick={() => handleChangeQuality("Kim cương")}>Kim Cương</Button>
                 </NavDropdown.Item>
               </NavDropdown>
 
@@ -245,23 +245,23 @@ function ProductsPage() {
                 title="Sắp xếp"
               >
                 <NavDropdown.Item>
-                  <Button onClick={() => handleChangeSort("")}>Tất cả</Button>
+                  <Button style={{color:"black", backgroundColor:"white", borderColor:"white", fontSize:"18px", fontWeight:"15px"}} onClick={() => handleChangeSort("")}>Tất cả</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button className={styles.myButton} onClick={() => handleChangeSort("newest")}>Các sản phẩm mới nhất</Button>
+                  <Button style={{color:"black", backgroundColor:"white", borderColor:"white", fontSize:"18px", fontWeight:"15px"}} onClick={() => handleChangeSort("newest")}>Các sản phẩm mới nhất</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button className={styles.myButton} onClick={() => handleChangeSort("descending")}>Sắp xếp giá từ cao đến thấp</Button>
+                  <Button style={{color:"black", backgroundColor:"white", borderColor:"white", fontSize:"18px", fontWeight:"15px"}} onClick={() => handleChangeSort("descending")}>Sắp xếp giá từ cao đến thấp</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button className={styles.myButton} onClick={() => handleChangeSort("ascending")}>Sắp xếp giá từ thấp đến cao</Button>
+                  <Button style={{color:"black", backgroundColor:"white", borderColor:"white", fontSize:"18px", fontWeight:"15px"}} onClick={() => handleChangeSort("ascending")}>Sắp xếp giá từ thấp đến cao</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button className={styles.myButton} onClick={() => handleChangeSort("mostSold")}>Các sản phẩm bán chạy nhất</Button>
+                  <Button style={{color:"black", backgroundColor:"white", borderColor:"white", fontSize:"18px", fontWeight:"15px"}} onClick={() => handleChangeSort("mostSold")}>Các sản phẩm bán chạy nhất</Button>
                 </NavDropdown.Item>
               </NavDropdown>
 
