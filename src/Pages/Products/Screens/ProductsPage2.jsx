@@ -41,22 +41,28 @@ function ProductsPage2() {
       });
   }, []);
 
+  const filterProducts = async (action) => {
+    if (quality !== "") {
+      const newData = action.filter(product => (product.price >= value[0] && product.price <= value[1] && product.quality == quality))
+      productsSet(newData)
+      setIsLoading(false)
+    }
+    else {
+      const newData = action.filter(product => (product.price >= value[0] && product.price <= value[1]))
+      productsSet(newData)
+      setIsLoading(false)
+    }
+
+  };
+
+  //Sắp xếp products
   useEffect(() => {
     setIsLoading(true)
     const newProducts = axios
       .get("https://dialuxury.onrender.com/product/category/D%C3%A2y%20chuy%E1%BB%81n")
       .then((response) => {
 
-        if (quality !== "") {
-          const newData = response.data.filter(product => (product.price >= value[0] && product.price <= value[1] && product.quality == quality))
-          productsSet(newData)
-          setIsLoading(false)
-        }
-        else {
-          const newData = response.data.filter(product => (product.price >= value[0] && product.price <= value[1]))
-          productsSet(newData)
-          setIsLoading(false)
-        }
+        filterProducts(response.data);
       })
       .catch((error) => {
         setIsLoading(false)

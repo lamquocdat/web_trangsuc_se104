@@ -35,7 +35,7 @@ function ProductList({ products }) {
                       {product.name}
                     </Card.Title>
                     <Card.Text style={{ color: '#e7b475', fontWeight: '500' }}>
-                      {product.price} đ
+                      {product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})} 
                     </Card.Text>
                     <Card.Text style={{ textAlign: 'end', fontSize: '14px' }}>
                       {product.quantity_sold} đã bán
