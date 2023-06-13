@@ -98,12 +98,6 @@ const Users = () => {
                       >
                         <div className={styles.viewButton}>View</div>
                       </Link>{' '}
-                      <Button
-                        onClick={() => deleteSVT(data._id)}
-                        className={styles.deleteButton}
-                      >
-                        Delete
-                      </Button>{' '}
                     </div>
                   </TableCell>{' '}
                 </TableRow>
