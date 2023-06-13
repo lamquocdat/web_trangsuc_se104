@@ -32,18 +32,21 @@ const AddProductForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://dialuxury.onrender.com/product", {
-        productid,
-        name,
-        price,
-        image,
-        category,
-        dvt,
-        quality,
-        mass,
-        size,
-        color,
-      });
+      const response = await axios.post(
+        "https://dialuxury.onrender.com/product",
+        {
+          productid,
+          name,
+          price,
+          image,
+          category,
+          dvt,
+          quality,
+          mass,
+          size,
+          color,
+        }
+      );
       console.log(response.data); // Thêm sản phẩm vào danh sách
       // Reset form sau khi gửi thành công
       setProductid("");
@@ -90,14 +93,7 @@ const AddProductForm = () => {
                 onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId="price">
-              <Form.Label>Giá:</Form.Label>
-              <Form.Control
-                type="number"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-              />
-            </Form.Group>
+
             <Form.Group controlId="image">
               <Form.Label>Ảnh sản phẩm:</Form.Label>
               <Form.Control
@@ -108,6 +104,14 @@ const AddProductForm = () => {
               {image && (
                 <img src={image} alt="Preview" style={{ marginTop: "10px" }} />
               )}
+            </Form.Group>
+            <Form.Group controlId="price">
+              <Form.Label>Giá:</Form.Label>
+              <Form.Control
+                type="number"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+              />
             </Form.Group>
             <Form.Group controlId="category">
               <Form.Label>Thể loại:</Form.Label>

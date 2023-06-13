@@ -51,6 +51,8 @@ import AddProduct from "../admin/pages/ProductsPage/Screens/addProduct";
 import EditProduct from "../admin/pages/ProductsPage/Screens/editProduct";
 import AddVoucher from "../admin/pages/VouchersPage/Screens/addVoucher";
 import EditVoucher from "../admin/pages/VouchersPage/Screens/editVoucher";
+import AddVoucherProduct from "../admin/pages/VouchersPage/Screens/addProduct";
+import EditVoucherProduct from "../admin/pages/VouchersPage/Screens/editProduct";
 import AddServiceType from "../admin/pages/service/addServiceType/addServiceType";
 import ChangePassword from "../Pages/Login1/components/changePassword";
 import Users from "../admin/pages/users/user";
@@ -337,6 +339,24 @@ const adminRoutes = [
       <AuthorizedAdmin>
         {" "}
         <VouchersDetailsAdmin />
+      </AuthorizedAdmin>
+    ),
+  },
+  {
+    path: "/admin/vouchersPage/:id/add",
+    component: (
+      <AuthorizedAdmin>
+        {" "}
+        <AddVoucherProduct />
+      </AuthorizedAdmin>
+    ),
+  },
+  {
+    path: "/admin/vouchersPage/:id/edit/:productId",
+    component: (
+      <AuthorizedAdmin>
+        {" "}
+        <EditVoucherProduct />
       </AuthorizedAdmin>
     ),
   },

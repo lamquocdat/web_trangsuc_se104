@@ -47,7 +47,7 @@ const ViewPayment = ({ inputs }) => {
                 <div className="row my-2">
                   <div className="col text-end">
                     <label style={{ fontSize: "17px", fontWeight: "500" }}>
-                      Mã HĐ: <span>{payments?._id}</span>
+                      Mã HĐ: <span>{payments?.mahd}</span>
                     </label>
                   </div>
                 </div>
@@ -119,7 +119,9 @@ const ViewPayment = ({ inputs }) => {
             </form>
             <Button
               variant="primary"
-              onClick={navigateToConfirmationForm}
+              onClick={() => {
+                navigate(`/order/detail/${payments?._id}`);
+              }}
               style={{ float: "right", margin: "30px" }}
             >
               Xác Nhận
