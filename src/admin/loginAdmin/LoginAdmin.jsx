@@ -30,11 +30,11 @@ export default function LoginAdmin() {
         .then(function (res) {
           toast.dismiss(toastId);
           console.log(res);
-          let { token, _id, ten, role } = res.data;
+          let { token, _id, ten, role1 } = res.data;
           localStorage.setItem('token', token);
           localStorage.setItem('_id', _id);
           localStorage.setItem('ten', ten);
-          localStorage.setItem('role', role);
+          localStorage.setItem('role1', role1);
           navigate('/homeAdmin');
         })
         .catch(function (res) {
