@@ -1,106 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Button, Row, Container, Col } from "react-bootstrap";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
-const EditProduct = () => {
+const AddProductForm = () => {
   const [productid, setProductid] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const [amount, setAmount] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
   const [quality, setQuality] = useState("");
   const [color, setColor] = useState("");
   const [mass, setMass] = useState("");
   const [size, setSize] = useState("");
-  const [dvt, setdvt] = useState("");
+  const [Unit, setUnit] = useState("");
+  // const [details, setDetails] = useState("");
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    if (name === "productid") {
-      setProductid(value);
-    } else if (name === "name") {
-      setName(value);
-    } else if (name === "image") {
-      setImage(value);
-    } else if (name === "price") {
-      setPrice(value);
-    } else if (name === "category") {
-      setCategory(value);
-    } else if (name === "dvt") {
-      setdvt(value);
-    } else if (name === "quality") {
-      setQuality(value);
-    } else if (name === "mass") {
-      setMass(value);
-    } else if (name === "size") {
-      setSize(value);
-    } else if (name === "color") {
-      setColor(value);
-    }
-  };
-
-  let { id } = useParams();
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Gửi yêu cầu PUT đến API để sửa sản phẩm
-    axios
-      .put(`https://dialuxury.onrender.com/product/${id}`, {
-        name,
-        image,
-        price,
-        category,
-        dvt,
-        quality,
-        mass,
-        size,
-        color,
-      })
-      .then((response) => {
-        console.log("Sửa sản phẩm thành công:", response.data);
-        // Xử lý kết quả thành công tại đây
-      })
-      .catch((error) => {
-        console.error("Lỗi khi sửa sản phẩm:", error);
-        // Xử lý lỗi tại đây
-      });
-    // Reset input fields
-    setProductid("");
-    setName("");
-    setPrice("");
-    setImage("");
-    setCategory("");
-    setQuality("");
-    setColor("");
-    setMass("");
-    setSize("");
-    setdvt("");
-  };
-  useEffect(() => {
-    // Fetch product details from API
-    axios
-      .get(`https://dialuxury.onrender.com/product/${id}`)
-      .then((response) => {
-        const product = response.data;
-        setProductid(product.productid);
-        setName(product.name);
-        setPrice(product.price);
-        setImage(product.image);
-        setCategory(product.category);
-        setdvt(product.dvt);
-        setQuality(product.quality);
-        setMass(product.mass);
-        setSize(product.size);
-        setColor(product.color);
-      })
-      .catch((error) => {
-        console.error("Error fetching product details:", error);
-        // Handle error
-      });
-  }, [id]);
-  //Ảnh:
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -113,6 +29,51 @@ const EditProduct = () => {
       reader.readAsDataURL(file);
     }
   };
+
+  let { id } = useParams();
+  console.log({ id });
+  const product = {
+    productid,
+    name,
+    price,
+    amount,
+    image,
+    category,
+    Unit,
+    quality,
+    mass,
+    size,
+    color,
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        `https://dialuxury.onrender.com/vouchers/${id}/product`,
+        {
+          id,
+          product,
+        }
+      );
+      console.log(response.data); // Thêm sản phẩm vào danh sách
+      // Reset form sau khi gửi thành công
+      setProductid("");
+      setName("");
+      setImage("");
+      setPrice("");
+      setAmount("");
+      setCategory("");
+      setUnit("");
+      setQuality("");
+      setMass("");
+      setSize("");
+      setColor("");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Container style={{ width: "1300px" }}>
       <Row className="d-flex justify-content-center">
@@ -130,21 +91,18 @@ const EditProduct = () => {
               <Form.Label>Mã sản phẩm:</Form.Label>
               <Form.Control
                 type="text"
-                name="productid"
                 value={productid}
-                onChange={handleChange}
+                onChange={(e) => setProductid(e.target.value)}
               />
             </Form.Group>
             <Form.Group controlId="name">
               <Form.Label>Tên sản phẩm:</Form.Label>
               <Form.Control
                 type="text"
-                name="name"
                 value={name}
-                onChange={handleChange}
+                onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
-
             <Form.Group controlId="image">
               <Form.Label>Ảnh sản phẩm:</Form.Label>
               <Form.Control
@@ -160,69 +118,71 @@ const EditProduct = () => {
               <Form.Label>Giá:</Form.Label>
               <Form.Control
                 type="number"
-                name="price"
                 value={price}
-                onChange={handleChange}
+                onChange={(e) => setPrice(e.target.value)}
               />
             </Form.Group>
+            <Form.Group controlId="amount">
+              <Form.Label>Số lượng:</Form.Label>
+              <Form.Control
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+            </Form.Group>
+
             <Form.Group controlId="category">
               <Form.Label>Thể loại:</Form.Label>
               <Form.Control
                 type="text"
-                name="category"
                 value={category}
-                onChange={handleChange}
+                onChange={(e) => setCategory(e.target.value)}
               />
             </Form.Group>
             <Form.Group controlId="dvt">
               <Form.Label>Đơn vị tính:</Form.Label>
               <Form.Control
                 type="text"
-                name="dvt"
-                value={dvt}
-                onChange={handleChange}
+                value={Unit}
+                onChange={(e) => setUnit(e.target.value)}
               />
             </Form.Group>
             <Form.Group controlId="quality">
               <Form.Label>Chất lượng:</Form.Label>
               <Form.Control
                 type="text"
-                name="quality"
                 value={quality}
-                onChange={handleChange}
+                onChange={(e) => setQuality(e.target.value)}
               />
             </Form.Group>
             <Form.Group controlId="mass">
               <Form.Label>Khối lượng:</Form.Label>
               <Form.Control
                 type="text"
-                name="mass"
                 value={mass}
-                onChange={handleChange}
+                onChange={(e) => setMass(e.target.value)}
               />
             </Form.Group>
             <Form.Group controlId="size">
               <Form.Label>Kích thước:</Form.Label>
               <Form.Control
                 type="text"
-                name="size"
                 value={size}
-                onChange={handleChange}
+                onChange={(e) => setSize(e.target.value)}
               />
             </Form.Group>
             <Form.Group controlId="color">
               <Form.Label>Màu:</Form.Label>
               <Form.Control
                 type="text"
-                name="color"
                 value={color}
-                onChange={handleChange}
+                onChange={(e) => setColor(e.target.value)}
               />
             </Form.Group>
             <br></br>
             <div className="text-center">
               <Button variant="primary" type="submit">
-                Cập Nhật
+                Thêm sản phẩm
               </Button>
             </div>
           </Form>
@@ -232,4 +192,4 @@ const EditProduct = () => {
   );
 };
 
-export default EditProduct;
+export default AddProductForm;

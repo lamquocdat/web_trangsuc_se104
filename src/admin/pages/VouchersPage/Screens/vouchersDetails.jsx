@@ -16,23 +16,74 @@ import { Image } from "react-bootstrap";
 
 function VouchersDetails() {
   const [voucher, setVoucher] = useState([]);
-  let { id } = useParams();
+  let { id, productId } = useParams();
 
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://dialuxury.onrender.com/vouchers/${id}`)
+  //     .then((res) => {
+  //       setVoucher(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [id]);
   useEffect(() => {
+    loadProducts();
+  }, []);
+
+  const loadProducts = async () => {
     axios
       .get(`https://dialuxury.onrender.com/vouchers/${id}`)
-      .then((res) => {
-        setVoucher(res.data);
+      .then((response) => {
+        setVoucher(response.data);
       })
-      .catch((err) => console.log(err));
-  }, [id]);
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const calculateTotal = (price, amount) => {
     return price * amount;
+  };
+
+  let navigate = useNavigate();
+
+  const deleteProduct = (productId) => {
+    axios
+      .delete(
+        `https://dialuxury.onrender.com/vouchers/${id}/product/${productId}`
+      )
+      .then((response) => {
+        //Load lại các sản phẩm:
+        loadProducts();
+        console.log("Sản phẩm đã được xóa thành công");
+      })
+      .catch((error) => {
+        // Xử lý lỗi từ API
+        console.error("Lỗi khi xóa sản phẩm:", error);
+      });
   };
   return (
     <Container fluid>
       <div className={"border-l-3 py-4"}>
         <h3 style={{ color: "#646161" }}>Chi tiết phiếu mua hàng</h3>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginRight: "20px",
+            marginTop: "20px",
+          }}
+        >
+          {" "}
+          <Button
+            variant="primary"
+            onClick={() => {
+              return navigate(`/admin/vouchersPage/${id}/add`);
+              // { handleEditClick }
+            }}
+          >
+            Thêm mới
+          </Button>{" "}
+        </div>
         <br></br>
         <TableContainer component={Paper} className={styles.table}>
           <Table sx={{ minWidth: 1200 }} aria-label="simple table">
@@ -43,6 +94,12 @@ function VouchersDetails() {
                   style={{ fontSize: "16px", fontWeight: "500" }}
                 >
                   STT
+                </TableCell>
+                <TableCell
+                  className={styles.tableCell + " text-center"}
+                  style={{ fontSize: "16px", fontWeight: "500" }}
+                >
+                  Mã Sản phẩm
                 </TableCell>
                 <TableCell
                   className={styles.tableCell + " text-center"}
@@ -86,6 +143,12 @@ function VouchersDetails() {
                 >
                   Thành tiền
                 </TableCell>
+                <TableCell
+                  className={styles.tableCell + " text-center"}
+                  style={{ fontSize: "16px", fontWeight: "500" }}
+                >
+                  Hoạt động
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -93,6 +156,9 @@ function VouchersDetails() {
                 <TableRow key={product.index}>
                   <TableCell className={styles.tableCell + " text-center"}>
                     {index + 1}
+                  </TableCell>
+                  <TableCell className={styles.tableCell + " text-center"}>
+                    {product.productid}
                   </TableCell>
                   <TableCell className={styles.tableCell + " text-center"}>
                     {product.name}
@@ -118,6 +184,28 @@ function VouchersDetails() {
                   </TableCell>
                   <TableCell className={styles.tableCell + " text-center"}>
                     {calculateTotal(product.price, product.amount)}
+                  </TableCell>
+                  <TableCell className={styles.tableCell + " text-center"}>
+                    <div className="d-flex">
+                      <Button
+                        variant="warning"
+                        className="me-1"
+                        onClick={() => {
+                          return navigate(
+                            `/admin/vouchersPage/${id}/edit/${product._id}`
+                          );
+                          // { handleEditClick }
+                        }}
+                      >
+                        Sửa
+                      </Button>{" "}
+                      <Button
+                        variant="danger"
+                        onClick={() => deleteProduct(product._id)}
+                      >
+                        Xóa
+                      </Button>{" "}
+                    </div>
                   </TableCell>
                 </TableRow>
               ))}

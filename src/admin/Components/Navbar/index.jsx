@@ -1,8 +1,7 @@
-
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link } from "react-router-dom";
 import styles from "./navbarAdmin.module.css";
 
@@ -12,50 +11,48 @@ import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-
 import SearchIcon from "@mui/icons-material/Search";
 
 function AdminNavbar() {
   return (
-   
     <Navbar bg="light" expand="lg">
       <Container fluid className={styles.myContainer}>
-        <Navbar.Brand href="#"><Link to="/" >
-              <img
-                src={require("../../../assets/images/logo.png")}
-                alt=""
-                className="logo"
-                style={{
-                  width: "250px",
-                  height: "35px",
-                  borderRadius: "none",
-                  marginRight: "100px",
-                  marginLeft: "10px",
-                }}
-              />
-          </Link></Navbar.Brand>
+        <Navbar.Brand href="#">
+          <Link to="/">
+            <img
+              src={require("../../../assets/images/logo.png")}
+              alt=""
+              className="logo"
+              style={{
+                width: "250px",
+                height: "35px",
+                borderRadius: "none",
+                marginRight: "100px",
+                marginLeft: "10px",
+              }}
+            />
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className={"me-auto my-2 my-lg-0" + styles.pages}
-            style={{ maxHeight: '100px', borderLeftColor:"black"}}
+            style={{ maxHeight: "100px", borderLeftColor: "black" }}
             navbarScroll
           >
             <Nav.Link eventKey="link-1" className={styles.page}>
-          <Link to="/" className={styles.singlePage} >
-              <NotificationsNoneOutlinedIcon/>
-          </Link>
-          </Nav.Link>
+              <Link to="/" className={styles.singlePage}>
+                <NotificationsNoneOutlinedIcon />
+              </Link>
+            </Nav.Link>
 
-          <Nav.Link eventKey="link-3" className={styles.page}>
-            <Link to="/blog" className={styles.singlePage} >
-              <ChatBubbleOutlineOutlinedIcon/>
-            </Link>
-          </Nav.Link>
-
-       
+            <Nav.Link eventKey="link-3" className={styles.page}>
+              <Link to="/blog" className={styles.singlePage}>
+                <ChatBubbleOutlineOutlinedIcon />
+              </Link>
+            </Nav.Link>
           </Nav>
-          <Form className={"d-flex " + styles.form}>
+          {/* <Form className={"d-flex " + styles.form}>
           <Form.Control
             type="search"
             placeholder="Tìm kiếm"
@@ -66,14 +63,11 @@ function AdminNavbar() {
           <Button variant="secondary" className={styles.button}>
             <SearchIcon />
           </Button>
-      </Form>
+      </Form> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    
   );
 }
 
 export default AdminNavbar;
-
-

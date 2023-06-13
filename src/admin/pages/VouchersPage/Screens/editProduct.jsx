@@ -7,13 +7,39 @@ const EditProduct = () => {
   const [productid, setProductid] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
+  const [amount, setAmount] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
   const [quality, setQuality] = useState("");
   const [color, setColor] = useState("");
   const [mass, setMass] = useState("");
   const [size, setSize] = useState("");
-  const [dvt, setdvt] = useState("");
+  const [Unit, setUnit] = useState("");
+
+  const { id, productId } = useParams();
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/vouchers/${id}/product/${productId}`)
+      .then((response) => {
+        const productData = response.data;
+        setProductid(productData.productid);
+        setName(productData.name);
+        setPrice(productData.price);
+        setAmount(productData.amount);
+        setImage(productData.image);
+        setCategory(productData.category);
+        setQuality(productData.quality);
+        setColor(productData.color);
+        setMass(productData.mass);
+        setSize(productData.size);
+        setUnit(productData.Unit);
+      })
+      .catch((error) => {
+        console.error("Error fetching product data:", error);
+        // Handle the error here
+      });
+  }, [id, productId]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -25,10 +51,12 @@ const EditProduct = () => {
       setImage(value);
     } else if (name === "price") {
       setPrice(value);
+    } else if (name === "amount") {
+      setAmount(value);
     } else if (name === "category") {
       setCategory(value);
-    } else if (name === "dvt") {
-      setdvt(value);
+    } else if (name === "Unit") {
+      setUnit(value);
     } else if (name === "quality") {
       setQuality(value);
     } else if (name === "mass") {
@@ -40,67 +68,48 @@ const EditProduct = () => {
     }
   };
 
-  let { id } = useParams();
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Gửi yêu cầu PUT đến API để sửa sản phẩm
     axios
-      .put(`https://dialuxury.onrender.com/product/${id}`, {
-        name,
-        image,
-        price,
-        category,
-        dvt,
-        quality,
-        mass,
-        size,
-        color,
-      })
+      .put(
+        `https://dialuxury.onrender.com/vouchers/${id}/product/${productId}`,
+        {
+          productid,
+          name,
+          price,
+          amount,
+          image,
+          category,
+          Unit,
+          quality,
+          mass,
+          size,
+          color,
+        }
+      )
       .then((response) => {
         console.log("Sửa sản phẩm thành công:", response.data);
-        // Xử lý kết quả thành công tại đây
+        // Handle success here
       })
       .catch((error) => {
         console.error("Lỗi khi sửa sản phẩm:", error);
-        // Xử lý lỗi tại đây
+        // Handle error here
       });
-    // Reset input fields
+
     setProductid("");
     setName("");
     setPrice("");
+    setAmount("");
     setImage("");
     setCategory("");
     setQuality("");
     setColor("");
     setMass("");
     setSize("");
-    setdvt("");
+    setUnit("");
   };
-  useEffect(() => {
-    // Fetch product details from API
-    axios
-      .get(`https://dialuxury.onrender.com/product/${id}`)
-      .then((response) => {
-        const product = response.data;
-        setProductid(product.productid);
-        setName(product.name);
-        setPrice(product.price);
-        setImage(product.image);
-        setCategory(product.category);
-        setdvt(product.dvt);
-        setQuality(product.quality);
-        setMass(product.mass);
-        setSize(product.size);
-        setColor(product.color);
-      })
-      .catch((error) => {
-        console.error("Error fetching product details:", error);
-        // Handle error
-      });
-  }, [id]);
-  //Ảnh:
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -113,6 +122,7 @@ const EditProduct = () => {
       reader.readAsDataURL(file);
     }
   };
+
   return (
     <Container style={{ width: "1300px" }}>
       <Row className="d-flex justify-content-center">
@@ -144,7 +154,6 @@ const EditProduct = () => {
                 onChange={handleChange}
               />
             </Form.Group>
-
             <Form.Group controlId="image">
               <Form.Label>Ảnh sản phẩm:</Form.Label>
               <Form.Control
@@ -165,6 +174,15 @@ const EditProduct = () => {
                 onChange={handleChange}
               />
             </Form.Group>
+            <Form.Group controlId="amount">
+              <Form.Label>Số lượng:</Form.Label>
+              <Form.Control
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
+            </Form.Group>
+
             <Form.Group controlId="category">
               <Form.Label>Thể loại:</Form.Label>
               <Form.Control
@@ -174,12 +192,12 @@ const EditProduct = () => {
                 onChange={handleChange}
               />
             </Form.Group>
-            <Form.Group controlId="dvt">
+            <Form.Group controlId="Unit">
               <Form.Label>Đơn vị tính:</Form.Label>
               <Form.Control
                 type="text"
-                name="dvt"
-                value={dvt}
+                name="Unit"
+                value={Unit}
                 onChange={handleChange}
               />
             </Form.Group>
