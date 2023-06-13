@@ -24,6 +24,102 @@ function ProductsPage1() {
     setQuality(qualityValue);
 
   };
+
+  const handleChangeSort = async (sortValue) => {
+    //setSort(sortValue);
+    if(sortValue == "newest")
+    {
+      setIsLoading(true)
+      console.log(sortValue)
+      const newProducts = axios
+        .get("https://dialuxury.onrender.com/product/category/newest/B%C3%B4ng%20tai")
+        .then((response) => {
+          console.log("newest filter")
+          console.log(response.data)
+          filterProducts(response.data);
+        })
+        .catch((error) => {
+          setIsLoading(false)
+          console.log(error);
+        });
+    }
+    if(sortValue == "descending")
+    {
+      setIsLoading(true)
+      console.log(sortValue)
+      const newProducts = axios
+        .get("https://dialuxury.onrender.com/product/category/descendingPrice/B%C3%B4ng%20tai")
+        .then((response) => {
+          console.log(response.data)
+          filterProducts(response.data);
+        })
+        .catch((error) => {
+          setIsLoading(false)
+          console.log(error);
+        });
+    }
+    if(sortValue == "ascending")
+    {
+      setIsLoading(true)
+      console.log(sortValue)
+      const newProducts = axios
+        .get("https://dialuxury.onrender.com/product/category/ascendingPrice/B%C3%B4ng%20tai")
+        .then((response) => {
+          console.log(response.data)
+          console.log("ascending filter")
+          filterProducts(response.data);
+        })
+        .catch((error) => {
+          setIsLoading(false)
+          console.log(error);
+        });
+    }
+    if(sortValue == "mostSold")
+    {
+      setIsLoading(true)
+      console.log(sortValue)
+      const newProducts = axios
+        .get("https://dialuxury.onrender.com/product/category/mostSold/B%C3%B4ng%20tai")
+        .then((response) => {
+          console.log(response.data)
+          filterProducts(response.data);
+        })
+        .catch((error) => {
+          setIsLoading(false)
+          console.log(error);
+        });
+    }
+    if(sortValue==""){
+      setIsLoading(true)
+      const newProducts = axios
+        .get("https://dialuxury.onrender.com/product/category/B%C3%B4ng%20tai")
+        .then((response) => {
+          console.log(response.data)
+          console.log(sortValue)
+          filterProducts(response.data);
+        })
+        .catch((error) => {
+          setIsLoading(false)
+          console.log(error);
+        });
+    
+    
+    }
+  };
+
+  const filterProducts = async (action) => {
+    if (quality !== "") {
+      const newData = action.filter(product => (product.price >= value[0] && product.price <= value[1] && product.quality == quality))
+      productsSet(newData)
+      setIsLoading(false)
+    }
+    else {
+      const newData = action.filter(product => (product.price >= value[0] && product.price <= value[1]))
+      productsSet(newData)
+      setIsLoading(false)
+    }
+
+  };
   useEffect(() => {
     axios
       .get("https://dialuxury.onrender.com/product/category/B%C3%B4ng%20tai")
@@ -135,6 +231,36 @@ function ProductsPage1() {
               </NavDropdown>
               
              
+            </Nav>
+            <Nav className={styles.navTop}>
+            <NavDropdown
+                className={styles.page}
+                style={{ fontWeight: '500' }}
+                title="Sắp xếp"
+              >
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeSort("")}>Tất cả</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeSort("newest")}>Các sản phẩm mới nhất</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeSort("descending")}>Sắp xếp từ cao đến thấp</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeSort("ascending")}>Sắp xếp từ thấp đến cao</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeSort("mostSold")}>Các sản phẩm bán chạy nhất</Button>
+                </NavDropdown.Item>
+              </NavDropdown>
+
+
+              
             </Nav>
           </Navbar.Collapse>
         </Container>
