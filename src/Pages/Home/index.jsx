@@ -1,28 +1,28 @@
-import styles from "./Home.module.css";
-import { useState, useEffect } from "react";
+import styles from './Home.module.css';
+import { useState, useEffect } from 'react';
 
-import ProductHomepage from "./Components/MostSoldProducts";
-import NewProductHomepage from "./Components/NewProduct";
-import { Container, Row, Button } from "react-bootstrap";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import ProductHomepage from './Components/MostSoldProducts';
+import NewProductHomepage from './Components/NewProduct';
+import { Container, Row, Button } from 'react-bootstrap';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function Home() {
-  // const navigate = useNavigate();
-  // useEffect(() => {
-  //   const urlParams = new URLSearchParams(window.location.search);
-  //   if (urlParams) {
-  //     const responseDataString = urlParams.get("responseData");
-  //     const responseDataObject = JSON.parse(responseDataString);
-  //     if (responseDataObject) {
-  //       localStorage.setItem("token", responseDataObject.token);
-  //       localStorage.setItem("_id", responseDataObject._id);
-  //       localStorage.setItem("username", responseDataObject.name);
-  //       localStorage.setItem("role", responseDataObject.role);
-  //       navigate("/");
-  //     }
-  //     // Use the responseData as needed
-  //   }
-  // }, []);
+  const navigate = useNavigate();
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams) {
+      const responseDataString = urlParams.get('responseData');
+      const responseDataObject = JSON.parse(responseDataString);
+      if (responseDataObject) {
+        localStorage.setItem('token', responseDataObject.token);
+        localStorage.setItem('_id', responseDataObject._id);
+        localStorage.setItem('username', responseDataObject.name);
+        localStorage.setItem('role', responseDataObject.role);
+        navigate('/');
+      }
+      // Use the responseData as needed
+    }
+  }, []);
   const [newProduct, setNewProduct] = useState([]);
   const [soldProduct, setSoldProduct] = useState([]);
   const [showMoreSold, setShowMoreSold] = useState(false);
@@ -36,7 +36,7 @@ function Home() {
 
   const loadNewProduct = async () => {
     axios
-      .get("https://dialuxury.onrender.com/sortedProduct")
+      .get('https://dialuxury.onrender.com/sortedProduct')
       .then((response) => {
         setNewProduct(response.data);
         console.log(response.data);
@@ -48,7 +48,7 @@ function Home() {
 
   const loadSoldProduct = async () => {
     axios
-      .get("https://dialuxury.onrender.com/soldNumbersOfProducts")
+      .get('https://dialuxury.onrender.com/soldNumbersOfProducts')
       .then((response) => {
         setSoldProduct(response.data);
         console.log(response.data);
@@ -85,10 +85,10 @@ function Home() {
           <h4
             className="pb-3"
             style={{
-              color: "rgb(189, 120, 189)",
-              marginTop: "40px",
-              textAlign: "center",
-              fontSize: "27px",
+              color: 'rgb(189, 120, 189)',
+              marginTop: '40px',
+              textAlign: 'center',
+              fontSize: '27px',
             }}
           >
             Sản phẩm bán chạy
@@ -113,10 +113,10 @@ function Home() {
           <h4
             className="pb-3"
             style={{
-              color: "rgb(189, 120, 189)",
-              marginTop: "40px",
-              textAlign: "center",
-              fontSize: "27px",
+              color: 'rgb(189, 120, 189)',
+              marginTop: '40px',
+              textAlign: 'center',
+              fontSize: '27px',
             }}
           >
             Sản phẩm mới
