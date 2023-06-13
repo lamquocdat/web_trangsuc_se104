@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Container, Col } from "react-bootstrap";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -74,8 +74,24 @@ const EditVoucher = () => {
       setPhoneNumber(value);
     }
   };
-
   let { id } = useParams();
+  useEffect(() => {
+    // Fetch product details from API
+    axios
+      .get(`https://dialuxury.onrender.com/vouchers/${id}`)
+      .then((response) => {
+        const product = response.data;
+        setVouchersId(product.vouchersId);
+        setAddress(product.address);
+        setCreatedAt(product.createdAt);
+        setPhoneNumber(product.PhoneNumber);
+        setProduction(product.production);
+      })
+      .catch((error) => {
+        console.error("Error fetching product details:", error);
+        // Handle error
+      });
+  }, [id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();

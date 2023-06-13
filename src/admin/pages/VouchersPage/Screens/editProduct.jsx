@@ -20,7 +20,7 @@ const EditProduct = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/vouchers/${id}/product/${productId}`)
+      .get(`https://dialuxury.onrender.com/vouchers/${id}/product/${productId}`)
       .then((response) => {
         const productData = response.data;
         setProductid(productData.productid);
