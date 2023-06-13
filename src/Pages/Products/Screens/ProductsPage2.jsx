@@ -27,6 +27,90 @@ function ProductsPage2() {
     setQuality(qualityValue);
 
   };
+
+  const handleChangeSort = async (sortValue) => {
+    //setSort(sortValue);
+    if(sortValue == "newest")
+    {
+      setIsLoading(true)
+      console.log(sortValue)
+      const newProducts = axios
+        .get("https://dialuxury.onrender.com/product/category/newest/D%C3%A2y%20chuy%E1%BB%81n")
+        .then((response) => {
+          console.log("newest filter")
+          console.log(response.data)
+          filterProducts(response.data);
+        })
+        .catch((error) => {
+          setIsLoading(false)
+          console.log(error);
+        });
+    }
+    if(sortValue == "descending")
+    {
+      setIsLoading(true)
+      console.log(sortValue)
+      const newProducts = axios
+        .get("https://dialuxury.onrender.com/product/category/descendingPrice/D%C3%A2y%20chuy%E1%BB%81n")
+        .then((response) => {
+          console.log(response.data)
+          filterProducts(response.data);
+        })
+        .catch((error) => {
+          setIsLoading(false)
+          console.log(error);
+        });
+    }
+    if(sortValue == "ascending")
+    {
+      setIsLoading(true)
+      console.log(sortValue)
+      const newProducts = axios
+        .get("https://dialuxury.onrender.com/product/category/ascendingPrice/D%C3%A2y%20chuy%E1%BB%81n")
+        .then((response) => {
+          console.log(response.data)
+          console.log("ascending filter")
+          filterProducts(response.data);
+        })
+        .catch((error) => {
+          setIsLoading(false)
+          console.log(error);
+        });
+    }
+    if(sortValue == "mostSold")
+    {
+      setIsLoading(true)
+      console.log(sortValue)
+      const newProducts = axios
+        .get("https://dialuxury.onrender.com/product/category/mostSold/D%C3%A2y%20chuy%E1%BB%81n")
+        .then((response) => {
+          console.log(response.data)
+          filterProducts(response.data);
+        })
+        .catch((error) => {
+          setIsLoading(false)
+          console.log(error);
+        });
+    }
+    if(sortValue==""){
+      setIsLoading(true)
+      const newProducts = axios
+        .get("https://dialuxury.onrender.com/product/category/D%C3%A2y%20chuy%E1%BB%81n")
+        .then((response) => {
+          console.log(response.data)
+          console.log(sortValue)
+          filterProducts(response.data);
+        })
+        .catch((error) => {
+          setIsLoading(false)
+          console.log(error);
+        });
+    
+    
+    }
+  };
+
+ 
   useEffect(() => {
     setIsLoading(true)
     axios
@@ -146,6 +230,36 @@ function ProductsPage2() {
               </NavDropdown>
               
              
+            </Nav>
+            <Nav className={styles.navTop}>
+            <NavDropdown
+                className={styles.page}
+                style={{ fontWeight: '500' }}
+                title="Sắp xếp"
+              >
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeSort("")}>Tất cả</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeSort("newest")}>Các sản phẩm mới nhất</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeSort("descending")}>Sắp xếp từ cao đến thấp</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeSort("ascending")}>Sắp xếp từ thấp đến cao</Button>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item>
+                  <Button onClick={() => handleChangeSort("mostSold")}>Các sản phẩm bán chạy nhất</Button>
+                </NavDropdown.Item>
+              </NavDropdown>
+
+
+              
             </Nav>
           </Navbar.Collapse>
         </Container>
