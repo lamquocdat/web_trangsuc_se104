@@ -25,7 +25,7 @@ const VerifyOrder = () => {
 
     // Reset form sau khi gửi thành công
   }, []);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(orders.length / 10);
   const [ordersPerPage, setOrdersPerPage] = useState(10);
   const indexOfLastOrder = ordersPerPage * currentPage;
   const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;

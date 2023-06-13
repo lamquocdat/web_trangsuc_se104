@@ -17,11 +17,11 @@ import NoteAltIcon from '@mui/icons-material/NoteAlt';
 
 function AdminSidebar() {
   const navigate = useNavigate();
-  const role = localStorage.getItem('role');
+  const role1 = localStorage.getItem('role1');
   const handleLogout = () => {
     localStorage.removeItem('_id');
     localStorage.removeItem('token');
-    localStorage.removeItem('role');
+    localStorage.removeItem('role1');
     localStorage.removeItem('username');
     navigate('/loginAdmin');
   };
@@ -91,7 +91,7 @@ function AdminSidebar() {
           </Link>
 
           <p className={styles.title}>Options</p>
-          {role === 'admin' ? (
+          {role1 === 'admin' ? (
             <li onClick={handleLogout}>
               <ExitToAppIcon className={styles.icon} />
               <span>Đăng xuất</span>
