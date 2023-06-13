@@ -34,7 +34,11 @@
  
   }
 
-  .myBrand{
-    
-  }
+ .myButton{
+    color: black;
+    background-color: white;
+    border-color: white;
+    font-size: 18px;
+    font-weight: 15px;
+ }
 

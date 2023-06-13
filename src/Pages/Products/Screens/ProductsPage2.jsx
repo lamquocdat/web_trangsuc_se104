@@ -184,19 +184,19 @@ function ProductsPage2() {
                 title="Chất lượng sản phẩm"
               >
                 <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("")}>Tất cả</Button>
+                  <Button className={styles.myButton} onClick={() => handleChangeQuality("")}>Tất cả</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("Vàng")}>Vàng</Button>
+                  <Button className={styles.myButton} onClick={() => handleChangeQuality("Vàng")}>Vàng</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("Bạc")}>Bạc</Button>
+                  <Button className={styles.myButton} onClick={() => handleChangeQuality("Bạc")}>Bạc</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button onClick={() => handleChangeQuality("Kim cương")}>Kim Cương</Button>
+                  <Button className={styles.myButton} onClick={() => handleChangeQuality("Kim cương")}>Kim Cương</Button>
                 </NavDropdown.Item>
               </NavDropdown>
 
@@ -238,23 +238,23 @@ function ProductsPage2() {
                 title="Sắp xếp"
               >
                 <NavDropdown.Item>
-                  <Button onClick={() => handleChangeSort("")}>Tất cả</Button>
+                  <Button className={styles.myButton} onClick={() => handleChangeSort("")}>Tất cả</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button onClick={() => handleChangeSort("newest")}>Các sản phẩm mới nhất</Button>
+                  <Button className={styles.myButton} onClick={() => handleChangeSort("newest")}>Các sản phẩm mới nhất</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button onClick={() => handleChangeSort("descending")}>Sắp xếp từ cao đến thấp</Button>
+                  <Button className={styles.myButton} onClick={() => handleChangeSort("descending")}>Sắp xếp giá từ cao đến thấp</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button onClick={() => handleChangeSort("ascending")}>Sắp xếp từ thấp đến cao</Button>
+                  <Button className={styles.myButton} onClick={() => handleChangeSort("ascending")}>Sắp xếp giá từ thấp đến cao</Button>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item>
-                  <Button onClick={() => handleChangeSort("mostSold")}>Các sản phẩm bán chạy nhất</Button>
+                  <Button className={styles.myButton} onClick={() => handleChangeSort("mostSold")}>Các sản phẩm bán chạy nhất</Button>
                 </NavDropdown.Item>
               </NavDropdown>
 
