@@ -1,22 +1,13 @@
-import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
+import { Container, Row, Col, Card } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 
-import { useState, useEffect } from 'react';
-import ReactPaginate from 'react-paginate';
+import { useState, useEffect } from "react";
+import ReactPaginate from "react-paginate";
 function ProductHomepage({ products }) {
-  const [proPerPage, setProPerPage] = useState(4);
-  const [CurProPerPage, setCurProPerPage] = useState(1);
-  const numOfToTalPages = Math.ceil(products.length / proPerPage);
-  // const pages = [...Array(numOfToTalPages + 1).keys()].slice(1);
-  const indexOfLastPro = CurProPerPage * proPerPage;
-  const indexOfFirstPro = indexOfLastPro - proPerPage;
-  const visiblePro = products.slice(indexOfFirstPro, indexOfLastPro);
   const navigate = useNavigate();
 
-  const changePage = ({ selected }) => {
-    setCurProPerPage(selected + 1);
-  };
+  const visiblePro = products;
   const handleProductClick = (productId) => {
     navigate(`/productsdetail/${productId}`);
   };
@@ -31,28 +22,28 @@ function ProductHomepage({ products }) {
               {/* <Link to={`/productsdetail/${product._id}`}> */}
               <Card
                 style={{
-                  background: '#f7f7f7',
-                  marginBottom: '30px',
-                  cursor: 'pointer',
+                  background: "#f7f7f7",
+                  marginBottom: "30px",
+                  cursor: "pointer",
                 }}
                 onClick={() => handleProductClick(product._id)}
               >
-                <Card.Body style={{ textAlign: 'center' }}>
+                <Card.Body style={{ textAlign: "center" }}>
                   <Card.Img src={product.image}></Card.Img>
-                  <Card.Title style={{ fontWeight: '200' }}>
+                  <Card.Title style={{ fontWeight: "200" }}>
                     {product.name}
                   </Card.Title>
-                  <Card.Text style={{ color: '#e7b475', fontWeight: '500' }}>
-                    {product.price} VNĐ
+                  <Card.Text style={{ color: "#e7b475", fontWeight: "500" }}>
+                    {product.price} đ
                   </Card.Text>
                   <Card.Text
                     style={{
-                      color: 'black',
-                      fontWeight: '350',
-                      float: 'right',
+                      color: "black",
+                      fontWeight: "350",
+                      float: "right",
                     }}
                   >
-                    {product.quantity_sold} đã bán !
+                    {product.quantity_sold} đã bán
                   </Card.Text>
                   {/* <Card.Text style={{ textAlign: "center", fontSize: "15px" }}>
                       {product.sold}
@@ -64,7 +55,7 @@ function ProductHomepage({ products }) {
           ))}
         </Row>
       </Container>
-      <ReactPaginate
+      {/* <ReactPaginate
         previousLabel={'Prev'}
         nextLabel={'Next'}
         pageCount={numOfToTalPages}
@@ -79,7 +70,7 @@ function ProductHomepage({ products }) {
         breakClassName={'page-item'}
         breakLinkClassName={'page-link'}
         activeClassName={'active'}
-      />
+      /> */}
     </>
   );
 }

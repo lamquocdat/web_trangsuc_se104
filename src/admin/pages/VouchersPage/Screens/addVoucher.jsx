@@ -14,14 +14,17 @@ const AddProductForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://dialuxury.onrender.com/vouchers", {
-        vouchersId,
-        createdAt,
-        production,
+      const response = await axios.post(
+        "https://dialuxury.onrender.com/vouchers",
+        {
+          vouchersId,
+          createdAt,
+          production,
 
-        address,
-        PhoneNumber,
-      });
+          address,
+          PhoneNumber,
+        }
+      );
       console.log(response.data); // Thêm sản phẩm vào danh sách
       // Reset form sau khi gửi thành công
       setVouchersId("");
@@ -60,7 +63,7 @@ const AddProductForm = () => {
             <Form.Group controlId="createdAt">
               <Form.Label>Ngày lập phiếu:</Form.Label>
               <Form.Control
-                type="text"
+                type="date"
                 value={createdAt}
                 onChange={(e) => setCreatedAt(e.target.value)}
               />
