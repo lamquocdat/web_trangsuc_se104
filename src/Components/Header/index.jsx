@@ -1,34 +1,34 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import PhoneIcon from '@mui/icons-material/Phone';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import HistoryIcon from '@mui/icons-material/History';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import SearchIcon from '@mui/icons-material/Search';
-import PersonIcon from '@mui/icons-material/Person';
-import styles from './Header.module.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import PhoneIcon from "@mui/icons-material/Phone";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import HistoryIcon from "@mui/icons-material/History";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import SearchIcon from "@mui/icons-material/Search";
+import PersonIcon from "@mui/icons-material/Person";
+import styles from "./Header.module.css";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 function Header() {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
-  const role = localStorage.getItem('role');
-  const _id = localStorage.getItem('_id');
+  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  const _id = localStorage.getItem("_id");
   const handleLogout = () => {
-    localStorage.removeItem('_id');
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    localStorage.removeItem('username');
-    navigate('/login');
+    localStorage.removeItem("_id");
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("username");
+    navigate("/login");
   };
 
-  const [userQuery, setUserQuery] = useState('');
+  const [userQuery, setUserQuery] = useState("");
   const handleChangeUserQuery = (e) => {
     setUserQuery(e.target.value);
   };
@@ -62,15 +62,15 @@ function Header() {
           <Navbar.Brand href="#home">
             <Link to="/">
               <img
-                src={require('../../assets/images/logo.png')}
+                src={require("../../assets/images/logo.png")}
                 alt=""
                 className="logo"
                 style={{
-                  width: '250px',
-                  height: '35px',
-                  borderRadius: 'none',
-                  marginRight: '100px',
-                  marginLeft: '10px',
+                  width: "250px",
+                  height: "35px",
+                  borderRadius: "none",
+                  marginRight: "100px",
+                  marginLeft: "10px",
                 }}
               />
             </Link>
@@ -127,7 +127,7 @@ function Header() {
                   </div>
                 </Link>
               </Nav.Link>
-              {token && role === 'user' ? (
+              {token && role === "user" ? (
                 <>
                   <Nav.Link className={styles.items} onClick={handleLogout}>
                     <div className={styles.item}>
@@ -164,21 +164,21 @@ function Header() {
         <Container className={styles.myContainer}>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav variant="tabs" className={'me-auto ' + styles.pages}>
+            <Nav variant="tabs" className={"me-auto " + styles.pages}>
               <Nav.Link eventKey="link-1" href="/" className={styles.page}>
-                <b style={{ fontWeight: '500 ' }}>Trang chủ</b>
+                <b style={{ fontWeight: "500 " }}>Trang chủ</b>
               </Nav.Link>
               {/* <Nav.Link eventKey="link-2" href="#products" className={styles.page}><b style={{fontWeight: "500 "}}>Sản phẩm</b></Nav.Link> */}
               <NavDropdown
                 className={styles.page}
-                style={{ fontWeight: '500' }}
+                style={{ fontWeight: "500" }}
                 title="Sản phẩm"
               >
                 <NavDropdown.Item>
                   <Link
                     to="/products/nhan"
                     className={styles.singlePage}
-                    style={{ fontSize: '17px' }}
+                    style={{ fontSize: "17px" }}
                   >
                     <div>Nhẫn</div>
                   </Link>
@@ -188,7 +188,7 @@ function Header() {
                   <Link
                     to="/products/bong-tai"
                     className={styles.singlePage}
-                    style={{ fontSize: '17px' }}
+                    style={{ fontSize: "17px" }}
                   >
                     <div>Bông tai</div>
                   </Link>
@@ -198,39 +198,43 @@ function Header() {
                   <Link
                     to="/products/day-chuyen"
                     className={styles.singlePage}
-                    style={{ fontSize: '17px' }}
+                    style={{ fontSize: "17px" }}
                   >
                     <div>Dây chuyền</div>
                   </Link>
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link eventKey="link-3" href="/blog" className={styles.page}>
-                <b style={{ fontWeight: '500 ' }}>Blog</b>
+                <b style={{ fontWeight: "500 " }}>Blog</b>
               </Nav.Link>
-              <Nav.Link eventKey="link-4" href="/aboutus" className={styles.page}>
-                <b style={{ fontWeight: '500 ' }}>Về chúng tôi</b>
+              <Nav.Link
+                eventKey="link-4"
+                href="/aboutus"
+                className={styles.page}
+              >
+                <b style={{ fontWeight: "500 " }}>Về chúng tôi</b>
               </Nav.Link>
               <Nav.Link
                 eventKey="link-5"
                 href={`/account/${_id}`}
                 className={styles.page}
               >
-                <b style={{ fontWeight: '500 ' }}>Tài khoản</b>
+                <b style={{ fontWeight: "500 " }}>Tài khoản</b>
               </Nav.Link>
-              <Nav.Link
+              {/* <Nav.Link
                 eventKey="link-5"
-                href={`/homeAdmin`}
+                href={`/homeAdmin`} 
                 target={'_blank'}
                 className={styles.page}
               >
                 <b style={{ fontWeight: '500 ' }}>Dashboard</b>
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav>
-            <Form className={'d-flex ' + styles.form}>
+            <Form className={"d-flex " + styles.form}>
               <Form.Control
                 type="search"
                 placeholder="Tìm kiếm"
-                className={'me-2 ' + styles.formcontrol}
+                className={"me-2 " + styles.formcontrol}
                 aria-label="Search"
                 value={userQuery}
                 onChange={handleChangeUserQuery}

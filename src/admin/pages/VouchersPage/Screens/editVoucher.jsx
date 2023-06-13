@@ -96,6 +96,13 @@ const EditVoucher = () => {
         console.error("Lỗi khi sửa phiếu mua hàng:", error);
         // Xử lý lỗi tại đây
       });
+    setVouchersId("");
+    setCreatedAt("");
+
+    setProduction("");
+
+    setAddress("");
+    setPhoneNumber("");
   };
   return (
     <Container>

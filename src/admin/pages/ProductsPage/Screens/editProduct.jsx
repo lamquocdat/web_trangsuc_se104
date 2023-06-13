@@ -4,56 +4,6 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const EditProduct = () => {
-  // const EditProductForm = () => {
-  //   const [product, setProduct] = useState({
-  //     productid: "",
-  //     name: "",
-  //     image: "",
-  //     price: "",
-  //     category: "",
-  //     dvt: "",
-  //     quality: "",
-  //     mass: "",
-  //     size: "",
-  //     color: "",
-  //   });
-
-  //   let id = useParams();
-  //   const handleEditClick = () => {
-  //     // Gọi API để lấy thông tin sản phẩm
-  //     axios
-  //       .get(`https://dialuxury.onrender.com/product/${id}`)
-  //       .then((response) => {
-  //         // Cập nhật state với thông tin sản phẩm
-  //         setProduct(response.data);
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //   };
-
-  //   const handleFormSubmit = (event) => {
-  //     event.preventDefault();
-
-  //     // Gọi API để cập nhật thông tin sản phẩm
-  //     axios
-  //       .put(`https://dialuxury.onrender.com/product/${id}`, product)
-  //       .then((response) => {
-  //         console.log("Sản phẩm đã được cập nhật.");
-  //         // Xử lý khi cập nhật thành công
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //         // Xử lý khi có lỗi xảy ra trong quá trình cập nhật
-  //       });
-  //   };
-
-  //   const handleInputChange = (event) => {
-  //     const { name, value } = event.target;
-  //     // Cập nhật giá trị của trường sản phẩm tương ứng trong state
-  //     setProduct({ ...product, [name]: value });
-  //   };
-
   const [productid, setProductid] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -116,9 +66,34 @@ const EditProduct = () => {
         console.error("Lỗi khi sửa sản phẩm:", error);
         // Xử lý lỗi tại đây
       });
+    // Reset input fields
+    setProductid("");
+    setName("");
+    setPrice("");
+    setImage("");
+    setCategory("");
+    setQuality("");
+    setColor("");
+    setMass("");
+    setSize("");
+    setdvt("");
+  };
+
+  //Ảnh:
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   };
   return (
-    <Container style={{width:"1300px"}}>
+    <Container style={{ width: "1300px" }}>
       <Row className="d-flex justify-content-center">
         <Col
           md={6}
@@ -160,14 +135,13 @@ const EditProduct = () => {
             <Form.Group controlId="image">
               <Form.Label>Ảnh sản phẩm:</Form.Label>
               <Form.Control
-                // type="file"
-                // accept="image/*"
-                // onChange={handleImageChange}
-                type="text"
-                name="image"
-                value={image}
-                onChange={handleChange}
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
               />
+              {image && (
+                <img src={image} alt="Preview" style={{ marginTop: "10px" }} />
+              )}
             </Form.Group>
             <Form.Group controlId="category">
               <Form.Label>Thể loại:</Form.Label>
