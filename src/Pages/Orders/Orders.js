@@ -20,6 +20,7 @@ import {
   DeliveredModal,
 } from './Modals/OrderModal';
 import { Container } from 'react-bootstrap';
+import axios from 'axios';
 const override: CSSProperties = {
   display: 'block',
   margin: '0 auto',
@@ -66,6 +67,15 @@ const Orders = () => {
       });
   };
   const handleDelivered = async () => {
+    //cap nhat lai so luong da ban va so luong con lai cua product
+    axios.put(`https://dialuxury.onrender.com/product/increase_sold/${currentOrder}`)
+    .then((res)=>{
+      console.log(res.data);
+    })
+    .catch((e)=>{ 
+      console.log(e);
+    })
+    //cap nhat lai tinh trang order
     let deliveredPromise = deliveredOrderbyId(currentOrder);
     deliveredPromise
       .then(function (res) {
