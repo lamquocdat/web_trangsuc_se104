@@ -13,12 +13,12 @@ export default function Chart({aspect, title} ) {
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1; //lấy tháng hiện tại
 
-  const [thangHienTai, setThangHienTai] = useState({thang:0, tien:0})
-  const [thangTruoc, setThangTruoc] = useState({thang:0, tien:0})
-  const [haiThangTruoc, setHaiThangTruoc] = useState({thang:0, tien:0})
-  const [baThangTruoc,setBaThangTruoc] = useState({thang:0, tien:0})
-  const [bonThangTruoc, setBonThanTruoc] = useState({thang:0, tien:0}) 
-  const [namThangTruoc, setNamThangTruoc] = useState({thang:0, tien:0})
+  const [thangHienTai, setThangHienTai] = useState({thang: currentMonth , tien:0})
+  const [thangTruoc, setThangTruoc] = useState({thang: currentMonth-1, tien:0})
+  const [haiThangTruoc, setHaiThangTruoc] = useState({thang: currentMonth-2, tien:0})
+  const [baThangTruoc,setBaThangTruoc] = useState({thang: currentMonth-3, tien:0})
+  const [bonThangTruoc, setBonThanTruoc] = useState({thang: currentMonth-4, tien:0}) 
+  const [namThangTruoc, setNamThangTruoc] = useState({thang: currentMonth-5, tien:0})
   //lấy dữ liệu các order đã giao hàng
 useEffect(()=>{
   axios.get("https://dialuxury.onrender.com/order/tinhtrang/Đã%20giao%20hàng")
