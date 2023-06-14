@@ -81,12 +81,12 @@ useEffect(()=>{
 const [data, setData ] = useState([]);
 useEffect(()=>{
   setData([
-    { name: namThangTruoc.thang, Total: namThangTruoc.tien/2 },
-    { name: bonThangTruoc.thang, Total: bonThangTruoc.tien/2},
-    { name: baThangTruoc.thang, Total: baThangTruoc.tien/2 },
-    { name: haiThangTruoc.thang, Total: haiThangTruoc.tien/2 },
-    { name: thangTruoc.thang, Total: thangTruoc.tien/2 },
-      { name: thangHienTai.thang, Total: thangHienTai.tien/2 },
+    { name: namThangTruoc.thang, Total: namThangTruoc.tien },
+    { name: bonThangTruoc.thang, Total: bonThangTruoc.tien},
+    { name: baThangTruoc.thang, Total: baThangTruoc.tien },
+    { name: haiThangTruoc.thang, Total: haiThangTruoc.tien },
+    { name: thangTruoc.thang, Total: thangTruoc.tien },
+      { name: thangHienTai.thang, Total: thangHienTai.tien },
     ]);
     //phải chia hai vì component render 2 lần làm thuộc tính tien = tien *2
 },[thangHienTai,thangTruoc,haiThangTruoc,baThangTruoc,bonThangTruoc,namThangTruoc])
