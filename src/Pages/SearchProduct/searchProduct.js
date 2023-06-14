@@ -1,6 +1,6 @@
 import { Container, Row, Image } from "react-bootstrap";
 import ProductList from "../Products/Components/Products";
-import ImageBanner from "../../../src/assets/images/Products/banner_search.jpg";
+import ImageBanner from "../../../src/assets/images/banner-main-homepage-img.jpg";
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 
@@ -16,7 +16,9 @@ function ProductsPage() {
     axios
       .get(`https://dialuxury.onrender.com/product/search?query=${query}`)
       .then((response) => {
-        console.log(`https://dialuxury.onrender.com/product/search?query=${query}`);
+        console.log(
+          `https://dialuxury.onrender.com/product/search?query=${query}`
+        );
         productsSet(response.data);
 
         console.log(response.data);
