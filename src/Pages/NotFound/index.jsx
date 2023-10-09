@@ -3,7 +3,7 @@ import images from "../../assets/images";
 
 function NotFound() {
     return (
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <img src={images.notFoundGif} alt="Not Found" />
         </div>
     );

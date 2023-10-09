@@ -11,6 +11,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import styles from "./Header.module.css";
+import { Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -51,20 +52,10 @@ function Header() {
   return (
     <>
       {/* nav 1 */}
-      <Navbar
-        collapseOnSelect
-        expand="lg"
-        bg="light"
-        variant="light"
-        className={styles.firstNav}
-      >
+      <Navbar collapseOnSelect expand="xl" bg="light" variant="light" className={styles.firstNav}>
         <Container className={styles.myContainer}>
-          <Navbar.Brand href="#home">
-            <Link to="/">
-              <img
-                src={require("../../assets/images/logo.png")}
-                alt=""
-                className="logo"
+            <Link to="/" className="navbar-brand">
+              <img src={require("../../assets/images/logo.png")} alt="Logo Image" className="logo"
                 style={{
                   width: "250px",
                   height: "35px",
@@ -74,79 +65,55 @@ function Header() {
                 }}
               />
             </Link>
-          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto"></Nav>
             <Nav className={styles.navTop}>
-              <Nav.Link className={styles.items}>
-                <Link to="/" className={styles.singleItem}>
-                  <div className={styles.item}>
-                    <PhoneIcon className={styles.icon} />
-                    <div className={styles.action} href="#">
-                      1800 54 54 57
-                    </div>
-                  </div>
-                </Link>
-              </Nav.Link>
-              <Nav.Link className={styles.items}>
-                <Link to={`/book/${_id}`} className={styles.singleItem}>
-                  <div className={styles.item}>
-                    <CalendarTodayIcon className={styles.icon} />
-                    <div className={styles.action} href="#">
-                      Đặt lịch hẹn
-                    </div>
-                  </div>
-                </Link>
-              </Nav.Link>
-              <Nav.Link className={styles.items}>
-                <Link to={`/orders/${_id}`} className={styles.singleItem}>
-                  <div className={styles.item}>
-                    <HistoryIcon className={styles.icon} />
-                    <div className={styles.action} href="#">
-                      Lịch sử đơn hàng
-                    </div>
-                  </div>
-                </Link>
-              </Nav.Link>
-              <Nav.Link className={styles.items}>
-                <Link to="/cart" className={styles.singleItem}>
+              <Link to="/" className={styles.items +" nav-link text-center"}>
+                <div className={styles.item}>
+                  <PhoneIcon className={styles.icon} />
+                  1800 54 54 57
+                </div>
+              </Link>
+              <Link to={`/book/${_id}`} className={styles.items + " nav-link text-center"}>
+                <div className={styles.item}>
+                  <CalendarTodayIcon className={styles.icon} />
+                  Đặt lịch hẹn
+                </div>
+              </Link>
+              <Link to={`/order/${_id}`} className={styles.items + " nav-link text-center"}>
+                <div className={styles.item}>
+                  <HistoryIcon className={styles.icon} />
+                  Lịch sử đơn hàng
+                </div>
+              </Link>
+              <Link to="/cart" className={styles.items + " nav-link text-center"}>
                   <div className={styles.item}>
                     <div className="position-relative">
-                      <ShoppingCartIcon className={styles.icon} />
-                      <span
-                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger m-0"
-                        style={{ fontSize: 10 }}
-                      >
+                      <ShoppingCartIcon className={styles.icon + "mr-0"} />
+                      <span class="position-absolute top-0 start-60 translate-middle badge rounded-pill bg-danger m-0" style={{ fontSize: 10 }}>
                         {productAmount}
                       </span>
                     </div>
-                    <div className={styles.action} href="#">
                       Giỏ hàng
-                    </div>
                   </div>
-                </Link>
-              </Nav.Link>
+              </Link>
               {token && role === "user" ? (
                 <>
-                  <Nav.Link className={styles.items} onClick={handleLogout}>
+                  <Link to="#" className={styles.items + " nav-link"} onClick={handleLogout}>
                     <div className={styles.item}>
                       <PersonIcon className={styles.icon} />
-                      <div className={styles.action} href="#">
-                        Đăng xuất
-                      </div>
+                      Đăng xuất
                     </div>
-                  </Nav.Link>
+                  </Link>
                 </>
               ) : (
-                <Nav.Link href="/login" className={styles.items}>
+                <Link to="/login" className={styles.items + " nav-link"}>
                   <div className={styles.item}>
                     <PersonIcon className={styles.icon} />
-                    <div className={styles.action} href="#">
-                      Đăng nhập
-                    </div>
+                    Đăng nhập
                   </div>
-                </Nav.Link>
+                </Link>
               )}
             </Nav>
           </Navbar.Collapse>
@@ -154,82 +121,31 @@ function Header() {
       </Navbar>
 
       {/* nav 2 */}
-      <Navbar
-        collapseOnSelect
-        expand="lg"
-        bg="light"
-        variant="light"
-        className={styles.secondNav}
-      >
-        <Container className={styles.myContainer}>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav variant="tabs" className={"me-auto " + styles.pages}>
-              <Nav.Link eventKey="link-1" href="/" className={styles.page}>
-                <b style={{ fontWeight: "500 " }}>Trang chủ</b>
-              </Nav.Link>
-              {/* <Nav.Link eventKey="link-2" href="#products" className={styles.page}><b style={{fontWeight: "500 "}}>Sản phẩm</b></Nav.Link> */}
-              <NavDropdown
-                className={styles.page}
-                style={{ fontWeight: "500" }}
-                title="Sản phẩm"
-              >
-                <NavDropdown.Item>
-                  <Link
-                    to="/products/nhan"
-                    className={styles.singlePage}
-                    style={{ fontSize: "17px" }}
-                  >
-                    <div>Nhẫn</div>
-                  </Link>
-                </NavDropdown.Item>
+      <Navbar collapseOnSelect expand="sm" bg="light" variant="light" className={styles.secondNav}>
+        <div className={styles.myContainer + " container-fluid"}>
+          <Row className="container-fluid justify-content-between">
+          <Col xs={12} md={12} lg={7} className="d-flex text-center" style={{ marginLeft: 10 }}>
+            <Link to="/" class="navbar-brand">Trang chủ</Link>
+            <Nav className="me-auto">
+              <NavDropdown style={{ fontWeight: "500" }} title="Sản phẩm">
+                <Link to="/products/nhan" className={styles.singlePage + " dropdown-item"} style={{ fontSize: "17px" }}>
+                  Nhẫn
+                </Link>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <Link
-                    to="/products/bong-tai"
-                    className={styles.singlePage}
-                    style={{ fontSize: "17px" }}
-                  >
-                    <div>Bông tai</div>
-                  </Link>
-                </NavDropdown.Item>
+                <Link to="/products/bong-tai" className={styles.singlePage + " dropdown-item"} style={{ fontSize: "17px" }}>
+                  Bông tai
+                </Link>
                 <NavDropdown.Divider />
-                <NavDropdown.Item>
-                  <Link
-                    to="/products/day-chuyen"
-                    className={styles.singlePage}
-                    style={{ fontSize: "17px" }}
-                  >
-                    <div>Dây chuyền</div>
-                  </Link>
-                </NavDropdown.Item>
+                <Link to="/products/day-chuyen" className={styles.singlePage + " dropdown-item"} style={{ fontSize: "17px" }}>
+                  Dây chuyền
+                </Link>
               </NavDropdown>
-              <Nav.Link eventKey="link-3" href="/blog" className={styles.page}>
-                <b style={{ fontWeight: "500 " }}>Blog</b>
-              </Nav.Link>
-              <Nav.Link
-                eventKey="link-4"
-                href="/aboutus"
-                className={styles.page}
-              >
-                <b style={{ fontWeight: "500 " }}>Về chúng tôi</b>
-              </Nav.Link>
-              <Nav.Link
-                eventKey="link-5"
-                href={`/account/${_id}`}
-                className={styles.page}
-              >
-                <b style={{ fontWeight: "500 " }}>Tài khoản</b>
-              </Nav.Link>
-              {/* <Nav.Link
-                eventKey="link-5"
-                href={`/homeAdmin`} 
-                target={'_blank'}
-                className={styles.page}
-              >
-                <b style={{ fontWeight: '500 ' }}>Dashboard</b>
-              </Nav.Link> */}
+                <Link to="/blog" class="nav-link">Blog</Link>
+                <Link to="/aboutus" class="nav-link">Về chúng tôi</Link>
+                <Link to={`/account/${_id}`} class="nav-link">Tài khoản</Link>
             </Nav>
+          </Col>
+          <Col xs={12} md={12} lg={4}>
             <Form className={"d-flex " + styles.form}>
               <Form.Control
                 type="search"
@@ -238,7 +154,7 @@ function Header() {
                 aria-label="Search"
                 value={userQuery}
                 onChange={handleChangeUserQuery}
-              />
+                />
 
               <Button
                 variant="secondary"
@@ -246,12 +162,13 @@ function Header() {
                 onClick={() => {
                   navigate(`/search?query=${userQuery}`);
                 }}
-              >
+                >
                 <SearchIcon />
               </Button>
             </Form>
-          </Navbar.Collapse>
-        </Container>
+          </Col>
+          </Row>
+        </div>
       </Navbar>
     </>
   );
