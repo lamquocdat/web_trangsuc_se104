@@ -11,13 +11,15 @@ function Footer () {
             <div className={styles.footerContainer}>
                 <div className={"row " + styles.line}>
                     <div className={"col-sm-12 col-md-6 col-lg-3 " + styles.column}>
-                        <h4>© 2017 Công Ty Cổ Phần Vàng Bạc Đá Quý Phú Nhuận</h4>
+                        <h4 className={styles.w_sm_90}>© 2017 Công Ty Cổ Phần Vàng Bạc Đá Quý Phú Nhuận</h4>
                         <ul className="list-unstyled">
-                            <p>170E Phan Đăng Lưu, P.3, Q.Phú Nhuận, TP.Hồ Chí Minh.</p>
+                            <p className={styles.w_sm_90}>170E Phan Đăng Lưu, P.3, Q.Phú Nhuận, TP.Hồ Chí Minh.</p>
                             <p>ĐT: 028 39951703</p>
                             <p>Fax: 028 3995 1702</p> 
                             <p>Email: <Link to="#">abcde@gmail.com</Link></p>
-                            <p><u><Link to="#" style={{color: "#212536"}}>Giấy chứng nhận đăng ký doanh nghiệp: 0300521758.</Link></u></p>
+                            <p className={styles.w_sm_90}>
+                                <u><Link to="#" style={{color: "#212536"}}>Giấy chứng nhận đăng ký doanh nghiệp: 0300521758.</Link></u>
+                            </p>
                         </ul>
                     </div>
                     <div className={"col-sm-12 col-md-4 col-lg-3 " + styles.column}>

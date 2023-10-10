@@ -63,3 +63,13 @@
     margin-top: 30px;
     text-align: center;
   } */
+
+  .w_sm_90 {
+    width: 100%
+  }
+
+  @media (max-width: 576px) {
+    .w_sm_90 {
+      width: 90%;
+    }
+  }
