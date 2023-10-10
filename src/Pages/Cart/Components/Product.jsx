@@ -80,7 +80,7 @@ function Product ({productid, image, name, price, category, soluong, state, inde
                         Còn hàng
                     </p>
                 </Col>
-                <Col xs={2} className='d-flex flex-column justify-content-between'>
+                <Col xs={2} className='d-flex flex-column justify-content-between p-0'>
                     <input type='number' min="1" step={1} className='rounded w-100 h-auto p-0 text-center' value={sl} onChange={handleSetSL}></input>
                     <Button variant="link" className="text-danger pb-0" style={{textDecoration: 'none'}} onClick={handleDelete}>Xóa</Button>
                     <ConfirmationModal

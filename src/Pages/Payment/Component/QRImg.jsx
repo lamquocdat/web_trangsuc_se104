@@ -15,10 +15,10 @@ export default ({bank, hoadon, kh}) => {
                 <img src={images[bank]} alt="ma QR" className="w-50 h-50 rounded border border-3 border-black" style={{maxWidth: '300px'}}></img>
             </div>
             <div className="row my-2">
-                <div className="col text-end">
+                <div className="col text-end" style={{paddingLeft: 0}}>
                     <label>Nội dung chuyển khoảng:</label>
                 </div>
-                <div className="col">
+                <div className="col" style={{paddingRight: 0}}>
                     <span>Thanh toán hóa đơn - {kh.name}</span>
                 </div>
             </div>

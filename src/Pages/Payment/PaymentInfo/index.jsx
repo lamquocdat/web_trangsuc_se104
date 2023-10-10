@@ -89,11 +89,11 @@ function PaymentInfo () {
 
     return (
         <div className={" d-flex justify-content-center"}>
-            <div className="w-75">
+            <div className="" style={{width: "95%"}}>
 
                 <h1 className="text-center pt-4 pb-1">Thông tin thanh toán</h1>
 
-                <div className="my-12 px-4 py-2">
+                <div className="my-12 px-sm-4 px-0 py-2">
                     <p className="text-center">Quý khách vui lòng chọn phương thức thanh toán</p>
                     <div className={" d-flex justify-content-center my-4 "}>
                         <select className="text-center py-2 px-2 rounded" onChange={handleSelectChange}>
