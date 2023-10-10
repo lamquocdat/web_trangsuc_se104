@@ -23,25 +23,26 @@ function ProductList({ products }) {
         <Row className="mx-4 mt-5">
           {/* visibleProducts = 12 */}
           {visibleProducts.map((product) => (
-            <Col key={product.id} sm={6} md={4} lg={3}>
+            <Col key={product.id} xs={6} sm={6} md={4} lg={3}>
               {/* <Link to={`/productsdetail/${product._id}`}> */}
               <Card
                 style={{
                   background: "#f7f7f7",
                   marginBottom: "30px",
                   cursor: "pointer",
+                  height: "90%"
                 }}
                 onClick={() => handleProductClick(product._id)}
               >
-                <Card.Body style={{ textAlign: "center" }}>
-                  <Card.Img src={product.image}></Card.Img>
-                  <Card.Title style={{ fontWeight: "200" }}>
+                <Card.Body style={{ textAlign: "center", display: "flex", flexDirection: "column"}}>
+                  <Card.Img src={product.image} style={{height: "80%"}}></Card.Img>
+                  <Card.Title style={{ fontWeight: "500", fontSize: "0.9rem", marginTop: 10  }}>
                     {product.name}
                   </Card.Title>
-                  <Card.Text style={{ color: "#e7b475", fontWeight: "500" }}>
+                  <Card.Text style={{ color: "#e7b475", fontWeight: "500", fontSize: "0.9rem", marginTop: "auto"}}>
                     {product.price.toLocaleString('vi', {style : 'currency', currency : 'VND'})} 
                   </Card.Text>
-                  <Card.Text style={{ textAlign: "end", fontSize: "14px" }}>
+                  <Card.Text style={{ textAlign: "end", fontSize: "0.8rem" }}>
                     {product.quantity_sold} đã bán
                   </Card.Text>
                 </Card.Body>

@@ -18,22 +18,23 @@ function NewProductHomepage({ products }) {
         <Row className="mx-4 mt-5">
           {/* visibleProducts = 12 */}
           {visiblePro.map((product) => (
-            <Col key={product.productid} sm={6} md={4} lg={3}>
+            <Col key={product.productid} xs={6} sm={6} md={4} lg={3}>
               {/* <Link to={`/productsdetail/${product._id}`}> */}
               <Card
                 style={{
                   background: "#f7f7f7",
                   marginBottom: "30px",
                   cursor: "pointer",
+                  height: "90%"
                 }}
                 onClick={() => handleProductClick(product._id)}
               >
-                <Card.Body style={{ textAlign: "center" }}>
-                  <Card.Img src={product.image}></Card.Img>
-                  <Card.Title style={{ fontWeight: "200" }}>
+                <Card.Body style={{ textAlign: "center", display: "flex", flexDirection: "column"  }}>
+                  <Card.Img src={product.image} style={{height: "80%"}}></Card.Img>
+                  <Card.Title style={{ fontWeight: "500", fontSize:"0.9rem", marginTop: 10 }}>
                     {product.name}
                   </Card.Title>
-                  <Card.Text style={{ color: "#e7b475", fontWeight: "500" }}>
+                  <Card.Text style={{ color: "#e7b475", fontWeight: "500", fontSize: "0.9rem", marginTop: "auto" }}>
                     {product.price} đ
                   </Card.Text>
                   <Card.Text
@@ -41,6 +42,8 @@ function NewProductHomepage({ products }) {
                       color: "black",
                       fontWeight: "350",
                       float: "right",
+                      textAlign: "end",
+                      fontSize: "0.8rem"
                     }}
                   >
                     {product.quantity_sold} đã bán

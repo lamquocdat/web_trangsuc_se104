@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 function Footer () {
     return (
-        <div className={"main-footer " + styles.mainFooter}>
+        <div className={"main-footer mt-3 " + styles.mainFooter}>
            <Link to="/">
                 <img src={require('../../assets/images/logo.png')} alt="Logo Image" className={styles.logoFooter}/>
             </Link>
             <div className={styles.footerContainer}>
                 <div className={"row " + styles.line}>
-                    <div className={"col-md-3 col-sm-6 " + styles.column}>
+                    <div className={"col-sm-12 col-md-6 col-lg-3 " + styles.column}>
                         <h4>© 2017 Công Ty Cổ Phần Vàng Bạc Đá Quý Phú Nhuận</h4>
                         <ul className="list-unstyled">
                             <p>170E Phan Đăng Lưu, P.3, Q.Phú Nhuận, TP.Hồ Chí Minh.</p>
@@ -20,7 +20,7 @@ function Footer () {
                             <p><u><Link to="#" style={{color: "#212536"}}>Giấy chứng nhận đăng ký doanh nghiệp: 0300521758.</Link></u></p>
                         </ul>
                     </div>
-                    <div className={"col-md-3 col-sm-6 " + styles.column}>
+                    <div className={"col-sm-12 col-md-4 col-lg-3 " + styles.column}>
                         <h4>Về Dialuxury</h4>
                         <ul className="list-unstyled">
                             <li><Link to="#" style={{textDecoration: "none", color: "#212536"}}>Câu chuyện PNJ</Link></li>
@@ -31,7 +31,7 @@ function Footer () {
                             <li><Link to="#" style={{textDecoration: "none", color: "#212536"}}>Kinh doanh vàng miếng</Link></li>
                         </ul>
                     </div>
-                    <div className={"col-md-3 col-sm-6 " + styles.column}>
+                    <div className={"col-sm-12 col-md-5 col-lg-3 " + styles.column}>
                         <h4>Dịch vụ khách hàng</h4>
                         <ul className="list-unstyled">
                             <li><Link to="#" style={{textDecoration: "none", color: "#212536"}}>Hướng dẫn đo size trang sức</Link></li>
