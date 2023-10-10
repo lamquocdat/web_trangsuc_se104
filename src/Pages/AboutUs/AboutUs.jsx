@@ -13,7 +13,7 @@ function AboutUs() {
     <br />
     <Card className="bg-secondary" >
       <Card.Body>
-        <Card.Text>
+        <div className='card-text'>
         <Row >
         
         <Col>
@@ -35,7 +35,7 @@ function AboutUs() {
             <p>Ông Nguyễn Thành Long<br/>Chủ tịch HĐQT DIALUXURY</p>
         </Col>
       </Row>
-        </Card.Text>
+        </div>
       </Card.Body>
     </Card>
       {/* <Row >

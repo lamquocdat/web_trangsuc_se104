@@ -221,7 +221,6 @@ function ProductsPage2() {
                     step={10}
                     min={0}
                     max={10000000}
-                    aria-label="Small"
                     size="small"
 
                     className={styles.SliderCSS}

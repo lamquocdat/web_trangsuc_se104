@@ -59,65 +59,65 @@ function Profile() {
   });
 
   return (
-    <section class="wrapper">
+    <section className="wrapper">
       <Toaster position="top-center" reverseOrder={false}></Toaster>
-      <div class="container">
-        <div class="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 py-5 text-center">
+      <div className="container">
+        <div className="col-sm-8 offset-sm-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 py-5 text-center">
           <form
-            class="rounded bg-white shadow p-5"
+            className="rounded bg-white shadow p-5"
             onSubmit={formik.handleSubmit}
           >
-            <h3 class="text-dark fw-bolder fs-4 mb-2">Thông tin tài khoản</h3>
+            <h3 className="text-dark fw-bolder fs-4 mb-2">Thông tin tài khoản</h3>
 
-            <div class="form-floating mb-3">
+            <div className="form-floating mb-3">
               <input
                 {...formik.getFieldProps('name')}
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="floatingName"
                 placeholder="Nguyễn Văn A"
               />
-              <label for="floatingName">Họ và tên</label>
+              <label htmlFor="floatingName">Họ và tên</label>
             </div>
-            <div class="form-floating mb-3">
+            <div className="form-floating mb-3">
               <input
                 {...formik.getFieldProps('email')}
                 type="email"
-                class="form-control"
+                className="form-control"
                 id="floatingEmail"
                 placeholder="name@example.com/"
               />
-              <label for="floatingEmail">Email </label>
+              <label htmlFor="floatingEmail">Email </label>
             </div>
-            <div class="form-floating mb-3">
+            <div className="form-floating mb-3">
               <input
                 {...formik.getFieldProps('phone')}
                 type="tel"
                 pattern="^0\d{9,10}$"
-                class="form-control"
+                className="form-control"
                 id="floatingPhone"
                 placeholder="Phone"
               />
-              <label for="floatingPhone">Số điện thoại </label>
+              <label htmlFor="floatingPhone">Số điện thoại </label>
             </div>
-            <div class="form-floating mb-3">
+            <div className="form-floating mb-3">
               <input
                 {...formik.getFieldProps('address')}
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="floatingInput"
                 placeholder="Thành phố"
               />
-              <label for="floatingAddress">Địa chỉ </label>
+              <label htmlFor="floatingAddress">Địa chỉ </label>
             </div>
 
             <Link
               to={`/account/changePassword/${_id}`}
-              class="text-primary fw-bold text-decoration-none"
+              className="text-primary fw-bold text-decoration-none"
             >
               Đổi mật khẩu
             </Link>
-            <button type="submit" class="btn btn-primary submit_btn w-100 my-4">
+            <button type="submit" className="btn btn-primary submit_btn w-100 my-4">
               Cập nhật
             </button>
           </form>

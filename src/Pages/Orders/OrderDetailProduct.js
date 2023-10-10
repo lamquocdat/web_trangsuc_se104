@@ -198,7 +198,7 @@ const OrderDetailProducts = () => {
                       </dd>
                       <button
                         type="button"
-                        class="btn btn-secondary"
+                        className="btn btn-secondary"
                         onClick={goBackClick}
                       >
                         Quay lại

@@ -49,7 +49,7 @@ function Register() {
           </div>
           <form className="py-1" onSubmit={formik.handleSubmit}>
             <div className="proflie flex  justify-center py-4">
-              <label htmlFor="profile">
+              <label htmlhtmlFor="profile">
                 <img
                   className={style.profile_img}
                   src={file || avatar}

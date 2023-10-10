@@ -60,7 +60,7 @@ function Forgot() {
                 id="floatingInput"
                 placeholder="name@example.com"
               />
-              <label for="floatingInput">Email </label>
+              <label htmlFor="floatingInput">Email </label>
             </div>
 
             <button type="submit" class="btn btn-primary submit_btn my-4">

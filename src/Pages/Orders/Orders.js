@@ -95,10 +95,10 @@ const Orders = () => {
   }, []); // The empty array as the second argument means this effect will only run once.
 
   return (
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="scrollable-div">
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <div className="scrollable-div">
             <div>
               {' '}
               <ClipLoader

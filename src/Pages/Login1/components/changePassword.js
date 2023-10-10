@@ -57,7 +57,7 @@ function ChangePassword() {
                 id="currentPassword"
                 placeholder="Password"
               />
-              <label for="currentPassword">Mật khẩu hiện tại</label>
+              <label htmlFor="currentPassword">Mật khẩu hiện tại</label>
             </div>
             <div class="form-floating mb-3">
               <input
@@ -67,7 +67,7 @@ function ChangePassword() {
                 id="floatingPassword"
                 placeholder="Password"
               />
-              <label for="floatingPassword">Mật khẩu mới</label>
+              <label htmlFor="floatingPassword">Mật khẩu mới</label>
             </div>
             <div class="form-floating mb-3">
               <input
@@ -77,7 +77,7 @@ function ChangePassword() {
                 id="floatingConfirmPassword"
                 placeholder="Password"
               />
-              <label for="floatingConfirmPassword">Xác nhận mật khẩu mới</label>
+              <label htmlFor="floatingConfirmPassword">Xác nhận mật khẩu mới</label>
               <span class="password-info mt-2">
                 Mật khẩu gồm 8 kí tự trở lên và có ít nhất 1 kí tự đặc biệt
               </span>

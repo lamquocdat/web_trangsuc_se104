@@ -8,7 +8,7 @@ function Book() {
       {/* Header:  */}
       {/* Content: */}
       <Container>
-        <Form>
+        <div>
           <h4
             style={{ color: 'rgba(0, 0, 0, 0.7)' }}
             className="text-center mt-3"
@@ -37,7 +37,7 @@ function Book() {
               <Datepicker></Datepicker>
             </Col>
           </Row>
-        </Form>
+        </div>
       </Container>
       {/* Footer: */}
     </>

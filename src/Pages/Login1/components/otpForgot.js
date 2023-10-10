@@ -76,7 +76,7 @@ function Reset() {
             <div class="fw-normal text-muted mb-4">{email}</div>
 
             <div class="otp_input text-start mb-2">
-              <label for="digit">Mã xác thực gồm 6 chữ số</label>
+              <label htmlFor="digit">Mã xác thực gồm 6 chữ số</label>
               <div class="d-flex align-items-center justify-content-between mt-2">
                 <input
                   type="text"

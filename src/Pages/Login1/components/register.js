@@ -94,7 +94,7 @@ function Register() {
                 id="floatingName"
                 placeholder="Nguyễn Văn A"
               />
-              <label for="floatingName">Họ và tên</label>
+              <label htmlFor="floatingName">Họ và tên</label>
             </div>
             <div class="form-floating mb-3">
               <input
@@ -104,7 +104,7 @@ function Register() {
                 id="floatingEmail"
                 placeholder="name@example.com/"
               />
-              <label for="floatingEmail">Email </label>
+              <label htmlFor="floatingEmail">Email </label>
             </div>
             <div class="form-floating mb-3">
               <input
@@ -115,7 +115,7 @@ function Register() {
                 id="floatingPhone"
                 placeholder="Phone"
               />
-              <label for="floatingPhone">Số điện thoại </label>
+              <label htmlFor="floatingPhone">Số điện thoại </label>
             </div>
             <div class="form-floating mb-3">
               <input
@@ -125,7 +125,7 @@ function Register() {
                 id="floatingInput"
                 placeholder="Thành phố"
               />
-              <label for="floatingAddress">Địa chỉ </label>
+              <label htmlFor="floatingAddress">Địa chỉ </label>
             </div>
             <div class="form-floating mb-3">
               <input
@@ -135,7 +135,7 @@ function Register() {
                 id="floatingPassword"
                 placeholder="Password"
               />
-              <label for="floatingPassword">Mật khẩu</label>
+              <label htmlFor="floatingPassword">Mật khẩu</label>
               <span class="password-info mt-2">
                 Mật khẩu gồm 8 kí tự trở lên và có ít nhất 1 kí tự đặc biệt
               </span>
@@ -148,7 +148,7 @@ function Register() {
                 id="floatingConfirmPassword"
                 placeholder="Confirm Password"
               />
-              <label for="floatingConfirmPassword">Xác nhận mật khẩu</label>
+              <label htmlFor="floatingConfirmPassword">Xác nhận mật khẩu</label>
             </div>
 
             <button type="submit" class="btn btn-primary submit_btn w-100 my-4">

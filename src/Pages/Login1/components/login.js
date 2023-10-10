@@ -63,7 +63,7 @@ function Login() {
                 id="floatingInput"
                 placeholder="name@example.com"
               />
-              <label for="floatingInput">Email </label>
+              <label htmlFor="floatingInput">Email </label>
             </div>
             <div class="form-floating">
               <input
@@ -73,7 +73,7 @@ function Login() {
                 id="floatingPassword"
                 placeholder="Password"
               />
-              <label for="floatingPassword">Mật khẩu</label>
+              <label htmlFor="floatingPassword">Mật khẩu</label>
             </div>
             <div className="d-flex justify-content-between align-items-center mt-5">
               <div class="mt-2 text-left">

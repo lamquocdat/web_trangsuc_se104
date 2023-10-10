@@ -91,7 +91,7 @@ function Header() {
                   <div className={styles.item}>
                     <div className="position-relative">
                       <ShoppingCartIcon className={styles.icon + "mr-0"} />
-                      <span class="position-absolute top-0 start-60 translate-middle badge rounded-pill bg-danger m-0" style={{ fontSize: 10 }}>
+                      <span className="position-absolute top-0 start-60 translate-middle badge rounded-pill bg-danger m-0" style={{ fontSize: 10 }}>
                         {productAmount}
                       </span>
                     </div>
@@ -121,12 +121,15 @@ function Header() {
       </Navbar>
 
       {/* nav 2 */}
-      <Navbar collapseOnSelect expand="sm" bg="light" variant="light" className={styles.secondNav}>
+      <Navbar bg="light" variant="light" className={styles.secondNav}>
         <div className={styles.myContainer + " container-fluid"}>
           <Row className="container-fluid justify-content-between">
-          <Col xs={12} md={12} lg={7} className="d-flex text-center" style={{ marginLeft: 10 }}>
-            <Link to="/" class="navbar-brand" style={{paddingRight: 20}}>Trang chủ</Link>
-            <Nav className="me-auto">
+          <Col xs={12} md={12} lg={7} className="d-flex flex-wrap text-center" style={{ marginLeft: 10 }}>
+            <Link to="/" className="navbar-brand" style={{paddingLeft: "0.5rem"}}>Trang chủ</Link>
+            <Nav className="me-auto d-flex flex-wrap">
+                <Link to="/blog" className="nav-link">Blog</Link>
+                <Link to="/aboutus" className="nav-link">Về chúng tôi</Link>
+                <Link to={`/account/${_id}`} className="nav-link">Tài khoản</Link>
               <NavDropdown style={{ fontWeight: "500" }} title="Sản phẩm" className="text-center">
                 <Link to="/products/nhan" className={styles.singlePage + " dropdown-item"} style={{ fontSize: "17px" }}>
                   Nhẫn
@@ -140,10 +143,38 @@ function Header() {
                   Dây chuyền
                 </Link>
               </NavDropdown>
-                <Link to="/blog" class="nav-link">Blog</Link>
-                <Link to="/aboutus" class="nav-link">Về chúng tôi</Link>
-                <Link to={`/account/${_id}`} class="nav-link">Tài khoản</Link>
             </Nav>
+            {/* <nav className="navbar navbar-expand-lg bg-body-tertiary">
+              <div className="container-fluid">
+                <Link to="/" className="navbar-brand" style={{paddingRight: 20}}>Trang chủ</Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul className="navbar-nav">
+                    <li className="nav-item">
+                      <a className="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">Features</a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li className="nav-item dropdown">
+                      <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown link
+                      </a>
+                      <ul className="dropdown-menu">
+                        <li><a className="dropdown-item" href="#">Action</a></li>
+                        <li><a className="dropdown-item" href="#">Another action</a></li>
+                        <li><a className="dropdown-item" href="#">Something else here</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav> */}
           </Col>
           <Col xs={12} md={12} lg={4}>
             <Form className={"d-flex " + styles.form}>

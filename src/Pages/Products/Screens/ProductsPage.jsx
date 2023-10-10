@@ -230,9 +230,7 @@ function ProductsPage() {
                     step={10}
                     min={0}
                     max={10000000}
-                    aria-label="Small"
                     size="small"
-
                     className={styles.SliderCSS}
                   />
                 </NavDropdown.Item>
@@ -272,7 +270,7 @@ function ProductsPage() {
         </Container>
         </Navbar>
         <Row>
-          <ProductList products={products} />
+          <ProductList products={products} key={1}/>
         </Row>
       </Container>
     </>

@@ -11,7 +11,6 @@ function ProductList({ products }) {
 
   //Hiện trước 12 sản phẩm
   const visibleProducts = showMore ? products : products.slice(0, 12);
-
   const handleProductClick = (productId) => {
     navigate(`/productsdetail/${productId}`);
   };
@@ -23,7 +22,7 @@ function ProductList({ products }) {
         <Row className="mt-5 mx-0 mx-sm-4">
           {/* visibleProducts = 12 */}
           {visibleProducts.map((product) => (
-            <Col key={product.id} xs={6} sm={6} md={4} lg={3}>
+            <Col key={product._id} xs={6} sm={6} md={4} lg={3}>
               {/* <Link to={`/productsdetail/${product._id}`}> */}
               <Card
                 style={{
