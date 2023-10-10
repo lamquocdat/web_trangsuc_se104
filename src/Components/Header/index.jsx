@@ -125,9 +125,9 @@ function Header() {
         <div className={styles.myContainer + " container-fluid"}>
           <Row className="container-fluid justify-content-between">
           <Col xs={12} md={12} lg={7} className="d-flex text-center" style={{ marginLeft: 10 }}>
-            <Link to="/" class="navbar-brand">Trang chủ</Link>
+            <Link to="/" class="navbar-brand" style={{paddingRight: 20}}>Trang chủ</Link>
             <Nav className="me-auto">
-              <NavDropdown style={{ fontWeight: "500" }} title="Sản phẩm">
+              <NavDropdown style={{ fontWeight: "500" }} title="Sản phẩm" className="text-center">
                 <Link to="/products/nhan" className={styles.singlePage + " dropdown-item"} style={{ fontSize: "17px" }}>
                   Nhẫn
                 </Link>

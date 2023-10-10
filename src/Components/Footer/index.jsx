@@ -13,7 +13,9 @@ function Footer () {
                     <div className={"col-md-3 col-sm-6 " + styles.column}>
                         <h4>© 2017 Công Ty Cổ Phần Vàng Bạc Đá Quý Phú Nhuận</h4>
                         <ul className="list-unstyled">
-                            <p>170E Phan Đăng Lưu, P.3, Q.Phú Nhuận, TP.Hồ Chí Minh ĐT: 028 39951703 - Fax: 028 3995 1702</p>
+                            <p>170E Phan Đăng Lưu, P.3, Q.Phú Nhuận, TP.Hồ Chí Minh.</p>
+                            <p>ĐT: 028 39951703 - Fax: 028 3995 1702</p>
+                            <p>Email: abcde@gmail.com</p>
                             <p><u>Giấy chứng nhận đăng ký doanh nghiệp: 0300521758.</u></p>
                         </ul>
                     </div>
@@ -42,7 +44,7 @@ function Footer () {
                     </div>
                 </div>
                 <div className={styles.footerBottom}>
-                    <div className={"col-md-6 col-sm-6 " + styles.column}>
+                    <div className={"col-md-6 col-sm-6 m-0 " + styles.column}>
                         <h4 className="text-center">Phương thức thanh toán</h4>
                         <ul className="list-unstyled">
                             <div className={styles.img + " d-flex flex-wrap justify-content-center"}>
@@ -73,7 +75,7 @@ function Footer () {
                             </div>
                         </ul>
                     </div>
-                    <div className={"col-md-6 col-sm-6 " + styles.column}>
+                    <div className={"col-md-6 col-sm-6 m-0 " + styles.column}>
                         <h4 className="text-center">Kết nối với chúng tôi</h4>
                         <ul className="list-unstyled">
                             <div className={styles.img + " d-flex flex-wrap justify-content-center"}>
