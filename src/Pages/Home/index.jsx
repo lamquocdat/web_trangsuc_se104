@@ -97,7 +97,7 @@ function Home() {
           >
             Sản phẩm bán chạy
           </h4>
-          <ProductHomepage products={soldProduct.slice(0, soldProductCount)} />;
+          <ProductHomepage products={soldProduct.slice(0, soldProductCount)} />
           {!showMoreSold && soldProduct.length > 4 && (
             <div className="text-center mt-3">
               <Button onClick={handleShowMoreSold} variant="secondary">
@@ -125,8 +125,7 @@ function Home() {
           >
             Sản phẩm mới
           </h4>
-          <NewProductHomepage products={newProduct.slice(0, newProductCount)} />
-          ;
+          <NewProductHomepage products={newProduct.slice(0, newProductCount)} />   
           {!showMoreNew && newProduct.length > 4 && (
             <div className="text-center mt-3">
               <Button onClick={handleShowMoreNew} variant="secondary">
