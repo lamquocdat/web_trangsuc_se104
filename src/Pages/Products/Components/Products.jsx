@@ -20,7 +20,7 @@ function ProductList({ products }) {
     <>
       <Container fluid>
         {/* Render các sản phẩm */}
-        <Row className="mx-4 mt-5">
+        <Row className="mt-5 mx-0 mx-sm-4">
           {/* visibleProducts = 12 */}
           {visibleProducts.map((product) => (
             <Col key={product.id} xs={6} sm={6} md={4} lg={3}>
