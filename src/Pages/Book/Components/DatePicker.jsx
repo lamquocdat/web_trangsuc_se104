@@ -12,6 +12,7 @@ import {
 } from '../../Login1/helpers/helper';
 import { useParams } from 'react-router-dom';
 import Multiselect from 'multiselect-react-dropdown';
+import styles from './style.module.css'
 const Datepicker = () => {
   const { _id } = useParams();
   const ten = localStorage.getItem('ten');
@@ -114,104 +115,102 @@ const Datepicker = () => {
     setFormValues({ ...formValues, [name]: value });
   };
   return (
-    <main>
+    <main style={{maxWidth:"600px"}}>
       <Toaster position="top-center" reverseOrder={false}></Toaster>
 
       <Form
         style={{ border: 'solid 2px' }}
-        className="align-items-center justify-content-center mt-3"
+        className="align-items-center justify-content-center mt-3 p-1"
         onSubmit={handleFormSubmit}
       >
-        <Form.Group
-          controlId="formBasicDate"
-          className="align-items-center justify-content-center mt-3"
+        <Form.Group controlId="formBasicDate" className="p-3"
+        style={{ border: 'solid 1px' }}
         >
-          <Row className="align-items-center justify-content-center">
-            <Col md={2}>
-              <Form.Label>Ngày hẹn *</Form.Label>
+          <Row className="align-items-center mb-3">
+            <Col sm={12} md={6} lg={6}>
+              <Form.Label className='flex-grow-1'>Ngày hẹn *</Form.Label>
             </Col>
-            <Col md={4}>
-              <DatePicker
-                selected={selectedDate}
-                onChange={(date) => {
-                  setSelectedDate(date);
-                  setFormValues({
-                    ...formValues,
-                    date: date,
-                  });
-                }}
-                dateFormat="dd/MM/yyyy"
-              />
+            <Col sm={12} md={6} lg={6}>
+                <DatePicker className={styles.full_width}
+                  selected={selectedDate}
+                  onChange={(date) => {
+                    setSelectedDate(date);
+                    setFormValues({
+                      ...formValues,
+                      date: date,
+                    });
+                  }}
+                  dateFormat="dd/MM/yyyy" 
+                />
             </Col>
           </Row>
 
-          <Row className="align-items-center justify-content-center">
-            <Col md={2}>
+          <Row className="align-items-center mb-2">
+            <Col sm={12} md={6} lg={6}>
               <Form.Label>Dịch vụ cần tư vấn *</Form.Label>
             </Col>
-            <Col md={4}>
-              <Multiselect
-                isObject={false}
-                options={option1}
-                onSelect={(event) => {
-                  console.log(event);
-                  setSelected(event);
-                  const totalPrice = event.reduce((total, option) => {
-                    const selectedOption = options2.find(
-                      (o) => o.label === option
-                    );
-                    if (selectedOption) {
-                      return total + selectedOption.value;
-                    }
-                    return total;
-                  }, 0);
-                  const ids = event.reduce((id, option) => {
-                    const selectedOption = nameAndid.find(
-                      (o) => o.label === option
-                    );
-                    if (selectedOption) {
-                      return [...id, selectedOption.value];
-                    }
-                    return id;
-                  }, []);
-                  setIds(ids);
-                  setTotal(totalPrice);
-                  console.log('Total Price:', totalPrice);
-                }}
-                onRemove={(event) => {
-                  setSelected(event);
-                  const totalPrice = event.reduce((total, option) => {
-                    const selectedOption = options2.find(
-                      (o) => o.label === option
-                    );
-                    if (selectedOption) {
-                      return total + selectedOption.value;
-                    }
-                    return total;
-                  }, 0);
-                  const ids = event.reduce((id, option) => {
-                    const selectedOption = nameAndid.find(
-                      (o) => o.label === option
-                    );
-                    if (selectedOption) {
-                      return [...id, selectedOption.value];
-                    }
-                    return id;
-                  }, []);
-                  setIds(ids);
-                  setTotal(totalPrice);
-                  console.log('Total Price:', totalPrice);
-                }}
-                showCheckbox
-              ></Multiselect>
-              <div>Total Price: {total.toLocaleString()} VND</div>
+            <Col sm={12} md={6} lg={6}>
+                <Multiselect
+                  isObject={false}
+                  options={option1}
+                  onSelect={(event) => {
+                    console.log(event);
+                    setSelected(event);
+                    const totalPrice = event.reduce((total, option) => {
+                      const selectedOption = options2.find(
+                        (o) => o.label === option
+                      );
+                      if (selectedOption) {
+                        return total + selectedOption.value;
+                      }
+                      return total;
+                    }, 0);
+                    const ids = event.reduce((id, option) => {
+                      const selectedOption = nameAndid.find(
+                        (o) => o.label === option
+                      );
+                      if (selectedOption) {
+                        return [...id, selectedOption.value];
+                      }
+                      return id;
+                    }, []);
+                    setIds(ids);
+                    setTotal(totalPrice);
+                    console.log('Total Price:', totalPrice);
+                  }}
+                  onRemove={(event) => {
+                    setSelected(event);
+                    const totalPrice = event.reduce((total, option) => {
+                      const selectedOption = options2.find(
+                        (o) => o.label === option
+                      );
+                      if (selectedOption) {
+                        return total + selectedOption.value;
+                      }
+                      return total;
+                    }, 0);
+                    const ids = event.reduce((id, option) => {
+                      const selectedOption = nameAndid.find(
+                        (o) => o.label === option
+                      );
+                      if (selectedOption) {
+                        return [...id, selectedOption.value];
+                      }
+                      return id;
+                    }, []);
+                    setIds(ids);
+                    setTotal(totalPrice);
+                    console.log('Total Price:', totalPrice);
+                  }}
+                  showCheckbox
+                ></Multiselect>
             </Col>
           </Row>
-          <Row className="align-items-center justify-content-center">
-            <Col md={2}>
-              <Form.Label>Lời nhắn</Form.Label>
-            </Col>
-            <Col md={4} className="mt-3">
+          <div className='d-flex justify-content-end'>
+            <div className='pr-2'>Total Price: {total.toLocaleString()} VND</div>
+          </div>
+          <Form.Label>Lời nhắn</Form.Label>
+          <div>
               <Form.Control
                 as="textarea"
                 rows={3}
@@ -220,8 +219,7 @@ const Datepicker = () => {
                 value={formValues.message}
                 onChange={handleInputChange}
               />
-            </Col>
-          </Row>
+          </div>
           <div style={{ marginTop: '2rem' }} className="text-center mb-3">
             <Button variant="primary" onClick={handleFormSubmit}>
               Gửi

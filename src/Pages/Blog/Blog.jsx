@@ -16,7 +16,7 @@ function Blog() {
         <Row className="pb-5 pt-4 px-5">
           <h4 className="pb-3">Cẩm nang cưới</h4>
           <Col lg="5">
-            <img src={blog2} style={{ width: "400px" }}></img>
+            <img src={blog2} style={{ width: "100%" }}></img>
           </Col>
           <Col>
             <div>
@@ -43,7 +43,7 @@ function Blog() {
             <div>
               <img
                 src={blog3}
-                style={{ width: "400px", height: "240px" }}
+                style={{ width: "100%" }}
               ></img>
             </div>
           </Col>

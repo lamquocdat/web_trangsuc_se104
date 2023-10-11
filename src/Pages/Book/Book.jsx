@@ -24,19 +24,9 @@ function Book() {
           >
             Cảm ơn quý khách!
           </h6>
-          <Row className="d-flex justify-content-center">
-            <Col
-              md={5}
-              style={{
-                border: '1px solid rgb(117 121 123)',
-                borderRadius: '8px',
-
-                color: 'rgb(90 93 95)',
-              }}
-            >
+          <div className="d-flex justify-content-center w-full">
               <Datepicker></Datepicker>
-            </Col>
-          </Row>
+          </div>
         </div>
       </Container>
       {/* Footer: */}

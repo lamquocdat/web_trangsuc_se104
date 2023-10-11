@@ -11,7 +11,7 @@ function AboutUs() {
     <Container>
     <h1 className="d-flex align-items-center justify-content-center">Thông tin về Dialuxury | Trang Sức Cao Cấp Dialuxury</h1>
     <br />
-    <Card className="bg-secondary" >
+    <Card className="bg-secondary mb-3" >
       <Card.Body>
         <div className='card-text'>
         <Row >
@@ -31,7 +31,7 @@ function AboutUs() {
             </p>
         </Col>
         <Col className="d-flex align-items-center justify-content-center">
-            <img src={aboutus1} style={{ width: "100px"}}></img> 
+            <img src={aboutus1} style={{ width: "5rem"}}></img> 
             <p>Ông Nguyễn Thành Long<br/>Chủ tịch HĐQT DIALUXURY</p>
         </Col>
       </Row>
@@ -62,7 +62,7 @@ function AboutUs() {
       </Row> */}
       <Row>
         <Col className="d-flex align-items-center justify-content-center">
-            <img src={aboutus2} style={{ width: "400px" }}></img>
+            <img src={aboutus2} style={{ width: "20rem" }}></img>
         </Col>
         <Col>
             <br />  
