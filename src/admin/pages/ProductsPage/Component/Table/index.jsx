@@ -8,21 +8,26 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import styles from "./table.module.css";
 import { Button, Image } from "react-bootstrap";
+import toast from 'react-hot-toast';
 import axios from "axios";
 
 function TableTemplate({ rows }) {
   let navigate = useNavigate();
 
   let id = useParams();
-  const deleteProduct = ({ id }) => {
-    axios
+  const deleteProduct = async ({ id }) => {
+    toast.loading('Deleting...');
+    await axios
       .delete(`https://dialuxury.onrender.com/product/${id}`)
       .then((response) => {
         // Xử lý phản hồi thành công từ API
-
+        toast.dismiss();
+        toast.success(<b>Xóa sản phẩm thành công</b>);
         console.log("Sản phẩm đã được xóa thành công");
       })
       .catch((error) => {
+        toast.dismiss();
+        toast.error(<b>Xóa sản phẩm thất bại</b>);
         // Xử lý lỗi từ API
         console.error("Lỗi khi xóa sản phẩm:", error);
       });

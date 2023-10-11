@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Row, Container, Col } from "react-bootstrap";
 import axios from "axios";
+import  toast, { Toaster } from 'react-hot-toast';
 
 const AddProductForm = () => {
   const [vouchersId, setVouchersId] = useState("");
@@ -12,35 +13,41 @@ const AddProductForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    toast.loading('Adding...');
+    const response = await axios.post(
+      "https://dialuxury.onrender.com/vouchers",
+      {
+        vouchersId,
+        createdAt,
+        production,
 
-    try {
-      const response = await axios.post(
-        "https://dialuxury.onrender.com/vouchers",
-        {
-          vouchersId,
-          createdAt,
-          production,
-
-          address,
-          PhoneNumber,
-        }
-      );
-      console.log(response.data); // Thêm sản phẩm vào danh sách
+        address,
+        PhoneNumber,
+      }
+    )
+    .then((res)=> {
+      toast.dismiss();
+      toast.success(<b>Thêm phiếu mua hàng thành công</b>);
+      console.log(res.data); // Thêm sản phẩm vào danh sách
       // Reset form sau khi gửi thành công
       setVouchersId("");
       setCreatedAt("");
-
+  
       setProduction("");
-
+  
       setAddress("");
       setPhoneNumber("");
-    } catch (error) {
-      console.error(error);
-    }
+    })
+    .catch((e)=>{
+      toast.dismiss();
+      toast.error(<b>Thêm phiếu mua hàng thất bại</b>);
+      console.log(e)
+    })
   };
 
   return (
     <Container>
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
       <Row className="d-flex justify-content-center">
         <Col
           md={6}
@@ -88,7 +95,7 @@ const AddProductForm = () => {
             <Form.Group controlId="phoneNumber">
               <Form.Label>Số điện thoại:</Form.Label>
               <Form.Control
-                type="text"
+                type="number"
                 value={PhoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />

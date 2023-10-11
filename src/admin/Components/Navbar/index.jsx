@@ -17,7 +17,7 @@ function AdminNavbar() {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid className={styles.myContainer}>
-        <Navbar.Brand href="#">
+        <div className="nav-brand">
           <Link to="/">
             <img
               src={require("../../../assets/images/logo.png")}
@@ -32,7 +32,7 @@ function AdminNavbar() {
               }}
             />
           </Link>
-        </Navbar.Brand>
+        </div>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -40,17 +40,17 @@ function AdminNavbar() {
             style={{ maxHeight: "100px", borderLeftColor: "black" }}
             navbarScroll
           >
-            <Nav.Link eventKey="link-1" className={styles.page}>
+            <div  className={styles.page}>
               <Link to="/" className={styles.singlePage}>
                 <NotificationsNoneOutlinedIcon />
               </Link>
-            </Nav.Link>
+            </div>
 
-            <Nav.Link eventKey="link-3" className={styles.page}>
+            <div  className={styles.page}>
               <Link to="/blog" className={styles.singlePage}>
                 <ChatBubbleOutlineOutlinedIcon />
               </Link>
-            </Nav.Link>
+            </div>
           </Nav>
           {/* <Form className={"d-flex " + styles.form}>
           <Form.Control

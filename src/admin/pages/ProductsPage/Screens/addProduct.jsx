@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Row, Container, Col } from "react-bootstrap";
+import toast, { Toaster } from 'react-hot-toast';
 import axios from "axios";
 
 const AddProductForm = () => {
@@ -30,24 +31,26 @@ const AddProductForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        "https://dialuxury.onrender.com/product",
-        {
-          productid,
-          name,
-          price,
-          image,
-          category,
-          dvt,
-          quality,
-          mass,
-          size,
-          color,
-        }
-      );
-      console.log(response.data); // Thêm sản phẩm vào danh sách
+    toast.loading('Adding...');
+    await axios.post(
+      "https://dialuxury.onrender.com/product",
+      {
+        productid,
+        name,
+        price,
+        image,
+        category,
+        dvt,
+        quality,
+        mass,
+        size,
+        color,
+      }
+    )
+    .then((res) => {
+      toast.dismiss();
+      toast.success(<b>Thêm sản phẩm mới thành công</b>);
+      console.log(res.data); // Thêm sản phẩm vào danh sách
       // Reset form sau khi gửi thành công
       setProductid("");
       setName("");
@@ -59,13 +62,17 @@ const AddProductForm = () => {
       setMass("");
       setSize("");
       setColor("");
-    } catch (error) {
-      console.error(error);
-    }
+    })
+    .catch((e) => {
+      toast.dismiss();
+      toast.success(<b>Thêm sản phẩm mới thất bại</b>);
+      console.log(e);
+    });
   };
 
   return (
     <Container style={{ width: "1300px" }}>
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
       <Row className="d-flex justify-content-center">
         <Col
           md={6}

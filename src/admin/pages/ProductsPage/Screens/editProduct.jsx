@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Container, Col } from "react-bootstrap";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import  toast, { Toaster } from 'react-hot-toast';
 
 const EditProduct = () => {
   const [productid, setProductid] = useState("");
@@ -42,11 +43,11 @@ const EditProduct = () => {
 
   let { id } = useParams();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
+    toast.loading('Deleting...');
     // Gửi yêu cầu PUT đến API để sửa sản phẩm
-    axios
+    await axios
       .put(`https://dialuxury.onrender.com/product/${id}`, {
         name,
         image,
@@ -59,10 +60,14 @@ const EditProduct = () => {
         color,
       })
       .then((response) => {
+        toast.dismiss();
+        toast.success(<b>Sửa sản phẩm thành công</b>);
         console.log("Sửa sản phẩm thành công:", response.data);
         // Xử lý kết quả thành công tại đây
       })
       .catch((error) => {
+        toast.dismiss();
+        toast.error(<b>Sửa sản phẩm thất bại</b>);
         console.error("Lỗi khi sửa sản phẩm:", error);
         // Xử lý lỗi tại đây
       });
@@ -115,6 +120,7 @@ const EditProduct = () => {
   };
   return (
     <Container style={{ width: "1300px" }}>
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
       <Row className="d-flex justify-content-center">
         <Col
           md={6}

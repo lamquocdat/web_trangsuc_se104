@@ -12,6 +12,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import styles from "./table.module.css";
+import  toast, { Toaster } from 'react-hot-toast';
 
 function VouchersPage() {
   //Hiển thị dữ liệu các sản phẩm:
@@ -36,15 +37,20 @@ function VouchersPage() {
 
   //Xoá sản phẩm:
   let { id } = useParams();
-  const deleteVoucher = (id) => {
-    axios
+  const deleteVoucher = async (id) => {
+    toast.loading('Deleting...');
+    await axios
       .delete(`https://dialuxury.onrender.com/vouchers/${id}`)
       .then((response) => {
+        toast.dismiss();
+        toast.success(<b>Xóa phiếu mua hàng thành công</b>);
         //Load lại các sản phẩm:
         loadVouchers();
         console.log("Sản phẩm đã được xóa thành công");
       })
       .catch((error) => {
+        toast.dismiss();
+        toast.error(<b>Xóa phiếu mua hàng thất bại</b>);
         // Xử lý lỗi từ API
         console.error("Lỗi khi xóa sản phẩm:", error);
       });
@@ -52,6 +58,7 @@ function VouchersPage() {
 
   return (
     <Container fluid>
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div
         style={{
           display: "flex",
@@ -117,7 +124,7 @@ function VouchersPage() {
             <TableBody>
               {vouchers.map((voucher, index) => {
                 return (
-                  <TableRow key={voucher.id}>
+                  <TableRow key={voucher._id}>
                     <TableCell
                       className={styles.tableCell + " text-center"}
                       onClick={() => {

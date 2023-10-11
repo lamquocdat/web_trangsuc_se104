@@ -47,15 +47,15 @@ const AddProductForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        `https://dialuxury.onrender.com/vouchers/${id}/product`,
-        {
-          id,
-          product,
-        }
-      );
+    const response = await axios.post(
+      `https://dialuxury.onrender.com/vouchers/${id}/product`,
+      {
+        id,
+        product,
+      }
+    )
+    .then((res)=> {
+      
       console.log(response.data); // Thêm sản phẩm vào danh sách
       // Reset form sau khi gửi thành công
       setProductid("");
@@ -69,9 +69,11 @@ const AddProductForm = () => {
       setMass("");
       setSize("");
       setColor("");
-    } catch (error) {
-      console.error(error);
-    }
+    })
+    .catch((e)=>{
+      
+      console.error(e);
+    })
   };
 
   return (

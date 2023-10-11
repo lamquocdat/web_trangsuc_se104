@@ -13,6 +13,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import styles from "./table.module.css";
 import { Image } from "react-bootstrap";
+import  toast, { Toaster } from 'react-hot-toast';
 
 function ProductsPage() {
   //Hiển thị dữ liệu các sản phẩm:
@@ -65,14 +66,19 @@ function ProductsPage() {
   //     });
   // };
   const deleteProduct = (id) => {
+    toast.loading('Deleting...');
     axios
       .delete(`https://dialuxury.onrender.com/product/${id}`)
       .then((response) => {
+        toast.dismiss();
+        toast.success(<b>Xóa sản phẩm thành công</b>);
         //Load lại các sản phẩm:
         loadProducts();
         console.log("Sản phẩm đã được xóa thành công");
       })
       .catch((error) => {
+        toast.dismiss();
+        toast.error(<b>Xóa sản phẩm thất bại</b>);
         // Xử lý lỗi từ API
         console.error("Lỗi khi xóa sản phẩm:", error);
       });
@@ -80,6 +86,7 @@ function ProductsPage() {
 
   return (
     <Container fluid>
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div
         style={{
           display: "flex",
@@ -158,7 +165,7 @@ function ProductsPage() {
             <TableBody>
               {products.map((product, index) => {
                 return (
-                  <TableRow key={product.id}>
+                  <TableRow key={product._id}>
                     <TableCell
                       className={styles.tableCell + " text-center"}
                       onClick={() => {

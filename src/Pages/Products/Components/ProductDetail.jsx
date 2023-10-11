@@ -13,6 +13,7 @@ import {
 import StarIcon from '@mui/icons-material/Star';
 import { yellow } from '@mui/material/colors';
 import Modal from 'react-bootstrap/Modal';
+import toast, { Toaster } from 'react-hot-toast';
 function Product() {
   const scrollRef = useRef(null);
   const { id } = useParams(); //lấy id từ url
@@ -46,6 +47,7 @@ function Product() {
   const AddToCart = async () => {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
+    toast.loading('Adding...');
     if (token && role === 'user') {
       await axios
         .post('https://dialuxury.onrender.com/cart', {
@@ -54,11 +56,12 @@ function Product() {
           soluong: sl,
         })
         .then((res) => {
-          console.log('Mua thành công');
+          toast.dismiss();
+          toast.success(<b>Mua thành công</b>);
         })
         .catch((e) => {
-          console.log('Mua thất bại');
-          console.log(e);
+          toast.dismiss();
+          toast.error(<b>Mua thành công</b>);
         });
     } else {
       navigate('/login');
@@ -257,6 +260,7 @@ function Product() {
 
   return (
     <Container>
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div ref={scrollRef} />
       <Row className="align-align-items-center justify-content-center">
         <Col md={4}>
@@ -266,7 +270,7 @@ function Product() {
           <h2>{product?.name || 'Product'}</h2>
           <p>Mã: {product?.productid || 'Product'}</p>
           <p>
-            Điểm đánh giá:{' '}
+            Điểm đánh giá:
             <span>
               {diem !== undefined &&
                 [...Array(diem)].map((_, index) => (
@@ -321,19 +325,19 @@ function Product() {
           <Col md={4}>
             <ListGroup className="w-100">
               <ListGroupItem>
-                <strong>Chất liệu: </strong>{' '}
+                <strong>Chất liệu: </strong>
                 {product?.quality || 'Chưa có thông số'}
               </ListGroupItem>
               <ListGroupItem>
-                <strong>Khối lượng: </strong>{' '}
+                <strong>Khối lượng: </strong>
                 {product?.mass || 'Chưa có thông số'}
               </ListGroupItem>
               <ListGroupItem>
-                <strong>Kích thước: </strong>{' '}
+                <strong>Kích thước: </strong>
                 {product?.size || 'Chưa có thông số'}
               </ListGroupItem>
               <ListGroupItem>
-                <strong>Màu sắc: </strong>{' '}
+                <strong>Màu sắc: </strong>
                 {product?.color || 'Chưa có thông số'}
               </ListGroupItem>
               {/* <ListGroupItem>
@@ -407,8 +411,8 @@ function Product() {
                       className="me-2"
                       onClick={() => handleShow(item._id)}
                     >
-                      {' '}
-                      Edit{' '}
+                      
+                      Edit
                     </Button>
                     <Button
                       variant="danger"

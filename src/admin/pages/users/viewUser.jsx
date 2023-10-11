@@ -53,24 +53,19 @@ const ViewUser = () => {
         <thead>
           <tr>
             <th scope="col"> Mã đơn hàng </th>
-            <th scope="col"> Ngày đặt hàng </th>{' '}
-            <th scope="col"> Tổng tiền </th>{' '}
+            <th scope="col"> Ngày đặt hàng </th>
+            <th scope="col"> Tổng tiền </th>
             <th scope="col"> Tình trạng giao hàng </th>
-            <th scope="col" className="text-end">
-              Thao tác{' '}
-            </th>{' '}
-          </tr>{' '}
-        </thead>{' '}
+            <th scope="col" className="text-end">Thao tác</th>
+          </tr>
+        </thead>
         <tbody>
           {orders?.map((order) => (
             <tr key={order._id}>
+              <td><b>{order.mahd}</b></td>
+              <td>{order.ngaylap}</td>
+              <td>{order.tongtien.toLocaleString()} VND </td>
               <td>
-                <b>{order.mahd}</b>{' '}
-              </td>{' '}
-              <td>{order.ngaylap}</td>{' '}
-              <td>{order.tongtien.toLocaleString()} VND </td>{' '}
-              <td>
-                {' '}
                 <span
                   className={
                     order.tinhtrang === 'Đã giao hàng'
@@ -82,22 +77,17 @@ const ViewUser = () => {
                       : 'text-danger'
                   }
                 >
-                  {order.tinhtrang}{' '}
-                </span>{' '}
-              </td>{' '}
+                  {order.tinhtrang}
+                </span>
+              </td>
               <td className="d-flex justify-content-end align-item-center">
-                <Link
-                  to={`/user/order/detail/${order._id}`}
-                  className="text-success"
-                >
-                  <i className="fas fa-eye" style={{ fontSize: '20px' }}>
-                    {' '}
-                  </i>{' '}
-                </Link>{' '}
-              </td>{' '}
+                <Link to={`/user/order/detail/${order._id}`} className="text-success">
+                  <i className="fas fa-eye" style={{ fontSize: '20px' }}></i>
+                </Link>
+              </td>
             </tr>
           ))}
-        </tbody>{' '}
+        </tbody>
       </table>
     </Container>
   );

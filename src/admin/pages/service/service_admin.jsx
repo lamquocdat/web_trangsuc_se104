@@ -14,6 +14,7 @@ import { useState, useEffect } from 'react';
 import styles from './service.module.css';
 import Button from 'react-bootstrap/Button';
 import ReactPaginate from 'react-paginate';
+import toast, { Toaster } from 'react-hot-toast';
 const Service = () => {
   //Service Types
 
@@ -39,7 +40,7 @@ const Service = () => {
   }, []);
 
   const loadSVT = async () => {
-    axios
+    await axios
       .get('https://dialuxury.onrender.com/serviceType')
       .then((response) => {
         setTableDataSVT(response.data);
@@ -50,18 +51,18 @@ const Service = () => {
       });
   };
 
-  function deleteSVT(id) {
-    fetch(`https://dialuxury.onrender.com/serviceType/svtid/${id}`, {
-      method: 'DELETE',
-    }).then((result) => {
-      result.json().then((resp) => {
-        console.warn(resp);
-      });
-      loadSVT();
-    });
-    
+  const deleteSVT = async (id) => {
+    toast.loading('Deleting...');
+    await axios.delete(`https://dialuxury.onrender.com/serviceType/svtid/${id}`)
+    .then((res)=>{
+      toast.dismiss();
+      toast.success(<b>Xóa loại dịch vụ thành công</b>);
+    })
+    .catch((e)=>{
+      toast.dismiss();
+      toast.error(<b>Xóa loại dịch vụ thất bại</b>);
+    })
   }
-
   
 
   //Services
@@ -79,17 +80,31 @@ const Service = () => {
       });
   };
 
-  function deleteService(_id) {
-    fetch(`https://dialuxury.onrender.com/service/${_id}`, {
-      method: 'DELETE',
-    }).then((result) => {
-      result.json().then((resp) => {
-        console.warn(resp);
-      });
-      loadService();
-    });
+  // function deleteService(_id) {
+  //   fetch(`https://dialuxury.onrender.com/service/${_id}`, {
+  //     method: 'DELETE',
+  //   }).then((result) => {
+  //     result.json().then((resp) => {
+  //       console.warn(resp);
+  //     });
+  //     loadService();
+  //   });
     
+  // }
+
+  const deleteService = async (_id) => {
+    toast.loading('Deleting...');
+    await axios.delete(`https://dialuxury.onrender.com/service/${_id}`)
+    .then((res)=>{
+      toast.dismiss();
+      toast.success(<b>Xóa phiếu phiếu dịch vụ thành công</b>);
+    })
+    .catch((e)=>{
+      toast.dismiss();
+      toast.error(<b>Xóa phiếu dịch vụ thất bại</b>);
+    })
   }
+
   useEffect(() => {
     loadService();
   }, []);
@@ -108,10 +123,11 @@ const Service = () => {
 
   return (
     <div className={styles.servicePage}>
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
       <div className={styles.datatable}>
         <div className={styles.datatableTitle}>
           <b>Danh Sách Loại Dịch Vụ</b>
-          <Link to="/serviceType/addServiceType" className={styles.link}>
+          <Link to="/serviceType/addServiceType" className={"btn btn-primary"}>
             Thêm Mới
           </Link>
         </div>
@@ -157,15 +173,14 @@ const Service = () => {
                   </TableCell>{' '}
                   <TableCell className={styles.tableCell + ' text-center'}>
                     <div className={styles.cellAction}>
-                      <Link
+                      <Link className='btn btn-warning'
                         to={`/serviceType/adjustServiceType/${tableDataSVT.svt_id}`}
                         style={{ textDecoration: 'none' }}
                       >
-                        <div className={styles.viewButton}>Edit</div>
+                        Edit
                       </Link>{' '}
-                      <Button
+                      <Button variant="danger"
                         onClick={() => deleteSVT(tableDataSVT.svt_id)}
-                        className={styles.deleteButton}
                       >
                         Delete
                       </Button>{' '}
@@ -230,7 +245,7 @@ const Service = () => {
             <TableBody>
               {visibleS.map((tableData, index) => (
                 <TableRow
-                  key={tableData.s_id}
+                  key={tableData._id}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell className={styles.tableCell + ' text-center'}>
@@ -254,15 +269,13 @@ const Service = () => {
                   </TableCell>
                   <TableCell className={styles.tableCell + ' text-center'}>
                     <div className={styles.cellAction}>
-                      <Link
+                      <Link className='btn btn-success'
                         to={`/service/view/${tableData._id}`}
                         style={{ textDecoration: 'none' }}
                       >
-                        <div className={styles.viewButton}>View</div>
+                        View
                       </Link>
-                      <Button 
-                      onClick={() => deleteService(tableData._id)}
-                      className={styles.deleteButton}>Delete</Button>{' '}
+                      <Button variant="danger" onClick={() => deleteService(tableData._id)}>Delete</Button>{' '}
                     </div>
                   </TableCell>
                 </TableRow>

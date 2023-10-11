@@ -72,7 +72,7 @@ function TableTemplate({ rows }) {
         <TableBody>
           {rows.map((row, index) => {
             return (
-              <TableRow key={row.id}>
+              <TableRow key={row._id}>
                 <TableCell
                   className={styles.tableCell + " text-center"}
                   onClick={() => {

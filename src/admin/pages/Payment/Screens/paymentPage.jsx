@@ -90,7 +90,7 @@ function ProductsPage() {
             <TableBody>
               {payments.map((payment, index) => {
                 return (
-                  <TableRow key={payment.id}>
+                  <TableRow key={payment._id}>
                     <TableCell
                       className={styles.tableCell + " text-center"}
                       onClick={() => {

@@ -92,11 +92,11 @@ const Users = () => {
                   </TableCell>{' '}
                   <TableCell className={styles.tableCell + ' text-center'}>
                     <div className={styles.cellAction}>
-                      <Link
+                      <Link className='btn btn-success'
                         to={`/users/${data._id}`}
                         style={{ textDecoration: 'none' }}
                       >
-                        <div className={styles.viewButton}>View</div>
+                        View
                       </Link>{' '}
                     </div>
                   </TableCell>{' '}

@@ -9,40 +9,41 @@ const AddServiceType = ({ inputs }) => {
   const [svt_price, setSvt_price] = useState('');
 
   const navigate = useNavigate();
-  const navigateToServicePage = () => {
-    // 👇️ navigate to /contacts
-    navigate('/service');
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!svt_id || !svt_name || !svt_price)
       toast.error('Xin hãy điền đầy đủ thông tin dịch vụ');
     else {
-      try {
-        const response = await axios.post('https://dialuxury.onrender.com/serviceType', {
+        toast.loading('Adding...');
+        await axios.post('https://dialuxury.onrender.com/serviceType', {
           svt_id,
           svt_name,
           svt_price,
-        });
-        if (response.data === 'existedID') {
-          toast.error(<b>Mã dịch vụ đã tồn tại</b>);
-          setSvt_id('');
-        }
-        if (response.data === 'existedNAME') {
-          toast.error(<b>Tên dịch vụ đã tồn tại</b>);
-          setSvt_name('');
-        }
-        if (response.data === 'OK') {
-          console.log(response.data);
-          setSvt_id('');
-          setSvt_name('');
-
-          setSvt_price('');
-          navigateToServicePage();
-        }
-      } catch (error) {
-        console.error(error);
-      }
+        })
+        .then((response)=>{
+          toast.dismiss();
+          if (response.data === 'existedID') {
+            toast.error(<b>Mã dịch vụ đã tồn tại</b>);
+            setSvt_id('');
+          }
+          if (response.data === 'existedNAME') {
+            toast.error(<b>Tên dịch vụ đã tồn tại</b>);
+            setSvt_name('');
+          }
+          if (response.data === 'OK') {
+            toast.success(<b>thêm loại dịch vụ thành công</b>);
+            console.log(response.data);
+            setSvt_id('');
+            setSvt_name('');
+  
+            setSvt_price('');
+          }
+        })
+        .catch((error)=> {
+          toast.dismiss();
+          toast.error(<b>Thêm loại dịch vụ thất bại</b>);
+          console.error(error);
+        })
     }
   };
   return (

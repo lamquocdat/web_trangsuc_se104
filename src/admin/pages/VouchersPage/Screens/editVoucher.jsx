@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Container, Col } from "react-bootstrap";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import  toast, { Toaster } from 'react-hot-toast';
 
 const EditVoucher = () => {
   // const EditProductForm = () => {
@@ -93,11 +94,11 @@ const EditVoucher = () => {
       });
   }, [id]);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
+    toast.loading('Deleting...');
     // Gửi yêu cầu PUT đến API để sửa phiếu mua hàng
-    axios
+    await axios
       .put(`https://dialuxury.onrender.com/vouchers/${id}`, {
         createdAt,
         production,
@@ -105,10 +106,14 @@ const EditVoucher = () => {
         address,
       })
       .then((response) => {
+        toast.dismiss();
+        toast.success(<b>Sửa phiếu mua hàng thành công</b>);
         console.log("Sửa phiếu mua hàng thành công:", response.data);
         // Xử lý kết quả thành công tại đây
       })
       .catch((error) => {
+        toast.dismiss();
+        toast.error(<b>Sửa phiếu mua hàng thất bại</b>);
         console.error("Lỗi khi sửa phiếu mua hàng:", error);
         // Xử lý lỗi tại đây
       });
@@ -122,6 +127,7 @@ const EditVoucher = () => {
   };
   return (
     <Container>
+      <Toaster position="top-center" reverseOrder={false}></Toaster>
       <Row className="d-flex justify-content-center">
         <Col
           md={6}
