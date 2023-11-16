@@ -81,7 +81,7 @@ function Header() {
                   Đặt lịch hẹn
                 </div>
               </Link>
-              <Link to={`/order/${_id}`} className={styles.items + " nav-link text-center"}>
+              <Link to={`/orders/${_id}`} className={styles.items + " nav-link text-center"}>
                 <div className={styles.item}>
                   <HistoryIcon className={styles.icon} />
                   Lịch sử đơn hàng
