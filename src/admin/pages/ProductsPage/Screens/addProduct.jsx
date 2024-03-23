@@ -33,7 +33,7 @@ const AddProductForm = () => {
     e.preventDefault();
     toast.loading('Adding...');
     await axios.post(
-      "https://dialuxury.onrender.com/product",
+      `${process.env.REACT_APP_BACKEND_URL}/product`,
       {
         productid,
         name,

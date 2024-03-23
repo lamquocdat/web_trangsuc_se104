@@ -20,7 +20,7 @@ function VouchersDetails() {
 
   // useEffect(() => {
   //   axios
-  //     .get(`https://dialuxury.onrender.com/vouchers/${id}`)
+  //     .get(`${process.env.REACT_APP_BACKEND_URL}/vouchers/${id}`)
   //     .then((res) => {
   //       setVoucher(res.data);
   //     })
@@ -32,7 +32,7 @@ function VouchersDetails() {
 
   const loadProducts = async () => {
     axios
-      .get(`https://dialuxury.onrender.com/vouchers/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/vouchers/${id}`)
       .then((response) => {
         setVoucher(response.data);
       })
@@ -49,7 +49,7 @@ function VouchersDetails() {
   const deleteProduct = (productId) => {
     axios
       .delete(
-        `https://dialuxury.onrender.com/vouchers/${id}/product/${productId}`
+        `${process.env.REACT_APP_BACKEND_URL}/vouchers/${id}/product/${productId}`
       )
       .then((response) => {
         //Load lại các sản phẩm:

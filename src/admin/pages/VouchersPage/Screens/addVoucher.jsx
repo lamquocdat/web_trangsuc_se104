@@ -15,7 +15,7 @@ const AddProductForm = () => {
     e.preventDefault();
     toast.loading('Adding...');
     const response = await axios.post(
-      "https://dialuxury.onrender.com/vouchers",
+      `${process.env.REACT_APP_BACKEND_URL}/vouchers`,
       {
         vouchersId,
         createdAt,

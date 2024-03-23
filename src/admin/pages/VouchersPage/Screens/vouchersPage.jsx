@@ -24,7 +24,7 @@ function VouchersPage() {
 
   const loadVouchers = async () => {
     axios
-      .get("https://dialuxury.onrender.com/vouchers")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/vouchers`)
       .then((response) => {
         setVouchers(response.data);
       })
@@ -40,7 +40,7 @@ function VouchersPage() {
   const deleteVoucher = async (id) => {
     toast.loading('Deleting...');
     await axios
-      .delete(`https://dialuxury.onrender.com/vouchers/${id}`)
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/vouchers/${id}`)
       .then((response) => {
         toast.dismiss();
         toast.success(<b>Xóa phiếu mua hàng thành công</b>);

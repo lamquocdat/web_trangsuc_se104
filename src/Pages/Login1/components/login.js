@@ -10,7 +10,7 @@ import google from '../images/google.jpg';
 import GoogleButton from 'react-google-button';
 function Login() {
   const googleOnclick = async function () {
-    const url = 'https://dialuxury.onrender.com/google';
+    const url = `${process.env.REACT_APP_BACKEND_URL}/google`;
     window.location.href = url;
   };
 

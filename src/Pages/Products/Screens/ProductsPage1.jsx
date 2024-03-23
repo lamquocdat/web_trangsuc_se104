@@ -32,7 +32,7 @@ function ProductsPage1() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/newest/B%C3%B4ng%20tai")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/newest/B%C3%B4ng%20tai`)
         .then((response) => {
           console.log("newest filter")
           console.log(response.data)
@@ -48,7 +48,7 @@ function ProductsPage1() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/descendingPrice/B%C3%B4ng%20tai")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/descendingPrice/B%C3%B4ng%20tai`)
         .then((response) => {
           console.log(response.data)
           filterProducts(response.data);
@@ -63,7 +63,7 @@ function ProductsPage1() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/ascendingPrice/B%C3%B4ng%20tai")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/ascendingPrice/B%C3%B4ng%20tai`)
         .then((response) => {
           console.log(response.data)
           console.log("ascending filter")
@@ -79,7 +79,7 @@ function ProductsPage1() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/mostSold/B%C3%B4ng%20tai")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/mostSold/B%C3%B4ng%20tai`)
         .then((response) => {
           console.log(response.data)
           filterProducts(response.data);
@@ -92,7 +92,7 @@ function ProductsPage1() {
     if(sortValue==""){
       setIsLoading(true)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/B%C3%B4ng%20tai")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/B%C3%B4ng%20tai`)
         .then((response) => {
           console.log(response.data)
           console.log(sortValue)
@@ -122,7 +122,7 @@ function ProductsPage1() {
   };
   useEffect(() => {
     axios
-      .get("https://dialuxury.onrender.com/product/category/B%C3%B4ng%20tai")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/B%C3%B4ng%20tai`)
       .then((response) => {
         productsSet(response.data);
         setIsLoading(false)
@@ -136,7 +136,7 @@ function ProductsPage1() {
   useEffect(() => {
     setIsLoading(true)
     const newProducts = axios
-      .get("https://dialuxury.onrender.com/product/category/B%C3%B4ng%20tai")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/B%C3%B4ng%20tai`)
       .then((response) => {
 
         if (quality !== "") {

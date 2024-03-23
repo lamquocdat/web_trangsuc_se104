@@ -39,7 +39,7 @@ function Header() {
   const [cart, setCart] = useState({});
   useEffect(() => {
     axios
-      .get(`https://dialuxury.onrender.com/cart/${_id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/cart/${_id}`)
       .then((res) => {
         setCart(res.data);
         setProductAmount(res.data.sanphams.length);

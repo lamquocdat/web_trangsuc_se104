@@ -41,7 +41,7 @@ const Service = () => {
 
   const loadSVT = async () => {
     await axios
-      .get('https://dialuxury.onrender.com/serviceType')
+      .get(`${process.env.REACT_APP_BACKEND_URL}/serviceType`)
       .then((response) => {
         setTableDataSVT(response.data);
         //console.log(response.data);
@@ -53,7 +53,7 @@ const Service = () => {
 
   const deleteSVT = async (id) => {
     toast.loading('Deleting...');
-    await axios.delete(`https://dialuxury.onrender.com/serviceType/svtid/${id}`)
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/serviceType/svtid/${id}`)
     .then((res)=>{
       toast.dismiss();
       toast.success(<b>Xóa loại dịch vụ thành công</b>);
@@ -70,7 +70,7 @@ const Service = () => {
   const [tableData, setTableData] = useState([]);
   const loadService = async () => {
     axios
-      .get('https://dialuxury.onrender.com/service')
+      .get(`${process.env.REACT_APP_BACKEND_URL}/service`)
       .then((response) => {
         setTableData(response.data);
         //console.log(response.data);
@@ -81,7 +81,7 @@ const Service = () => {
   };
 
   // function deleteService(_id) {
-  //   fetch(`https://dialuxury.onrender.com/service/${_id}`, {
+  //   fetch(`${process.env.REACT_APP_BACKEND_URL}/service/${_id}`, {
   //     method: 'DELETE',
   //   }).then((result) => {
   //     result.json().then((resp) => {
@@ -94,7 +94,7 @@ const Service = () => {
 
   const deleteService = async (_id) => {
     toast.loading('Deleting...');
-    await axios.delete(`https://dialuxury.onrender.com/service/${_id}`)
+    await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/service/${_id}`)
     .then((res)=>{
       toast.dismiss();
       toast.success(<b>Xóa phiếu phiếu dịch vụ thành công</b>);

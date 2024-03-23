@@ -34,7 +34,7 @@ function Product() {
   //lấy thông tin sản phẩm
   useEffect(() => {
     axios
-      .get(`https://dialuxury.onrender.com/product/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product/${id}`)
       .then((response) => {
         setProduct(response.data);
       })
@@ -50,7 +50,7 @@ function Product() {
     toast.loading('Adding...');
     if (token && role === 'user') {
       await axios
-        .post('https://dialuxury.onrender.com/cart', {
+        .post(`${process.env.REACT_APP_BACKEND_URL}/cart`, {
           userId: idUserString,
           productid: product.productid,
           soluong: sl,
@@ -72,7 +72,7 @@ function Product() {
   const [user, setUser] = useState();
   useEffect(() => {
     axios
-      .get(`https://dialuxury.onrender.com/user/${idUserString}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/user/${idUserString}`)
       .then((res) => {
         setUser(res.data);
       })
@@ -93,7 +93,7 @@ function Product() {
     if (product !== undefined)
       axios
         .get(
-          `https://dialuxury.onrender.com/danhgia/${
+          `${process.env.REACT_APP_BACKEND_URL}/danhgia/${
             product.productid
           }?perPage=${pagesize}&page=${currentPage - 1}&sortOrder=desc`
         )
@@ -180,7 +180,7 @@ function Product() {
   //Gửi bình luận
   const SendComment = async () => {
     axios
-      .post('https://dialuxury.onrender.com/danhgia', {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/danhgia`, {
         productid: product.productid,
         userid: user._id,
         name: user.name,
@@ -196,7 +196,7 @@ function Product() {
   //xóa bình luận
   const deleteReview = (reviewId) => {
     axios
-      .delete(`https://dialuxury.onrender.com/danhgia/${reviewId}`)
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/danhgia/${reviewId}`)
       .then((response) => {
         window.location.reload();
       })
@@ -227,7 +227,7 @@ function Product() {
   };
   const handleSave = () => {
     axios
-      .put(`https://dialuxury.onrender.com/danhgia/${reviewId}`, {
+      .put(`${process.env.REACT_APP_BACKEND_URL}/danhgia/${reviewId}`, {
         content: editContent,
         rating: editRating,
       })

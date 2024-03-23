@@ -48,7 +48,7 @@ const AddProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await axios.post(
-      `https://dialuxury.onrender.com/vouchers/${id}/product`,
+      `${process.env.REACT_APP_BACKEND_URL}/vouchers/${id}/product`,
       {
         id,
         product,

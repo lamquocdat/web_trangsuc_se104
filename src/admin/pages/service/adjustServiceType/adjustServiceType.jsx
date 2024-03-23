@@ -21,7 +21,7 @@ const AdjustServiceType = () => {
       toast.error('Xin hãy điền đầy đủ thông tin dịch vụ');
     else {
       const response = await axios.put(
-        `https://dialuxury.onrender.com/serviceType/svtid/${svt_id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/serviceType/svtid/${svt_id}`,
         {
           svt_name,
           svt_price,

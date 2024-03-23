@@ -68,7 +68,7 @@ const Orders = () => {
   };
   const handleDelivered = async () => {
     //cap nhat lai so luong da ban va so luong con lai cua product
-    axios.put(`https://dialuxury.onrender.com/product/increase_sold/${currentOrder}`)
+    axios.put(`${process.env.REACT_APP_BACKEND_URL}/product/increase_sold/${currentOrder}`)
     .then((res)=>{
       console.log(res.data);
     })

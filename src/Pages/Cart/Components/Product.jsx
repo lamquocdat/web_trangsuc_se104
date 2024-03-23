@@ -18,7 +18,7 @@ function Product ({productid, image, name, price, category, soluong, state, inde
     const handleSetSL = (event) => {
         setSL(event.target.value);
         //gọi api cập nhật lại số lượng sản phẩm
-        axios.put(`https://dialuxury.onrender.com/cart`, {
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/cart`, {
             userId: userId,
             productid: productid,
             soluong: event.target.value
@@ -40,7 +40,7 @@ function Product ({productid, image, name, price, category, soluong, state, inde
     //gọi api xóa sản phẩm
     const handleConfirmDelete = async () => {
         try{
-            await axios.delete(`https://dialuxury.onrender.com/cart/${userId}/${productid}`)
+            await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/cart/${userId}/${productid}`)
             setShowSuccessAlert(true);
         }
         catch(error){

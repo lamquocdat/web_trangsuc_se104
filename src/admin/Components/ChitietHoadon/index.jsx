@@ -17,7 +17,7 @@ export default () => {
 
     useEffect(() => {
         axios
-          .get(`https://dialuxury.onrender.com/order/hd/${mahd}`)
+          .get(`${process.env.REACT_APP_BACKEND_URL}/order/hd/${mahd}`)
           .then((response) => {
             setOrders(response.data)
             console.log(response.data)

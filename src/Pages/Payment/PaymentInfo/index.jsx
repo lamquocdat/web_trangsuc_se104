@@ -22,7 +22,7 @@ function PaymentInfo () {
     //lấy _id của đơn hàng truyền vào từ URL
     const [hd, setHd]= useState('');
     useEffect(() => {
-        axios.get(`https://dialuxury.onrender.com/order/hd/${location.state.mahd}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/order/hd/${location.state.mahd}`)
         .then((response) => {
             setHd(response.data[0]);
         })
@@ -33,7 +33,7 @@ function PaymentInfo () {
 
     //lấy thông tin user
     useEffect(() => {
-        axios.get(`https://dialuxury.onrender.com/user/${userId}`)
+        axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/${userId}`)
         .then((response) => {
             setUser(response.data);
         })
@@ -75,7 +75,7 @@ function PaymentInfo () {
         updateData.append('hinhthucthanhtoan', bank);
 
         //cập nhật lại diachigiaohang và hinhanh của order có location.state.mahd này
-        axios.put(`https://dialuxury.onrender.com/order/${hd._id}`, updateData)
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/order/${hd._id}`, updateData)
             .then((response) => {
                 const mahd = location.state.mahd;
                     navigate("/paymentfinish", {

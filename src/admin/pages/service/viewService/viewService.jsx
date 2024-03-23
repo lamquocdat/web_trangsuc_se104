@@ -19,7 +19,7 @@ const ViewService = () => {
 
   useEffect(() => {
     axios
-      .get(`https://dialuxury.onrender.com/service/${_id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/service/${_id}`)
       .then((response) => {
         setService(response.data);
         console.log(response.data);

@@ -35,7 +35,7 @@ function ProductsPage2() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/newest/D%C3%A2y%20chuy%E1%BB%81n")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/newest/D%C3%A2y%20chuy%E1%BB%81n`)
         .then((response) => {
           console.log("newest filter")
           console.log(response.data)
@@ -51,7 +51,7 @@ function ProductsPage2() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/descendingPrice/D%C3%A2y%20chuy%E1%BB%81n")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/descendingPrice/D%C3%A2y%20chuy%E1%BB%81n`)
         .then((response) => {
           console.log(response.data)
           filterProducts(response.data);
@@ -66,7 +66,7 @@ function ProductsPage2() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/ascendingPrice/D%C3%A2y%20chuy%E1%BB%81n")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/ascendingPrice/D%C3%A2y%20chuy%E1%BB%81n`)
         .then((response) => {
           console.log(response.data)
           console.log("ascending filter")
@@ -82,7 +82,7 @@ function ProductsPage2() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/mostSold/D%C3%A2y%20chuy%E1%BB%81n")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/mostSold/D%C3%A2y%20chuy%E1%BB%81n`)
         .then((response) => {
           console.log(response.data)
           filterProducts(response.data);
@@ -95,7 +95,7 @@ function ProductsPage2() {
     if(sortValue==""){
       setIsLoading(true)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/D%C3%A2y%20chuy%E1%BB%81n")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/D%C3%A2y%20chuy%E1%BB%81n`)
         .then((response) => {
           console.log(response.data)
           console.log(sortValue)
@@ -114,7 +114,7 @@ function ProductsPage2() {
   useEffect(() => {
     setIsLoading(true)
     axios
-      .get("https://dialuxury.onrender.com/product/category/D%C3%A2y%20chuy%E1%BB%81n")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/D%C3%A2y%20chuy%E1%BB%81n`)
       .then((response) => {
         productsSet(response.data);
         setIsLoading(false)
@@ -143,7 +143,7 @@ function ProductsPage2() {
   useEffect(() => {
     setIsLoading(true)
     const newProducts = axios
-      .get("https://dialuxury.onrender.com/product/category/D%C3%A2y%20chuy%E1%BB%81n")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/D%C3%A2y%20chuy%E1%BB%81n`)
       .then((response) => {
 
         filterProducts(response.data);

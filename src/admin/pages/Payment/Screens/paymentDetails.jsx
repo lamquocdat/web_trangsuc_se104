@@ -18,7 +18,7 @@ const ViewPayment = ({ inputs }) => {
   //lấy thông tin sản phẩm
   useEffect(() => {
     axios
-      .get(`https://dialuxury.onrender.com/order/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/order/${id}`)
       .then((response) => {
         setPayments(response.data);
         console.log("Sản phẩm");

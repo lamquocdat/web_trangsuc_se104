@@ -1,9 +1,9 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-// axios.defaults.baseURL = 'https://dialuxury.onrender.com';
+// axios.defaults.baseURL = `${process.env.REACT_APP_BACKEND_URL}`;
 // axios.defaults.baseURL = 'http://localhost:3001';
 const instance = axios.create({
-  baseURL: 'https://dialuxury.onrender.com',
+  baseURL: `${process.env.REACT_APP_BACKEND_URL}`,
   // Additional configuration options
 });
 export async function registerUser(credentials) {

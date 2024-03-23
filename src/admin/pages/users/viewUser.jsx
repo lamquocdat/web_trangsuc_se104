@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Button, Row, Container, Col } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import './style.css';
@@ -20,7 +20,7 @@ const ViewUser = () => {
     try {
       async function getData() {
         const response = await axios.get(
-          `https://dialuxury.onrender.com/userid/${_id}`
+          `${process.env.REACT_APP_BACKEND_URL}/userid/${_id}`
         );
         console.log(response.data); // Thêm sản phẩm vào danh sách
         setName(response.data.name);

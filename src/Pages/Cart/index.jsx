@@ -16,7 +16,7 @@ function Cart () {
     //lấy các sản phẩm từ trong giỏ hàng hiện ra
     useEffect(() => {
         axios
-          .get(`https://dialuxury.onrender.com/cart/${userId}`)
+          .get(`${process.env.REACT_APP_BACKEND_URL}/cart/${userId}`)
           .then((response) => {
             setCart(response.data);
           })

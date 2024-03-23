@@ -20,7 +20,7 @@ function TableTemplate ({rows}) {
       const updatedData = await Promise.all(
         rows.map(async (row) => {
           try {
-            const response = await axios.get(`https://dialuxury.onrender.com/user/${row.userId}`);
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/${row.userId}`);
             const name = response.data.name;
             return { ...row, name };
           } catch (error) {

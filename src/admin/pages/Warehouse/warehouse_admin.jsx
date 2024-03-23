@@ -24,7 +24,7 @@ function WarehouseAdmin() {
 
   useEffect(() => {
     axios
-      .get(`https://dialuxury.onrender.com/warehouse`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/warehouse`)
       .then((res) => {
         setWarehouse(res.data);
       })

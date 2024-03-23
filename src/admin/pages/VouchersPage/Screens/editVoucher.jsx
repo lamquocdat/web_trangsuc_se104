@@ -23,7 +23,7 @@ const EditVoucher = () => {
   //   const handleEditClick = () => {
   //     // Gọi API để lấy thông tin phiếu mua hàng
   //     axios
-  //       .get(`https://dialuxury.onrender.com/product/${id}`)
+  //       .get(`${process.env.REACT_APP_BACKEND_URL}/product/${id}`)
   //       .then((response) => {
   //         // Cập nhật state với thông tin phiếu mua hàng
   //         setProduct(response.data);
@@ -38,7 +38,7 @@ const EditVoucher = () => {
 
   //     // Gọi API để cập nhật thông tin phiếu mua hàng
   //     axios
-  //       .put(`https://dialuxury.onrender.com/product/${id}`, product)
+  //       .put(`${process.env.REACT_APP_BACKEND_URL}/product/${id}`, product)
   //       .then((response) => {
   //         console.log("Sản phẩm đã được cập nhật.");
   //         // Xử lý khi cập nhật thành công
@@ -79,7 +79,7 @@ const EditVoucher = () => {
   useEffect(() => {
     // Fetch product details from API
     axios
-      .get(`https://dialuxury.onrender.com/vouchers/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/vouchers/${id}`)
       .then((response) => {
         const product = response.data;
         setVouchersId(product.vouchersId);
@@ -99,7 +99,7 @@ const EditVoucher = () => {
     toast.loading('Deleting...');
     // Gửi yêu cầu PUT đến API để sửa phiếu mua hàng
     await axios
-      .put(`https://dialuxury.onrender.com/vouchers/${id}`, {
+      .put(`${process.env.REACT_APP_BACKEND_URL}/vouchers/${id}`, {
         createdAt,
         production,
         PhoneNumber,

@@ -14,7 +14,7 @@ function Widget() {
   //lấy tổng số user
   const [users, setUsers ] = useState(0);
   useEffect(()=>{
-    axios.get("https://dialuxury.onrender.com/users")
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/users`)
     .then((res)=>{
       setUsers(res.data.length);
     })
@@ -26,7 +26,7 @@ function Widget() {
   //lấy tổng số đơn hàng với tình trạng đã giao hàng
   const [orders, setOrder ] = useState(0);
   useEffect(()=>{
-    axios.get("https://dialuxury.onrender.com/order/tinhtrang/%C4%90%C3%A3%20giao%20h%C3%A0ng")
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/order/tinhtrang/%C4%90%C3%A3%20giao%20h%C3%A0ng`)
     .then((res)=>{
       setOrder(res.data.length);
     })
@@ -38,7 +38,7 @@ function Widget() {
   //lây tổng số sản phẩm
   const [Products, setProducts ] = useState(0);
   useEffect(()=>{
-    axios.get("https://dialuxury.onrender.com/product")
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/product`)
     .then((res)=>{
       setProducts(res.data.length);
     })
@@ -50,7 +50,7 @@ function Widget() {
   //lấy doanh thu từ các hóa đơn đã giao hàng
   const [revenue, setRevenue ] = useState(0);
   useEffect(()=>{
-    axios.get("https://dialuxury.onrender.com/order/tinhtrang/Đã%20giao%20hàng")
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/order/tinhtrang/Đã%20giao%20hàng`)
     .then((res)=>{
       let total = 0;
       console.log(res.data)

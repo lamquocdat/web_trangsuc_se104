@@ -14,10 +14,10 @@ function ProductsPage() {
   //lấy thông tin sản phẩm
   useEffect(() => {
     axios
-      .get(`https://dialuxury.onrender.com/product/search?query=${query}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product/search?query=${query}`)
       .then((response) => {
         console.log(
-          `https://dialuxury.onrender.com/product/search?query=${query}`
+          `${process.env.REACT_APP_BACKEND_URL}/product/search?query=${query}`
         );
         productsSet(response.data);
 

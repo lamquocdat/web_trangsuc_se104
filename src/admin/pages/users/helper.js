@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://dialuxury.onrender.com';
+axios.defaults.baseURL = `${process.env.REACT_APP_BACKEND_URL}`;
 
 export async function cancelOrderbyId(_orderid) {
   try {

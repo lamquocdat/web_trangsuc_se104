@@ -48,7 +48,7 @@ const EditProduct = () => {
     toast.loading('Deleting...');
     // Gửi yêu cầu PUT đến API để sửa sản phẩm
     await axios
-      .put(`https://dialuxury.onrender.com/product/${id}`, {
+      .put(`${process.env.REACT_APP_BACKEND_URL}/product/${id}`, {
         name,
         image,
         price,
@@ -86,7 +86,7 @@ const EditProduct = () => {
   useEffect(() => {
     // Fetch product details from API
     axios
-      .get(`https://dialuxury.onrender.com/product/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product/${id}`)
       .then((response) => {
         const product = response.data;
         setProductid(product.productid);

@@ -24,7 +24,7 @@ function ProductDetails() {
   //lấy thông tin sản phẩm
   useEffect(() => {
     axios
-      .get(`https://dialuxury.onrender.com/product/${id}`)
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product/${id}`)
       .then((response) => {
         setProduct(response.data);
 

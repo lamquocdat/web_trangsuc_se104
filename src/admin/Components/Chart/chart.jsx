@@ -21,7 +21,7 @@ export default function Chart({aspect, title} ) {
   const [namThangTruoc, setNamThangTruoc] = useState({thang: currentMonth-5, tien:0})
   //lấy dữ liệu các order đã giao hàng
 useEffect(()=>{
-  axios.get("https://dialuxury.onrender.com/order/tinhtrang/Đã%20giao%20hàng")
+  axios.get(`${process.env.REACT_APP_BACKEND_URL}/order/tinhtrang/Đã%20giao%20hàng`)
   .then((res)=>{
     for(const order of res.data){
       const month = parseInt(order.ngaylap.split("/")[1], 10); // lấy tháng từ ngày lập

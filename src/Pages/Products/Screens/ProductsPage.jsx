@@ -31,7 +31,7 @@ function ProductsPage() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/newest/Nh%E1%BA%ABn")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/newest/Nh%E1%BA%ABn`)
         .then((response) => {
           console.log("newest filter")
           console.log(response.data)
@@ -47,7 +47,7 @@ function ProductsPage() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/descendingPrice/Nh%E1%BA%ABn")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/descendingPrice/Nh%E1%BA%ABn`)
         .then((response) => {
           console.log(response.data)
           filterProducts(response.data);
@@ -62,7 +62,7 @@ function ProductsPage() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/ascendingPrice/Nh%E1%BA%ABn")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/ascendingPrice/Nh%E1%BA%ABn`)
         .then((response) => {
           console.log(response.data)
           console.log("ascending filter")
@@ -78,7 +78,7 @@ function ProductsPage() {
       setIsLoading(true)
       console.log(sortValue)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/mostSold/Nh%E1%BA%ABn")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/mostSold/Nh%E1%BA%ABn`)
         .then((response) => {
           console.log(response.data)
           filterProducts(response.data);
@@ -91,7 +91,7 @@ function ProductsPage() {
     if(sortValue==""){
       setIsLoading(true)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/Nh%E1%BA%ABn")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/Nh%E1%BA%ABn`)
         .then((response) => {
           console.log(response.data)
           console.log(sortValue)
@@ -126,7 +126,7 @@ function ProductsPage() {
 
   useEffect(() => {
     axios
-      .get("https://dialuxury.onrender.com/product/category/Nh%E1%BA%ABn")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/Nh%E1%BA%ABn`)
       .then((response) => {
         productsSet(response.data);
         setIsLoading(false)
@@ -142,7 +142,7 @@ function ProductsPage() {
   useEffect(() => {
     setIsLoading(true)
       const newProducts = axios
-        .get("https://dialuxury.onrender.com/product/category/Nh%E1%BA%ABn")
+        .get(`${process.env.REACT_APP_BACKEND_URL}/product/category/Nh%E1%BA%ABn`)
         .then((response) => {
           console.log(response.data)
           console.log(products)

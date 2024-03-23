@@ -18,7 +18,7 @@ function TableTemplate({ rows }) {
   const deleteProduct = async ({ id }) => {
     toast.loading('Deleting...');
     await axios
-      .delete(`https://dialuxury.onrender.com/product/${id}`)
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/product/${id}`)
       .then((response) => {
         // Xử lý phản hồi thành công từ API
         toast.dismiss();

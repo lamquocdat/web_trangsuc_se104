@@ -8,6 +8,8 @@ import ImageBanner from "../../../src/assets/images/Products/banner_search.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function Home() {
+  console.log(process.env.REACT_APP_BACKEND_URL);
+
   const navigate = useNavigate();
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -37,7 +39,7 @@ function Home() {
 
   const loadNewProduct = async () => {
     axios
-      .get("https://dialuxury.onrender.com/sortedProduct")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/sortedProduct`)
       .then((response) => {
         setNewProduct(response.data);
         console.log(response.data);
@@ -49,7 +51,7 @@ function Home() {
 
   const loadSoldProduct = async () => {
     axios
-      .get("https://dialuxury.onrender.com/soldNumbersOfProducts")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/soldNumbersOfProducts`)
       .then((response) => {
         setSoldProduct(response.data);
         console.log(response.data);
